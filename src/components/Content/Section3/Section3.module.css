@@ -1,0 +1,20 @@
+.section {
+    background-color: white;
+    padding: 150px 0;
+}
+.section__content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+@media (max-width: 768px) {
+    .section {
+        padding: 100px 0;
+    }
+}
+@media (max-width: 540px) {
+    .section {
+        padding: 75px 0;
+    }
+}
