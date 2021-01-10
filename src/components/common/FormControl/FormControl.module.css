@@ -1,0 +1,14 @@
+.formInput {
+    margin-bottom: 20px;
+}
+.input {
+    padding: 0 !important;
+    height: 45px;
+}
+.label {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: #222222;
+}

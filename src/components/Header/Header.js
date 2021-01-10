@@ -15,13 +15,6 @@ const Header = () => {
 
     const onClick = () => {
         setToggle(!toggle);
-        if (!toggle) {
-            document.body.style.overflowY = 'hidden'
-        }
-        else {
-            document.body.style.overflowY = 'scroll'
-        }
-
     }
     
     return (
@@ -35,21 +28,23 @@ const Header = () => {
                     
                     <div className = {classNames(cls.header__nav, {[cls.active]: toggle})}>
                         <nav className = {cls.nav}>
-                            <Link to = {'/'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname === '/'})}> О платформе </Link>
-                            <Link to = {'/subjects'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname.includes('/subjects')})}> Предметы </Link>
-                            <Link to = {'/subs'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname.includes('/subs')})}> Подписка </Link>
+                            <Link to = {'/'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname === '/'})} onClick = { onClick }> О платформе </Link>
+                            <Link to = {'/subjects'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname.includes('/subjects')})} onClick = { onClick }> Предметы </Link>
+                            <Link to = {'/subs'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname.includes('/subs')})} onClick = { onClick }> Подписка </Link>
                         </nav>
 
                         <div className = {cls.last}>
+
                             <div className = {cls.last__lang}>
                                 <span className = {cls.lang__link}> Қаз </span>
                                 <span className = {cls.lang__link}> Рус </span>
                             </div>
 
                             <div className = {cls.last__auth}>
-                                <Link to = {'/signup'} className = {cls.signup}> Регистрация </Link>
-                                <Link to = {'/signin'} className = {classNames('button', cls.signin)}> Войти </Link>
+                                <Link to = {'/registration'} className = {cls.signup} onClick = { onClick }> Регистрация </Link>
+                                <Link to = {'/login'} className = {classNames('button', cls.signin)} onClick = { onClick }> Войти </Link>
                             </div>
+
                         </div>
                     </div>
 
