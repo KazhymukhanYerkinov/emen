@@ -11,7 +11,7 @@ import cls from './SignIn.module.css';
 
 
 const SignInForm = () => {
-    return (
+    return (  
         <form className = {cls.signin__form}>
             <div className = {cls.signin__input}>
                 <Field name = { 'email' } component = { InputText } label = { 'E-mail' } />   
