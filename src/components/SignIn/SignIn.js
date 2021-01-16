@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 import signin from '../../assets/images/signin.jpg'
 import facebook from '../../assets/logos/facebook__btn.svg';
@@ -20,7 +20,7 @@ const SignInForm = () => {
             <button className = 'button submit'> Войти </button>  
             <div className = {cls.signin__check}>
                 <Field name = { 'ckeckbox' } component = { InputCheckBox } label = { 'Запомнить меня' } />
-                <Link className = { cls.check__text } to = {'/change-email'}> Забыли пароль? </Link>
+                <Link className = { cls.check__text } to = {'/forgotpassword'}> Забыли пароль? </Link>
             </div>  
         </form>
     )
