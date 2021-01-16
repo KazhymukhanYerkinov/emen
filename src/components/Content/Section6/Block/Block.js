@@ -14,8 +14,8 @@ const Block = ({ text, result }) => {
     }
 
     return (
-        <div className = {cls.block}>
-            <div className = {cls.block__inner} onClick = { onClick }>
+        <div className = {cls.block} onClick = { onClick }>
+            <div className = {cls.block__inner}>
                 <div className = {cls.block__question}> { text } </div>
                 <span className = {classNames(cls.block__collapse, {[cls.active]: showAnswer})}> </span>
             </div>

@@ -12,3 +12,10 @@
 
     color: #222222;
 }
+.inputNumber {
+    width: 180px;
+    height: 45px;
+
+    font-size: 20px;
+    padding-left: 50px;
+}

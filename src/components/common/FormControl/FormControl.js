@@ -83,3 +83,15 @@ export const InputCheckBox = ({ input, label }) => {
         />
     )
 }
+
+export const InputNumber = ({ input }) => {
+    
+    return (
+        <div className = {cls.formControl}>
+            <OutlinedInput
+                className = {cls.inputNumber}
+                inputProps = {{ maxLength: 4 }} 
+            />
+        </div>
+    )
+}
