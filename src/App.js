@@ -5,7 +5,7 @@ import { Content, Header, Footer, SignIn, SignUp, ForgotPassword } from './compo
 function App() {
   return (
     <div className="App">
-        <Header />
+        
         <Route exact path = '/' component = { Content } />
         <Route exact path = '/login' component = { SignIn } />
         <Route exact path = '/registration' component = { SignUp } />
