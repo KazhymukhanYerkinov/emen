@@ -38,3 +38,46 @@
 
     color: #222222;
 }
+@media (max-width: 1024px) {
+    .success__inner {
+        flex-wrap: wrap;
+    }
+    .success__image {
+        width: 80%;
+        margin-right: 0;
+        margin: 0 auto;
+    }
+    .success__image img {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .success__content {
+        margin-top: 50px;
+        width: 50%;
+    }
+}
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+    .success {
+        min-height: 1000px;
+    }
+}
+@media (max-width: 700px) {
+    .success__content {
+        margin-top: 30px;
+        width: 65%;
+    }
+}
+
+@media (max-width: 500px) {
+    .success__image {
+        width: 100%;
+    }
+    .success__image img {
+        width: 90%;
+    }
+    .success__content {
+        width: 100%;
+    }.success__title {
+        font-size: 20px;
+    }
+}

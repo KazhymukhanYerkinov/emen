@@ -2,11 +2,13 @@
     height: 90px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
 
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
+
+    background-color: #fff;
 }
 .header__inner {
     display: flex;
@@ -25,6 +27,8 @@
 .header__nav {
     display: flex;
     justify-content: space-between;
+}
+.full__width {
     width: 100%;
 }
 .nav {
@@ -54,6 +58,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    position: relative;
 }
 .last__lang {
     margin-right: 40px;
@@ -123,6 +129,28 @@
 }
 
 
+/* PROFILE */
+.profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.profile__name {
+    margin-right: 15px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+
+    color: #222222;
+}
+.profile__icons {
+    color: #A1A4AA;
+}
+.rotate {
+    transform: rotate(180deg);
+}
+
+
 @media (max-width: 900px) {
     .header__nav {
         display: none;
@@ -136,6 +164,9 @@
         
         
         background-color: white;
+    }
+    .profile {
+        display: none;
     }
     .header__nav.active {
         display: block;
@@ -162,6 +193,9 @@
     .last__auth {
         display: flex;
         flex-wrap: wrap;
+    }
+    .change__lang {
+        display: none;
     }
     .signup {
         width: 80%;
@@ -199,7 +233,7 @@
 
 @media (max-width: 540px) {
     .header__nav {
-        height: 90vh;  
+        height: 100vh;  
     }
     
     .signup, .signin {
@@ -223,7 +257,7 @@
 @media (max-width: 440px) {
     
     .header, .header__inner {
-        height: 50px;
+        height: 55px;
     }
     .header__toggle {
         width: 30px;

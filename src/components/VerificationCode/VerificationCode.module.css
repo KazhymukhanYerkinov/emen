@@ -49,3 +49,29 @@
     margin-top: 20px;
     text-align: center;
 }
+@media (max-width: 1024px) {
+    .code__image {
+        display: none;
+    }
+    .code__content {
+        width: 50%;
+    }
+}
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+    .code {
+        min-height: 800px;
+    }
+}
+@media (max-width: 700px) {
+    .code__content {
+        width: 70%;
+    }
+}
+@media (max-width: 500px) {
+    .code__content {
+        width: 100%;
+    }
+    .step {
+        margin: 20px 0 15px;
+    }
+}
