@@ -24,7 +24,7 @@ const ProfileBlock = () => {
                 <div className = {cls.profile__route}>
                     {data.map((item, index) => {
                         return (
-                            <Link className = {cls.route} to = {`/${item.url}`}>
+                            <Link className = {cls.route} to = {`/${item.url}`} key = { index }>
                                 <div className = {cls.route__icons}> { item.img } </div>
                                 <div className = {cls.route__text}> { item.title } </div>
                             </Link>

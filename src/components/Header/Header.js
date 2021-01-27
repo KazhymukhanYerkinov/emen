@@ -24,7 +24,7 @@ const Header = () => {
         setShowProfile(!showProfile);
     }
 
-    const is_auth = false;
+    const is_auth = true;
     
     return (
         <header className = {cls.header}>
@@ -60,7 +60,7 @@ const Header = () => {
                                 <ArrowDropDownIcon className = {classNames(cls.profile__icons, {[cls.rotate]: showProfile})} />
                             </div>}
                             
-                            {(showProfile || toggle) && <ProfileBlock />}
+                            {!is_auth && ((showProfile || toggle) && <ProfileBlock />)}
 
                         </div>
                     </div>

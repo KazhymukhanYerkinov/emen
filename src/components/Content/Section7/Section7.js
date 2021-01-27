@@ -21,7 +21,7 @@ const Section7 = () => {
                     <div className = {cls.section__content}>
                         { data.map((item, index) => {
                             return (
-                                <Block {...item}/>
+                                <Block {...item} key = { index }/>
                             )
                         }) }
                     </div>
