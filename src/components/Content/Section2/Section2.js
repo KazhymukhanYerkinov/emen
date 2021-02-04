@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 
 import { data } from '../../../data/section2';
 import Block from './Block/Block';

@@ -16,9 +16,9 @@ h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: inherit;}
 /* container */
 .container {
   width: 100%;
-  max-width: 1180px;
+  max-width: 1210px;
   padding: 0 15px;
-  margin: 0 auto;
+  margin: 0 auto; 
   font-family: Raleway;
 }
 /* button */
@@ -101,8 +101,6 @@ h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: inherit;}
   color: #5F6368;
 
 }
-
-
 
 @media (max-width: 900px) {
   .section__title, .section__text {

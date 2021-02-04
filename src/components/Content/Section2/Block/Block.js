@@ -11,7 +11,7 @@ const Block = ({ title, text, image }) => {
                 </div>
 
                 <div className = {cls.block__image}>
-                    <img className = {cls.image} src = { image } alt = "block image"/>
+                    <img className = {cls.image} src = { image } alt = "block picturee" />
                 </div>
             </div>
         </div>

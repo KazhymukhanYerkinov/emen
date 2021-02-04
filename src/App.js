@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 import './App.css';
-import { Content, Header, Footer, SignIn, SignUp, ForgotPassword, VerificationCode, ConfirmPassword, Success } from './components';
+import { Content, Header, Footer, SignIn, SignUp, ForgotPassword, VerificationCode, ConfirmPassword, Success,Subjects } from './components';
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         <Route exact path = '/verificode' component = {VerificationCode } />
         <Route exact path = '/confirmpassword' component = { ConfirmPassword } />
         <Route exact path = '/success' component = { Success } />
+        <Route exact path = '/subjects' component = { Subjects } />
 
         <Footer />
     </div>
