@@ -3,6 +3,8 @@
     top: 80px;
     right: 0;
     background-color: #ffffff;
+    overflow-y: auto;
+    
 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 3px;
@@ -15,8 +17,6 @@
     align-items: center;
 }
 .avatar {
-    height: 60px;
-    width: 60px;
     margin-right: 20px;
 }
 .name {
@@ -70,14 +70,39 @@
     .profile {
         top: 15px;
         width: 60%;
-        
+    }
+   
+}
+@media screen and (orientation: landscape) and (max-width: 900px) {
+    .profile {
+        height: 100vh;
+        padding-bottom: 130px;
     }
 }
 
 @media (max-width: 540px) {
     .profile {
         width: 100%;
+        box-shadow: none; 
     }
+    .profile__route {
+        margin-top: 35px;
+    }
+    .name {
+        font-size: 18px;
+    }
+    .id {
+        font-size: 16px;
+    }
+    .route {
+        justify-content: center;
+        padding: 15px 0 15px 10px;
+    }
+    .route__text {
+        font-size: 21px;
+        
+    }
+    
     .profile__info {
         flex-wrap: wrap;
     }
@@ -88,6 +113,22 @@
         width: 100%;
     }
     
+}
+@media (max-width: 400px) {
+    .route__text {
+        font-size: 16px;
+    }
+}
+@media (max-width: 350px) {
+    .name {
+        font-size: 16px;
+    }
+    .id {
+        font-size: 14px;
+    }
+    .route {
+        padding: 10px 0 10px 10px;
+    }
 }
  
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
+import avatar from '../../../assets/profile/avatar.jpg';
 
 import { data } from '../../../data/profile';
 
 import cls from './ProfileBlock.module.css'
-
 
 
 const ProfileBlock = () => {
@@ -14,7 +14,7 @@ const ProfileBlock = () => {
             <div className={cls.profile__inner}>
 
                 <div className={cls.profile__info}>
-                    <Avatar className={cls.avatar} />
+                    <Avatar className={cls.avatar} src = { avatar } style = {{ width: '65px', height: '65px' }}/>
                     <div className = {cls.info}>
                         <div className={cls.name}> Kazhymukhan Yerkinov </div>
                         <div className={cls.id}> id180103277 </div>

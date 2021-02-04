@@ -251,6 +251,12 @@
     .toggle__item::before {
         top: -10px;
     }
+    .header__toggle.active .toggle__item::before {
+        transform: rotate(45deg) translate3d(0, -3px, 0);
+    }
+    .header__toggle.active .toggle__item::after {
+        transform: rotate(-45deg) translate3d(0, 3px, 0);
+    }
     
 }
 
@@ -268,10 +274,5 @@
     .toggle__item::before {
         top: -8px;
     }
-    .header__toggle.active .toggle__item::before {
-        transform: rotate(45deg) translate3d(0, -3px, 0);
-    }
-    .header__toggle.active .toggle__item::after {
-        transform: rotate(-45deg) translate3d(0, 3px, 0);
-    }
+    
 }

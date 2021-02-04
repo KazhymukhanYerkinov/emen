@@ -5,6 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'; 
 
 import emen from '../../assets/logos/emen.svg';
+import avatar from '../../assets/profile/avatar.jpg';
 
 import cls from './Header.module.css';
 import ProfileBlock from './ProfileBlock/ProfileBlock';
@@ -24,7 +25,7 @@ const Header = () => {
         setShowProfile(!showProfile);
     }
 
-    const is_auth = true;
+    const is_auth = false;
     
     return (
         <header className = {cls.header}>
@@ -56,7 +57,7 @@ const Header = () => {
 
                             {!is_auth &&  <div className = {cls.profile} onClick = { onShowProfilePopup }>
                                 <div className = {cls.profile__name}> Kazhymukhan Y. </div>
-                                <div className = {cls.profile__avatar}> <Avatar alt="Kazhymukhan Yerkinov" src="" /> </div>
+                                <div className = {cls.profile__avatar}> <Avatar alt="Kazhymukhan Yerkinov" src = { avatar } /> </div>
                                 <ArrowDropDownIcon className = {classNames(cls.profile__icons, {[cls.rotate]: showProfile})} />
                             </div>}
                             
