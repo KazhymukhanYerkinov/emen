@@ -25,7 +25,7 @@ const Header = () => {
         setShowProfile(!showProfile);
     }
 
-    const is_auth = false;
+    const is_auth = true;
     
     return (
         <header className = {cls.header}>
