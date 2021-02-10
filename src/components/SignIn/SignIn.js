@@ -31,7 +31,7 @@ const SignInForm = ({ handleSubmit }) => {
 
 const SignInReduxForm = reduxForm({ form: 'signin' })(SignInForm);
 
-const SignIn = ({ isAuth, user, loginThunk }) => {
+const SignIn = ({ isAuth, loginThunk }) => {
 
     const onSubmit = (formData) => {
         loginThunk(formData.email, formData.password, formData.ckeckbox)
@@ -40,6 +40,7 @@ const SignIn = ({ isAuth, user, loginThunk }) => {
     if ( isAuth ) {
         return <Redirect to = '/' />
     }
+    
     return (
         <div className = {cls.signin}>
             <div className = 'container'>

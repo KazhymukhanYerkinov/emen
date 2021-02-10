@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import success from '../../assets/images/success.jpg';
 import check from '../../assets/logos/success.svg';
@@ -7,7 +7,10 @@ import check from '../../assets/logos/success.svg';
 import cls from './Success.module.css';
 
 
-const Success = ({ fromRegisterPage, fromUpdatePasswordPage }) => {
+const Success = ({ fromRegisterPage, setRedirectSuccessPage }) => {
+
+    
+
     return (
         <div className = {cls.success}>
             <div className = 'container'>
@@ -20,11 +23,11 @@ const Success = ({ fromRegisterPage, fromUpdatePasswordPage }) => {
                     <div className = {cls.success__content}>
                         <img className = {cls.image} src = { check } alt = ""/>
                         <div className = {cls.success__title}>
-                             {fromRegisterPage ? <span> Поздравляем, Вы успешно зарегистрировались! </span>:
-                                <span> Поздравляем, Ваш пароль был успешно изменен! </span>} 
+                             {fromRegisterPage >= 1 ? <span> Поздравляем, Вы успешно зарегистрировались! </span>:
+                                <span> Поздравляем, Ваш пароль был успешно изменен! </span>}
                         </div>
                         <Link to = '/login'>
-                            <button className = 'button submit'> Войти </button>
+                            <button className = 'button submit' onClick = {() => setRedirectSuccessPage(0)}> Войти </button>
                         </Link>
                     </div>
                 </div>

@@ -14,12 +14,23 @@ import ProfileBlock from './ProfileBlock/ProfileBlock';
 const Header = ({ isAuth, user, logoutThunk }) => {
 
     let location = useLocation();
-
+    const profileRef = React.useRef();
     const [ showProfileBlock, setShowProfileBlock ] = React.useState(false);
 
+    const onHandleOutsideClick = (event) => {
+        const path = event.path || (event.composedPath && event.composedPath());
+        if (!path.includes(profileRef.current)) {
+            onChangeProfileBlock(false);
+        }
+    }
+    
     const onChangeProfileBlock = ( item ) => {
         setShowProfileBlock( item );
     }
+
+    React.useEffect(() => {
+        document.body.addEventListener('click', onHandleOutsideClick)
+    }, []);
 
     return (
         <header className = {cls.header}>
@@ -50,13 +61,17 @@ const Header = ({ isAuth, user, logoutThunk }) => {
                                 <Link to = {'/login'} className = {classNames('button', cls.signin)} onClick = {() => onChangeProfileBlock(false)}> Войти </Link>
                             </div>}
 
-                            {isAuth &&  <div className = {cls.profile} onClick = {() => onChangeProfileBlock(!showProfileBlock)}>
-                                <div className = {cls.profile__name}> { user.first_name } </div>
-                                <div className = {cls.profile__avatar}> <Avatar alt={user.first_name} src = { avatar } /> </div>
-                                <ArrowDropDownIcon className = {classNames(cls.profile__icons, {[cls.rotate]: showProfileBlock})} />
-                            </div>}
-                            
-                            {isAuth && showProfileBlock && <ProfileBlock user = { user } logoutThunk = { logoutThunk }/>}
+                            <div ref = { profileRef }>
+                                {isAuth &&  <div className = {cls.profile} onClick = {() => onChangeProfileBlock(!showProfileBlock)}>
+                                    <div className = {cls.profile__name}> { user && <span> {user.first_name} </span> } </div>
+                                    <div className = {cls.profile__avatar}> <Avatar alt= {user && user.first_name} src = { avatar } /> </div>
+                                    <ArrowDropDownIcon className = {classNames(cls.profile__icons, {[cls.rotate]: showProfileBlock})} />
+                                </div>}
+                                
+                                {isAuth && showProfileBlock && <ProfileBlock user = { user } 
+                                                logoutThunk = { logoutThunk }
+                                                onChangeProfileBlock = { onChangeProfileBlock }/>}
+                            </div>
 
                         </div>
                     </div>
@@ -73,5 +88,6 @@ const Header = ({ isAuth, user, logoutThunk }) => {
         </header>
     )
 }
+
 
 export default Header;

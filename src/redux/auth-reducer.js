@@ -13,6 +13,8 @@ const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
 const AUTHENTICATED_SUCCESS = 'AUTHENTICATED_SUCCESS';
 const AUTHENTICATED_FAIL = 'AUTHENTICATED_FAIL';
 
+
+
 const LOGOUT = 'LOGOUT';
 
 
@@ -21,8 +23,8 @@ let initialState = {
     isAuth: false,
     user: {},
 
-    fromRegisterPage: false,
-    fromUpdatePasswordPage: false,
+    fromRegisterPage: 0,
+
 }
 
 const authReducer = (state = initialState, action) => {
@@ -41,11 +43,11 @@ const authReducer = (state = initialState, action) => {
                 user: payload,
             }
         case SIGN_UP_SUCCESS:
+           
             return {
                 ...state,
                 isAuth: false,
-                fromRegisterPage: true,
-                fromUpdatePasswordPage: false,
+                fromRegisterPage: action.fromRegisterPage,
             }
         case AUTHENTICATED_SUCCESS:
             return {
@@ -77,6 +79,11 @@ const authReducer = (state = initialState, action) => {
             return state;
 
     }
+}
+
+export const setRedirectSuccessPage = (fromRegisterPage) => {
+    console.log('CLICK HEREs', fromRegisterPage)
+    return { type: SIGN_UP_SUCCESS, fromRegisterPage }
 }
 
 export const checkAuthThunk = () => async (dispatch) => {
@@ -123,12 +130,12 @@ export const loginThunk = (email, password, remember_me) => async (dispatch) => 
 export const signUpThunk = (email, first_name, last_name, password, re_password) => async (dispatch) => {
     if (password === re_password) {
         try {
-            console.log(email, first_name, last_name, password, re_password)
-            let data = await authAPI.signup(email, first_name, last_name, password, re_password);
-            dispatch({ type: SIGN_UP_SUCCESS })
+            console.log("auth-reducer")
+            await authAPI.signup(email, first_name, last_name, password, re_password);
+            dispatch(setRedirectSuccessPage(1));
         }
         catch(err) {
-            console.log('error')
+            dispatch({ type: SIGN_UP_FAIL });
         }
     }
     else {

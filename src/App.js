@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { loginThunk, signUpThunk, logoutThunk } from './redux/auth-reducer';
+import { loginThunk, signUpThunk, logoutThunk, setRedirectSuccessPage } from './redux/auth-reducer';
 import { initSuccessThunk } from './redux/app-reducer';
 import { Content, 
   Header, 
@@ -29,8 +29,8 @@ class App extends React.Component {
   
   render(){
     const { isAuth,user, loginThunk, 
-      signUpThunk, fromRegisterPage, 
-      fromUpdatePasswordPage, initialized } = this.props;
+      signUpThunk, fromRegisterPage, logoutThunk, 
+      initialized, setRedirectSuccessPage } = this.props;
     
     if (!initialized) {
       return (
@@ -45,14 +45,18 @@ class App extends React.Component {
           <Header isAuth = { isAuth } user = { user } logoutThunk = { logoutThunk } />
           <Route exact path = '/' component = { Content } />
           <Route exact path = '/login' 
-              render = {() => <SignIn isAuth = { isAuth } user = { user } loginThunk = { loginThunk }/> }/>
+              render = {() => <SignIn isAuth = { isAuth } loginThunk = { loginThunk }/> }/>
+
           <Route exact path = '/registration' 
               render = {() => <SignUp signUpThunk = { signUpThunk } fromRegisterPage = { fromRegisterPage }/> } />
+
           <Route exact path = '/forgotpassword' component = { ForgotPassword } />
           <Route exact path = '/verificode' component = {VerificationCode } />
           <Route exact path = '/confirmpassword' component = { ConfirmPassword } />
-          <Route exact path = '/success'
-              render = {() => <Success fromRegisterPage = { fromRegisterPage } fromUpdatePasswordPage = { fromUpdatePasswordPage }/>} />
+
+          {fromRegisterPage !== 0 && <Route exact path = '/success'
+              render = {() => <Success fromRegisterPage = { fromRegisterPage } setRedirectSuccessPage = { setRedirectSuccessPage }/>} />}
+
           <Route exact path = '/subjects' component = { Subjects } />
 
           <Footer />
@@ -65,9 +69,16 @@ let mapStateToProps = (state) => ({
   isAuth: state.authPage.isAuth,
   user:  state.authPage.user,
   fromRegisterPage: state.authPage.fromRegisterPage,
-  fromUpdatePasswordPage: state.authPage.fromUpdatePasswordPage,
   initialized: state.appPage.initialized,
 })
 
 
-export default connect(mapStateToProps, { loginThunk, signUpThunk, logoutThunk, initSuccessThunk })(App);
+export default connect(mapStateToProps, 
+  { 
+    loginThunk, 
+    signUpThunk, 
+    logoutThunk, 
+    initSuccessThunk,
+    setRedirectSuccessPage,
+    
+  })(App);
