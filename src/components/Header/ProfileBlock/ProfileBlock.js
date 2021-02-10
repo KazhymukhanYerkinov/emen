@@ -8,7 +8,7 @@ import { data } from '../../../data/profile';
 import cls from './ProfileBlock.module.css'
 
 
-const ProfileBlock = () => {
+const ProfileBlock = ({ user, logoutThunk }) => {
     return (
         <div className={cls.profile}>
             <div className={cls.profile__inner}>
@@ -16,7 +16,7 @@ const ProfileBlock = () => {
                 <div className={cls.profile__info}>
                     <Avatar className={cls.avatar} src = { avatar } style = {{ width: '65px', height: '65px' }}/>
                     <div className = {cls.info}>
-                        <div className={cls.name}> Kazhymukhan Yerkinov </div>
+                        <div className={cls.name}> Kazymukhan Y.</div>
                         <div className={cls.id}> id180103277 </div>
                     </div>
                 </div>

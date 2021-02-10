@@ -7,7 +7,7 @@ import check from '../../assets/logos/success.svg';
 import cls from './Success.module.css';
 
 
-const Success = () => {
+const Success = ({ fromRegisterPage, fromUpdatePasswordPage }) => {
     return (
         <div className = {cls.success}>
             <div className = 'container'>
@@ -19,8 +19,11 @@ const Success = () => {
 
                     <div className = {cls.success__content}>
                         <img className = {cls.image} src = { check } alt = ""/>
-                        <div className = {cls.success__title}> Ваш пароль был успешно изменен </div>
-                        <Link to = '/'>
+                        <div className = {cls.success__title}>
+                             {fromRegisterPage ? <span> Поздравляем, Вы успешно зарегистрировались! </span>:
+                                <span> Поздравляем, Ваш пароль был успешно изменен! </span>} 
+                        </div>
+                        <Link to = '/login'>
                             <button className = 'button submit'> Войти </button>
                         </Link>
                     </div>

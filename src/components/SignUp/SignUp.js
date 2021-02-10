@@ -7,11 +7,12 @@ import signup from '../../assets/images/signup.jpg';
 import { InputPassword, InputText } from '../common/FormControl/FormControl';
 
 import cls from './SignUp.module.css';
+import { Redirect } from 'react-router-dom';
 
 
-const SignUpForm = () => {
+const SignUpForm = ({ handleSubmit }) => {
     return (
-        <form>
+        <form onSubmit = { handleSubmit }>
             <div className = {cls.signup__input}>
                 <Field name = { 'name' } component = { InputText } label = { 'Имя' }/>
                 <Field name = { 'surname' } component = { InputText } label = { 'Фамилия' } />
@@ -19,13 +20,21 @@ const SignUpForm = () => {
                 <Field name = { 'password1' } component = { InputPassword } label = { 'Создать пароль' } />
                 <Field name = { 'password2' } component = { InputPassword } label = { 'Повторить пароль' } />
             </div>
-            <button className = 'button submit'> Зарегистрироваться </button>
+            <button className = 'button submit' type = 'submit'>  Зарегистрироваться </button>
         </form>
     )
 }
 const SignUpReduxForm = reduxForm({ form: 'signup' })(SignUpForm);
 
-const SignUp = () => {
+const SignUp = ({ signUpThunk, fromRegisterPage }) => {
+    console.log(fromRegisterPage);
+    const onSubmit = (formData) => {
+        signUpThunk(formData.email, formData.name, formData.surname, formData.password1, formData.password2)
+    }
+
+    if (fromRegisterPage) {
+        return <Redirect to = '/success' />
+    }
     return (
         <div className = {cls.signup}>
             <div className = 'container'>
@@ -37,7 +46,7 @@ const SignUp = () => {
 
                     <div className = {cls.signup__content}>
                         <div className = 'title'> Регистрация </div>
-                        <SignUpReduxForm />
+                        <SignUpReduxForm onSubmit = { onSubmit }/>
                         <div className = 'helper__text'> Войти с помощью </div>
                         <button className = 'button facebook'> 
                             <img src = { facebook } alt = ""/>

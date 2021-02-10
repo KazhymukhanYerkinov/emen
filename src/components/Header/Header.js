@@ -11,22 +11,16 @@ import cls from './Header.module.css';
 import ProfileBlock from './ProfileBlock/ProfileBlock';
 
 
-const Header = () => {
+const Header = ({ isAuth, user, logoutThunk }) => {
 
     let location = useLocation();
 
-    const [ toggle, setToggle ] = React.useState(false);
-    const [ showProfile, setShowProfile ] = React.useState(false);
+    const [ showProfileBlock, setShowProfileBlock ] = React.useState(false);
 
-    const onClick = () => {
-        setToggle(!toggle);
-    }
-    const onShowProfilePopup = () => {
-        setShowProfile(!showProfile);
+    const onChangeProfileBlock = ( item ) => {
+        setShowProfileBlock( item );
     }
 
-    const is_auth = true;
-    
     return (
         <header className = {cls.header}>
             <div className = "container">
@@ -36,39 +30,42 @@ const Header = () => {
                         <img className ={cls.image} src = { emen } alt = "" />
                     </Link>
                     
-                    <div className = {classNames(cls.header__nav, {[cls.active]: toggle, [cls.full__width]: is_auth})}>
-                        {is_auth && <nav className = {cls.nav}>
-                            <Link to = {'/'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname === '/'})} onClick = { onClick }> О платформе </Link>
-                            <Link to = {'/subjects'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname.includes('/subjects')})} onClick = { onClick }> Предметы </Link>
-                            <Link to = {'/subs'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname.includes('/subs')})} onClick = { onClick }> Подписка </Link>
+                    <div className = {classNames(cls.header__nav, {[cls.active]: showProfileBlock, [cls.full__width]: !isAuth})}>
+                        
+                        {!isAuth && <nav className = {cls.nav}>
+                            <Link to = {'/'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname === '/'})} onClick = {() => onChangeProfileBlock(false)}> О платформе </Link>
+                            <Link to = {'/subjects'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname.includes('/subjects')})} onClick = {() => onChangeProfileBlock(false)}> Предметы </Link>
+                            <Link to = {'/subs'} className = {classNames(cls.nav__link, {[cls.active]: location.pathname.includes('/subs')})} onClick = {() => onChangeProfileBlock(false)}> Подписка </Link>
                         </nav>}
 
                         <div className = {cls.last}>
 
-                            <div className = {classNames(cls.last__lang, {[cls.change__lang]: !is_auth})}>
+                            <div className = {classNames(cls.last__lang, {[cls.change__lang]: isAuth})}>
                                 <span className = {cls.lang__link}> Қаз </span>
                                 <span className = {cls.lang__link}> Рус </span>
                             </div>
 
-                            {is_auth && <div className = {cls.last__auth}>
-                                <Link to = {'/registration'} className = {cls.signup} onClick = { onClick }> Регистрация </Link>
-                                <Link to = {'/login'} className = {classNames('button', cls.signin)} onClick = { onClick }> Войти </Link>
+                            {!isAuth && <div className = {cls.last__auth}>
+                                <Link to = {'/registration'} className = {cls.signup} onClick = {() => onChangeProfileBlock(false)}> Регистрация </Link>
+                                <Link to = {'/login'} className = {classNames('button', cls.signin)} onClick = {() => onChangeProfileBlock(false)}> Войти </Link>
                             </div>}
 
-                            {!is_auth &&  <div className = {cls.profile} onClick = { onShowProfilePopup }>
-                                <div className = {cls.profile__name}> Kazhymukhan Y. </div>
-                                <div className = {cls.profile__avatar}> <Avatar alt="Kazhymukhan Yerkinov" src = { avatar } /> </div>
-                                <ArrowDropDownIcon className = {classNames(cls.profile__icons, {[cls.rotate]: showProfile})} />
+                            {isAuth &&  <div className = {cls.profile} onClick = {() => onChangeProfileBlock(!showProfileBlock)}>
+                                <div className = {cls.profile__name}> { user.first_name } </div>
+                                <div className = {cls.profile__avatar}> <Avatar alt={user.first_name} src = { avatar } /> </div>
+                                <ArrowDropDownIcon className = {classNames(cls.profile__icons, {[cls.rotate]: showProfileBlock})} />
                             </div>}
                             
-                            {!is_auth && ((showProfile || toggle) && <ProfileBlock />)}
+                            {isAuth && showProfileBlock && <ProfileBlock user = { user } logoutThunk = { logoutThunk }/>}
 
                         </div>
                     </div>
 
-                    <button className = {classNames(cls.header__toggle, {[cls.active]: toggle})}
-                            onClick = { onClick }>
+                    <button className = {classNames(cls.header__toggle, {[cls.active]: showProfileBlock})} 
+                        onClick = {() => onChangeProfileBlock(!showProfileBlock)}>
+
                         <span className = {cls.toggle__item}> MENU </span>
+
                     </button>
 
                 </div>

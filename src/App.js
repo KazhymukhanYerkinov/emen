@@ -1,23 +1,73 @@
+import React from 'react';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { loginThunk, signUpThunk, logoutThunk } from './redux/auth-reducer';
+import { initSuccessThunk } from './redux/app-reducer';
+import { Content, 
+  Header, 
+  Footer, 
+  SignIn, 
+  SignUp, 
+  ForgotPassword, 
+  VerificationCode, 
+  ConfirmPassword, 
+  Success,Subjects 
+} from './components';
+
 import './App.css';
-import { Content, Header, Footer, SignIn, SignUp, ForgotPassword, VerificationCode, ConfirmPassword, Success,Subjects } from './components';
 
-function App() {
-  return (
-    <div className="App">
-        <Header />
-        <Route exact path = '/' component = { Content } />
-        <Route exact path = '/login' component = { SignIn } />
-        <Route exact path = '/registration' component = { SignUp } />
-        <Route exact path = '/forgotpassword' component = { ForgotPassword } />
-        <Route exact path = '/verificode' component = {VerificationCode } />
-        <Route exact path = '/confirmpassword' component = { ConfirmPassword } />
-        <Route exact path = '/success' component = { Success } />
-        <Route exact path = '/subjects' component = { Subjects } />
 
-        <Footer />
-    </div>
-  );
+
+
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initSuccessThunk();
+  }
+
+
+  
+  render(){
+    const { isAuth,user, loginThunk, 
+      signUpThunk, fromRegisterPage, 
+      fromUpdatePasswordPage, initialized } = this.props;
+    
+    if (!initialized) {
+      return (
+        <div>
+          <h1> Здесь должна быть загрузка :) </h1>
+        </div>
+      )
+    }
+    
+    return (
+      <div className="App">
+          <Header isAuth = { isAuth } user = { user } logoutThunk = { logoutThunk } />
+          <Route exact path = '/' component = { Content } />
+          <Route exact path = '/login' 
+              render = {() => <SignIn isAuth = { isAuth } user = { user } loginThunk = { loginThunk }/> }/>
+          <Route exact path = '/registration' 
+              render = {() => <SignUp signUpThunk = { signUpThunk } fromRegisterPage = { fromRegisterPage }/> } />
+          <Route exact path = '/forgotpassword' component = { ForgotPassword } />
+          <Route exact path = '/verificode' component = {VerificationCode } />
+          <Route exact path = '/confirmpassword' component = { ConfirmPassword } />
+          <Route exact path = '/success'
+              render = {() => <Success fromRegisterPage = { fromRegisterPage } fromUpdatePasswordPage = { fromUpdatePasswordPage }/>} />
+          <Route exact path = '/subjects' component = { Subjects } />
+
+          <Footer />
+      </div>
+    );
+  }
 }
 
-export default App;
+let mapStateToProps = (state) => ({
+  isAuth: state.authPage.isAuth,
+  user:  state.authPage.user,
+  fromRegisterPage: state.authPage.fromRegisterPage,
+  fromUpdatePasswordPage: state.authPage.fromUpdatePasswordPage,
+  initialized: state.appPage.initialized,
+})
+
+
+export default connect(mapStateToProps, { loginThunk, signUpThunk, logoutThunk, initSuccessThunk })(App);

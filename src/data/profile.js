@@ -13,7 +13,7 @@ export const data = [
     { img: <LogoutComponent />, title: 'История', url: ''},
     { img: <SaveComponent />, title: 'Сохраненные', url: ''},
     { img: <StatComponent />, title: 'Статистика', url: ''},
-    { img: <SubjectComponent />, title: 'Выйти', url: ''}
 ]
+export const exit = { img: <LogoutComponent />, title: 'Выйти'}
 
 
