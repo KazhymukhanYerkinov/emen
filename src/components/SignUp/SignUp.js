@@ -8,26 +8,31 @@ import { InputPassword, InputText } from '../common/FormControl/FormControl';
 
 import cls from './SignUp.module.css';
 import { Redirect } from 'react-router-dom';
+import { emailRequired, LengthCreator, passwordRequired, textRequired } from '../../validators/validator';
 
 
-const SignUpForm = ({ handleSubmit, showFetchButton }) => {
+const lengthValidation = LengthCreator(8, 100);
+
+const SignUpForm = ({ handleSubmit, showFetchButton, error }) => {
     return (
+        <>
+        { error && <span className = {cls.error}> { error } </span> }
         <form onSubmit = { handleSubmit }>
             <div className = {cls.signup__input}>
-                <Field name = { 'name' } component = { InputText } label = { 'Имя' }/>
-                <Field name = { 'surname' } component = { InputText } label = { 'Фамилия' } />
-                <Field name = { 'email' } component = { InputText } label = { 'Email' } />
-                <Field name = { 'password1' } component = { InputPassword } label = { 'Создать пароль' } />
-                <Field name = { 'password2' } component = { InputPassword } label = { 'Повторить пароль' } />
+                <Field name = { 'name' } component = { InputText } label = { 'Имя' } validate = { textRequired }/>
+                <Field name = { 'surname' } component = { InputText } label = { 'Фамилия' } validate = { textRequired }/>
+                <Field name = { 'email' } component = { InputText } label = { 'Email' } validate = { emailRequired }/>
+                <Field name = { 'password1' } component = { InputPassword } label = { 'Создать пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
+                <Field name = { 'password2' } component = { InputPassword } label = { 'Повторить пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
             </div>
             <button className = 'button submit' type = 'submit'>  {showFetchButton ? <span> .... </span>:<span>Зарегистрироваться</span>} </button>
         </form>
+        </>
     )
 }
 const SignUpReduxForm = reduxForm({ form: 'signup' })(SignUpForm);
 
 const SignUp = ({ signUpThunk, fromRegisterPage }) => {
-    console.log(fromRegisterPage);
     const [ showFetchButton, setShowFetchButton ] = React.useState(false);
 
     const onSubmit = (formData) => {

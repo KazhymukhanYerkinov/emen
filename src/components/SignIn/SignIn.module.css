@@ -26,7 +26,7 @@
     width: 30%;
 }
 .signin__input {
-    margin: 30px 0;
+    margin: 15px 0 30px;
 }
 .signin__check {
     margin-top: 10px;
@@ -42,6 +42,15 @@
     cursor: pointer;
 
     color: #3075F3;
+}
+.error {
+    display: block;
+    color: #FF564E;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 10px;
+    
+    
 }
 @media screen and (orientation: landscape) and (max-width: 1025px) {
     .signin {

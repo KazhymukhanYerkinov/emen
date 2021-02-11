@@ -15,11 +15,13 @@ const Header = ({ isAuth, user, logoutThunk }) => {
 
     let location = useLocation();
     const profileRef = React.useRef();
+    const toggleButtonRef = React.useRef();
+
     const [ showProfileBlock, setShowProfileBlock ] = React.useState(false);
 
     const onHandleOutsideClick = (event) => {
         const path = event.path || (event.composedPath && event.composedPath());
-        if (!path.includes(profileRef.current)) {
+        if (!path.includes(profileRef.current) && !path.includes(toggleButtonRef.current)) {
             onChangeProfileBlock(false);
         }
     }
@@ -63,7 +65,7 @@ const Header = ({ isAuth, user, logoutThunk }) => {
 
                             <div ref = { profileRef }>
                                 {isAuth &&  <div className = {cls.profile} onClick = {() => onChangeProfileBlock(!showProfileBlock)}>
-                                    <div className = {cls.profile__name}> { user && <span> {user.first_name} </span> } </div>
+                                    <div className = {cls.profile__name}> { user && <span> {user.first_name} {user.last_name[0]}. </span> } </div>
                                     <div className = {cls.profile__avatar}> <Avatar alt= {user && user.first_name} src = { avatar } /> </div>
                                     <ArrowDropDownIcon className = {classNames(cls.profile__icons, {[cls.rotate]: showProfileBlock})} />
                                 </div>}
@@ -76,7 +78,7 @@ const Header = ({ isAuth, user, logoutThunk }) => {
                         </div>
                     </div>
 
-                    <button className = {classNames(cls.header__toggle, {[cls.active]: showProfileBlock})} 
+                    <button ref = { toggleButtonRef } className = {classNames(cls.header__toggle, {[cls.active]: showProfileBlock})} 
                         onClick = {() => onChangeProfileBlock(!showProfileBlock)}>
 
                         <span className = {cls.toggle__item}> MENU </span>

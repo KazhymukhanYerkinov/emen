@@ -24,7 +24,16 @@
     width: 30%;
 }
 .signup__input {
-    margin: 30px 0;
+    margin: 15px 0 30px;
+}
+.error {
+    display: block;
+    color: #FF564E;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 5px;
+    
+    
 }
 
 @media screen and (orientation: landscape) and (max-width: 1025px) {

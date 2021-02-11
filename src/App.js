@@ -2,17 +2,14 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { loginThunk, signUpThunk, logoutThunk, setRedirectSuccessPage } from './redux/auth-reducer';
+import { loginThunk, signUpThunk, logoutThunk, 
+  setRedirectSuccessPage, emailResetConfirmThunk,
+  passwordResetConfirmThunk, } from './redux/auth-reducer';
 import { initSuccessThunk } from './redux/app-reducer';
-import { Content, 
-  Header, 
-  Footer, 
-  SignIn, 
-  SignUp, 
-  ForgotPassword, 
-  VerificationCode, 
-  ConfirmPassword, 
-  Success,Subjects 
+
+import { Content, Header, Footer, 
+  SignIn, SignUp, ForgotPassword, 
+  ConfirmPassword, Success, Subjects 
 } from './components';
 
 import './App.css';
@@ -30,7 +27,8 @@ class App extends React.Component {
   render(){
     const { isAuth,user, loginThunk, 
       signUpThunk, fromRegisterPage, logoutThunk, 
-      initialized, setRedirectSuccessPage } = this.props;
+      initialized, setRedirectSuccessPage, emailResetConfirmThunk,
+      passwordResetConfirmThunk, } = this.props;
     
     if (!initialized) {
       return (
@@ -44,16 +42,15 @@ class App extends React.Component {
       <div className="App">
           <Header isAuth = { isAuth } user = { user } logoutThunk = { logoutThunk } />
           <Route exact path = '/' component = { Content } />
+
           <Route exact path = '/login' 
               render = {() => <SignIn isAuth = { isAuth } loginThunk = { loginThunk }/> }/>
-
           <Route exact path = '/registration' 
               render = {() => <SignUp signUpThunk = { signUpThunk } fromRegisterPage = { fromRegisterPage }/> } />
-
-          <Route exact path = '/forgotpassword' component = { ForgotPassword } />
-          <Route exact path = '/verificode' component = {VerificationCode } />
-          <Route exact path = '/confirmpassword' component = { ConfirmPassword } />
-
+          <Route exact path = '/forgotpassword'
+              render = {() => <ForgotPassword emailResetConfirmThunk = { emailResetConfirmThunk } /> }/>
+          <Route exact path = '/password/reset/confirm/:uid/:token'
+              render = {() => <ConfirmPassword fromRegisterPage = { fromRegisterPage } passwordResetConfirmThunk = { passwordResetConfirmThunk }/> } />
           {fromRegisterPage !== 0 && <Route exact path = '/success'
               render = {() => <Success fromRegisterPage = { fromRegisterPage } setRedirectSuccessPage = { setRedirectSuccessPage }/>} />}
 
@@ -80,5 +77,7 @@ export default connect(mapStateToProps,
     logoutThunk, 
     initSuccessThunk,
     setRedirectSuccessPage,
+    emailResetConfirmThunk,
+    passwordResetConfirmThunk,
     
   })(App);

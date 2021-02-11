@@ -8,17 +8,22 @@ import signin from '../../assets/images/signin.jpg'
 import facebook from '../../assets/logos/facebook__btn.svg';
 import google from '../../assets/logos/google__btn.svg';
 import { InputCheckBox, InputPassword, InputText } from '../common/FormControl/FormControl';
+import { textRequired, LengthCreator, emailRequired, passwordRequired } from '../../validators/validator';
+
 
 import cls from './SignIn.module.css';
 
 
+const lengthValidation = LengthCreator(8, 100);
 
-const SignInForm = ({ handleSubmit }) => {
-    return (  
+const SignInForm = ({ handleSubmit, error }) => {
+    return ( 
+        <> 
+        { error && <span className = {cls.error}> { error } </span> }
         <form className = {cls.signin__form} onSubmit = { handleSubmit }>
             <div className = {cls.signin__input}>
-                <Field name = { 'email' } component = { InputText } label = { 'E-mail' } />   
-                <Field name = { 'password' } component = { InputPassword } label = { 'Пароль' } />
+                <Field name = { 'email' } component = { InputText } label = { 'E-mail' } validate = { [emailRequired] }/>   
+                <Field name = { 'password' } component = { InputPassword } label = { 'Пароль' }  validate = { [textRequired,passwordRequired, lengthValidation] }/>
             </div>
             <button className = 'button submit' type = 'submit'> Войти </button>  
             <div className = {cls.signin__check}>
@@ -26,6 +31,7 @@ const SignInForm = ({ handleSubmit }) => {
                 <Link className = { cls.check__text } to = {'/forgotpassword'}> Забыли пароль? </Link>
             </div>  
         </form>
+        </>
     )
 }
 

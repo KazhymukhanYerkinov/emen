@@ -1,4 +1,5 @@
 import Cookie from 'js-cookie';
+import { stopSubmit, reset } from 'redux-form';
 import { authAPI } from '../api/api';
 
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -12,7 +13,6 @@ const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
 
 const AUTHENTICATED_SUCCESS = 'AUTHENTICATED_SUCCESS';
 const AUTHENTICATED_FAIL = 'AUTHENTICATED_FAIL';
-
 
 
 const LOGOUT = 'LOGOUT';
@@ -82,9 +82,9 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setRedirectSuccessPage = (fromRegisterPage) => {
-    console.log('CLICK HEREs', fromRegisterPage)
     return { type: SIGN_UP_SUCCESS, fromRegisterPage }
 }
+
 
 export const checkAuthThunk = () => async (dispatch) => {
     if (Cookie.get('access')) {
@@ -123,23 +123,43 @@ export const loginThunk = (email, password, remember_me) => async (dispatch) => 
 
     } catch(err) {
         dispatch({ type: LOGIN_FAIL });
-        console.log(err);
+        dispatch(stopSubmit('signin', { _error: 'Введен неправильный email или пароль, попробуйте еще раз' }))
     }
 } 
+
+export const emailResetConfirmThunk = (email) => async (dispatch) => {
+    try {
+        await authAPI.resetEmail(email);
+        dispatch(reset('forgot'));
+        dispatch(stopSubmit('forgot', {_error: 'На вашу электронную почту отправлено ссылка. Вы можете изменить свой пароль, войдя в систему по этой ссылке.'}));
+    } catch (err) {
+        dispatch(stopSubmit('forgot', {_error: 'Введен неправильный email, попробуйте еще раз'}))
+    }
+}
+
+export const passwordResetConfirmThunk = (uid, token, new_password, re_new_password) => async (dispatch) => {
+    if ( new_password === re_new_password ) {
+        await authAPI.resetPassword(uid, token, new_password, re_new_password);
+        dispatch(setRedirectSuccessPage(-1));
+    }
+    else {
+        dispatch(stopSubmit('confirm', {'password2': 'Пароли не совпадают'}))
+    }
+}
 
 export const signUpThunk = (email, first_name, last_name, password, re_password) => async (dispatch) => {
     if (password === re_password) {
         try {
-            console.log("auth-reducer")
             await authAPI.signup(email, first_name, last_name, password, re_password);
             dispatch(setRedirectSuccessPage(1));
         }
         catch(err) {
             dispatch({ type: SIGN_UP_FAIL });
+            dispatch(stopSubmit('signup', { _error: 'Такой адрес электронной почты уже существует. Пожалуйста, введите другой адрес электронной почты.' }))
         }
     }
     else {
-        console.log('Password error')
+        dispatch(stopSubmit('signup', { 'password2': 'Пароли не совпадают' }));
     }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 import success from '../../assets/images/success.jpg';
 import check from '../../assets/logos/success.svg';

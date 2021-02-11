@@ -6,20 +6,15 @@ import exit from '../../../assets/profile/logout.svg';
 
 import { data } from '../../../data/profile';
 
-import cls from './ProfileBlock.module.css'
+import cls from './ProfileBlock.module.css';
 
 
 const ProfileBlock = ({ user, logoutThunk, onChangeProfileBlock }) => {
 
-    
-
-    
     const onLogoutProfile = () => {
         onChangeProfileBlock(false);
         logoutThunk();
     }
-
-    
 
     return (
         <div className={cls.profile}>
@@ -28,7 +23,7 @@ const ProfileBlock = ({ user, logoutThunk, onChangeProfileBlock }) => {
                 <div className={cls.profile__info}>
                     <Avatar className={cls.avatar} src = { avatar } style = {{ width: '65px', height: '65px' }}/>
                     <div className = {cls.info}>
-                        <div className={cls.name}> { user && <span> { user.first_name } </span> }</div>
+                        <div className={cls.name}> { user && <span> { user.first_name } {user.last_name}</span> }</div>
                         <div className={cls.id}> id180103277 </div>
                     </div>
                 </div>

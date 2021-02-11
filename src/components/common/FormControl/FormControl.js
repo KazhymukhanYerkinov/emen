@@ -7,6 +7,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment'; 
 import Tooltip from '@material-ui/core/Tooltip';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
@@ -15,7 +16,7 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 
 
-export const InputPassword = ({ input, label }) => {
+export const InputPassword = ({ input, label, meta: { touched, error, invalid } }) => {
 
     const [ value, setValue ] = React.useState(false);
 
@@ -27,6 +28,7 @@ export const InputPassword = ({ input, label }) => {
         <div className = {cls.formInput}>
             <OutlinedInput 
              placeholder = { label }
+             error = { touched && invalid }
              className = { cls.input }
              type = { value ? 'text':'password' }
              fullWidth
@@ -46,14 +48,16 @@ export const InputPassword = ({ input, label }) => {
                  </Tooltip>
              }
             />
+            { touched && error && <FormHelperText style = {{ color: '#FF564E',  marginLeft: '5px' }}> { error } </FormHelperText> }
         </div>
     )
 }
 
-export const InputText = ({ input, label }) => {
+export const InputText = ({ input, label, meta: { touched, error, invalid } }) => {
     return (
         <div className = {cls.formInput}>
             <OutlinedInput 
+                error = { touched && invalid }
                 placeholder = { label }
                 className = { cls.input }
                 type = 'text'
@@ -61,7 +65,7 @@ export const InputText = ({ input, label }) => {
                 {...input}
             />
 
-            
+            { touched && error && <FormHelperText style = {{ color: '#FF564E', marginLeft: '5px' }}> {error} </FormHelperText> }
         </div>
     )
 }
