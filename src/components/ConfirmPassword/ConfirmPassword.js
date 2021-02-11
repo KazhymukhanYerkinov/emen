@@ -26,17 +26,14 @@ const ConfirmPasswordForm = ({ showFetchButton, handleSubmit }) => {
 const ConfirmPasswordReduxForm = reduxForm({ form: 'confirm' })(ConfirmPasswordForm)
 
 const ConfirmPassword = ({ match, fromRegisterPage, passwordResetConfirmThunk }) => {
-    console.log(match.params.uid);
-    console.log(match.params.token);
-
     const [ showFetchButton, setShowFetchButton ] = React.useState(false);
 
+    
     const onSubmit = (formData) => {
-        console.log(formData);
         setShowFetchButton(true);
         passwordResetConfirmThunk(match.params.uid, match.params.token, formData.password1, formData.password2).finally(() => {
             setShowFetchButton(false);
-        }) 
+        })
     }
 
     if (fromRegisterPage !== 0) {

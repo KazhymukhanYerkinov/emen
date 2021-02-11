@@ -9,8 +9,8 @@ import { ReactComponent as SubjectComponent } from '../assets/profile/subject.sv
 export const data = [
     { img: <ProfileComponent />, title: 'Профиль', url: ''},
     { img: <FollowComponent />, title: 'Подписка', url: ''},
-    { img: <HistoryComponent />, title: 'Предметы', url: ''},
-    { img: <LogoutComponent />, title: 'История', url: ''},
+    { img: <SubjectComponent />, title: 'Предметы', url: ''},
+    { img: <HistoryComponent />, title: 'История', url: ''},
     { img: <SaveComponent />, title: 'Сохраненные', url: ''},
     { img: <StatComponent />, title: 'Статистика', url: ''},
 ]

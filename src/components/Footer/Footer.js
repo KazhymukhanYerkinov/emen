@@ -29,25 +29,25 @@ const Footer = () => {
                     <div className = {cls.footer__links}>
                         <div className = {cls.row}>
                             <div className = {cls.row__title}> О платформе </div>
-                            <Link className = {cls.row__link}> О проекте </Link>
-                            <Link className = {cls.row__link}> Помощь </Link>
-                            <Link className = {cls.row__link}> Отзывы </Link>
-                            <Link className = {cls.row__link}> Вакансии </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> О проекте </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> Помощь </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> Отзывы </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> Вакансии </Link>
                         </div>
 
                         <div className = {cls.row}>
                             <div className = {cls.row__title}> Платформа </div>
-                            <Link className = {cls.row__link}> Предметы </Link>
-                            <Link className = {cls.row__link}> Подписка </Link>
-                            <Link className = {cls.row__link}> Лицензия </Link>
-                            <Link className = {cls.row__link}> Блог </Link>
-                            <Link className = {cls.row__link}> Контакты </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> Предметы </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> Подписка </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> Лицензия </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> Блог </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> Контакты </Link>
                         </div>
 
                         <div className = {cls.row}>
                             <div className = {cls.row__title}> Поддержка </div>
-                            <Link className = {cls.row__link}> Пользовательское соглашение </Link>
-                            <Link className = {cls.row__link}> Политика конфиденциальности </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> Пользовательское соглашение </Link>
+                            <Link to = "/dsad" className = {cls.row__link}> Политика конфиденциальности </Link>
                         </div>
                     </div>
                      

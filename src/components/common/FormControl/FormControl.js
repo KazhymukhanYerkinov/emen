@@ -78,6 +78,7 @@ export const InputCheckBox = ({ input, label }) => {
             {...input}
             control = {
                 <Checkbox 
+                    style = {{ color: "#1A73E8", background: 'none' }}
                     className = {cls.checkbox}
                     icon = { <CheckBoxOutlineBlankIcon className = {cls.iconSize} /> }
                     checkedIcon = { <CheckBoxIcon className = {cls.iconSize} /> }
@@ -85,17 +86,5 @@ export const InputCheckBox = ({ input, label }) => {
             } 
             label = { <span className = {cls.label}> { label } </span> }
         />
-    )
-}
-
-export const InputNumber = ({ input }) => {
-    
-    return (
-        <div className = {cls.formControl}>
-            <OutlinedInput
-                className = {cls.inputNumber}
-                inputProps = {{ maxLength: 4 }} 
-            />
-        </div>
     )
 }

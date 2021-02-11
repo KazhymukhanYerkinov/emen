@@ -113,10 +113,8 @@ export const loadUserThunk = () => async (dispatch) => {
 
 export const loginThunk = (email, password, remember_me) => async (dispatch) => {
     try {
-        console.log(email, password, remember_me);
         let data = await authAPI.login(email, password);
-        console.log(data);
-        let deedline = remember_me ? 100:1;
+        let deedline = remember_me ? 7:1;
         Cookie.set('access', data.access, { expires: deedline });
         dispatch({ type: LOGIN_SUCCESS, payload: data });
         dispatch(loadUserThunk());
