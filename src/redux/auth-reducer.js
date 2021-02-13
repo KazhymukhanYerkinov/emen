@@ -131,7 +131,7 @@ export const emailResetConfirmThunk = (email) => async (dispatch) => {
         dispatch(reset('forgot'));
         dispatch(stopSubmit('forgot', {_error: 'На вашу электронную почту отправлено ссылка. Вы можете изменить свой пароль, войдя в систему по этой ссылке.'}));
     } catch (err) {
-        dispatch(stopSubmit('forgot', {_error: 'Введен неправильный email, попробуйте еще раз'}))
+        dispatch(stopSubmit('forgot', {'email': 'Введен неправильный email, попробуйте еще раз'}))
     }
 }
 
