@@ -11,10 +11,11 @@ import App from './App';
 
 ReactDOM.render(
   <Provider store = { store }>
-    <HashRouter basename = {process.env.PUBLIC_URL}>
+    <BrowserRouter>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
 
+// basename = {process.env.PUBLIC_URL}

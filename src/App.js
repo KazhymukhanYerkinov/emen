@@ -6,6 +6,7 @@ import { loginThunk, signUpThunk, logoutThunk,
   setRedirectSuccessPage, emailResetConfirmThunk,
   passwordResetConfirmThunk, } from './redux/auth-reducer';
 import { initSuccessThunk } from './redux/app-reducer';
+import Layout from './hoc/Layout';
 
 import { Content, Header, Footer, 
   SignIn, SignUp, ForgotPassword, 
@@ -40,6 +41,7 @@ class App extends React.Component {
     
     return (
       <div className="App">
+        <Layout>
           <Header isAuth = { isAuth } user = { user } logoutThunk = { logoutThunk } />
           <Route exact path = '/' component = { Content } />
 
@@ -57,6 +59,7 @@ class App extends React.Component {
           <Route exact path = '/subjects' component = { Subjects } />
 
           <Footer />
+        </Layout>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -42,6 +43,17 @@ const SignIn = ({ isAuth, loginThunk }) => {
     const onSubmit = (formData) => {
         loginThunk(formData.email, formData.password, formData.ckeckbox)
     }
+    
+
+    const continueWithGoogle = async () => {
+        try {
+            const response = await axios.get(`https://e-men.kz/api/v1/auth/o/google-oauth2/?redirect_uri=http://localhost:3000`)
+            window.location.replace(response.data.authorization_url);
+
+        } catch (err) {
+            console.log(err);   
+        }
+    }
 
     if ( isAuth ) {
         return <Redirect to = '/' />
@@ -64,7 +76,7 @@ const SignIn = ({ isAuth, loginThunk }) => {
                             <img src = { facebook } alt = ""/>
                             Войти с помощью Facebook 
                         </button>
-                        <button className = 'button google'>
+                        <button className = 'button google' onClick = { continueWithGoogle }>
                             <img src = { google } alt = "" /> 
                             Войти с помощью Google 
                         </button>

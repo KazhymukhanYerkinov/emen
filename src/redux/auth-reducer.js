@@ -1,4 +1,5 @@
 import Cookie from 'js-cookie';
+import * as axios from 'axios';
 import { stopSubmit, reset } from 'redux-form';
 import { authAPI } from '../api/api';
 
@@ -13,6 +14,9 @@ const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
 
 const AUTHENTICATED_SUCCESS = 'AUTHENTICATED_SUCCESS';
 const AUTHENTICATED_FAIL = 'AUTHENTICATED_FAIL';
+
+const GOOGLE_AUTH_SUCCESS = 'GOOGLE_AUTH_SUCCESS';
+const GOOGLE_AUTH_FAIL = 'GOOGLE_AUTH_FAIL';
 
 
 const LOGOUT = 'LOGOUT';
@@ -32,6 +36,7 @@ const authReducer = (state = initialState, action) => {
 
     switch (type) {
         case LOGIN_SUCCESS:
+        case GOOGLE_AUTH_SUCCESS:
             return {
                 ...state,
                 isAuth: true, 
@@ -92,6 +97,35 @@ export const checkAuthThunk = () => async (dispatch) => {
     }
     else {
         dispatch({ type: AUTHENTICATED_FAIL });
+    }
+}
+
+export const googleAuthenticate = (state, code) => async dispatch => {
+    if (state && code && !Cookie.get('access')) {
+        console.log(state, code, Cookie.get('access'));
+        const config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        const details = {
+            'state': state,
+            'code': code
+        };
+
+        const formBody = Object.keys(details).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(details[key])).join('&');
+        console.log(formBody)
+
+        try {
+            const data = await axios.post(`https://e-men.kz/api/v1/auth/o/google-oauth2/?${formBody}`, config);
+            
+            Cookie.set('access', data.access);
+            dispatch({ type: GOOGLE_AUTH_SUCCESS, payload: data });
+            
+        } catch(err) {
+            console.log(err);
+        }
     }
 }
 
