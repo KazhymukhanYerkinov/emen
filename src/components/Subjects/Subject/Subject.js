@@ -3,20 +3,23 @@ import { Link } from 'react-router-dom';
 import cls from './Subject.module.css';
 
 
-const Subject = ({ title, text, image }) => {
+const Subject = ({ title, text, image, color }) => {
     return (
-        <div className = {cls.subject}>
-            <div className = {cls.subject__inner}>
-                <div className = {cls.content}>
-                    <img src = { image } alt = "" className = {cls.image} />
-                    <div className = {cls.title}> { title } </div>
-                    <div className = {cls.text}> { text } </div>
+            <Link to = '/subjects/1' className = {cls.subject} style = {{ backgroundColor: `${color}` }}>
+                <div className = {cls.subject__inner}>
+                    <div className = {cls.content}>
+                        <img src = { image } alt = "" className = {cls.image} />
+                        <div className = {cls.subject__info}>
+                            <div className = {cls.title}> { title } </div>
+                            <div className = {cls.text}> { text } </div>
+                        </div>
 
+                    </div>
+
+                    <div className = {cls.button}> Перейти </div>
                 </div>
-
-                <Link to = {`/subject`} className = {cls.button}> Перейти </Link>
-            </div>
-        </div>
+            </Link>
+        
     )
 }
 

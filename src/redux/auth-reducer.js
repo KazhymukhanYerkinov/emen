@@ -102,6 +102,8 @@ export const checkAuthThunk = () => async (dispatch) => {
 
 export const googleAuthenticate = (state, code) => async dispatch => {
     if (state && code && !Cookie.get('access')) {
+
+
         console.log(state, code, Cookie.get('access'));
         const config = {
             headers: {
@@ -114,8 +116,12 @@ export const googleAuthenticate = (state, code) => async dispatch => {
             'code': code
         };
 
+
+
+        
+
         const formBody = Object.keys(details).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(details[key])).join('&');
-        console.log(formBody)
+       
 
         try {
             const data = await axios.post(`https://e-men.kz/api/v1/auth/o/google-oauth2/?${formBody}`, config);

@@ -56,7 +56,7 @@ const SignIn = ({ isAuth, loginThunk }) => {
     }
 
     if ( isAuth ) {
-        return <Redirect to = '/' />
+        return <Redirect to = '/subjects' />
     }
     
     return (

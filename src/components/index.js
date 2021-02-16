@@ -7,6 +7,7 @@ export { default as ForgotPassword } from './ForgotPassword/ForgotPassword';
 export { default as ConfirmPassword } from './ConfirmPassword/ConfirmPassword';
 export { default as Success } from './Success/Success';
 export { default as Subjects } from './Subjects/Subjects';
+export { default as DetailSubject } from './DetailSubject/DetailSubject';
 
 
 

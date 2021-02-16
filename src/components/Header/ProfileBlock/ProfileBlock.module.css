@@ -12,6 +12,7 @@
     padding: 30px 50px 40px 50px;
 }
 
+
 .profile__info {
     display: flex;
     align-items: center;
@@ -37,6 +38,9 @@
 
     color: #5F6368;
 }
+.menu {
+    display: none;
+}
 
 
 .profile__route {
@@ -59,7 +63,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 21px;
-    color: #5F6368;
+    color: #222222;
     
     margin-left: 15px;
 }
@@ -85,9 +89,10 @@
     .profile {
         width: 100%;
         box-shadow: none; 
+        padding: 20px 50px 40px 15px;
     }
     .profile__route {
-        margin-top: 35px;
+        margin-top: 20px;
     }
     .name {
         font-size: 18px;
@@ -95,17 +100,25 @@
     .id {
         font-size: 16px;
     }
+    .menu {
+        display: block;
+        font-size: 32px;
+        line-height: 40px;
+        font-weight: 600;
+        text-align: left;
+
+        color: #202124;
+    }
     .route {
-        justify-content: center;
-        padding: 15px 0 15px 10px;
+        
+        padding: 15px 0 15px 0;
     }
     .route__text {
         font-size: 21px;
         
     }
-    
     .profile__info {
-        flex-wrap: wrap;
+        display: none;
     }
     .avatar {
         margin: 0 auto 10px;

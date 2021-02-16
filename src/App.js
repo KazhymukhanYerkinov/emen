@@ -10,10 +10,12 @@ import Layout from './hoc/Layout';
 
 import { Content, Header, Footer, 
   SignIn, SignUp, ForgotPassword, 
-  ConfirmPassword, Success, Subjects 
+  ConfirmPassword, Success, Subjects,
+  DetailSubject,
 } from './components';
 
 import './App.css';
+
 
 
 
@@ -43,7 +45,8 @@ class App extends React.Component {
       <div className="App">
         <Layout>
           <Header isAuth = { isAuth } user = { user } logoutThunk = { logoutThunk } />
-          <Route exact path = '/' component = { Content } />
+          <Route exact path = '/'
+              render = {() => <Content isAuth = { isAuth } />} />
 
           <Route exact path = '/login' 
               render = {() => <SignIn isAuth = { isAuth } loginThunk = { loginThunk }/> }/>
@@ -53,6 +56,8 @@ class App extends React.Component {
               render = {() => <ForgotPassword emailResetConfirmThunk = { emailResetConfirmThunk } /> }/>
           <Route exact path = '/password/reset/confirm/:uid/:token'
               render = {() => <ConfirmPassword fromRegisterPage = { fromRegisterPage } passwordResetConfirmThunk = { passwordResetConfirmThunk }/> } />
+          <Route exact path = '/subjects/1'
+              render = {() => <DetailSubject /> }/>
           {fromRegisterPage !== 0 && <Route exact path = '/success'
               render = {() => <Success fromRegisterPage = { fromRegisterPage } setRedirectSuccessPage = { setRedirectSuccessPage }/>} />}
 

@@ -30,7 +30,6 @@ const Section1 = () => {
                             <Link to = {'/'} className = {classNames('button', cls.start__button)} onClick = { buttonWithGoogle }> Начать бесплатно </Link>
                             <div className = {cls.start__video}> <img src = { start } alt = "Start video button"/>  <div className = {cls.video__text}>Посмотреть видео</div> </div>
                         </div>
-
                     </div>
 
                     <div className = {cls.section__image}>

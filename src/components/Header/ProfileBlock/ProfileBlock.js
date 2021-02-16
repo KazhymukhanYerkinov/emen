@@ -28,6 +28,10 @@ const ProfileBlock = ({ user, logoutThunk, onChangeProfileBlock }) => {
                     </div>
                 </div>
 
+                <div className = {cls.menu}>
+                    Меню
+                </div>
+
                 <div className = {cls.profile__route}>
                     {data.map((item, index) => {
                         return (
