@@ -1,0 +1,115 @@
+.modal {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(17, 50, 85, 0.49);
+    font-family: Raleway;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.modal__inner {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 3px;
+    margin: auto;
+    padding: 35px 40px 40px;
+    position: relative;
+
+    background-color: #fff;
+}
+
+.modal__close {
+    display: block;
+    width: 30px;
+    height: 3px;
+
+    background-color: #fff;
+    cursor: pointer;
+
+    position: absolute;
+    right: -30px;
+    top: -20px;
+    transform: rotate(45deg);
+
+    transition: transform .1s linear;
+}
+.modal__close::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: rotate(-90deg);
+
+    background-color: #fff;
+}
+.modal__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+
+    color: #222222;
+}
+.modal__content {
+    margin: 24px 0;
+}
+.modal__level__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    padding: 15px 0 15px 20px;
+}
+.modal__level {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+
+    border-bottom: 1px solid #F7F7F7;
+}
+.level__text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #222222;
+}
+.level__help {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #222222;
+}
+.switch {
+    margin-right: -10px;
+}
+.modal__button {
+    display: block;
+    margin: 0 auto;
+    width: 75%;
+    height: 50px;
+    background-color: #1A73E8;
+    border-radius: 3px;
+    color: #fff;
+
+    transition: background-color .2s linear;
+}
+.modal__button:hover {
+    background-color: #174EA6;;
+}
+

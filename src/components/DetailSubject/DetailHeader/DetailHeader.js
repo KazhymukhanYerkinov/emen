@@ -7,7 +7,7 @@ import setting from '../../../assets/logos/settings.svg';
 import cls from './DetailHeader.module.css';
 
 
-const DetailHeader = () => {
+const DetailHeader = ({ onChangeShowSettingsModal }) => {
     return (
         <div className = {cls.header} style = {{ backgroundColor: '#8E96FF' }}>
             <div className = {cls.header__inner}>
@@ -16,7 +16,7 @@ const DetailHeader = () => {
                     <div className = {cls.header__title}> Математика </div>
                     <div className = {cls.header__info}>
                         <Link to = {`/start`} className = {cls.header__start__button}> Начать новый тест </Link>
-                        <div className = {cls.header__setting__button}>
+                        <div className = {cls.header__setting__button} onClick = {() => onChangeShowSettingsModal(true)}>
                             <img src = { setting } alt = "" />
                             <div className = {cls.setting__text}> Настройки тестирования </div>
                         </div>
