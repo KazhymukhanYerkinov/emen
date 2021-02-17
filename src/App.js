@@ -56,9 +56,10 @@ class App extends React.Component {
               render = {() => <ForgotPassword emailResetConfirmThunk = { emailResetConfirmThunk } /> }/>
           <Route exact path = '/password/reset/confirm/:uid/:token'
               render = {() => <ConfirmPassword fromRegisterPage = { fromRegisterPage } passwordResetConfirmThunk = { passwordResetConfirmThunk }/> } />
-          <Route exact path = '/subjects/1'
+          <Route path = '/detail/:testtID'
               render = {() => <DetailSubject /> }/>
-          {fromRegisterPage !== 0 && <Route exact path = '/success'
+          {fromRegisterPage !== 0 && 
+          <Route exact path = '/success'
               render = {() => <Success fromRegisterPage = { fromRegisterPage } setRedirectSuccessPage = { setRedirectSuccessPage }/>} />}
 
           <Route exact path = '/subjects' component = { Subjects } />

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import cls from './Subject.module.css';
 
 
-const Subject = ({ title, text, image, color }) => {
+const Subject = ({id,  title, text, image, color }) => {
     return (
-            <Link to = '/subjects/1' className = {cls.subject} style = {{ backgroundColor: `${color}` }}>
+            <Link to = {id === 0 ? `/detail/${id}/ent`:`/detail/${id}/subject`} className = {cls.subject} style = {{ backgroundColor: `${color}` }}>
                 <div className = {cls.subject__inner}>
                     <div className = {cls.content}>
                         <img src = { image } alt = "" className = {cls.image} />

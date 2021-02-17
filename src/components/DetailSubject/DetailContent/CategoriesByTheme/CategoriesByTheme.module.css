@@ -1,0 +1,31 @@
+.bottom__border {
+    border-bottom: 1px solid #F7F7F7;
+}
+.categories {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+
+    
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #222222;
+    cursor: pointer;
+
+}
+.categories__flex {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.categories__image.active {
+    transform: rotate(180deg);
+}
+

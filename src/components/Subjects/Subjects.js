@@ -19,7 +19,7 @@ const Subjects = () => {
                 <div className = {cls.subjects__content}>
                     <div className = {cls.content__inner}>
                         { data.map((item, index) => {
-                            return <Subject key = { index }  {...item} />
+                            return <Subject key = { index }  id = { index } {...item} />
                         })}
                     </div>
                 </div>

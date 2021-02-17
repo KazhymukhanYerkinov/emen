@@ -1,0 +1,33 @@
+.base {
+    padding: 10px 0;
+}
+.subcategories {
+    padding: 15px 20px;
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    cursor: pointer;
+
+    color: #222222;
+}
+.backcolor {
+    transition: background-color .1s linear;
+}
+.backcolor:hover {
+    background-color: #F7F7F7;
+}
+.backcolor.select {
+    background-color: #e9e5e5;
+}
+.sub__title {
+    padding-left: 15px;
+    color: #1A73E8;
+}
+
