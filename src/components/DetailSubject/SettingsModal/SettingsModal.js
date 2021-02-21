@@ -32,7 +32,7 @@ const SettingsModal = ({ onChangeShowSettingsModal }) => {
                          return (
                             <div className = { cls.modal__level } key = { index } onClick = {() => onChangeChooseLevel(index)}>
                                 <div className = { cls.level__text }> { item } </div>
-                                <input type="radio" name="gender" value="male" checked = { chooseLevel === index }/>
+                                <input readOnly type="radio" name="gender" value="male" checked = { chooseLevel === index }/>
                             </div>
                          )
                     })}

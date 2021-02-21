@@ -15,7 +15,7 @@ const CategoriesByTheme = ({ index, count, title, items, showCategories, onChang
             <div className = {cls.categories} onClick = {() => onChangeShowCategories(index)}>
                 <div className = {cls.categories__flex}>
                     <div className = {cls.categories__theme}> { title } </div>
-                    <div className = { cls.categories__counts }> { count } </div>
+                    <div className = { cls.categories__counts }> <span className = {cls.result}> Решено: </span>{ count } </div>
                 </div>
                 <img src = { arrow } alt = "" className = {classNames(cls.categories__image, {
                     [cls.active]: isValid

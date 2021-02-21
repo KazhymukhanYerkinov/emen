@@ -30,4 +30,33 @@
     padding-left: 15px;
     color: #1A73E8;
 }
+.result {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .subcategories {
+        font-size: 14px;
+    }
+}
+@media (max-width: 550px) {
+    .base {
+        padding: 0;
+    }
+    .subcategories {
+        padding: 15px 0;
+        display: block;
+    }
+    .sub__title {
+        padding-left: 0;
+    }
+    .sub__count {
+        color: #5F6368;
+    }
+    .result {
+        margin-top: 5px;
+        margin-right: 5px;
+        display: inline-block;
+    }
+}
 

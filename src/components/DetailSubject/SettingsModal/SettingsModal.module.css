@@ -3,6 +3,8 @@
     width: 100%;
     height: 100vh;
 
+    overflow: auto;
+
     background: rgba(17, 50, 85, 0.49);
     font-family: Raleway;
 
@@ -112,4 +114,38 @@
 .modal__button:hover {
     background-color: #174EA6;;
 }
+
+@media (max-width: 450px) {
+    .modal__close {
+        right: 10px;
+        top: 20px;
+
+        background-color: #222222;
+
+    }
+    .modal__close::after { 
+        background-color: #222222; 
+    }
+    .modal__title {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-width: 900px) {
+    .modal__close {
+        right: 10px;
+        top: 20px;
+
+        background-color: #222222;
+
+    }
+    .modal__close::after { 
+        background-color: #222222; 
+    }
+    .modal__title {
+        margin-top: 20px;
+    }
+}
+
+
 

@@ -32,10 +32,10 @@ const SubCategories = ({ items }) => {
                 return (
                     <div className = {classNames(cls.backcolor, {
                        [cls.select]: index === showSubCategories
-                    })} onClick = {() => onChangeSetSubCategories(index)}>
-                        <div className = {cls.subcategories} key = { index }>
+                    })} onClick = {() => onChangeSetSubCategories(index)} key = { index }>
+                        <div className = {cls.subcategories}>
                             <div className = { cls.sub__title }> { item.title } </div>
-                            <div className = { cls.sub__count }> { item.count } </div>
+                            <div className = { cls.sub__count }> <span className = {cls.result}> Решено: </span>{ item.count } </div>
                         </div>
                     </div>
                 )
