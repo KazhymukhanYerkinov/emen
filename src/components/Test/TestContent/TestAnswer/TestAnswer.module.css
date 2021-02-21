@@ -1,0 +1,13 @@
+.answer {
+    padding: 15px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+    border-bottom: 1px solid #F7F7F7;
+}
+.answer.active {
+    background-color: #EBF0FC;
+}

@@ -6,15 +6,15 @@ import { loginThunk, signUpThunk, logoutThunk,
   setRedirectSuccessPage, emailResetConfirmThunk,
   passwordResetConfirmThunk, } from './redux/auth-reducer';
 import { initSuccessThunk } from './redux/app-reducer';
-import Layout from './hoc/Layout';
 
 import { Content, Header, Footer, 
   SignIn, SignUp, ForgotPassword, 
   ConfirmPassword, Success, Subjects,
-  DetailSubject,
+  DetailSubject, Activate
 } from './components';
 
 import './App.css';
+import Test from './components/Test/Test';
 
 
 
@@ -43,11 +43,10 @@ class App extends React.Component {
     
     return (
       <div className="App">
-        <Layout>
           <Header isAuth = { isAuth } user = { user } logoutThunk = { logoutThunk } />
+
           <Route exact path = '/'
               render = {() => <Content isAuth = { isAuth } />} />
-
           <Route exact path = '/login' 
               render = {() => <SignIn isAuth = { isAuth } loginThunk = { loginThunk }/> }/>
           <Route exact path = '/registration' 
@@ -61,11 +60,13 @@ class App extends React.Component {
           {fromRegisterPage !== 0 && 
           <Route exact path = '/success'
               render = {() => <Success fromRegisterPage = { fromRegisterPage } setRedirectSuccessPage = { setRedirectSuccessPage }/>} />}
+          <Route exact path = '/activate/:uid/:token' component = { Activate }/>
+
+          <Route exact path = '/test' component = { Test } />
 
           <Route exact path = '/subjects' component = { Subjects } />
 
           <Footer />
-        </Layout>
       </div>
     );
   }

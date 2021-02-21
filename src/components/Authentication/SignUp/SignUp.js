@@ -1,14 +1,14 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-import facebook from '../../assets/logos/facebook__btn.svg';
-import google from '../../assets/logos/google__btn.svg';
-import signup from '../../assets/images/signup.jpg';
-import { InputPassword, InputText } from '../common/FormControl/FormControl';
+import facebook from '../../../assets/logos/facebook__btn.svg';
+import google from '../../../assets/logos/google__btn.svg';
+import signup from '../../../assets/images/signup.jpg';
+import { InputPassword, InputText } from '../../common/FormControl/FormControl';
 
 import cls from './SignUp.module.css';
 import { Redirect } from 'react-router-dom';
-import { emailRequired, LengthCreator, passwordRequired, textRequired } from '../../validators/validator';
+import { emailRequired, LengthCreator, passwordRequired, textRequired } from '../../../validators/validator';
 
 
 const lengthValidation = LengthCreator(8, 100);

@@ -1,0 +1,36 @@
+.header {
+    padding: 50px 100px 50px 60px;
+    border-radius: 3px;
+
+    background: rgba(31, 33, 43, 1);
+}
+.header__inner {
+    display: flex;
+    align-items: center;
+}
+
+.header__image {
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+
+.header__content {
+    margin-left: 35px;
+}
+
+.header__title {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    color: #FFFFFF;
+}
+
+.header__desc {
+    margin-top: 15px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fff;
+} 

@@ -66,7 +66,7 @@ const Header = ({ isAuth, user, logoutThunk }) => {
                             <div ref = { profileRef }>
                                 {isAuth &&  <div className = {cls.profile} onClick = {() => onChangeProfileBlock(!showProfileBlock)}>
                                     <div className = {cls.profile__name}> { user && <span> {user.first_name} {user.last_name[0]}. </span> } </div>
-                                    <div className = {cls.profile__avatar}> <Avatar alt= {user && user.first_name} src = { avatar } /> </div>
+                                    <div className = {cls.profile__avatar}> <Avatar alt= {user && user.first_name} src = "" /> </div>
                                     <ArrowDropDownIcon className = {classNames(cls.profile__icons, {[cls.rotate]: showProfileBlock})} />
                                 </div>}
                                 

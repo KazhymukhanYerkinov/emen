@@ -21,10 +21,10 @@ const ProfileBlock = ({ user, logoutThunk, onChangeProfileBlock }) => {
             <div className={cls.profile__inner}>
 
                 <div className={cls.profile__info}>
-                    <Avatar className={cls.avatar} src = { avatar } style = {{ width: '65px', height: '65px' }}/>
+                    <Avatar className={cls.avatar} src = "" style = {{ width: '65px', height: '65px' }}/>
                     <div className = {cls.info}>
                         <div className={cls.name}> { user && <span> { user.first_name } {user.last_name}</span> }</div>
-                        <div className={cls.id}> id180103277 </div>
+                        <div className={cls.id}> { user && <span> { user.code } </span> } </div>
                     </div>
                 </div>
 

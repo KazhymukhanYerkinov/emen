@@ -1,15 +1,14 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link, Redirect } from 'react-router-dom';
-import axios from 'axios';
 
 
 
-import signin from '../../assets/images/signin.jpg'
-import facebook from '../../assets/logos/facebook__btn.svg';
-import google from '../../assets/logos/google__btn.svg';
-import { InputCheckBox, InputPassword, InputText } from '../common/FormControl/FormControl';
-import { textRequired, LengthCreator, emailRequired, passwordRequired } from '../../validators/validator';
+import signin from '../../../assets/images/signin.jpg'
+import facebook from '../../../assets/logos/facebook__btn.svg';
+import google from '../../../assets/logos/google__btn.svg';
+import { InputCheckBox, InputPassword, InputText } from '../../common/FormControl/FormControl';
+import { textRequired, LengthCreator, emailRequired, passwordRequired } from '../../../validators/validator';
 
 
 import cls from './SignIn.module.css';
@@ -45,15 +44,7 @@ const SignIn = ({ isAuth, loginThunk }) => {
     }
     
 
-    const continueWithGoogle = async () => {
-        try {
-            const response = await axios.get(`https://e-men.kz/api/v1/auth/o/google-oauth2/?redirect_uri=http://localhost:3000`)
-            window.location.replace(response.data.authorization_url);
-
-        } catch (err) {
-            console.log(err);   
-        }
-    }
+    
 
     if ( isAuth ) {
         return <Redirect to = '/subjects' />
@@ -76,7 +67,7 @@ const SignIn = ({ isAuth, loginThunk }) => {
                             <img src = { facebook } alt = ""/>
                             Войти с помощью Facebook 
                         </button>
-                        <button className = 'button google' onClick = { continueWithGoogle }>
+                        <button className = 'button google'>
                             <img src = { google } alt = "" /> 
                             Войти с помощью Google 
                         </button>

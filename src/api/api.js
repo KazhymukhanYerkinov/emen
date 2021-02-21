@@ -55,3 +55,13 @@ export const authAPI = {
 }
 
 
+
+export const subjectAPI = {
+    getSubjects() {
+        return instance.get('api/v1/subjects/list/grouped/').then(response => {
+            return response.data;
+        })
+    }
+}
+
+

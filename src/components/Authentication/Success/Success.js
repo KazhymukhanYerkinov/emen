@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link} from 'react-router-dom';
 
-import success from '../../assets/images/success.jpg';
-import check from '../../assets/logos/success.svg';
+import success from '../../../assets/images/success.jpg';
+import check from '../../../assets/logos/success.svg';
 
 import cls from './Success.module.css';
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-import forgot from '../../assets/images/forgot.jpg';
-import { emailRequired } from '../../validators/validator';
-import { InputText } from '../common/FormControl/FormControl';
+import forgot from '../../../assets/images/forgot.jpg';
+import { emailRequired } from '../../../validators/validator';
+import { InputText } from '../../common/FormControl/FormControl';
 
 import cls from './ForgotPassword.module.css';
 

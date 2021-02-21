@@ -3,9 +3,9 @@ import { compose } from 'redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
-import confirm from '../../assets/images/confirm.jpg';
-import { LengthCreator, passwordRequired, textRequired } from '../../validators/validator';
-import { InputPassword } from '../common/FormControl/FormControl';
+import confirm from '../../../assets/images/confirm.jpg';
+import { LengthCreator, passwordRequired, textRequired } from '../../../validators/validator';
+import { InputPassword } from '../../common/FormControl/FormControl';
 
 import cls from './ConfirmPassword.module.css';
 

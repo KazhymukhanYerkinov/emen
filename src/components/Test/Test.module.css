@@ -1,0 +1,11 @@
+.test {
+    width: 100%;
+    min-height: 100vh;
+    
+    padding-top: 120px;
+
+    background-color: #F8F9FA;
+}
+.test__content {
+    padding: 40px 0 100px;
+}
