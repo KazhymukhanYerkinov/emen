@@ -13,6 +13,8 @@ let mapWithAnswers;
 
 const Test = () => {
 
+    
+
     if (Cookie.get('answers')) {
         mapWithAnswers = new Map(JSON.parse(Cookie.get('answers')));
     }
