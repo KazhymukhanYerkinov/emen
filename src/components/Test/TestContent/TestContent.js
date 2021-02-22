@@ -12,7 +12,7 @@ import cls from './TestContent.module.css';
 
 
 
-const TestContent = ({ mapWithAnswers, saveAnswersInCookie }) => {
+const TestContent = ({ mapWithAnswers }) => {
     
     return (
         <div className = {cls.content}>
@@ -21,7 +21,6 @@ const TestContent = ({ mapWithAnswers, saveAnswersInCookie }) => {
                     key = { index } 
                     {...item} 
                     mapWithAnswers = { mapWithAnswers }
-                    saveAnswersInCookie = { saveAnswersInCookie }
                 />
             }) }
         </div>

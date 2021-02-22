@@ -28,9 +28,7 @@ const TestQuestion = ({ id,isMultiple, question, hint,  answers, mapWithAnswers 
                 setActiveAnswer(new Map(mapWithAnswers.set(id, [...getAnswers, answerId])));
             } 
         }
-        Cookie.set('answers', Array.from(mapWithAnswers));
-        
-        
+        Cookie.set('answers', Array.from(mapWithAnswers));  
     }
 
     const onSaveQuestion = (questionId) => {

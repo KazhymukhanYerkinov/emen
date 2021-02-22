@@ -1,0 +1,60 @@
+.pause {
+    padding: 30px 60px;
+    margin: 0 auto;
+
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+}
+.pause__iamge {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+    height: auto;
+}
+.pause__info {
+    margin: 25px 0;
+    text-align: center;
+}
+.pause__text {
+    margin-bottom: 20px;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    
+    color: #222222;
+}
+.pause__result, .pause__timer {
+
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #5F6368;
+}
+.pause__re, .pause__finish {
+    
+    width: 100%;
+    height: 50px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+    background: #1A73E8;
+    border-radius: 3px;
+
+    transition: background-color .2s linear;
+}
+.pause__finish {
+    margin-top: 10px;
+    color: #222222;
+    background-color: #F7F7F7;
+}
+
+.pause__re:hover {
+    background-color: #174EA6; 
+}
