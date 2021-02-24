@@ -8,7 +8,7 @@
     align-items: center;
     
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 18px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
@@ -20,6 +20,9 @@
     width: 75%;
     display: flex;
     justify-content: space-between;
+}
+.categories__counts {
+    white-space: nowrap;
 }
 
 .categories__image.active {

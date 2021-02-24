@@ -6,7 +6,7 @@ import cls from './CategoriesByTheme.module.css';
 import SubCategories from '../SubCategories/SubCategories';
 
 
-const CategoriesByTheme = ({ index, count, title, items, showCategories, onChangeShowCategories }) => {
+const CategoriesByTheme = ({ index, showCategories, item, onChangeShowCategories }) => {
 
     const isValid = index === showCategories;
 
@@ -14,15 +14,15 @@ const CategoriesByTheme = ({ index, count, title, items, showCategories, onChang
         <div className = {cls.bottom__border}>
             <div className = {cls.categories} onClick = {() => onChangeShowCategories(index)}>
                 <div className = {cls.categories__flex}>
-                    <div className = {cls.categories__theme}> { title } </div>
-                    <div className = { cls.categories__counts }> <span className = {cls.result}> Решено: </span>{ count } </div>
+                    <div className = {cls.categories__theme}> { item.name_ru } </div>
+                    <div className = { cls.categories__counts }> <span className = {cls.result}> Решено: </span>{ item.solved_question_count } / { item.all_question_count } </div>
                 </div>
                 <img src = { arrow } alt = "" className = {classNames(cls.categories__image, {
                     [cls.active]: isValid
                 })}/>
                 
             </div>  
-            {isValid && <SubCategories items = { items }/> } 
+            {isValid && <SubCategories items = { item.categories }/> } 
         </div>
     )
 }

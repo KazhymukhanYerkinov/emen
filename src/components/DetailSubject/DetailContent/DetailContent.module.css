@@ -8,15 +8,15 @@
 
 .content__title {
     font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 22px;
+    line-height: 26px;
     color: #222222;
 }
 .content__desc {
     margin: 20px 0;
 
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 21px;
     color: #5F6368;
 }

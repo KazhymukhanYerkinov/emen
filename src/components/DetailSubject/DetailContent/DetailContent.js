@@ -6,7 +6,7 @@ import cls from './DetailContent.module.css';
 
 
 
-const DetailContent = () => {
+const DetailContent = ({ topics }) => {
 
     const [ showCategories, setShowCategories ] = React.useState(null);
 
@@ -18,6 +18,8 @@ const DetailContent = () => {
             return index;
         });
     }
+
+    console.log(topics)
 
 
     return (
@@ -33,8 +35,8 @@ const DetailContent = () => {
                     </div>
                     <div className = { cls.arrow }>  </div>
                 </div>
-                {data.map((items, index) => <CategoriesByTheme key = { index } index = { index } 
-                                                showCategories = { showCategories } {...items} 
+                {topics.map((item, index) => <CategoriesByTheme key = { index } index = { index } 
+                                                showCategories = { showCategories } item = { item }
                                                 onChangeShowCategories = { onChangeShowCategories } />)}
             </div>
             

@@ -65,8 +65,8 @@ const App = (props) => {
               render = {() => <ForgotPassword emailResetConfirmThunk = { emailResetConfirmThunk } /> }/>
           <Route exact path = '/password/reset/confirm/:uid/:token'
               render = {() => <ConfirmPassword fromRegisterPage = { fromRegisterPage } passwordResetConfirmThunk = { passwordResetConfirmThunk }/> } />
-          <Route path = '/detail/:testtID'
-              render = {() => <DetailSubject /> }/>
+          <Route path = '/showTheme/:subjectID'
+              render = {() => <DetailSubject BASE_URL = { BASE_URL }/> }/>
           {fromRegisterPage !== 0 && 
           <Route exact path = '/success'
               render = {() => <Success fromRegisterPage = { fromRegisterPage } setRedirectSuccessPage = { setRedirectSuccessPage }/>} />}

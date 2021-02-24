@@ -2,15 +2,15 @@
     padding: 10px 0;
 }
 .subcategories {
-    padding: 15px 20px;
+    padding: 15px 10px;
     width: 75%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 14px;
+    line-height: 17px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
     cursor: pointer;
@@ -33,6 +33,7 @@
 .result {
     display: none;
 }
+
 
 @media (max-width: 700px) {
     .subcategories {

@@ -1,19 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import math from '../../../assets/subjects/math.svg';
 import setting from '../../../assets/logos/settings.svg';
 
 import cls from './DetailHeader.module.css';
 
 
-const DetailHeader = ({ onChangeShowSettingsModal }) => {
+const DetailHeader = ({ banner, onChangeShowSettingsModal, BASE_URL }) => {
     return (
-        <div className = {cls.header} style = {{ backgroundColor: '#8E96FF' }}>
+        <div className = {cls.header} style = {{ backgroundColor: banner.color }}>
             <div className = {cls.header__inner}>
-                <img className = {cls.header__image} src = { math } alt = "" />
+                <img className = {cls.header__image} src = { BASE_URL + "" + banner.logo } alt = "" />
                 <div className = {cls.header__content}>
-                    <div className = {cls.header__title}> Математика </div>
+                    <div className = {cls.header__title}> {banner.name_ru} </div>
                     <div className = {cls.header__info}>
                         <Link to = {`/start`} className = {cls.header__start__button}> Начать новый тест </Link>
                         <div className = {cls.header__setting__button} onClick = {() => onChangeShowSettingsModal(true)}>

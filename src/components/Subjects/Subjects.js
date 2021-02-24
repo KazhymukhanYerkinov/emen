@@ -16,12 +16,11 @@ const Subjects = ({ language, BASE_URL }) => {
     React.useState(() => {
         dispatch(getSubjectsThunk());
     }, []);
-
     
-
     if (subjects.length <= 0) {
         return <Preloader />
     }
+    console.log(subjects)
 
     let MANDATORY_SUBJECTS = subjects._MANDATORY_SUBJECT_;
     let PROFILE_SUBJECTS = subjects._PROFILE_SUBJECT_;
@@ -50,7 +49,7 @@ const Subjects = ({ language, BASE_URL }) => {
                         { PROFILE_SUBJECTS.map((item, index) => {
                             return <Subject 
                                 key = { index }  
-                                id = { index } 
+                                index = { index } 
                                 language = { language } 
                                 item = { item } 
                                 BASE_URL = { BASE_URL }/>

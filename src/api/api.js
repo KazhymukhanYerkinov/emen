@@ -61,6 +61,11 @@ export const subjectAPI = {
         return instance.get('api/v1/subjects/list/grouped/').then(response => {
             return response.data;
         })
+    },
+    getDetail(subject) {
+        return instance.get(`api/v1/subjects/${subject}/categories/grouped-by/topics/`).then(response => {
+            return response.data;
+        })
     }
 }
 
