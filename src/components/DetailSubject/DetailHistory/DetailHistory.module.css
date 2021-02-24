@@ -23,7 +23,7 @@
     color: #5F6368;
 }
 .history__content {
-    margin: 35px 0;
+    margin: 25px 0;
 }
 
 /* ITEM */
@@ -50,9 +50,8 @@
 .item__name {
     margin-bottom: 8px;
 
-    font-weight: 500;
     font-size: 16px;
-    line-height: 14px;
+    line-height: 18px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
     color: #222222;

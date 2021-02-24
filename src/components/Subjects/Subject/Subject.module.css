@@ -104,6 +104,10 @@
         width: 48%;
         margin-right: 4%;
     }
+    .title {
+        font-size: 18px;
+        line-height: 21px;
+    }
     .subject:nth-child(3n) {
         margin-right: 4%;
     }
@@ -135,9 +139,8 @@
         width: 30%;
     }
     .title {
-        font-size: 21px;
         margin: 12px 0;
-        line-height: 21px;
+        
         color: #fff;
     }
     .text {

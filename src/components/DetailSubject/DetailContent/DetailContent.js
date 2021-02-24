@@ -8,18 +8,6 @@ import cls from './DetailContent.module.css';
 
 const DetailContent = ({ topics }) => {
 
-    const [ showCategories, setShowCategories ] = React.useState(null);
-
-    const onChangeShowCategories = (index) => {
-        setShowCategories((prevState) =>{
-            if (prevState === index) {
-                return null;
-            }
-            return index;
-        });
-    }
-
-    console.log(topics)
 
 
     return (
@@ -36,8 +24,7 @@ const DetailContent = ({ topics }) => {
                     <div className = { cls.arrow }>  </div>
                 </div>
                 {topics.map((item, index) => <CategoriesByTheme key = { index } index = { index } 
-                                                showCategories = { showCategories } item = { item }
-                                                onChangeShowCategories = { onChangeShowCategories } />)}
+                                                item = { item } />)}
             </div>
             
         </div>

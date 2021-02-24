@@ -6,7 +6,17 @@ import cls from './CategoriesByTheme.module.css';
 import SubCategories from '../SubCategories/SubCategories';
 
 
-const CategoriesByTheme = ({ index, showCategories, item, onChangeShowCategories }) => {
+const CategoriesByTheme = ({ index, item }) => {
+    const [ showCategories, setShowCategories ] = React.useState(null);
+
+    const onChangeShowCategories = (index) => {
+        setShowCategories((prevState) =>{
+            if (prevState === index) {
+                return null;
+            }
+            return index;
+        });
+    }
 
     const isValid = index === showCategories;
 
