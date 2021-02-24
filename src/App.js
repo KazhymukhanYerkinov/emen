@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookie from 'js-cookie';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -18,35 +19,44 @@ import Test from './components/Test/Test';
 
 
 
+let BASE_URL = 'https://e-men.kz';
 
+const App = (props) => {
 
-class App extends React.Component {
-  componentDidMount() {
-    this.props.initSuccessThunk();
-  }
+  const [ language, setLanguage ] = React.useState('ru');
 
+  React.useEffect(() => {
+    props.initSuccessThunk();
+  }, []);
 
-  
-  render(){
-    const { isAuth,user, loginThunk, 
-      signUpThunk, fromRegisterPage, logoutThunk, 
-      initialized, setRedirectSuccessPage, emailResetConfirmThunk,
-      passwordResetConfirmThunk, } = this.props;
-    
-    if (!initialized) {
-      return (
-        <div>
-          <h1> Здесь должна быть загрузка :) </h1>
-        </div>
-      )
+  React.useEffect(() => {
+    if (Cookie.get('lang')) {
+      setLanguage(Cookie.get('lang'));
     }
+  }, [language])
+
+  const { isAuth,user, loginThunk, 
+    signUpThunk, fromRegisterPage, logoutThunk, 
+    initialized, setRedirectSuccessPage, emailResetConfirmThunk,
+    passwordResetConfirmThunk, } = props;
+  
+  if (!initialized) {
+    return (
+      <div>
+        <h1> Здесь должна быть загрузка :) </h1>
+      </div>
+    )
+  }
+    
+    
+    
     
     return (
       <div className="App">
-          <Header isAuth = { isAuth } user = { user } logoutThunk = { logoutThunk } />
+          <Header isAuth = { isAuth } user = { user } logoutThunk = { logoutThunk } language = { language } setLanguage = { setLanguage } />
 
           <Route exact path = '/'
-              render = {() => <Content isAuth = { isAuth } />} />
+              render = {() => <Content isAuth = { isAuth } language = { language } />} />
           <Route exact path = '/login' 
               render = {() => <SignIn isAuth = { isAuth } loginThunk = { loginThunk }/> }/>
           <Route exact path = '/registration' 
@@ -64,13 +74,14 @@ class App extends React.Component {
 
           <Route exact path = '/test' component = { Test } />
 
-          <Route exact path = '/subjects' component = { Subjects } />
+          <Route exact path = '/subjects'
+              render = {() => <Subjects  language = { language } BASE_URL = { BASE_URL } />} />
 
           <Footer />
       </div>
     );
+  
   }
-}
 
 let mapStateToProps = (state) => ({
   isAuth: state.authPage.isAuth,

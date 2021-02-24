@@ -4,14 +4,14 @@ import { Section1, Section2, Section3, Section4, Section5, Section6, Section7 } 
 import cls from './Content.module.css';
 
 
-const Content = ({ isAuth }) => {
+const Content = ({ isAuth, language }) => {
 
     if ( isAuth ) {
         return <Redirect to = '/subjects'/>
     } 
     return (
         <div className = {cls.content}>
-            <Section1 />
+            <Section1 language = { language }/>
             <Section2 />
             <Section3 />  
             <Section4 />

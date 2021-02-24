@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { data } from '../../data/subjects';
+import Preloader from '../common/Preloader/Preloader';
 import { getSubjectsThunk } from '../../redux/subject-reducer';
 import Subject from './Subject/Subject';
 
@@ -9,13 +9,23 @@ import Subject from './Subject/Subject';
 import cls from './Subjects.module.css'
 
 
-const Subjects = () => {
+const Subjects = ({ language, BASE_URL }) => {
     const dispatch = useDispatch();
     const subjects = useSelector(({ subjectPage }) => subjectPage.subjects);
 
     React.useState(() => {
         dispatch(getSubjectsThunk());
-    }, [])
+    }, []);
+
+    
+
+    if (subjects.length <= 0) {
+        return <Preloader />
+    }
+
+    let MANDATORY_SUBJECTS = subjects._MANDATORY_SUBJECT_;
+    let PROFILE_SUBJECTS = subjects._PROFILE_SUBJECT_;
+
 
     return (
         <div className = {cls.subjects}>
@@ -28,8 +38,22 @@ const Subjects = () => {
 
                 <div className = {cls.subjects__content}>
                     <div className = {cls.content__inner}>
-                        { data.map((item, index) => {
-                            return <Subject key = { index }  id = { index } {...item} />
+                        { MANDATORY_SUBJECTS.map((item, index) => {
+                            return <Subject 
+                                key = { index }  
+                                id = { index } 
+                                language = { language } 
+                                item = { item } 
+                                BASE_URL = { BASE_URL }/>
+                        })}
+
+                        { PROFILE_SUBJECTS.map((item, index) => {
+                            return <Subject 
+                                key = { index }  
+                                id = { index } 
+                                language = { language } 
+                                item = { item } 
+                                BASE_URL = { BASE_URL }/>
                         })}
                     </div>
                 </div>

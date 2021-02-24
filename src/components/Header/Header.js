@@ -1,17 +1,17 @@
 import React from 'react';
+import Cookie from 'js-cookie';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import Avatar from '@material-ui/core/Avatar'; 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'; 
 
 import emen from '../../assets/logos/emen.svg';
-import avatar from '../../assets/profile/avatar.jpg';
 
 import cls from './Header.module.css';
 import ProfileBlock from './ProfileBlock/ProfileBlock';
 
 
-const Header = ({ isAuth, user, logoutThunk }) => {
+const Header = ({ isAuth, user, logoutThunk, language, setLanguage }) => {
 
     let location = useLocation();
     const profileRef = React.useRef();
@@ -25,7 +25,6 @@ const Header = ({ isAuth, user, logoutThunk }) => {
             onChangeProfileBlock(false);
         }
     }
-    
     const onChangeProfileBlock = ( item ) => {
         setShowProfileBlock( item );
     }
@@ -33,6 +32,13 @@ const Header = ({ isAuth, user, logoutThunk }) => {
     React.useEffect(() => {
         document.body.addEventListener('click', onHandleOutsideClick)
     }, []);
+
+    const onChangeFunction = (lang) => {
+        setLanguage(lang);
+        Cookie.set('lang', lang, {expires: 30});
+    }
+
+    const isLang = language === 'kz';
 
     return (
         <header className = {cls.header}>
@@ -54,8 +60,8 @@ const Header = ({ isAuth, user, logoutThunk }) => {
                         <div className = {cls.last}>
 
                             <div className = {classNames(cls.last__lang, {[cls.change__lang]: isAuth})}>
-                                <span className = {cls.lang__link}> Қаз </span>
-                                <span className = {cls.lang__link}> Рус </span>
+                                <span className = {classNames(cls.lang__link, {[cls.lang_active]: isLang})} onClick = {() => onChangeFunction('kz')}> Қаз </span>
+                                <span className = {classNames(cls.lang__link, {[cls.lang_active]: !isLang})} onClick = {() => onChangeFunction('ru')}> Рус </span>
                             </div>
 
                             {!isAuth && <div className = {cls.last__auth}>

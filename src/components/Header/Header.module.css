@@ -65,11 +65,15 @@
     margin-right: 40px;
 }
 .lang__link {
+    cursor: pointer;
     padding-right: 5px;
     font-size: 16px;
     font-weight: 500;
 
     color: #C2C5CA;
+}
+.lang_active {
+    color: #202124;;
 }
 .lang__link:last-child {
     padding-right: 0;

@@ -25,7 +25,7 @@ const setAllSubjectDispatch = (subjects) => ({ type: GET_ALL_SUBJECTS_SUCCESS, s
 export const getSubjectsThunk = () => async (dispatch) => {
     try {
         let data = await subjectAPI.getSubjects();
-        console.log(data);
+        dispatch(setAllSubjectDispatch(data));
 
     } catch (err) {
 
