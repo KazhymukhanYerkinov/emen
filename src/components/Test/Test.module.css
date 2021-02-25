@@ -8,7 +8,7 @@
 }
 .test__content {
     display: flex;
-    padding: 40px 0 100px;
+    padding: 20px 0 100px;
 
     position: relative;
 }

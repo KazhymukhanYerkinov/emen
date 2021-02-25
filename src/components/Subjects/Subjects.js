@@ -4,8 +4,6 @@ import Preloader from '../common/Preloader/Preloader';
 import { getSubjectsThunk } from '../../redux/subject-reducer';
 import Subject from './Subject/Subject';
 
-
-
 import cls from './Subjects.module.css'
 
 

@@ -8,7 +8,6 @@ import cls from './SubCategories.module.css';
 const SubCategories = ({ items }) => {
 
     const [ showSubCategories, setShowSubCategories ] = React.useState(null);
-
     React.useEffect(() => {
         return () => {
             setShowSubCategories(null);

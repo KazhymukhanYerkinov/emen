@@ -76,7 +76,6 @@ const App = (props) => {
 
           <Route exact path = '/subjects'
               render = {() => <Subjects  language = { language } BASE_URL = { BASE_URL } />} />
-
           <Footer />
       </div>
     );

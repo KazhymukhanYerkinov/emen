@@ -12,8 +12,8 @@
 }
 .ques__title {
     font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 21px;
+    line-height: 26px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
     color: #222222;
@@ -30,7 +30,7 @@
     margin: 20px 0 30px;
 
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 21px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
@@ -42,7 +42,7 @@
     
 
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 19px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
@@ -56,7 +56,7 @@
     display: none;
     padding: 20px 15px;
 
-    font-size: 16px;
+    font-size: 14px;
     line-height: 21px;
     font-style: italic;
 

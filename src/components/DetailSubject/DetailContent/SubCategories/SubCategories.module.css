@@ -30,6 +30,9 @@
     padding-left: 15px;
     color: #1A73E8;
 }
+.sub__count {
+    white-space: nowrap;
+}
 .result {
     display: none;
 }

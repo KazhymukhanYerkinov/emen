@@ -8,6 +8,7 @@ import TestContent from './TestContent/TestContent';
 import cls from './Test.module.css';
 import TestControl from './TestControl/TestControl';
 import TestPause from './TestPause/TestPause';
+import TestFinish from './TestFinish/TestFinish';
 
 
 
@@ -17,6 +18,7 @@ let time;
 const Test = () => {
     
     const [ stopTimer, setStopTimer ] = React.useState(false);
+    const [ finishTest, setFinishTest ] = React.useState(false);
 
     // Кукидің ішінде answers бар жоғын тексереміз
     if (Cookie.get('answers')) {
@@ -40,20 +42,39 @@ const Test = () => {
         setStopTimer((prevIsStop) => !prevIsStop);
     }
 
+    const onFinishTestButton = () => {
+        onStopTime();
+        setFinishTest(true)
+        
+    }
+    const onOnlyFinish = () => {
+        setFinishTest((isFinish) => !isFinish);
+    }
+
 
     return (
         <div className = {cls.test}>
             {stopTimer ?
-            <TestPause time = { time } mapWithAnswers = { mapWithAnswers } onStopTime = { onStopTime }/>:
-            <div className = 'container'>
-                <TestHeader />
+            <TestPause 
+                time = { time } 
+                mapWithAnswers = { mapWithAnswers } 
+                onStopTime = { onStopTime }
+                finishTest = { finishTest }
+                onOnlyFinish = { onOnlyFinish }
+                onFinishTestButton = { onFinishTestButton }/>:
 
-                
-                <div className = {cls.test__content}>
-                    <TestContent mapWithAnswers = { mapWithAnswers }/>
-                    <TestControl time = { time } stopTimer = { stopTimer } onStopTime = { onStopTime }/>
+                <div className = 'container'>
+                    <TestHeader /> 
+                    <div className = {cls.test__content}>
+                        <TestContent mapWithAnswers = { mapWithAnswers }/>
+                        <TestControl 
+                            time = { time } 
+                            stopTimer = { stopTimer } 
+                            onStopTime = { onStopTime }
+                            onFinishTestButton = { onFinishTestButton }/>
+                    </div>
+                    
                 </div>
-            </div>
             }
         </div>
     )
