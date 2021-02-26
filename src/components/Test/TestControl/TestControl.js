@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import {  test } from '../../../data/control';
 import TimerTest from './TimerTest/TimerTest';
 
@@ -10,7 +11,11 @@ import ListOfSubject from './ListOfSubject/ListOfSubject';
 
 const TestControl = ({ time, stopTimer, onStopTime, onFinishTestButton }) => {
     const [ showListOfSubject, setListOfSubject ] = React.useState(null);
-
+    const [ compass, setCompass ] = React.useState(false);
+    
+    const handleCompassChange = () => {
+        setCompass((prevCompass) => !prevCompass);
+    }
     const onChangeSubjectList = (index) => {
         setListOfSubject((prevIndex) => {
             if (prevIndex === index) {
@@ -22,9 +27,13 @@ const TestControl = ({ time, stopTimer, onStopTime, onFinishTestButton }) => {
 
     return (
         <div className = {cls.control}>
-            <TimerTest stopTimer = { stopTimer } timer = { time } onStopTime = { onStopTime }/>
+            <TimerTest 
+                stopTimer = { stopTimer } 
+                timer = { time } 
+                onStopTime = { onStopTime }
+                handleCompassChange = { handleCompassChange }/>
             
-            <div className = {cls.listOfSubject}>
+            <div className = {classNames(cls.listOfSubject, {[cls.active]: compass})} >
                 {test.map((item, index) => {
                     return <ListOfSubject 
                         key = { index } 

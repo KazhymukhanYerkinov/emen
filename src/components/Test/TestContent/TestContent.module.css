@@ -1,4 +1,10 @@
 .content {
-    
     width: 65%;
+}
+
+@media (max-width: 1000px) {
+    .content {
+        order: 2;
+        width: 100%;
+    }
 }

@@ -50,7 +50,7 @@
 .item__name {
     margin-bottom: 8px;
 
-    font-size: 16px;
+    font-size: 14px;
     line-height: 18px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
@@ -58,7 +58,7 @@
 }
 .item__result {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 16px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 

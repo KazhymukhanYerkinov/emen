@@ -65,3 +65,35 @@
 .hint_text.hintActive {
     display: block;
 }
+
+@media (max-width: 550px) {
+    .ques {
+        padding: 20px 20px;
+        margin-top: 5px;
+    }
+    .ques__title {
+        font-size: 18px;
+    }
+    .ques__text {
+        font-size: 13px;
+        line-height: 16px;
+    }
+    .ques__hint {
+        font-size: 12px;
+        margin-top: 20px;
+    }
+    .hint_text {
+        padding: 15px 10px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
+@media (max-width: 450px) {
+    .ques {
+        padding: 15px 15px;
+    }
+    .ques__text {
+        margin: 12px 0;
+    }
+}

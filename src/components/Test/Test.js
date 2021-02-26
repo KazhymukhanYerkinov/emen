@@ -8,7 +8,6 @@ import TestContent from './TestContent/TestContent';
 import cls from './Test.module.css';
 import TestControl from './TestControl/TestControl';
 import TestPause from './TestPause/TestPause';
-import TestFinish from './TestFinish/TestFinish';
 
 
 

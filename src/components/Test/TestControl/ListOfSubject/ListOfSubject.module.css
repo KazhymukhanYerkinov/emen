@@ -46,6 +46,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
 
     background-color: #F7F7F7;
     cursor: pointer;
@@ -59,3 +60,28 @@
 .transformImage {
     transform: rotate(180deg);
 }
+
+@media (max-width: 1000px) {
+    .listOf {
+        display: block;
+    }
+}
+@media (max-width: 550px) {
+    .listOf__info img {
+        width: 40px; 
+    }
+    .listOf__header {
+        padding: 8px 12px;
+    }
+    .name {
+        font-size: 12px;
+    }
+    .list {
+        padding: 10px 10px 10px;
+    }
+    .block {
+        width: 30px;
+        height: 30px;
+    }
+}
+

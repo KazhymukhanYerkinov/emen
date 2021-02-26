@@ -1,12 +1,16 @@
 import React from 'react';
 import Cookie from 'js-cookie'
+import compas from '../../../../assets/logos/compas.svg';
+
 import cls from './TimerTest.module.css';
 
 
 let interval;
 
-const TimerTest = ({ timer, stopTimer, onStopTime }) => {
+const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange }) => {
     const [ time, setTime ] = React.useState(timer);
+    
+    
     
     if (time <= 0 || stopTimer) {
         clearInterval(interval);
@@ -27,12 +31,6 @@ const TimerTest = ({ timer, stopTimer, onStopTime }) => {
     let hours = ('0' + Math.floor(time / 3600)).slice(-2);
 
 
-   
-
-    
-
-    
-
     return (
         <div className = {cls.timer }>
             <div className = {cls.timer__title}> Контроль </div>
@@ -47,6 +45,12 @@ const TimerTest = ({ timer, stopTimer, onStopTime }) => {
                 <div className = {cls.time__stop} onClick = {onStopTime}>
                     <span className = {cls.button}></span>
                 </div>
+
+                <div className = {cls.compas} onClick = { handleCompassChange }>
+                    <img  src = { compas } alt = "" />
+                </div>
+
+                <button className = {cls.finish__button}> Завершить </button>
                 
             </div>
             

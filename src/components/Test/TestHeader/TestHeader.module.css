@@ -34,3 +34,38 @@
     line-height: 19px;
     color: #fff;
 } 
+
+@media (max-width: 850px) {
+    .header__image {
+        width: 70px;
+        height: 70px;
+    }
+    .header__title {
+        font-size: 28px;
+        line-height: 32px;
+    }
+    .header__desc {
+        font-size: 14px;
+        line-height: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        padding: 20px;
+    }
+    .header__image {
+        display: none;
+    }
+    .header__content {
+        margin-left: 0;
+    }
+    .header__title {
+        font-size: 21px;
+        line-height: 24px;
+    }
+    .header__desc {
+        font-size: 12px;
+        line-height: 17px;
+    }
+}

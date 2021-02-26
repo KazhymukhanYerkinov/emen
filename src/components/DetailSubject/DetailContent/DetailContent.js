@@ -1,5 +1,4 @@
 import React from 'react';
-import { data } from '../../../data/detail';
 import CategoriesByTheme from './CategoriesByTheme/CategoriesByTheme';
 
 import cls from './DetailContent.module.css';
@@ -8,9 +7,10 @@ import cls from './DetailContent.module.css';
 
 const DetailContent = ({ topics }) => {
 
-    
+    // Категорияларға колапс жасау 
     const [ showCategories, setShowCategories ] = React.useState(null);
 
+    // Тақырып бойынша таңдау, колапс жапқан кезде null тең
     const onChangeShowCategories = (index) => {
         setShowCategories((prevState) =>{
             if (prevState === index) {
@@ -34,8 +34,14 @@ const DetailContent = ({ topics }) => {
                     </div>
                     <div className = { cls.arrow }>  </div>
                 </div>
-                {topics.map((item, index) => <CategoriesByTheme key = { index } index = { index } 
-                                                item = { item } showCategories = { showCategories } onChangeShowCategories = { onChangeShowCategories } />)}
+                {topics.map((item, index) => (
+                    <CategoriesByTheme 
+                        key = { index } 
+                        index = { index } 
+                        item = { item } 
+                        showCategories = { showCategories } 
+                        onChangeShowCategories = { onChangeShowCategories } />
+                    ))}
             </div>
             
         </div>
