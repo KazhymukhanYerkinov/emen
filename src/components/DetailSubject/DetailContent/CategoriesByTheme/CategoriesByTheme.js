@@ -6,7 +6,7 @@ import cls from './CategoriesByTheme.module.css';
 import SubCategories from '../SubCategories/SubCategories';
 
 
-const CategoriesByTheme = ({ index, item, showCategories, onChangeShowCategories   }) => {
+const CategoriesByTheme = ({ index, item, topicID,  showCategories, onChangeShowCategories, onHandleSettingsModal   }) => {
 
     const isValid = index === showCategories;
 
@@ -22,7 +22,12 @@ const CategoriesByTheme = ({ index, item, showCategories, onChangeShowCategories
                 })}/>
                 
             </div>  
-            {isValid && <SubCategories items = { item.categories }/> } 
+            {isValid && 
+                <SubCategories 
+                    topicID = { topicID }
+                    items = { item.categories }
+                    onHandleSettingsModal = { onHandleSettingsModal }
+                /> } 
         </div>
     )
 }

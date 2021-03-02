@@ -7,6 +7,8 @@ import ProfileSubject from './ProfileSubject/ProfileSubject';
 
 const EntContent = () => {
 
+    console.log("ENT CONTENT")
+
     const [ profSubjects, setProfSubject ] = React.useState({subjects: [null, null]});
     const [ showEntModal, setShowEntModal ] = React.useState({ isValid: false, number: null });
     
@@ -62,4 +64,4 @@ const EntContent = () => {
     )
 }
 
-export default EntContent;
+export default React.memo(EntContent);

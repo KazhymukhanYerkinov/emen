@@ -39,6 +39,10 @@
     border-radius: 3px;
     color: #222222;
     background-color: #FFFFFF;
+    transition: background-color .2s linear;
+}
+.header__start__button:hover {
+    background-color: #F7F7F7;
 }
 .header__setting__button {
     display: flex;

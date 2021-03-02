@@ -3,15 +3,24 @@ import { subjectAPI } from "../api/api";
 const GET_ALL_SUBJECTS_SUCCESS = 'GET_ALL_SUBJECTS_SUCCESS';
 const GET_DETAIL_SUBJECTS_SUCCESS = 'GET_DETAIL_SUBJECTS_SUCCESS';
 
+const START_TEST_EXAM = 'START_TEST_EXAM';
+const END_TEST_EXAM = 'END_TEST_EXAM';
+
 
 
 let initialState = {
     subjects: [],
     detail: null,
+    isLoader: false,
 }
 
 const subjectReducer = (state = initialState, action) => {
     switch (action.type) {
+        case START_TEST_EXAM:
+            return {
+                ...state,
+                isLoader: true
+            }
         case GET_ALL_SUBJECTS_SUCCESS:
             return {
                 ...state,
@@ -23,6 +32,11 @@ const subjectReducer = (state = initialState, action) => {
                 detail: action.detail
 
             }
+        case END_TEST_EXAM:
+            return {
+                ...state,
+                isLoader: false
+            }
         default:
             return state;
     }
@@ -30,6 +44,7 @@ const subjectReducer = (state = initialState, action) => {
 
 const setAllSubjectDispatch = (subjects) => ({ type: GET_ALL_SUBJECTS_SUCCESS, subjects });
 const setDetailSubject = (detail) => ({ type: GET_DETAIL_SUBJECTS_SUCCESS, detail });
+
 
 export const getSubjectsThunk = () => async (dispatch) => {
     try {
@@ -42,9 +57,11 @@ export const getSubjectsThunk = () => async (dispatch) => {
 }
 
 export const getDetailSubjectThunk = (subject) => async (dispatch) => {
+    dispatch({ type: START_TEST_EXAM });
     try {
         let data = await subjectAPI.getDetail(subject);
         dispatch(setDetailSubject(data));
+        dispatch({ type: END_TEST_EXAM })
     } catch (err) {
         console.log('Error detail')
     }

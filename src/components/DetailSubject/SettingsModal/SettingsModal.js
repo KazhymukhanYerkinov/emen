@@ -5,7 +5,7 @@ import cls from './SettingsModal.module.css';
 
 const levels = ['Легкий', 'Средний', 'Сложный'];
 
-const SettingsModal = ({ onChangeShowSettingsModal }) => {
+const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
     const [ chooseLevel, setChooseLevel ] = React.useState(0);
     const [ showHint, setShowHint ] = React.useState(false);
 
@@ -16,12 +16,17 @@ const SettingsModal = ({ onChangeShowSettingsModal }) => {
         setShowHint(!showHint);
     }
 
+    const hanldeStartButton = () => {
+        onHandleSettingsModal(false);
+        handleStartTest(showHint, chooseLevel)
+    }
+
     return (
         <div className = { cls.modal }>
             <div className = { cls.modal__inner }>
 
 
-                <span className = {cls.modal__close} onClick = {() => onChangeShowSettingsModal(false)}></span>
+                <span className = {cls.modal__close} onClick = {() => onHandleSettingsModal(false)}></span>
 
 
                 <div className = { cls.modal__title }> Настройки тестирования </div>
@@ -39,7 +44,6 @@ const SettingsModal = ({ onChangeShowSettingsModal }) => {
 
                     <div className = { cls.modal__level } onClick = { onChangeShowHint }>
                         <div className = { cls.level__help }> Включить подказку </div>
-
                         <Switch
                             className = { cls.switch }
                             checked={ showHint }
@@ -52,7 +56,7 @@ const SettingsModal = ({ onChangeShowSettingsModal }) => {
                     </div>
                 </div>
 
-                <button className = {cls.modal__button} onClick = {() => onChangeShowSettingsModal(false)}> Сохранить </button>
+                <button className = {cls.modal__button} onClick = { hanldeStartButton }> Начать </button>
 
             </div>
         </div>

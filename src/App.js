@@ -16,6 +16,7 @@ import { Content, Header, Footer,
 
 import './App.css';
 import Test from './components/Test/Test';
+import Preloader from './components/common/Preloader/Preloader';
 
 
 
@@ -41,11 +42,7 @@ const App = (props) => {
     passwordResetConfirmThunk, } = props;
   
   if (!initialized) {
-    return (
-      <div>
-        <h1> Здесь должна быть загрузка :) </h1>
-      </div>
-    )
+    return <Preloader />
   }
     
     

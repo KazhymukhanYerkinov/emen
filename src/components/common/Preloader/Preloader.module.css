@@ -1,4 +1,17 @@
 .preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
     height: 100vh;
+}
+.preloader__inner {
+    display: flex;
+    justify-content: center;
+}
+.preloader__inner img {
+    width: 40%;
+    height: auto;
+    display: block;
 }

@@ -42,7 +42,6 @@ const SignUp = ({ signUpThunk, fromRegisterPage }) => {
             setShowFetchButton(false);
         })
     }
-
     if (fromRegisterPage !== 0) {
         return <Redirect to = '/success' />
     }

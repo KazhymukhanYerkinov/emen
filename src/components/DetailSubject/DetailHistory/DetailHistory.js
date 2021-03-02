@@ -6,8 +6,10 @@ import { data } from '../../../data/history.js';
 import cls from './DetailHistory.module.css';
 
 
-
+// Сабақтардың история компоненті ( сайдбар оң жақта )
 const DetailHistory = () => {
+
+    console.log('DETAIL HISTORY')
     
     return (
         <div className = {cls.history}>
@@ -41,4 +43,4 @@ const DetailHistory = () => {
     )
 }
 
-export default DetailHistory;
+export default React.memo(DetailHistory);

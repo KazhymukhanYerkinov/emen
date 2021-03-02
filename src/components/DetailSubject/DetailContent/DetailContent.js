@@ -4,8 +4,10 @@ import CategoriesByTheme from './CategoriesByTheme/CategoriesByTheme';
 import cls from './DetailContent.module.css';
 
 
+// Сабақтардың детейл бетінің негізгі контенті
+const DetailContent = ({ topics, onHandleSettingsModal }) => {
 
-const DetailContent = ({ topics }) => {
+    console.log("RENDER CONTENT")
 
     // Категорияларға колапс жасау 
     const [ showCategories, setShowCategories ] = React.useState(null);
@@ -34,18 +36,22 @@ const DetailContent = ({ topics }) => {
                     </div>
                     <div className = { cls.arrow }>  </div>
                 </div>
-                {topics.map((item, index) => (
-                    <CategoriesByTheme 
-                        key = { index } 
-                        index = { index } 
-                        item = { item } 
-                        showCategories = { showCategories } 
-                        onChangeShowCategories = { onChangeShowCategories } />
-                    ))}
+                {topics.map((item, index) => {
+                    return (
+                        <CategoriesByTheme 
+                            key = { index } 
+                            index = { index }
+                            topicID = { item.id } 
+                            item = { item } 
+                            showCategories = { showCategories } 
+                            onChangeShowCategories = { onChangeShowCategories }
+                            onHandleSettingsModal = { onHandleSettingsModal } />
+                        )
+                    })}
             </div>
             
         </div>
     )
 }
 
-export default DetailContent;
+export default React.memo(DetailContent);
