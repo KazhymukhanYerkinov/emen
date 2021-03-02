@@ -57,11 +57,12 @@ export const getSubjectsThunk = () => async (dispatch) => {
 }
 
 export const getDetailSubjectThunk = (subject) => async (dispatch) => {
-    dispatch({ type: START_TEST_EXAM });
+    
     try {
+        dispatch({ type: START_TEST_EXAM });
         let data = await subjectAPI.getDetail(subject);
         dispatch(setDetailSubject(data));
-        dispatch({ type: END_TEST_EXAM })
+        dispatch({ type: END_TEST_EXAM });
     } catch (err) {
         console.log('Error detail')
     }

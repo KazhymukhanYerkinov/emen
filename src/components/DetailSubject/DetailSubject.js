@@ -22,7 +22,7 @@ import cls from './DetailSubject.module.css';
 const DetailSubject = ({ match, BASE_URL }) => {
     
     const dispatch = useDispatch();
-    const { detail } = useSelector(({ subjectPage }) => subjectPage);
+    const { detail, isLoader } = useSelector(({ subjectPage }) => subjectPage);
     const { examUID, isStart } = useSelector(({ testPage }) => testPage);
     
 
@@ -47,9 +47,8 @@ const DetailSubject = ({ match, BASE_URL }) => {
             }
         })
     }
-    
 
-    if (!detail) {
+    if (!detail || isLoader) {
         return <Preloader />
     }
 

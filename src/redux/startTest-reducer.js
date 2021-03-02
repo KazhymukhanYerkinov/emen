@@ -3,6 +3,9 @@ import { startTestAPI } from "../api/api";
 const TEST__START__SUCCESS = 'TEST__START__SUCCESS';
 const TEST__START__FAIL = 'TEST__START__FAIL';
 
+
+
+
 let initialState = {
     isStart: false,
     examUID: null,
@@ -22,6 +25,7 @@ const testReducer = (state = initialState, action) => {
                 isStart: false,
                 examUID: null
             }
+
         default:
             return state;
     }
