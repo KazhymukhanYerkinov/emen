@@ -8,7 +8,7 @@ import TestAnswer from '../TestAnswer/TestAnswer';
 import MultipleAnswer from '../MultipleAnswer/MultipleAnswer';
 
 
-const TestQuestion = ({ id,isMultiple, question, hint,  answers, mapWithAnswers }) => {
+const TestQuestion = ({ id,is_group, numeration, answers, question_text, mapWithAnswers }) => {
     
     const [ saveQuestion, setSaveQuestion ] = React.useState(null);
     const [ showHintQuestion, setShowHintQuestion ] = React.useState(false);
@@ -16,7 +16,7 @@ const TestQuestion = ({ id,isMultiple, question, hint,  answers, mapWithAnswers 
     
 
     const onSetActiveAnswer = (answerId) => {
-        if (!isMultiple) {
+        if (!is_group) {
             setActiveAnswer(new Map(mapWithAnswers.set(id, answerId)));
         }
         else {
@@ -48,26 +48,26 @@ const TestQuestion = ({ id,isMultiple, question, hint,  answers, mapWithAnswers 
     return (
         <div className = {cls.ques}>
             <div className = {cls.ques__header}>
-                <div className = {cls.ques__title}> Вопрос #{id} </div>
+                <div className = {cls.ques__title}> Вопрос #{numeration} </div>
                 <div onClick = {() => onSaveQuestion(id)}>
                     <TurnedInIcon className = {classNames(cls.ques__save, {[cls.active]: saveQuestion !== null})} />
                 </div>
             </div>
 
-            <div className = {cls.ques__text}> { question } </div>
+            <div className = {cls.ques__text}> { question_text } </div>
 
             <fieldset className = {cls.answers}>
-                {answers.length <= 5 ? 
+                {!is_group ? 
                     answers.map((item, index) => {
                         return <TestAnswer 
                             key = { index } 
 
-                            activeAnswer = { activeAnswer }
-                            onSetActiveAnswer = { onSetActiveAnswer }
-                            question_id = { id }
                             answer_id = { item.id }
-                            answer = { item.answer } 
-                            
+                            answer_text = { item.answer_text }
+
+                            question_id = { id }
+                            activeAnswer = { activeAnswer }
+                            onSetActiveAnswer = { onSetActiveAnswer }    
                         />
                     }): 
                     answers.map((item, index) => {
@@ -75,10 +75,11 @@ const TestQuestion = ({ id,isMultiple, question, hint,  answers, mapWithAnswers 
                                 key = { index }
 
                                 answer_id = { item.id }
+                                answer_text = { item.answer_text }
+
                                 question_id = { id }
                                 activeAnswer = { activeAnswer }
                                 onSetActiveAnswer = { onSetActiveAnswer }
-                                answer = { item.answer }
                             />
 
                         
@@ -87,8 +88,8 @@ const TestQuestion = ({ id,isMultiple, question, hint,  answers, mapWithAnswers 
                 
             </fieldset>
 
-            <div className = {cls.ques__hint} onClick = {onShowOrHideHint}> {showHintQuestion ? <span> Cкрыть подсказку </span>:<span>Показать подсказку</span>} </div>
-            <div className = {classNames(cls.hint_text, {[cls.hintActive]: showHintQuestion})} > { hint } </div>
+            {/* <div className = {cls.ques__hint} onClick = {onShowOrHideHint}> {showHintQuestion ? <span> Cкрыть подсказку </span>:<span>Показать подсказку</span>} </div>
+            <div className = {classNames(cls.hint_text, {[cls.hintActive]: showHintQuestion})} > { hint } </div> */}
 
             
         </div>

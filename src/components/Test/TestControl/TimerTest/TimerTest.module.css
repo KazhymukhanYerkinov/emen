@@ -1,12 +1,12 @@
 .timer__title {
     font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 21px;
+    line-height: 26px;
 
     color: #222222;
 }
 .time__display {
-    margin-top: 15px;
+    margin-top: 10px;
     
     display: flex;
     justify-content: space-between;
@@ -14,8 +14,8 @@
 }
 .time__text {
     font-weight: 500;
-    font-size: 42px;
-    line-height: 56px;
+    font-size: 32px;
+    line-height: 40px;
 
     font-feature-settings: 'pnum' on, 'lnum' on;
 

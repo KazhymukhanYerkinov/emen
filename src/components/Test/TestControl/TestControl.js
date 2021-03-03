@@ -1,15 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
-import {  test } from '../../../data/control';
+
 import TimerTest from './TimerTest/TimerTest';
-
-
-import cls from './TestControl.module.css';
 import ListOfSubject from './ListOfSubject/ListOfSubject';
 
 
+import cls from './TestControl.module.css';
 
-const TestControl = ({ time, stopTimer, onStopTime, onFinishTestButton }) => {
+
+
+
+const TestControl = ({ BASE_URL, TEST_QUESTIONS, INDIVIDUAL_TEST,  time, stopTimer, onStopTime, onFinishTestButton }) => {
     const [ showListOfSubject, setListOfSubject ] = React.useState(null);
     const [ compass, setCompass ] = React.useState(false);
     
@@ -34,11 +35,15 @@ const TestControl = ({ time, stopTimer, onStopTime, onFinishTestButton }) => {
                 handleCompassChange = { handleCompassChange }/>
             
             <div className = {classNames(cls.listOfSubject, {[cls.active]: compass})} >
-                {test.map((item, index) => {
-                    return <ListOfSubject 
+                {TEST_QUESTIONS.map((item, index) => {
+                    return <ListOfSubject
+                        BASE_URL = { BASE_URL }
+                        INDIVIDUAL_TEST = { INDIVIDUAL_TEST }
+
                         key = { index } 
                         index = { index }
-                        {...item} 
+                        questions = { item.questions }
+                        subject = { item.subject } 
                         showListOfSubject = { showListOfSubject } 
                         onChangeSubjectList = { onChangeSubjectList }/> 
                 })}

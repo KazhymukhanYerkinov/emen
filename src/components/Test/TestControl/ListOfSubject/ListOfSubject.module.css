@@ -12,6 +12,11 @@
 .listOf__info {
     display: flex;
 }
+.listOf__info img {
+    display: block;
+    width: 20%;
+    height: auto;
+}
 
 .listOf__block {
     margin-left: 8px;

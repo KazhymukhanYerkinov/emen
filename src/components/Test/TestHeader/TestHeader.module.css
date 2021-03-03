@@ -1,8 +1,6 @@
 .header {
     padding: 50px 100px 50px 60px;
     border-radius: 3px;
-
-    background: rgba(31, 33, 43, 1);
 }
 .header__inner {
     display: flex;

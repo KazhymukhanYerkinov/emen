@@ -1,7 +1,4 @@
 import React from 'react';
-
-
-import { test } from '../../../data/test';
 import TestQuestion from './TestQuestion/TestQuestion';
 
 import cls from './TestContent.module.css';
@@ -12,11 +9,11 @@ import cls from './TestContent.module.css';
 
 
 
-const TestContent = ({ mapWithAnswers }) => {
+const TestContent = ({ TEST_QUESTIONS, mapWithAnswers }) => {
     
-    return (
+    return ( 
         <div className = {cls.content}>
-            { test.map((item, index) => {
+            { TEST_QUESTIONS[0].questions.map((item, index) => {
                 return <TestQuestion 
                     key = { index } 
                     {...item} 

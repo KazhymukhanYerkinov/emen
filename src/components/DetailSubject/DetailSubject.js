@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
+import { Redirect, Route, withRouter } from 'react-router-dom';
 
 import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
 import { getDetailSubjectThunk } from '../../redux/subject-reducer';
@@ -23,14 +23,11 @@ const DetailSubject = ({ match, BASE_URL }) => {
     
     const dispatch = useDispatch();
     const { detail, isLoader } = useSelector(({ subjectPage }) => subjectPage);
-    const { examUID, isStart } = useSelector(({ testPage }) => testPage);
+    const {isStart, examUID } = useSelector(({ testPage }) => testPage);
     
 
     const subjectID = match.params.subjectID;
     
-    
-    
-
     const [ settings, setSettings ] = React.useState({ modal: {show: false, topicID: null} });
 
     // топикарды серверден алу
@@ -48,9 +45,15 @@ const DetailSubject = ({ match, BASE_URL }) => {
         })
     }
 
+    if ( isStart ) {
+        return <Redirect to = {`/start_test/${examUID}`} />
+    }
+
     if (!detail || isLoader) {
         return <Preloader />
     }
+
+    
 
     // Тестты бастаудағы стандарт параметрлер
     const SUBJECT_ID = detail.banner_subject.id;

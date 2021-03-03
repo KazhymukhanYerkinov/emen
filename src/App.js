@@ -69,7 +69,8 @@ const App = (props) => {
               render = {() => <Success fromRegisterPage = { fromRegisterPage } setRedirectSuccessPage = { setRedirectSuccessPage }/>} />}
           <Route exact path = '/activate/:uid/:token' component = { Activate }/>
 
-          <Route exact path = '/test' component = { Test } />
+          <Route exact path = '/start_test/:examUID' 
+              render = {() => <Test BASE_URL = { BASE_URL }/>} />
 
           <Route exact path = '/subjects'
               render = {() => <Subjects  language = { language } BASE_URL = { BASE_URL } />} />
