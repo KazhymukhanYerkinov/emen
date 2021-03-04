@@ -16,7 +16,7 @@ const Section1 = ({ language }) => {
                 <div className = {cls.section__inner}>
 
                     <div className = {cls.section__content}>
-                        <div className = {cls.section__title}> Онлайн платформа для подготовки к ЕНТ {language}</div>
+                        <div className = {cls.section__title}> Онлайн платформа для подготовки к ЕНТ </div> 
                         <div className = {cls.section__text}> Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает. </div>
                         <div className = {cls.section__blocks}>
                             <Link to = {'/'} className = {classNames('button', cls.start__button)}> Начать бесплатно </Link>
@@ -38,6 +38,6 @@ const Section1 = ({ language }) => {
             </div>
         </div>
     )
-}
+}   
 
 export default Section1;

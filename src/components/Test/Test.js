@@ -16,8 +16,12 @@ import cls from './Test.module.css';
 
 
 
-let mapWithAnswers;
+
 let time;
+const ALL_QUESTIONS = [];
+const BY_SUBJECT_QUESTIONS = [];
+
+
 
 const Test = ({ match, BASE_URL }) => {
     // Экзамен бастайтын UID код
@@ -35,19 +39,45 @@ const Test = ({ match, BASE_URL }) => {
     // Тест пәндерін ауысатын жерін конрить ететін state
     const [ indexOfSub, setIndexOfSub ] = React.useState(0);
 
+    // Сұрақтарды сақтайтын мапқа сақтау
+    const [ mapWithAnswers, setMapWithAnswers ] = React.useState(new Map());
+
     
 
     // Серверден сұрақтарды алу
     React.useEffect(() => {
+        
+        
+
         dispatch(getQuestionThunk(examUID));
+
+        if (Cookie.get('answers')) {
+            setMapWithAnswers(new Map(JSON.parse(Cookie.get('answers'))));
+        }
+        else {
+            setMapWithAnswers(new Map());
+        }
     }, [])
+
+    // React.useEffect(() => {
+    //     if (data) {
+    //         let variants = data.variants;
+    //         for (let i = 0; i < variants.length; i++) {
+    //             let questions = variants.questions;
+    //             for (let j = 0; j < questions.length) {
+                    
+    //             }
+    //         }
+    //     }
+    // }, [data]);
 
     // Толық бітпейінше көрсетілетін загрузка
     if (!data || isFetching) {
         return <Preloader />
     }
+
     console.log(data)
-    const TEST_BANNER = data.variants[0].subject;
+    const TEST_BANNER = data.banner;
     const TEST_QUESTIONS = data.variants;
     const INDIVIDUAL_TEST = data.variants.length === 1;
 
@@ -55,12 +85,7 @@ const Test = ({ match, BASE_URL }) => {
 
 
     // Кукидің ішінде answers бар жоғын тексереміз
-    if (Cookie.get('answers')) {
-        mapWithAnswers = new Map(JSON.parse(Cookie.get('answers')));
-    }
-    else {
-        mapWithAnswers = new Map();
-    }
+    
 
     // Кукидің ішінде timer бар жоқ екенін тексереміз
     if (Cookie.get('timer')) {
@@ -104,11 +129,13 @@ const Test = ({ match, BASE_URL }) => {
                     <div className = {cls.test__content}>
                         <TestContent 
                             TEST_QUESTIONS = { TEST_QUESTIONS }
-                            mapWithAnswers = { mapWithAnswers }/>
+                            mapWithAnswers = { mapWithAnswers }
+                            setMapWithAnswers = { setMapWithAnswers }/>
                         <TestControl 
                             BASE_URL = { BASE_URL }
                             TEST_QUESTIONS = { TEST_QUESTIONS }
                             INDIVIDUAL_TEST = { INDIVIDUAL_TEST }
+                            mapWithAnswers = { mapWithAnswers }
 
                             time = { time } 
                             stopTimer = { stopTimer } 

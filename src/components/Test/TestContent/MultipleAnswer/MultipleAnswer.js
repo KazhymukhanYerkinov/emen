@@ -5,9 +5,9 @@ import cls from './MultipleAnswer.module.css';
 
 
 
-const MultipleAnswer = ({ answer_text, answer_id, question_id,  activeAnswer,  onSetActiveAnswer }) => {
+const MultipleAnswer = ({ answer_text, answer_id, question_id,  mapWithAnswers,  onSetActiveAnswer }) => {
 
-    const listOfAnswers = activeAnswer.get(question_id);
+    const listOfAnswers = mapWithAnswers.get(question_id);
     const isChecked = listOfAnswers ? listOfAnswers.includes(answer_id) : false;
 
     return (

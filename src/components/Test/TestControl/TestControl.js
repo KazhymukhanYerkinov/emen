@@ -10,7 +10,7 @@ import cls from './TestControl.module.css';
 
 
 
-const TestControl = ({ BASE_URL, TEST_QUESTIONS, INDIVIDUAL_TEST,  time, stopTimer, onStopTime, onFinishTestButton }) => {
+const TestControl = ({ BASE_URL, TEST_QUESTIONS, INDIVIDUAL_TEST, mapWithAnswers,  time, stopTimer, onStopTime, onFinishTestButton }) => {
     const [ showListOfSubject, setListOfSubject ] = React.useState(null);
     const [ compass, setCompass ] = React.useState(false);
     
@@ -39,6 +39,7 @@ const TestControl = ({ BASE_URL, TEST_QUESTIONS, INDIVIDUAL_TEST,  time, stopTim
                     return <ListOfSubject
                         BASE_URL = { BASE_URL }
                         INDIVIDUAL_TEST = { INDIVIDUAL_TEST }
+                        mapWithAnswers = { mapWithAnswers }
 
                         key = { index } 
                         index = { index }

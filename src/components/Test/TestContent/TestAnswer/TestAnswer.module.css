@@ -10,6 +10,7 @@
 }
 .answer__text {
     font-size: 13px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
 }
 .answer.active {
     background-color: #EBF0FC;
