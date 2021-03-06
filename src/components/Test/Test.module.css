@@ -2,13 +2,13 @@
     width: 100%;
     min-height: 100vh;
     
-    padding-top: 120px;
+    padding-top: 100px;
 
     background-color: #F8F9FA;
 }
 .test__content {
     display: flex;
-    padding: 20px 0 100px;
+    padding: 5px 0 100px;
     flex-wrap: wrap;
 
     position: relative;

@@ -1,5 +1,6 @@
 import React from 'react';
 import Cookie from 'js-cookie';
+import smoothscroll from 'smoothscroll-polyfill';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -18,10 +19,7 @@ import cls from './Test.module.css';
 
 
 let time;
-const ALL_QUESTIONS = [];
-const BY_SUBJECT_QUESTIONS = [];
-
-
+smoothscroll.polyfill()
 
 const Test = ({ match, BASE_URL }) => {
     // Экзамен бастайтын UID код
@@ -46,9 +44,6 @@ const Test = ({ match, BASE_URL }) => {
 
     // Серверден сұрақтарды алу
     React.useEffect(() => {
-        
-        
-
         dispatch(getQuestionThunk(examUID));
 
         if (Cookie.get('answers')) {
@@ -59,32 +54,16 @@ const Test = ({ match, BASE_URL }) => {
         }
     }, [])
 
-    // React.useEffect(() => {
-    //     if (data) {
-    //         let variants = data.variants;
-    //         for (let i = 0; i < variants.length; i++) {
-    //             let questions = variants.questions;
-    //             for (let j = 0; j < questions.length) {
-                    
-    //             }
-    //         }
-    //     }
-    // }, [data]);
-
     // Толық бітпейінше көрсетілетін загрузка
     if (!data || isFetching) {
         return <Preloader />
     }
+    console.log(data);
 
-    console.log(data)
+    const LEFT_TIME = data.left_seconds;
     const TEST_BANNER = data.banner;
     const TEST_QUESTIONS = data.variants;
     const INDIVIDUAL_TEST = data.variants.length === 1;
-
-
-
-
-    // Кукидің ішінде answers бар жоғын тексереміз
     
 
     // Кукидің ішінде timer бар жоқ екенін тексереміз
@@ -92,8 +71,23 @@ const Test = ({ match, BASE_URL }) => {
         time = Cookie.get('timer');
     }
     else {
-        time = 14400;
+        time = LEFT_TIME;
         Cookie.set('timer', time, {expires: 1/5});
+    }
+
+    // Сұрақтарға ID бойынша smooth scroll жасау
+    const handleScrollQuestionById = (question_id) => {
+        const targetElement = document.querySelector(`#scroll_${question_id}`);
+        const rectTop = targetElement.getBoundingClientRect().top;
+        const offsetTop = window.pageYOffset;
+
+        const buffer = 90;
+        const top = rectTop + offsetTop - buffer
+
+        window.scrollTo({
+            top,
+            behavior: "smooth"
+        })
     }
 
 
@@ -136,6 +130,8 @@ const Test = ({ match, BASE_URL }) => {
                             TEST_QUESTIONS = { TEST_QUESTIONS }
                             INDIVIDUAL_TEST = { INDIVIDUAL_TEST }
                             mapWithAnswers = { mapWithAnswers }
+
+                            handleScrollQuestionById = { handleScrollQuestionById }
 
                             time = { time } 
                             stopTimer = { stopTimer } 

@@ -1,6 +1,18 @@
 .content {
     width: 65%;
 }
+.group__text {
+    margin: 20px 0 -20px;
+    padding: 20px 30px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 21px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    background-color: #fff;
+    color: #222222;
+    border-radius: 4px;
+}
 
 @media (max-width: 1000px) {
     .content {

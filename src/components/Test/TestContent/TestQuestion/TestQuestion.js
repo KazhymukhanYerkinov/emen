@@ -13,19 +13,28 @@ import MultipleAnswer from '../MultipleAnswer/MultipleAnswer';
 
 
 
-const TestQuestion = ({ id,is_group, numeration, answers, question_text, mapWithAnswers, setMapWithAnswers }) => {
+const TestQuestion = ({ id,is_group, help_text, numeration, answers, question_text, mapWithAnswers, setMapWithAnswers }) => {
     
+    // Избранный сұрақты басқаратын state
     const [ saveQuestion, setSaveQuestion ] = React.useState(null);
-    const [ showHintQuestion, setShowHintQuestion ] = React.useState(false);
+
+    // Подсказканы басқаратын state
+    const [ isHint, setIsHint ] = React.useState(false);
 
     React.useEffect(() => {
+        // Текст сұрақтарды html ге айналдырады
+        document.getElementById(`question_${id}`).innerHTML = question_text;
 
+        // Текст подсказкаларды html ге айналдыру
+        if (help_text)
+            document.getElementById(`hint_${id}`).innerHTML = help_text;
+
+        // Арасындағы Latex жазылғандарды Html-ге айналдырады
         window.MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} });
         window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, document.querySelector('.challenge__description')]);
-        document.getElementById(`question_${id}`).innerHTML = question_text
-        
     }, [])
 
+    // Жауаптардың үстінен басқаннан кейінгі жауаптарды map-қа және кукиға сақтау
     const onSetActiveAnswer = (answerId) => {
         if (!is_group) {
             setMapWithAnswers(new Map(mapWithAnswers.set(id, answerId)));
@@ -42,6 +51,7 @@ const TestQuestion = ({ id,is_group, numeration, answers, question_text, mapWith
         Cookie.set('answers', Array.from(mapWithAnswers));  
     }
 
+    // Избранный сұрақтарды сақтау
     const onSaveQuestion = (questionId) => {
         if (saveQuestion) {
             setSaveQuestion(null);
@@ -51,13 +61,15 @@ const TestQuestion = ({ id,is_group, numeration, answers, question_text, mapWith
         }
     }
 
-    const onShowOrHideHint = () => {
-        setShowHintQuestion(prev => !prev);
+    // Подсказканы көрстеу / көрсетпеу функциясы
+    const handleIsHint = () => {
+        setIsHint((prevHint) => !prevHint);
     }
 
     
     return (
-        <div className = {cls.ques}>
+        <div className = {classNames(cls.ques, {[cls.is_group]: is_group})} id = {`scroll_${id}`}>
+
             <div className = {cls.ques__header}>
                 <div className = {cls.ques__title}> Вопрос #{numeration} </div>
                 <div onClick = {() => onSaveQuestion(id)}>
@@ -65,15 +77,12 @@ const TestQuestion = ({ id,is_group, numeration, answers, question_text, mapWith
                 </div>
             </div>
 
-
-
-
             <div id = {`question_${id}`} className = {cls.ques__text}> { question_text } </div>
+
 
             <fieldset className = {cls.answers}>
                 {!is_group ? 
                     answers.map((item, index) => {
-                        console.log('item')
                         return <TestAnswer 
                             key = { index } 
 
@@ -95,16 +104,18 @@ const TestQuestion = ({ id,is_group, numeration, answers, question_text, mapWith
                                 question_id = { id }
                                 mapWithAnswers = { mapWithAnswers }
                                 onSetActiveAnswer = { onSetActiveAnswer }
-                            />
-
-                        
+                            /> 
                     })}
 
                 
             </fieldset>
 
-            {/* <div className = {cls.ques__hint} onClick = {onShowOrHideHint}> {showHintQuestion ? <span> Cкрыть подсказку </span>:<span>Показать подсказку</span>} </div>
-            <div className = {classNames(cls.hint_text, {[cls.hintActive]: showHintQuestion})} > { hint } </div> */}
+            {help_text && 
+                <>
+                    <div className = {cls.ques__hint} onClick = { handleIsHint }> {isHint ? <span> Cкрыть подсказку </span>:<span>Показать подсказку</span>} </div>
+                    <div className = {classNames(cls.hint_text, {[cls.hintActive]: isHint})} id = {`hint_${id}`}>  </div>
+                </>
+            }
             
         </div>
     )

@@ -5,6 +5,9 @@
     background-color: #fff;
     border-radius: 3px;
 }
+.is_group {
+    margin-bottom: -15px;
+}
 .ques__header {
     display: flex;
     justify-content: space-between;
@@ -36,6 +39,7 @@
 
     color: #222222;
 }
+
 .ques__hint {
     display: inline-block;
     margin-top: 25px;
@@ -59,6 +63,7 @@
     font-size: 14px;
     line-height: 21px;
     font-style: italic;
+    font-feature-settings: 'pnum' on, 'lnum' on;
 
     color: #333333;
 }

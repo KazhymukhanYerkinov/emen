@@ -1,5 +1,4 @@
 import React from 'react';
-import MathJax from 'react-mathjax2';
 import TestQuestion from './TestQuestion/TestQuestion';
 
 import cls from './TestContent.module.css';
@@ -12,19 +11,34 @@ import cls from './TestContent.module.css';
 
 const TestContent = ({ TEST_QUESTIONS, mapWithAnswers, setMapWithAnswers }) => {
     
+
     return ( 
-        <MathJax.Context>
         <div className = {cls.content}>
             { TEST_QUESTIONS[0].questions.map((item, index) => {
-                return <TestQuestion 
-                    key = { index } 
-                    {...item} 
-                    mapWithAnswers = { mapWithAnswers }
-                    setMapWithAnswers = { setMapWithAnswers }
-                />
+                return item.is_group ? 
+                (
+                    <div key = { index }>
+                        <div className = {cls.group__text}> { item.group_text } </div>
+                        {item.questions.map((question, uniqueKey) => {
+                            return <TestQuestion
+                                key = { uniqueKey }
+                                {...question}
+                                mapWithAnswers = { mapWithAnswers }
+                                setMapWithAnswers = { setMapWithAnswers }
+                            />
+                        })}
+                    </div>
+                ):(
+                <>
+                    <TestQuestion 
+                        key = { index } 
+                        {...item}
+                        mapWithAnswers = { mapWithAnswers }
+                        setMapWithAnswers = { setMapWithAnswers }
+                    />
+                </>)
             }) }
         </div>
-        </MathJax.Context>
     )
 }
 export default TestContent;
