@@ -45,7 +45,13 @@ const TestQuestion = ({ id,is_group, help_text, numeration, answers, question_te
             }
             else {
                 let getAnswers = mapWithAnswers.get(id);
-                setMapWithAnswers(new Map(mapWithAnswers.set(id, [...getAnswers, answerId])));
+                if (getAnswers.includes(answerId)) {
+                    let tempAnswers = getAnswers.filter(answerID => answerID !== answerId);
+                    setMapWithAnswers(new Map(mapWithAnswers.set(id, tempAnswers)));
+                }
+                else {
+                    setMapWithAnswers(new Map(mapWithAnswers.set(id, [...getAnswers, answerId])));
+                } 
             } 
         }
         Cookie.set('answers', Array.from(mapWithAnswers));  

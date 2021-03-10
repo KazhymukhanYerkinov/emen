@@ -5,6 +5,8 @@
     width: 100%;
     max-width: 500px;
     background-color: #fff;
+
+    font-family: Raleway;
 }
 .pause__iamge {
     display: block;
@@ -20,7 +22,7 @@
     margin-bottom: 20px;
 
     font-weight: 500;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 28px;
     
     color: #222222;
@@ -57,4 +59,24 @@
 
 .pause__re:hover {
     background-color: #174EA6; 
+}
+.pause__finish:hover {
+    background-color: #eceaea;
+}
+
+@media (max-width: 500px) {
+    .pause {
+        margin-top: 50px;
+    }
+    .pause__re, .pause__finish {
+        height: 40px;
+
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 500;
+    }
+    .pause__text {
+        font-size: 18px;
+        line-height: 21px;
+    }
 }

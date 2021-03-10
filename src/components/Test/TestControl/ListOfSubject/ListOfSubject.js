@@ -19,7 +19,9 @@ const ListOfSubject = ({
     let length = 0;
     function handleQuestionsLength(){
         for (let i = 0; i < questions.length; i++) {
-            if (!questions[i].is_group) return;
+            if (!questions[i].is_group) {
+                length += 1;
+            }
             else length = length + questions[i].questions.length;
         }
     };

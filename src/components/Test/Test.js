@@ -32,7 +32,10 @@ const Test = ({ match, BASE_URL }) => {
     const [ stopTimer, setStopTimer ] = React.useState(false);
 
     // Тест біту бітпеуін контрить ететін state
-    const [ finishTest, setFinishTest ] = React.useState(false);
+    const [ openFinishModal, setOpenFinishModal ] = React.useState(false);
+
+    // Толық тестті бітіру
+    const [ finishAllTest, setFinishAllTest ] = React.useState(false);
 
     // Тест пәндерін ауысатын жерін конрить ететін state
     const [ indexOfSub, setIndexOfSub ] = React.useState(0);
@@ -90,18 +93,32 @@ const Test = ({ match, BASE_URL }) => {
         })
     }
 
-
-    const onStopTime = () => {
+    // Уақытты тоқтату және қайттан бастауды басқаратын функция
+    const handleStopTimer = () => {
         setStopTimer((prevIsStop) => !prevIsStop);
     }
 
+    // Тестті аяқтау бетіне апару
     const onFinishTestButton = () => {
-        onStopTime();
-        setFinishTest(true)
-        
+        handleStopTimer();
+        setOpenFinishModal(true)
     }
+
+    // Финиш модал окносын шығару
     const onOnlyFinish = () => {
-        setFinishTest((isFinish) => !isFinish);
+        setOpenFinishModal((isFinish) => !isFinish);
+    }
+
+    const handleFinishAllTest = () => {
+        Cookie.remove('answers');
+        Cookie.remove('timer');
+
+        for (let item of mapWithAnswers.entries()) {
+            console.log(item[0], item[1])
+        }
+
+        onOnlyFinish();
+        setFinishAllTest(true);
     }
 
 
@@ -111,8 +128,11 @@ const Test = ({ match, BASE_URL }) => {
             <TestPause 
                 time = { time } 
                 mapWithAnswers = { mapWithAnswers } 
-                onStopTime = { onStopTime }
-                finishTest = { finishTest }
+                finishAllTest = { finishAllTest }
+                handleFinishAllTest = { handleFinishAllTest }
+
+                onStopTime = { handleStopTimer }
+                openFinishModal = { openFinishModal }
                 onOnlyFinish = { onOnlyFinish }
                 onFinishTestButton = { onFinishTestButton }/>:
 
@@ -135,8 +155,8 @@ const Test = ({ match, BASE_URL }) => {
 
                             time = { time } 
                             stopTimer = { stopTimer } 
-                            onStopTime = { onStopTime }
-                            onFinishTestButton = { onFinishTestButton }/>
+                            onStopTime = { handleStopTimer }
+                            onFinishTestButton = { onFinishTestButton } />
                     </div> 
                 </div>
             }

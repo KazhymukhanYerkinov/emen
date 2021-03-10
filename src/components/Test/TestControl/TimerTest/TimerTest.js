@@ -7,7 +7,7 @@ import cls from './TimerTest.module.css';
 
 let interval;
 
-const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange }) => {
+const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinishTestButton }) => {
     const [ time, setTime ] = React.useState(timer);
     
     
@@ -50,7 +50,7 @@ const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange }) => {
                     <img  src = { compas } alt = "" />
                 </div>
 
-                <button className = {cls.finish__button}> Завершить </button>
+                <button className = {cls.finish__button} onClick = { onFinishTestButton }> Завершить </button>
                 
             </div>
             

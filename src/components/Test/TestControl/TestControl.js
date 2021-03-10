@@ -21,6 +21,9 @@ const TestControl = ({
     onFinishTestButton,
     handleScrollQuestionById }) => {
 
+
+    console.log('RENDER TEST CONTROL')
+
     const [ showListOfSubject, setListOfSubject ] = React.useState(null);
     const [ compass, setCompass ] = React.useState(false);
     
@@ -42,6 +45,7 @@ const TestControl = ({
                 stopTimer = { stopTimer } 
                 timer = { time } 
                 onStopTime = { onStopTime }
+                onFinishTestButton = { onFinishTestButton }
                 handleCompassChange = { handleCompassChange }/>
             
             <div className = {classNames(cls.listOfSubject, {[cls.active]: compass})} >

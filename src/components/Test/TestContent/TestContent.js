@@ -29,14 +29,13 @@ const TestContent = ({ TEST_QUESTIONS, mapWithAnswers, setMapWithAnswers }) => {
                         })}
                     </div>
                 ):(
-                <>
+                <React.Fragment key = { index } >
                     <TestQuestion 
-                        key = { index } 
                         {...item}
                         mapWithAnswers = { mapWithAnswers }
                         setMapWithAnswers = { setMapWithAnswers }
                     />
-                </>)
+                </React.Fragment>)
             }) }
         </div>
     )
