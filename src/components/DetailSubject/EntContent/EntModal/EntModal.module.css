@@ -6,6 +6,9 @@
     background: rgba(17, 50, 85, 0.49);
     font-family: Raleway;
 
+    overflow-y: auto;
+
+
     position: fixed;
     top: 0;
     left: 0;
@@ -16,17 +19,19 @@
     max-width: 740px;
     border-radius: 3px;
     margin: auto;
-    padding: 35px 40px 40px;
+    padding: 35px 30px 30px;
     position: relative;
+
+    
 
     background-color: #fff;
 }
 .modal__title {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 21px;
+    line-height: 26px;
     text-align: center;
 
     color: #222222;
@@ -37,12 +42,12 @@
     width: 30px;
     height: 3px;
 
-    background-color: #fff;
+    background-color: #989898;
     cursor: pointer;
 
     position: absolute;
-    right: -30px;
-    top: -20px;
+    right: 20px;
+    top: 20px;
     transform: rotate(45deg);
 
     transition: transform .1s linear;
@@ -59,28 +64,43 @@
     left: 0;
     transform: rotate(-90deg);
 
-    background-color: #fff;
+    background-color: #989898;
 }
 
 .modal__subjects {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
 }
+
+
+
+
+/* SUBJECT DETAIL */
+
 .subject {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     text-align: center;
     width: 22%;
-    padding: 20px 15px;
+    margin-right: 3% ;
+    padding: 20px 10px;
     border-radius: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
 
 }
+.subject img {
+    width: 50px;
+    display: block;
+    margin: 0 auto;
+}
 .subject__title {
-    margin: 20px 0 40px;
+    margin: 15px;
 
     font-weight: 600;
-    font-size: 18px;
+    font-size: 13px;
     line-height: 21px;
     text-align: center;
     font-feature-settings: 'pnum' on, 'lnum' on;
@@ -92,11 +112,55 @@
     height: 30px;
 
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 16px;
     text-align: center;
 
     color: #222222;
     background-color: #F7F7F7;
     border-radius: 3px;
+
+    transition: background-color .2s linear;
+}
+
+.subject__button:hover {
+    background-color: #eceaea;
+}
+
+
+@media (max-width: 700px) {
+    /* Modal Header */
+    .modal__title {
+        font-size: 18px;
+        line-height: 21px;
+
+        margin-bottom: 25px;
+        text-align: left;
+    }
+    .modal__close {
+        top: 40px;
+    }
+
+    /* SUBJECT BLOCK */
+    .subject {
+        width: 30%;
+    }
+}
+
+@media (max-width: 550px) {
+    .ent__modal {
+        padding: 30px 15px 20px;
+    }
+    .modal__title {
+        font-size: 16px;
+        padding-right: 50px;
+    }
+    /* SUBJECT BLOCK */
+    .modal__subjects {
+        justify-content: space-between;
+    }
+    .subject {
+        width: 49%;
+        margin-right: 0;
+    }
 }

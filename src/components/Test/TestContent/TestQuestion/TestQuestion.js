@@ -9,10 +9,6 @@ import MultipleAnswer from '../MultipleAnswer/MultipleAnswer';
 
 
 
-
-
-
-
 const TestQuestion = ({ id,is_group, help_text, numeration, answers, question_text, mapWithAnswers, setMapWithAnswers }) => {
     
     // Избранный сұрақты басқаратын state

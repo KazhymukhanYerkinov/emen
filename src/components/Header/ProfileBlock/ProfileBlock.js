@@ -1,7 +1,6 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
-import avatar from '../../../assets/profile/avatar.jpg';
 import exit from '../../../assets/profile/logout.svg';
 
 import { data } from '../../../data/profile';

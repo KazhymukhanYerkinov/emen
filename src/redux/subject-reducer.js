@@ -43,7 +43,7 @@ const subjectReducer = (state = initialState, action) => {
 }
 
 const setAllSubjectDispatch = (subjects) => ({ type: GET_ALL_SUBJECTS_SUCCESS, subjects });
-const setDetailSubject = (detail) => ({ type: GET_DETAIL_SUBJECTS_SUCCESS, detail });
+export const setDetailSubject = (detail) => ({ type: GET_DETAIL_SUBJECTS_SUCCESS, detail });
 
 
 export const getSubjectsThunk = () => async (dispatch) => {
@@ -59,10 +59,10 @@ export const getSubjectsThunk = () => async (dispatch) => {
 export const getDetailSubjectThunk = (subject) => async (dispatch) => {
     
     try {
-        dispatch({ type: START_TEST_EXAM });
+        
         let data = await subjectAPI.getDetail(subject);
         dispatch(setDetailSubject(data));
-        dispatch({ type: END_TEST_EXAM });
+       
     } catch (err) {
         console.log('Error detail')
     }

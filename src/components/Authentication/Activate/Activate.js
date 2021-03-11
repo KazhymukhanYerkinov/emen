@@ -1,6 +1,6 @@
 import React from 'react';
 import * as axios from 'axios';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import cls from './Activate.module.css';
 
@@ -8,9 +8,10 @@ import cls from './Activate.module.css';
 
 const Activate = ({ match }) => {
     const [ resultActive, setResultActive ] = React.useState(true);
+    let uid = match.params.uid;
+    let token = match.params.token;
     React.useEffect(() => {
-        let uid = match.params.uid;
-        let token = match.params.token;
+        
 
         const body = JSON.stringify({ uid, token });
         const config = {
@@ -21,7 +22,7 @@ const Activate = ({ match }) => {
         } catch(err) {
             setResultActive(false);
         }
-    }, [])
+    }, [uid, token])
     return (
         <div className = {cls.activate}>
             <div className = {cls.activate__inner}>

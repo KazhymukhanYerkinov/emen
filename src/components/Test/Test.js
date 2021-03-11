@@ -38,7 +38,7 @@ const Test = ({ match, BASE_URL }) => {
     const [ finishAllTest, setFinishAllTest ] = React.useState(false);
 
     // Тест пәндерін ауысатын жерін конрить ететін state
-    const [ indexOfSub, setIndexOfSub ] = React.useState(0);
+    // const [ indexOfSub, setIndexOfSub ] = React.useState(0);
 
     // Сұрақтарды сақтайтын мапқа сақтау
     const [ mapWithAnswers, setMapWithAnswers ] = React.useState(new Map());
@@ -53,9 +53,9 @@ const Test = ({ match, BASE_URL }) => {
             setMapWithAnswers(new Map(JSON.parse(Cookie.get('answers'))));
         }
         else {
-            setMapWithAnswers(new Map());
+            setMapWithAnswers(new Map()); 
         }
-    }, [])
+    }, [examUID])
 
     // Толық бітпейінше көрсетілетін загрузка
     if (!data || isFetching) {

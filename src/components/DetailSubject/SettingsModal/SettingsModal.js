@@ -5,7 +5,7 @@ import cls from './SettingsModal.module.css';
 
 const levels = ['Легкий', 'Средний', 'Сложный'];
 
-const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
+const SettingsModal = ({ showError, onHandleSettingsModal, handleStartTest }) => {
     const [ chooseLevel, setChooseLevel ] = React.useState(0);
     const [ showHint, setShowHint ] = React.useState(false);
 
@@ -30,6 +30,7 @@ const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
 
 
                 <div className = { cls.modal__title }> Настройки тестирования </div>
+                
                 <div className = { cls.modal__content }>
                     <div className = { cls.modal__level__title }> Уровень сложности: </div>
 

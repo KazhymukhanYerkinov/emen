@@ -1,15 +1,13 @@
 import React from 'react';
-import { mandatorySubjects } from '../../../data/ent';
 import cls from './EntContent.module.css';
-import EntModel from './EntModel/EntModel';
-import ProfileSubject from './ProfileSubject/ProfileSubject';
+import EntModel from './EntModal/EntModal';
+import ManSubjects from './MandatorySubjects/ManSubjects';
+import ProfileSubject from './ProfileSubjects/ProfileSubjects';
 
 
-const EntContent = () => {
+const EntContent = ({ detail, BASE_URL, profSubjects, setProfSubject }) => {
 
-    console.log("ENT CONTENT")
 
-    const [ profSubjects, setProfSubject ] = React.useState({subjects: [null, null]});
     const [ showEntModal, setShowEntModal ] = React.useState({ isValid: false, number: null });
     
     const onChangeEntModal = (onShow, index) => {
@@ -36,29 +34,24 @@ const EntContent = () => {
 
     return (
         <div className = { cls.ent }>
-            <div className = { cls.ent__title }> Обязательные предметы </div>
-            <div className = { cls.ent__desc }> Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.  </div>
-
-            <div className = {cls.mandatory}>
-                {mandatorySubjects.map((item, index) => {
-                    return (
-                        <div className = {cls.subject} style = {{ backgroundColor: item.color }} key = { index }>
-                            <img src = {item.image} alt = "" />
-
-                            <div className = {cls.subject__info}>
-                                <div className = {cls.subject__name}> { item.title } </div>
-                                <div className = {cls.subject__variant}> { item.variant } </div>
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-
-            <ProfileSubject profSubjects = { profSubjects } onChangeEntModal = { onChangeEntModal }
-                            onRemoveProfSubject = { onRemoveProfSubject }/>
+            <ManSubjects
+                BASE_URL = { BASE_URL }
+                mandatory_subjects = { detail.mandatory_subjects }
+            />
+            <ProfileSubject
+                BASE_URL = { BASE_URL }
+                profSubjects = { profSubjects } 
+                onChangeEntModal = { onChangeEntModal }
+                onRemoveProfSubject = { onRemoveProfSubject }
+            />
             {showEntModal.isValid && 
-            <EntModel showEntModal = { showEntModal } onChangeEntModal = { onChangeEntModal } 
-                                               onSelectProfSubject = { onSelectProfSubject }/>}
+            <EntModel 
+                profile_subjects = { detail.profile_subjects }
+                BASE_URL = { BASE_URL }
+                showEntModal = { showEntModal } 
+                onChangeEntModal = { onChangeEntModal } 
+                onSelectProfSubject = { onSelectProfSubject }
+            />}
            
         </div>
     )

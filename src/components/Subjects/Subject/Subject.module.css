@@ -32,10 +32,10 @@
     order: 2;
 }
 .title {
-    margin: 10px 0 20px 0;
-    font-size: 24px;
+    margin: 15px 0 20px 0;
+    font-size: 21px;
     font-weight: 700;
-    line-height: 28px;
+    line-height: 26px;
     text-align: center;
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #fff;
@@ -88,16 +88,15 @@
     .subject {
         height: 320px;
         padding: 30px 20px 20px;
-        
     }
     .title {
-        font-size: 24px;
-        margin: 15px 0 20px 0;
+        font-size: 18px;
+        line-height: 24px;
     }
     .text {
         font-size: 12px;
-        padding: 0 30px;
     }
+
 }
 @media (max-width: 700px) {
     .subject {

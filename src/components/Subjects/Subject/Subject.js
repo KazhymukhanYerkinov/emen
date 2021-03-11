@@ -8,7 +8,7 @@ const Subject = ({index, BASE_URL, language, item}) => {
     
 
     return (
-            <Link to = {item.id === "_FULL_UNIT_EXAM_" ? `/showTheme/${item.id}/ENT`:`/showTheme/${item.id}/SUBJECT`} className = {cls.subject} style = {{ backgroundColor: `${item.color}`}}>
+            <Link to = {item.id === "full_unt" ? `/showTheme/${item.id}/ENT`:`/showTheme/${item.id}/SUBJECT`} className = {cls.subject} style = {{ backgroundColor: `${item.color}`}}>
                 <div className = {cls.subject__inner}>
                     <div className = {cls.content}>
                         <img src = {BASE_URL + '' + item.logo} alt = "" className = {cls.image} />
