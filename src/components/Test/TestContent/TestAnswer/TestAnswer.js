@@ -7,8 +7,12 @@ const TestAnswer = ({ mapWithAnswers, question_id, answer_text, answer_id, onSet
 
     React.useEffect(() => {
         document.getElementById(`answer_${answer_id}`).innerHTML = answer_text;
-    }, [])
-    const isChecked =  mapWithAnswers.get(question_id) === answer_id;
+    }, [])  
+
+    let isChecked = false;
+    if (mapWithAnswers.has(question_id)) {
+        isChecked = (mapWithAnswers.get(question_id).answer === answer_id);
+    }
 
 
     return (

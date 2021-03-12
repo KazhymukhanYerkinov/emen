@@ -14,6 +14,20 @@
     border-radius: 4px;
 }
 
+.subject__name {
+    margin-top: 15px;
+    margin-bottom: -10px;
+    padding: 20px 30px;
+
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 24px;
+    border-radius: 4px;
+    color: #fff;
+
+    
+}
+
 @media (max-width: 1000px) {
     .content {
         order: 2;

@@ -5,7 +5,7 @@ import cls from './SettingsModal.module.css';
 
 const levels = ['Легкий', 'Средний', 'Сложный'];
 
-const SettingsModal = ({ showError, onHandleSettingsModal, handleStartTest }) => {
+const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
     const [ chooseLevel, setChooseLevel ] = React.useState(0);
     const [ showHint, setShowHint ] = React.useState(false);
 

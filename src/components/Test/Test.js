@@ -43,8 +43,6 @@ const Test = ({ match, BASE_URL }) => {
     // Сұрақтарды сақтайтын мапқа сақтау
     const [ mapWithAnswers, setMapWithAnswers ] = React.useState(new Map());
 
-    
-
     // Серверден сұрақтарды алу
     React.useEffect(() => {
         dispatch(getQuestionThunk(examUID));
@@ -67,6 +65,8 @@ const Test = ({ match, BASE_URL }) => {
     const TEST_BANNER = data.banner;
     const TEST_QUESTIONS = data.variants;
     const INDIVIDUAL_TEST = data.variants.length === 1;
+
+    
     
 
     // Кукидің ішінде timer бар жоқ екенін тексереміз

@@ -40,7 +40,7 @@ const DetailSubject = ({ match, BASE_URL }) => {
   const [profSubjects, setProfSubject] = React.useState({ subjects: [null, null] });
 
   // Error шығаруды көрсету
-  const [showError, setShowError] = React.useState(true);
+  const [showError, setShowError] = React.useState(false);
 
   // топиктарды серверден алу
   React.useEffect(() => {
@@ -71,17 +71,32 @@ const DetailSubject = ({ match, BASE_URL }) => {
   }
 
 
-
+  console.log(detail)
 
   // Тестты бастаудағы стандарт параметрлер
   const SUBJECT_ID = detail.banner_subject.id;
-  const SUBJECT_FULL_EXAMINATION = detail.banner_subject.subject_examination_type
-  const SUBJECT_EXAMINATION_BY_TOPIC = detail.banner_subject.topic_examination_type
+  const ENT_FULL_EXAMINATION = detail.banner_subject.examination_type;
+  const SUBJECT_FULL_EXAMINATION = detail.banner_subject.subject_examination_type;
+  const SUBJECT_EXAMINATION_BY_TOPIC = detail.banner_subject.topic_examination_type;
+
+  
+  console.log(ENT_FULL_EXAMINATION)
+
 
   // Тестті бастау
   const handleStartTest = (withHint, levelTest) => {
+
+    // ЕНТ бетінде тұрғанын анықтау
     if (history.location.pathname.includes('/ENT')) {
-      console.log('hello')
+
+      // Таңдау пәндерін таңдаған таңдамағанын тексеру
+      if (profSubjects.subjects[0] !== null && profSubjects.subjects[1] !== null) {
+          let PSubjectID_1 = profSubjects.subjects[0].id;
+          let PSubjectID_2 = profSubjects.subjects[1].id;
+          dispatch(postStartTestThunk(ENT_FULL_EXAMINATION, null, withHint, levelTest, null, PSubjectID_1, PSubjectID_2));
+      } else {
+        setShowError((prevError) => !prevError);
+      }
     }
     else {
       if (!settings.modal.topicID) {
@@ -97,15 +112,15 @@ const DetailSubject = ({ match, BASE_URL }) => {
   return (
     <div className={cls.detail}>
       <div className='container'>
-        <ErrorModal />
         <DetailHeader
           onHandleSettingsModal={onHandleSettingsModal}
           banner={detail.banner_subject}
           BASE_URL={BASE_URL} />
-
+        {showError && 
+          <ErrorModal 
+            setShowError = { setShowError }/>}
         {settings.modal.show &&
           <SettingsModal
-            showError={showError}
             onHandleSettingsModal={onHandleSettingsModal}
             handleStartTest={handleStartTest} />}
 

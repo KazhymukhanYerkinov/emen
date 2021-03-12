@@ -70,9 +70,18 @@ export const subjectAPI = {
 }
 
 export const startTestAPI = {
-    postStartTest(exam_type, subject, with_hint, difficulty, topic_id) {
+    postStartTest(exam_type, subject, with_hint, difficulty, topic_id, profile_subject_1, profile_subject_2) {
         let body;
-        if (topic_id) {
+        if (profile_subject_1 && profile_subject_2) {
+            body = JSON.stringify({
+                exam_type,
+                with_hint,
+                profile_subject_1,
+                profile_subject_2,
+                difficulty
+            })
+        }
+        else if (topic_id) {
             body = JSON.stringify({ 
                 exam_type, 
                 subject,
@@ -89,6 +98,7 @@ export const startTestAPI = {
                 difficulty 
             });
         }
+        console.log(body)
         return instance.post(`api/v1/examinations/start/`, body).then(response => {
             console.log(response)
             return response.data;

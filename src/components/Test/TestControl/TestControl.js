@@ -22,8 +22,6 @@ const TestControl = ({
     handleScrollQuestionById }) => {
 
 
-    console.log('RENDER TEST CONTROL')
-
     const [ showListOfSubject, setListOfSubject ] = React.useState(null);
     const [ compass, setCompass ] = React.useState(false);
     
@@ -59,6 +57,7 @@ const TestControl = ({
 
                         key = { index } 
                         index = { index }
+                        questions_count = { item.questions_count }
                         questions = { item.questions }
                         subject = { item.subject } 
                         showListOfSubject = { showListOfSubject } 

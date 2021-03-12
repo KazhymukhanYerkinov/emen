@@ -102,7 +102,6 @@ export const loadUserThunk = () => async (dispatch) => {
     if (Cookie.get('access')) {
         try {
             let data = await authAPI.loadUser();
-            console.log(data);
             dispatch({ type: LOAD_USER_SUCCESS, payload: data });
             
         } catch (err) {

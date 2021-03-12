@@ -65,9 +65,9 @@ const testReducer = (state = initialState, action) => {
     }
 }
 
-export const postStartTestThunk = (exam_type, subject, with_hint, difficulty, topic_id = null) => async (dispatch) => {
+export const postStartTestThunk = (exam_type, subject, with_hint, difficulty, topic_id = null, profile_subject_1, profile_subject_2) => async (dispatch) => {
     try {
-        const data = await startTestAPI.postStartTest(exam_type, subject, with_hint, difficulty, topic_id);
+        const data = await startTestAPI.postStartTest(exam_type, subject, with_hint, difficulty, topic_id, profile_subject_1, profile_subject_2);
         dispatch({ type: POST_QUESTION_SUCCESS, examUID: data.exam_uuid });
     } catch (error) {
         dispatch({ type: POST_QUESTION_FAIL });
