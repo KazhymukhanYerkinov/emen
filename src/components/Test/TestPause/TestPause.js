@@ -4,6 +4,7 @@ import finish from '../../../assets/images/finish.jpg';
 
 import TestFinish from '../TestFinish/TestFinish';
 
+
 import cls from './TestPause.module.css';
 
 
@@ -16,6 +17,10 @@ const TestPause = ({
     openFinishModal, 
     onOnlyFinish, 
     onFinishTestButton }) => {
+    
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     time = finishAllTest && 14400 - time;
     let second = ('0' + Math.floor(time % 60)).slice(-2);
@@ -23,7 +28,6 @@ const TestPause = ({
     let hours = ('0' + Math.floor(time / 3600)).slice(-2);
 
     return (
-        <>  
             <div className = {cls.pause}>
                 {openFinishModal && <TestFinish onFinishTestButton = { onFinishTestButton } onOnlyFinish = { onOnlyFinish } handleFinishAllTest = { handleFinishAllTest }/> }
                 <img className = {cls.pause__iamge} src = {finishAllTest ? finish: pause } alt = "" />
@@ -46,8 +50,7 @@ const TestPause = ({
                 
                 }
             </div>
-            
-        </>
+
     )
 }
 

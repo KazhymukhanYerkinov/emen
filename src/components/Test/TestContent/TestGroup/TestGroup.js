@@ -8,8 +8,7 @@ import cls from '../TestContent.module.css'
 
 const TestGroup = ({ 
   item,
-  uuid,
-  question_number, 
+  uuid, 
   mapWithAnswers, 
   setMapWithAnswers }) => {
   React.useEffect(() => {

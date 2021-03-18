@@ -22,6 +22,8 @@ let time;
 smoothscroll.polyfill()
 
 const Test = ({ match, BASE_URL }) => {
+    let requestEveryOneMinuteInterval;
+
     // Экзамен бастайтын UID код
     const examUID = match.params.examUID;
 
@@ -38,10 +40,12 @@ const Test = ({ match, BASE_URL }) => {
     const [ finishAllTest, setFinishAllTest ] = React.useState(false);
 
     // Тест пәндерін ауысатын жерін конрить ететін state
-    // const [ indexOfSub, setIndexOfSub ] = React.useState(0);
+    const [ indexOfSub, setIndexOfSub ] = React.useState(0);
 
     // Сұрақтарды сақтайтын мапқа сақтау
     const [ mapWithAnswers, setMapWithAnswers ] = React.useState(new Map());
+
+
 
     // Серверден сұрақтарды алу
     React.useEffect(() => {
@@ -53,13 +57,33 @@ const Test = ({ match, BASE_URL }) => {
         else {
             setMapWithAnswers(new Map()); 
         }
-    }, [examUID])
+
+        requestEveryOneMinuteInterval = setInterval(() => {
+            console.log(Cookie.get("answers"));
+            console.log(Cookie.get("timer"));
+
+        }, 2000)
+
+        return () => {
+            console.log("HERE")
+            Cookie.remove('answers');
+            Cookie.remove('timer'); 
+            clearInterval(requestEveryOneMinuteInterval);
+        }
+
+    }, [])
+
+
+    
+
+    
+
+    
 
     // Толық бітпейінше көрсетілетін загрузка
     if (!data || isFetching) {
         return <Preloader />
     }
-    console.log(data);
 
     const LEFT_TIME = data.left_seconds;
     const TEST_BANNER = data.banner;
@@ -79,7 +103,12 @@ const Test = ({ match, BASE_URL }) => {
     }
 
     // Сұрақтарға ID бойынша smooth scroll жасау
-    const handleScrollQuestionById = (question_id) => {
+    const handleScrollQuestionById = (question_id, navigateBySubId) => {
+        if (navigateBySubId !== indexOfSub) {
+            setIndexOfSub(navigateBySubId);
+            return;
+        }
+        
         const targetElement = document.querySelector(`#scroll_${question_id}`);
         const rectTop = targetElement.getBoundingClientRect().top;
         const offsetTop = window.pageYOffset;
@@ -109,6 +138,8 @@ const Test = ({ match, BASE_URL }) => {
         setOpenFinishModal((isFinish) => !isFinish);
     }
 
+
+    // Толық бітіру
     const handleFinishAllTest = () => {
         Cookie.remove('answers');
         Cookie.remove('timer');
@@ -143,6 +174,8 @@ const Test = ({ match, BASE_URL }) => {
                     <div className = {cls.test__content}>
                         <TestContent 
                             TEST_QUESTIONS = { TEST_QUESTIONS }
+                            indexOfSub = { indexOfSub }
+                            requestEveryOneMinuteInterval = { requestEveryOneMinuteInterval }
                             mapWithAnswers = { mapWithAnswers }
                             setMapWithAnswers = { setMapWithAnswers }/>
                         <TestControl 

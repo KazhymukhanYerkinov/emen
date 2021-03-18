@@ -56,7 +56,7 @@ const TestControl = ({
                         handleScrollQuestionById = { handleScrollQuestionById }
 
                         key = { index } 
-                        index = { index }
+                        navigateBySubId = { index }
                         questions_count = { item.questions_count }
                         questions = { item.questions }
                         subject = { item.subject } 

@@ -12,6 +12,8 @@ import MultipleAnswer from '../MultipleAnswer/MultipleAnswer';
 const TestQuestion = ({
   id, 
   uuid,
+  indexOfSub,
+  numeration,
   is_group, 
   is_multiple, 
   help_text, 
@@ -21,7 +23,7 @@ const TestQuestion = ({
   setMapWithAnswers }) => {
   
 
-
+  console.log('QUESTIOn')
   // Избранный сұрақты басқаратын state
   const [saveQuestion, setSaveQuestion] = React.useState(null);
 
@@ -35,7 +37,8 @@ const TestQuestion = ({
     // Текст подсказкаларды html ге айналдыру
     if (help_text)
       document.getElementById(`hint_${id}`).innerHTML = help_text;
-  }, [])
+
+  }, [indexOfSub])
 
   // Жауаптардың үстінен басқаннан кейінгі жауаптарды map-қа және кукиға сақтау
   const onSetActiveAnswer = (answerId) => {
@@ -45,7 +48,6 @@ const TestQuestion = ({
         answer: answerId,
         variant: uuid,
       }
-      console.log(object)
       setMapWithAnswers(new Map(mapWithAnswers.set(id, object)));
     }
     else {
@@ -65,6 +67,13 @@ const TestQuestion = ({
 
         if (getAnswers.includes(answerId)) {
           let tempAnswers = getAnswers.filter(answerID => answerID !== answerId);
+
+          if (tempAnswers.length === 0) {
+            console.log(mapWithAnswers.delete(id));
+
+            setMapWithAnswers(new Map(mapWithAnswers));
+            return;
+          }
           
           let object = {
             question: id,
@@ -104,12 +113,12 @@ const TestQuestion = ({
   }
 
 
-  console.log(mapWithAnswers.get(2329).question);
+  
   return (
     <div className={classNames(cls.ques, { [cls.is_group]: is_group })} id={`scroll_${id}`}>
 
       <div className={cls.ques__header}>
-        <div className={cls.ques__title}> Вопрос #</div>
+        <div className={cls.ques__title}> Вопрос #{numeration}</div>
         <div onClick={() => onSaveQuestion(id)}>
           <TurnedInIcon className={classNames(cls.ques__save, { [cls.active]: saveQuestion !== null })} />
         </div>

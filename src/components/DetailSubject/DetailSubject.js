@@ -1,5 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
+import Cookie from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, withRouter, useHistory } from 'react-router-dom';
 
@@ -85,6 +86,8 @@ const DetailSubject = ({ match, BASE_URL }) => {
 
   // Тестті бастау
   const handleStartTest = (withHint, levelTest) => {
+    if (Cookie.get("answers")) return Cookie.remove("answers");
+    if (Cookie.get("timer")) return Cookie.remove("timer");
 
     // ЕНТ бетінде тұрғанын анықтау
     if (history.location.pathname.includes('/ENT')) {

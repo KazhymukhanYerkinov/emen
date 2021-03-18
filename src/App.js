@@ -7,7 +7,6 @@ import { loginThunk, signUpThunk, logoutThunk,
   setRedirectSuccessPage, emailResetConfirmThunk,
   passwordResetConfirmThunk, } from './redux/auth-reducer';
 import { initSuccessThunk } from './redux/app-reducer';
-
 import { Content, Header, Footer, 
   SignIn, SignUp, ForgotPassword, 
   ConfirmPassword, Success, Subjects,

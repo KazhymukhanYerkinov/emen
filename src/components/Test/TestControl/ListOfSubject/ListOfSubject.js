@@ -9,14 +9,15 @@ const ListOfSubject = ({
   BASE_URL,
   INDIVIDUAL_TEST,
   mapWithAnswers,
-  index, questions,
+  navigateBySubId, 
+  questions,
   subject,
   questions_count,
   showListOfSubject,
   onChangeSubjectList,
   handleScrollQuestionById }) => {
 
-  const isOpen = index === showListOfSubject || INDIVIDUAL_TEST;
+  const isOpen = navigateBySubId === showListOfSubject || INDIVIDUAL_TEST;
   let size = 0;
   let squareBlocks = questions.map((item, index) => {
     
@@ -36,6 +37,7 @@ const ListOfSubject = ({
 
           return <SquareBlock
             key = { uniqueKey }
+            navigateBySubId = { navigateBySubId }
             question_id = { question.id }
             numeration = { question.numeration }
             isActive = { isActive }
@@ -46,6 +48,7 @@ const ListOfSubject = ({
 
       // Группавой еместерге арналған
       <SquareBlock
+        navigateBySubId = { navigateBySubId }
         key = { index }
         question_id = { item.id }
         numeration = { item.numeration }
@@ -58,7 +61,7 @@ const ListOfSubject = ({
 
   return (
     <div className={cls.listOf}>
-      <div className={cls.listOf__header} onClick={() => onChangeSubjectList(index)}>
+      <div className={cls.listOf__header} onClick={() => onChangeSubjectList(navigateBySubId)}>
         <div className={cls.listOf__info}>
 
           <img src={BASE_URL + '' + subject.logo} alt="" />
