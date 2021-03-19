@@ -12,6 +12,7 @@ const IS_FETCHING_DATA_FALSE = 'IS_FETCHING_DATA_FALSE';
 
 
 
+
 let initialState = {
 
     // тест пост
@@ -84,6 +85,23 @@ export const getQuestionThunk = (uid) => async (dispatch) => {
         dispatch({ type: IS_FETCHING_DATA_FALSE });
     } catch (error) {
         dispatch({ type: GET_QUESTIONS_FAIL });
+    }
+}
+
+export const saveTestQuestionThunk = (examUID, left_seconds, is_paused, student_answers) => async (dispatch) => {
+    try {
+        await startTestAPI.saveQuestion(examUID, left_seconds, is_paused, student_answers);
+
+    } catch (e) {
+        console.log(e);
+    } 
+}
+
+export const finishAllTestThunk = (examUID, left_seconds, is_paused, student_answers) => async (dispatch) => {
+    try {
+        await startTestAPI.finishQuestion(examUID, left_seconds, is_paused, student_answers);
+    } catch (e) {
+        console.log(e)
     }
 }
 

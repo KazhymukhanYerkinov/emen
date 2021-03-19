@@ -109,6 +109,31 @@ export const startTestAPI = {
         return instance.get(`api/v1/examinations/${uid}/`).then(response => {
             return response.data
         })
+    },
+
+    saveQuestion(examUID, left_seconds, is_paused, student_answers) {
+        let body = JSON.stringify({
+            left_seconds,
+            is_paused,
+            student_answers,
+        })
+
+        console.log(body);
+
+        return instance.post(`api/v1/examinations/${examUID}/save-state/`, body).then(response => {
+            console.log(response);
+        })
+    },
+
+    finishQuestion(examUID, left_seconds, is_paused, student_answers) {
+        let body = JSON.stringify({
+            left_seconds,
+            is_paused,
+            student_answers,
+        });
+        return instance.post(`api/v1/examinations/${examUID}/finish/`, body).then(response => {
+            console.log(response);
+        })
     }
 } 
 

@@ -10,8 +10,6 @@ let interval;
 const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinishTestButton }) => {
     const [ time, setTime ] = React.useState(timer);
     
-    
-    
     if (time <= 0 || stopTimer) {
         clearInterval(interval);
     }
@@ -23,7 +21,7 @@ const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinish
             }, 1000)
             return () => clearInterval(interval);
         }
-    }, [stopTimer]);
+    }, []);
 
     Cookie.set('timer', time);
     let second = ('0' + Math.floor(time % 60)).slice(-2);

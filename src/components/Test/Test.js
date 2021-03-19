@@ -4,7 +4,7 @@ import smoothscroll from 'smoothscroll-polyfill';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getQuestionThunk } from '../../redux/startTest-reducer';
+import { getQuestionThunk, saveTestQuestionThunk, finishAllTestThunk } from '../../redux/startTest-reducer';
 
 import TestHeader from './TestHeader/TestHeader';
 import TestContent from './TestContent/TestContent';
@@ -19,31 +19,32 @@ import cls from './Test.module.css';
 
 
 let time;
+let requestEveryOneMinuteInterval;
 smoothscroll.polyfill()
 
 const Test = ({ match, BASE_URL }) => {
-    let requestEveryOneMinuteInterval;
+
 
     // Экзамен бастайтын UID код
     const examUID = match.params.examUID;
 
     const dispatch = useDispatch();
-    const {data, isFetching } = useSelector(({ testPage }) => testPage);
+    const { data, isFetching } = useSelector(({ testPage }) => testPage);
 
     // Уақыт контрить ететін state
-    const [ stopTimer, setStopTimer ] = React.useState(false);
+    const [stopTimer, setStopTimer] = React.useState(false);
 
     // Тест біту бітпеуін контрить ететін state
-    const [ openFinishModal, setOpenFinishModal ] = React.useState(false);
+    const [openFinishModal, setOpenFinishModal] = React.useState(false);
 
     // Толық тестті бітіру
-    const [ finishAllTest, setFinishAllTest ] = React.useState(false);
+    const [finishAllTest, setFinishAllTest] = React.useState(false);
 
     // Тест пәндерін ауысатын жерін конрить ететін state
-    const [ indexOfSub, setIndexOfSub ] = React.useState(0);
+    const [indexOfSub, setIndexOfSub] = React.useState(0);
 
     // Сұрақтарды сақтайтын мапқа сақтау
-    const [ mapWithAnswers, setMapWithAnswers ] = React.useState(new Map());
+    const [mapWithAnswers, setMapWithAnswers] = React.useState(new Map());
 
 
 
@@ -55,30 +56,61 @@ const Test = ({ match, BASE_URL }) => {
             setMapWithAnswers(new Map(JSON.parse(Cookie.get('answers'))));
         }
         else {
-            setMapWithAnswers(new Map()); 
+            setMapWithAnswers(new Map());
         }
 
         requestEveryOneMinuteInterval = setInterval(() => {
-            console.log(Cookie.get("answers"));
-            console.log(Cookie.get("timer"));
+            let student_answers = [];
 
-        }, 2000)
+            if (Cookie.get("answers")) {
+                const answers = JSON.parse(Cookie.get("answers"));
+                for (let i = 0; i < answers.length; i++) {
+                    let body = {
+                        question: answers[i][0],
+                        answers: [answers[i][1].answer],
+                        variant: answers[i][1].variant,
+                    }
+
+                    student_answers.push(body);
+                }
+                let is_paused;
+                let left_time = 14400;
+
+
+                if (Cookie.get("stopTime") === undefined) {
+                    is_paused = false;
+                }
+                else {
+                    is_paused = Cookie.get("stopTime");
+                }
+
+
+                if (Cookie.get("timer")) {
+                    left_time = Cookie.get("timer");
+                }
+
+                dispatch(saveTestQuestionThunk(examUID, left_time, is_paused, student_answers));
+
+            }
+        }, 5000)
 
         return () => {
             console.log("HERE")
             Cookie.remove('answers');
-            Cookie.remove('timer'); 
+            Cookie.remove('timer');
+            Cookie.remove("stopTime")
+
             clearInterval(requestEveryOneMinuteInterval);
         }
 
     }, [])
 
 
-    
 
-    
 
-    
+
+
+
 
     // Толық бітпейінше көрсетілетін загрузка
     if (!data || isFetching) {
@@ -90,8 +122,8 @@ const Test = ({ match, BASE_URL }) => {
     const TEST_QUESTIONS = data.variants;
     const INDIVIDUAL_TEST = data.variants.length === 1;
 
-    
-    
+
+
 
     // Кукидің ішінде timer бар жоқ екенін тексереміз
     if (Cookie.get('timer')) {
@@ -99,7 +131,7 @@ const Test = ({ match, BASE_URL }) => {
     }
     else {
         time = LEFT_TIME;
-        Cookie.set('timer', time, {expires: 1/5});
+        Cookie.set('timer', time, { expires: 1 / 5 });
     }
 
     // Сұрақтарға ID бойынша smooth scroll жасау
@@ -108,7 +140,7 @@ const Test = ({ match, BASE_URL }) => {
             setIndexOfSub(navigateBySubId);
             return;
         }
-        
+
         const targetElement = document.querySelector(`#scroll_${question_id}`);
         const rectTop = targetElement.getBoundingClientRect().top;
         const offsetTop = window.pageYOffset;
@@ -124,7 +156,10 @@ const Test = ({ match, BASE_URL }) => {
 
     // Уақытты тоқтату және қайттан бастауды басқаратын функция
     const handleStopTimer = () => {
-        setStopTimer((prevIsStop) => !prevIsStop);
+        setStopTimer((prevIsStop) => {
+            Cookie.set("stopTime", !prevIsStop);
+            return !prevIsStop;
+        });
     }
 
     // Тестті аяқтау бетіне апару
@@ -143,10 +178,39 @@ const Test = ({ match, BASE_URL }) => {
     const handleFinishAllTest = () => {
         Cookie.remove('answers');
         Cookie.remove('timer');
+        Cookie.remove('stopTime');
+
+        let student_answers = [];
 
         for (let item of mapWithAnswers.entries()) {
-            console.log(item[0], item[1])
+            let body = {
+                question: item[0],
+                answers: [item[1].answer],
+                variant: item[1].variant,
+            }
+            student_answers.push(body);
         }
+
+        let is_paused;
+        let left_time = 14400;
+
+
+        if (Cookie.get("stopTime") === undefined) {
+            is_paused = false;
+        }
+        else {
+            is_paused = Cookie.get("stopTime");
+        }
+
+
+        if (Cookie.get("timer")) {
+            left_time = Cookie.get("timer");
+        }
+
+
+
+
+        dispatch(finishAllTestThunk(examUID, left_time, is_paused, student_answers));
 
         onOnlyFinish();
         setFinishAllTest(true);
@@ -154,47 +218,47 @@ const Test = ({ match, BASE_URL }) => {
 
 
     return (
-        <div className = {cls.test}>
+        <div className={cls.test}>
             {stopTimer ?
-            <TestPause 
-                time = { time } 
-                mapWithAnswers = { mapWithAnswers } 
-                finishAllTest = { finishAllTest }
-                handleFinishAllTest = { handleFinishAllTest }
+                <TestPause
+                    time={time}
+                    mapWithAnswers={mapWithAnswers}
+                    finishAllTest={finishAllTest}
+                    handleFinishAllTest={handleFinishAllTest}
 
-                onStopTime = { handleStopTimer }
-                openFinishModal = { openFinishModal }
-                onOnlyFinish = { onOnlyFinish }
-                onFinishTestButton = { onFinishTestButton }/>:
+                    onStopTime={handleStopTimer}
+                    openFinishModal={openFinishModal}
+                    onOnlyFinish={onOnlyFinish}
+                    onFinishTestButton={onFinishTestButton} /> :
 
-                <div className = 'container'>
+                <div className='container'>
                     <TestHeader
-                        TEST_BANNER = { TEST_BANNER }
-                        BASE_URL = { BASE_URL } /> 
-                    <div className = {cls.test__content}>
-                        <TestContent 
-                            TEST_QUESTIONS = { TEST_QUESTIONS }
-                            indexOfSub = { indexOfSub }
-                            requestEveryOneMinuteInterval = { requestEveryOneMinuteInterval }
-                            mapWithAnswers = { mapWithAnswers }
-                            setMapWithAnswers = { setMapWithAnswers }/>
-                        <TestControl 
-                            BASE_URL = { BASE_URL }
-                            TEST_QUESTIONS = { TEST_QUESTIONS }
-                            INDIVIDUAL_TEST = { INDIVIDUAL_TEST }
-                            mapWithAnswers = { mapWithAnswers }
+                        TEST_BANNER={TEST_BANNER}
+                        BASE_URL={BASE_URL} />
+                    <div className={cls.test__content}>
+                        <TestContent
+                            TEST_QUESTIONS={TEST_QUESTIONS}
+                            indexOfSub={indexOfSub}
+                            requestEveryOneMinuteInterval={requestEveryOneMinuteInterval}
+                            mapWithAnswers={mapWithAnswers}
+                            setMapWithAnswers={setMapWithAnswers} />
+                        <TestControl
+                            BASE_URL={BASE_URL}
+                            TEST_QUESTIONS={TEST_QUESTIONS}
+                            INDIVIDUAL_TEST={INDIVIDUAL_TEST}
+                            mapWithAnswers={mapWithAnswers}
 
-                            handleScrollQuestionById = { handleScrollQuestionById }
+                            handleScrollQuestionById={handleScrollQuestionById}
 
-                            time = { time } 
-                            stopTimer = { stopTimer } 
-                            onStopTime = { handleStopTimer }
-                            onFinishTestButton = { onFinishTestButton } />
-                    </div> 
+                            time={time}
+                            stopTimer={stopTimer}
+                            onStopTime={handleStopTimer}
+                            onFinishTestButton={onFinishTestButton} />
+                    </div>
                 </div>
             }
         </div>
     )
 }
 
-export default  withRouter(Test);
+export default withRouter(Test);
