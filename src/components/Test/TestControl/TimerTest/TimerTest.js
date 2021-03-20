@@ -7,13 +7,19 @@ import cls from './TimerTest.module.css';
 
 let interval;
 
-const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinishTestButton }) => {
+const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinishTestButton, handleFinishAllTest }) => {
     const [ time, setTime ] = React.useState(timer);
     
-    if (time <= 0 || stopTimer) {
-        clearInterval(interval);
+    if (stopTimer) {
+          clearInterval(interval)
     }
 
+    React.useEffect(() => {
+        if (time <= 0) {
+            clearInterval(interval); 
+            handleFinishAllTest(true);
+        }
+    })
     React.useEffect(() => {
         if (!stopTimer) {
             interval = setInterval(() => {

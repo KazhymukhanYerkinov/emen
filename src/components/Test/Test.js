@@ -59,15 +59,25 @@ const Test = ({ match, BASE_URL }) => {
             setMapWithAnswers(new Map());
         }
 
+
         requestEveryOneMinuteInterval = setInterval(() => {
             let student_answers = [];
 
             if (Cookie.get("answers")) {
                 const answers = JSON.parse(Cookie.get("answers"));
                 for (let i = 0; i < answers.length; i++) {
+                    let ans;
+
+                    if (Array.isArray(answers[i][1].answer)) {
+                        ans = [...answers[i][1].answer];
+                    }
+                    else {
+                        ans = [answers[i][1].answer];
+                    }
+
                     let body = {
                         question: answers[i][0],
-                        answers: [answers[i][1].answer],
+                        answers: ans,
                         variant: answers[i][1].variant,
                     }
 
@@ -92,7 +102,7 @@ const Test = ({ match, BASE_URL }) => {
                 dispatch(saveTestQuestionThunk(examUID, left_time, is_paused, student_answers));
 
             }
-        }, 5000)
+        }, 100000)
 
         return () => {
             console.log("HERE")
@@ -106,22 +116,24 @@ const Test = ({ match, BASE_URL }) => {
     }, [])
 
 
-
-
-
-
-
-
     // Толық бітпейінше көрсетілетін загрузка
     if (!data || isFetching) {
         return <Preloader />
     }
 
+    console.log(data);
+
+    
+
     const LEFT_TIME = data.left_seconds;
     const TEST_BANNER = data.banner;
     const TEST_QUESTIONS = data.variants;
     const INDIVIDUAL_TEST = data.variants.length === 1;
+    let QUESTION_SIZE = 140;
 
+    if (INDIVIDUAL_TEST) {
+        QUESTION_SIZE = data.variants[0].questions_count;
+    }
 
 
 
@@ -138,6 +150,10 @@ const Test = ({ match, BASE_URL }) => {
     const handleScrollQuestionById = (question_id, navigateBySubId) => {
         if (navigateBySubId !== indexOfSub) {
             setIndexOfSub(navigateBySubId);
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
             return;
         }
 
@@ -155,10 +171,18 @@ const Test = ({ match, BASE_URL }) => {
     }
 
     // Уақытты тоқтату және қайттан бастауды басқаратын функция
-    const handleStopTimer = () => {
+    const handleStopTimer = (isType = false) => {
+        console.log(isType);
         setStopTimer((prevIsStop) => {
-            Cookie.set("stopTime", !prevIsStop);
-            return !prevIsStop;
+            if (isType) {
+                Cookie.set("stopTime", true);
+                return true;
+            }
+            else {
+                Cookie.set("stopTime", !prevIsStop);
+                return !prevIsStop;
+            }
+            
         });
     }
 
@@ -175,17 +199,24 @@ const Test = ({ match, BASE_URL }) => {
 
 
     // Толық бітіру
-    const handleFinishAllTest = () => {
+    const handleFinishAllTest = (isType) => {
         Cookie.remove('answers');
-        Cookie.remove('timer');
         Cookie.remove('stopTime');
+        clearInterval(requestEveryOneMinuteInterval);
 
         let student_answers = [];
 
         for (let item of mapWithAnswers.entries()) {
+            let ans;
+            if (Array.isArray(item[1].answer)) {
+                ans = [...item[1].answer]
+            }
+            else {
+                ans = [item[1].answer];
+            }
             let body = {
                 question: item[0],
-                answers: [item[1].answer],
+                answers: ans,
                 variant: item[1].variant,
             }
             student_answers.push(body);
@@ -202,17 +233,17 @@ const Test = ({ match, BASE_URL }) => {
             is_paused = Cookie.get("stopTime");
         }
 
-
         if (Cookie.get("timer")) {
             left_time = Cookie.get("timer");
         }
 
-
-
-
         dispatch(finishAllTestThunk(examUID, left_time, is_paused, student_answers));
 
-        onOnlyFinish();
+        if (!isType) {
+            onOnlyFinish();
+        }
+        
+        handleStopTimer(true);
         setFinishAllTest(true);
     }
 
@@ -222,6 +253,8 @@ const Test = ({ match, BASE_URL }) => {
             {stopTimer ?
                 <TestPause
                     time={time}
+                    LEFT_TIME = { LEFT_TIME }
+                    QUESTION_SIZE = { QUESTION_SIZE }
                     mapWithAnswers={mapWithAnswers}
                     finishAllTest={finishAllTest}
                     handleFinishAllTest={handleFinishAllTest}
@@ -247,6 +280,7 @@ const Test = ({ match, BASE_URL }) => {
                             TEST_QUESTIONS={TEST_QUESTIONS}
                             INDIVIDUAL_TEST={INDIVIDUAL_TEST}
                             mapWithAnswers={mapWithAnswers}
+                            handleFinishAllTest = { handleFinishAllTest }
 
                             handleScrollQuestionById={handleScrollQuestionById}
 

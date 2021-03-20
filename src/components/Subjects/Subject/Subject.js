@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import cls from './Subject.module.css';
 
 
-const Subject = ({index, BASE_URL, language, item}) => {
+const Subject = ({ BASE_URL, language, item}) => {
 
     
-
+    
     return (
             <Link to = {item.id === "full_unt" ? `/showTheme/${item.id}/ENT`:`/showTheme/${item.id}/SUBJECT`} className = {cls.subject} style = {{ backgroundColor: `${item.color}`}}>
                 <div className = {cls.subject__inner}>

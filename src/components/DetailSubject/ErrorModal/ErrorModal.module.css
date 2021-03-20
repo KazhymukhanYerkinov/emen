@@ -42,3 +42,14 @@
 .error__button:hover {
     background-color: #f72d1e;
 }
+
+
+.error__desc {
+    margin-bottom: 10px;
+    
+    text-align: center;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #222;
+}

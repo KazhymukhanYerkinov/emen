@@ -37,6 +37,9 @@
     color: #5F6368;
 }
 .pause__re, .pause__finish {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     width: 100%;
     height: 50px;

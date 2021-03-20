@@ -14,7 +14,8 @@ const TestControl = ({
     BASE_URL, 
     TEST_QUESTIONS, 
     INDIVIDUAL_TEST, 
-    mapWithAnswers,  
+    mapWithAnswers,
+    handleFinishAllTest,  
     time, 
     stopTimer, 
     onStopTime, 
@@ -42,6 +43,7 @@ const TestControl = ({
             <TimerTest 
                 stopTimer = { stopTimer } 
                 timer = { time } 
+                handleFinishAllTest = { handleFinishAllTest }
                 onStopTime = { onStopTime }
                 onFinishTestButton = { onFinishTestButton }
                 handleCompassChange = { handleCompassChange }/>
