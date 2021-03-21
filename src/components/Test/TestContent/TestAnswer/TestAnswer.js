@@ -11,7 +11,7 @@ const TestAnswer = ({ mapWithAnswers, question_id, answer_text, answer_id, onSet
 
     let isChecked = false;
     if (mapWithAnswers.has(question_id)) {
-        isChecked = (mapWithAnswers.get(question_id).answer === answer_id);
+        isChecked = (mapWithAnswers.get(question_id).answer.includes(answer_id));
     }
 
 

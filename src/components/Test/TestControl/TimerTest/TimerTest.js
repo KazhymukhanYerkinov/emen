@@ -11,7 +11,7 @@ const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinish
     const [ time, setTime ] = React.useState(timer);
     
     if (stopTimer) {
-          clearInterval(interval)
+        clearInterval(interval)
     }
 
     React.useEffect(() => {

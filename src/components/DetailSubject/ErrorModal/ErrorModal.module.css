@@ -18,7 +18,7 @@
     max-width: 350px;
     border-radius: 3px;
     margin: auto;
-    padding-top: 30px;
+    padding: 30px 15px 10px;
     position: relative;
 
     background-color: #fff;
@@ -31,13 +31,27 @@
     line-height: 21px;
     text-align: center;
 }
-.error__button {
+.error__button, .info__button, .continue__button {
     width: 100%;
     height: 35px;
 
     color: #fff;
     background-color: #F44336;
+    border-radius: 4px;
     transition: background-color .2s linear;
+}
+.continue__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: #1A73E8;
+}
+.info__button {
+    margin-top: 7px;
+    background-color: #F7F7F7;
+    color: #000000;
 }
 .error__button:hover {
     background-color: #f72d1e;
@@ -52,4 +66,20 @@
     line-height: 19px;
 
     color: #222;
+}
+
+.block {
+    padding: 12px 5px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.image {
+    display: block;
+    margin: 0 auto;
+}
+.name {
+    font-size: 14px;
+    line-height: 17px;
+    color: #fff;
+    text-align: center;
 }

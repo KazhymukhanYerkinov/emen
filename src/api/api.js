@@ -100,7 +100,7 @@ export const startTestAPI = {
         }
         console.log(body)
         return instance.post(`api/v1/examinations/start/`, body).then(response => {
-            console.log(response)
+            
             return response.data;
         })
     },
@@ -131,6 +131,8 @@ export const startTestAPI = {
             is_paused,
             student_answers,
         });
+
+        console.log("FINISH TEST: ", body)
         return instance.post(`api/v1/examinations/${examUID}/finish/`, body).then(response => {
             console.log(response);
         })

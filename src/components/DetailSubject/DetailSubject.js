@@ -6,7 +6,7 @@ import { Redirect, Route, withRouter, useHistory } from 'react-router-dom';
 
 import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
 import { getDetailSubjectThunk, setDetailSubject } from '../../redux/subject-reducer';
-import { postStartTestThunk } from '../../redux/startTest-reducer';
+import { postStartTestThunk, setShowErrorAC } from '../../redux/startTest-reducer';
 
 import DetailContent from './DetailContent/DetailContent';
 import DetailHeader from './DetailHeader/DetailHeader';
@@ -29,7 +29,7 @@ const DetailSubject = ({ match, BASE_URL }) => {
   console.log(history.location.pathname.includes('/ENT'))
 
   const { detail } = useSelector(({ subjectPage }) => subjectPage);
-  const { isStart, examUID } = useSelector(({ testPage }) => testPage);
+  const { isStart, examUID, errorsStartTests } = useSelector(({ testPage }) => testPage);
 
   // Сабақтың жеке ID
   const subjectID = match.params.subjectID;
@@ -40,8 +40,8 @@ const DetailSubject = ({ match, BASE_URL }) => {
   // ENT profile сабақтарды басқаратын state
   const [profSubjects, setProfSubject] = React.useState({ subjects: [null, null] });
 
-  // Error шығаруды көрсету
-  const [showError, setShowError] = React.useState(false);
+  console.log(errorsStartTests);
+  
 
   // топиктарды серверден алу
   React.useEffect(() => {
@@ -73,7 +73,6 @@ const DetailSubject = ({ match, BASE_URL }) => {
   }
 
 
-  console.log(detail)
 
   // Тестты бастаудағы стандарт параметрлер
   const SUBJECT_ID = detail.banner_subject.id;
@@ -82,13 +81,13 @@ const DetailSubject = ({ match, BASE_URL }) => {
   const SUBJECT_EXAMINATION_BY_TOPIC = detail.banner_subject.topic_examination_type;
 
   
-  console.log(ENT_FULL_EXAMINATION)
 
 
   // Тестті бастау
   const handleStartTest = (withHint, levelTest) => {
-    if (Cookie.get("answers")) return Cookie.remove("answers");
-    if (Cookie.get("timer")) return Cookie.remove("timer");
+    Cookie.remove("answers");
+    Cookie.remove("stopTime");
+    Cookie.remove("timer");
 
     // ЕНТ бетінде тұрғанын анықтау
     if (history.location.pathname.includes('/ENT')) {
@@ -99,7 +98,7 @@ const DetailSubject = ({ match, BASE_URL }) => {
           let PSubjectID_2 = profSubjects.subjects[1].id;
           dispatch(postStartTestThunk(ENT_FULL_EXAMINATION, null, withHint, levelTest, null, PSubjectID_1, PSubjectID_2));
       } else {
-        setShowError((prevError) => !prevError);
+        
       }
     }
     else {
@@ -113,6 +112,13 @@ const DetailSubject = ({ match, BASE_URL }) => {
 
   }
 
+
+  const handleErrorModal = () => {
+    dispatch(setShowErrorAC());
+  }
+
+
+
   return (
     <div className={cls.detail}>
       <div className='container'>
@@ -120,9 +126,13 @@ const DetailSubject = ({ match, BASE_URL }) => {
           onHandleSettingsModal={onHandleSettingsModal}
           banner={detail.banner_subject}
           BASE_URL={BASE_URL} />
-        {showError && 
-          <ErrorModal 
-            setShowError = { setShowError }/>}
+        
+        {errorsStartTests.showError &&
+          <ErrorModal
+            BASE_URL = { BASE_URL }
+            handleErrorModal = { handleErrorModal }
+            errorsStartTests = { errorsStartTests }
+          />}
         {settings.modal.show &&
           <SettingsModal
             onHandleSettingsModal={onHandleSettingsModal}

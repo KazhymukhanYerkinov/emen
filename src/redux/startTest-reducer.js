@@ -9,6 +9,9 @@ const GET_QUESTIONS_FAIL = 'GET_QUESTIONS_FAIL';
 const IS_FETCHING_DATA_TRUE = 'IS_FETCHING_DATA_TRUE';
 const IS_FETCHING_DATA_FALSE = 'IS_FETCHING_DATA_FALSE';
 
+const SET_ERRORS_START_TESTS = 'SET_ERRORS_START_TESTS';
+const FAIL_ERROR_START_TESTS = 'FAIL_ERROR_START_TESTS';
+
 
 
 
@@ -22,6 +25,15 @@ let initialState = {
     // тест гет
     isFetching: false,
     data: null,
+
+    // error текст
+    errorsStartTests: {
+        showError: false,
+        errorMessage: null,
+        unfinishedExam: null,
+    },
+
+
 }
 
 const testReducer = (state = initialState, action) => {
@@ -61,17 +73,67 @@ const testReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false
             }
+        case SET_ERRORS_START_TESTS: {
+
+            let stateCopy = {...state};
+            let copyErrorStartTests = stateCopy.errorsStartTests;
+            copyErrorStartTests.showError = true;
+            copyErrorStartTests.errorMessage = action.errorMessage;
+            copyErrorStartTests.unfinishedExam = action.unfinishedExam;
+
+            return stateCopy;
+
+        }
+        case FAIL_ERROR_START_TESTS: {
+            let stateCopy = {...state};
+            let copyErrorStartTests = stateCopy.errorsStartTests;
+            copyErrorStartTests.showError = false;
+            copyErrorStartTests.errorMessage = null;
+            copyErrorStartTests.unfinishedExam = null;
+
+            return stateCopy;
+        }
+
         default:
             return state;
     }
 }
+// close modal error
+export const setShowErrorAC = () => ({ type: FAIL_ERROR_START_TESTS });
 
 export const postStartTestThunk = (exam_type, subject, with_hint, difficulty, topic_id = null, profile_subject_1, profile_subject_2) => async (dispatch) => {
     try {
         const data = await startTestAPI.postStartTest(exam_type, subject, with_hint, difficulty, topic_id, profile_subject_1, profile_subject_2);
         dispatch({ type: POST_QUESTION_SUCCESS, examUID: data.exam_uuid });
     } catch (error) {
-        dispatch({ type: POST_QUESTION_FAIL });
+
+        
+        if (Number(error.response.data.status_code) === 1) {
+
+            // you have unfinished exams error
+            let errorMessage = 'У вас незавершенный тест. Вы не можете начать новый тест, не завершив его.';
+            let unfinishedExam = error.response.data.unfinished_exam;
+
+            dispatch({ type: SET_ERRORS_START_TESTS, errorMessage, unfinishedExam });    
+        }
+        else if (Number(error.response.data.status_code) === 5) {
+
+            // No varinats error
+            let errorMessage = 'Извините, варианты закончились. В ближайшее время мы добавим в базу новые вопросы. Подождите пожалуйста :)';
+            let unfinishedExam = null;
+
+            dispatch({ type: SET_ERRORS_START_TESTS, errorMessage, unfinishedExam });
+        }
+
+        else if (Number(error.response.data.status_code) === 3) {
+
+            // you have no money error
+            let errorMessage = 'У вас закончились деньги. Пополните свой счет';
+            let unfinishedExam = null;
+
+            dispatch({ type: SET_ERRORS_START_TESTS, errorMessage, unfinishedExam });
+        }
+
     }
 }
 
@@ -83,8 +145,37 @@ export const getQuestionThunk = (uid) => async (dispatch) => {
         dispatch({ type: GET_QUESTIONS_SUCCESS, data: data });
 
         dispatch({ type: IS_FETCHING_DATA_FALSE });
+
     } catch (error) {
-        dispatch({ type: GET_QUESTIONS_FAIL });
+
+        
+        if (error.response.data.status_code === 6) {
+
+            // wrong uuid code
+            let errorMessage = 'Извините, такого теста нет';
+            let unfinishedExam = null;
+
+            dispatch({ type: SET_ERRORS_START_TESTS, errorMessage, unfinishedExam });
+        }
+
+        else if (error.response.data.status_code === 2) {
+
+            // you do not have access this test
+            let errorMessage = 'У вас нет доступа к этому тесту';
+            let unfinishedExam = null;
+
+            dispatch({ type: SET_ERRORS_START_TESTS, errorMessage, unfinishedExam });
+        }
+
+        else if (error.response.data.status_code === 4) {
+
+            // this examination is finished
+            let errorMessage = 'Этот тест завершен.';
+            let unfinishedExam = null;
+
+            dispatch({ type: SET_ERRORS_START_TESTS, errorMessage, unfinishedExam });
+        }
+        console.log(error.response.data);
     }
 }
 

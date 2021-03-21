@@ -45,7 +45,7 @@ const TestQuestion = ({
     if (!is_multiple) {
       let object = {
         question: id,
-        answer: answerId,
+        answer: [answerId],
         variant: uuid,
       }
       setMapWithAnswers(new Map(mapWithAnswers.set(id, object)));
@@ -119,9 +119,9 @@ const TestQuestion = ({
 
       <div className={cls.ques__header}>
         <div className={cls.ques__title}> Вопрос #{numeration}</div>
-        <div onClick={() => onSaveQuestion(id)}>
+        {/* <div onClick={() => onSaveQuestion(id)}>
           <TurnedInIcon className={classNames(cls.ques__save, { [cls.active]: saveQuestion !== null })} />
-        </div>
+        </div> */}
       </div>
 
       <div id={`question_${id}`} className={cls.ques__text}> {question_text} </div>

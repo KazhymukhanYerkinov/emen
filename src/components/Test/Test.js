@@ -4,15 +4,17 @@ import smoothscroll from 'smoothscroll-polyfill';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getQuestionThunk, saveTestQuestionThunk, finishAllTestThunk } from '../../redux/startTest-reducer';
+import { getQuestionThunk, saveTestQuestionThunk, finishAllTestThunk, setShowErrorAC } from '../../redux/startTest-reducer';
 
 import TestHeader from './TestHeader/TestHeader';
 import TestContent from './TestContent/TestContent';
 import TestControl from './TestControl/TestControl';
 import TestPause from './TestPause/TestPause';
+import ErrorModal from './ErrorModal/ErrorModal';
 import Preloader from '../common/Preloader/Preloader';
 
 import cls from './Test.module.css';
+
 
 
 
@@ -29,7 +31,7 @@ const Test = ({ match, BASE_URL }) => {
     const examUID = match.params.examUID;
 
     const dispatch = useDispatch();
-    const { data, isFetching } = useSelector(({ testPage }) => testPage);
+    const { data, isFetching, errorsStartTests } = useSelector(({ testPage }) => testPage);
 
     // Уақыт контрить ететін state
     const [stopTimer, setStopTimer] = React.useState(false);
@@ -72,7 +74,7 @@ const Test = ({ match, BASE_URL }) => {
                         ans = [...answers[i][1].answer];
                     }
                     else {
-                        ans = [answers[i][1].answer];
+                        ans = answers[i][1].answer;
                     }
 
                     let body = {
@@ -102,10 +104,9 @@ const Test = ({ match, BASE_URL }) => {
                 dispatch(saveTestQuestionThunk(examUID, left_time, is_paused, student_answers));
 
             }
-        }, 100000)
+        }, 10000);
 
         return () => {
-            console.log("HERE")
             Cookie.remove('answers');
             Cookie.remove('timer');
             Cookie.remove("stopTime")
@@ -116,6 +117,105 @@ const Test = ({ match, BASE_URL }) => {
     }, [])
 
 
+
+    React.useEffect(() => {
+        if (data) {
+            let mapAnswered = new Map();
+            let varinatsData = data.variants;
+            
+            for (let i = 0; i < varinatsData.length; i++) {
+                // Пән ішіндегі сұратарды аламыз
+                let questionsData = varinatsData[i].questions;
+
+                // Пән uuid кодын аламыз
+                let uuid = varinatsData[i].uuid;
+                
+                for (let j = 0; j < questionsData.length; j++) {
+                    // Сұрақтың is_group екенін аламыз
+                    let is_group = questionsData[j].is_group;
+
+                    // Сұрақтың id аламыз
+                    let quesID = questionsData[j].id;
+                    
+                    if (is_group) {
+                        let groupQuestion = questionsData[j].questions;
+
+                        for (let k = 0; k < groupQuestion.length; k++) {
+
+                            // Сұрақтың жауаптарын аламыз
+                            let answersData = groupQuestion[k].answers
+
+                            let groupQuesId = groupQuestion[k].id
+
+                            // Жауаптарды сақтайтын лист создать етеміз
+                            let answersList = [];
+                            let isSave = false;
+
+                            for (let l = 0; l < answersData.length; l++) {
+                                if (answersData[l].is_answered) {
+                                    answersList.push(answersData[l].id);
+                                    isSave = true;
+                                }
+                            }
+
+                            if (isSave) {
+                                // Сұрақтың объект жасаймыз
+                                let body = {
+                                    question: groupQuesId,
+                                    answer: answersList,
+                                    variant: uuid,
+                                }
+
+                                mapAnswered.set(groupQuesId, body);
+                            }
+                        }
+                    }
+                    else {
+                        // Сұрақтың жауаптарын аламыз
+                        let answersData = questionsData[j].answers;
+
+                        // Жауаптарды сақтайтын лист создать етеміз
+                        let answersList = [];
+                        let isSave = false;
+
+                        for (let k = 0; k < answersData.length; k++) {
+                            if (answersData[k].is_answered) {
+                                answersList.push(answersData[k].id);
+                                isSave = true;
+                            }
+                        }
+                        
+                        if (isSave) {
+                            // Сұрақтың объект жасаймыз
+                            let body = {
+                                question: quesID,
+                                answer: answersList,
+                                variant: uuid,
+                            }
+
+                            mapAnswered.set(quesID, body);
+                        }
+                        
+
+
+                    }
+                    
+                }
+            }
+
+            setMapWithAnswers(new Map(mapAnswered));
+        }
+        
+
+    }, [data])
+
+    const handleShowError = () => {
+        dispatch(setShowErrorAC());
+    }
+
+    if (errorsStartTests.showError) {
+        return <ErrorModal errorsStartTests = { errorsStartTests } handleShowError = { handleShowError }/>
+    }
     // Толық бітпейінше көрсетілетін загрузка
     if (!data || isFetching) {
         return <Preloader />
@@ -212,7 +312,7 @@ const Test = ({ match, BASE_URL }) => {
                 ans = [...item[1].answer]
             }
             else {
-                ans = [item[1].answer];
+                ans = item[1].answer;
             }
             let body = {
                 question: item[0],
@@ -248,8 +348,9 @@ const Test = ({ match, BASE_URL }) => {
     }
 
 
+    
     return (
-        <div className={cls.test}>
+         <div className={cls.test}>
             {stopTimer ?
                 <TestPause
                     time={time}
