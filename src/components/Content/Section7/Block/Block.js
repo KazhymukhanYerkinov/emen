@@ -1,4 +1,5 @@
 import React from 'react';
+
 import cls from './Block.module.css';
 
 const Block = ({ image, text }) => {

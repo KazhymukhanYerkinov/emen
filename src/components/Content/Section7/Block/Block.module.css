@@ -20,7 +20,7 @@
 .block__image {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
 }
 .block__content {
     display: flex;

@@ -111,7 +111,7 @@ const Test = ({ match, BASE_URL }) => {
       clearInterval(requestEveryOneMinuteInterval);
     }
 
-  }, [])
+  }, [examUID, dispatch])
 
 
 

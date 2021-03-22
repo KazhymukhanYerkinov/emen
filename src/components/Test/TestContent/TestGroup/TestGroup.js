@@ -13,7 +13,7 @@ const TestGroup = ({
   setMapWithAnswers }) => {
   React.useEffect(() => {
     document.getElementById(`group_question_${item.id}`).innerHTML = item.group_text;
-  }, [])
+  }, [item.id, item.group_text])
   
   return (
     <div>

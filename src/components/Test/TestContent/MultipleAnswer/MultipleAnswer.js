@@ -9,7 +9,7 @@ const MultipleAnswer = ({ answer_text, answer_id, question_id,  mapWithAnswers, 
 
     React.useEffect(() => {
         document.getElementById(`answer_${answer_id}`).innerHTML = answer_text;
-    }, [])
+    }, [answer_id, answer_text])
 
     let isChecked = false;
     if (mapWithAnswers.has(question_id)) {

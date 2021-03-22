@@ -25,9 +25,9 @@ const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinish
             interval = setInterval(() => {
                 setTime((prevTime) => prevTime - 1);
             }, 1000)
-            return () => clearInterval(interval);
         }
-    }, []);
+        return () => clearInterval(interval);
+    }, [stopTimer]);
 
     Cookie.set('timer', time);
     let second = ('0' + Math.floor(time % 60)).slice(-2);

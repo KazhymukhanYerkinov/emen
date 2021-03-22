@@ -1,5 +1,4 @@
 import React from 'react';
-import Cookie from 'js-cookie';
 import pause from '../../../assets/images/pause.jpg';
 import finish from '../../../assets/images/finish.jpg';
 
@@ -25,10 +24,6 @@ const TestPause = ({
     
     React.useEffect(() => {
         window.scrollTo(0, 0);
-
-        if (finishAllTest) {
-            Cookie.remove('timer');
-        }
 
     }, [])
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import Cookie from 'js-cookie';
 import classNames from 'classnames';
-import TurnedInIcon from '@material-ui/icons/TurnedIn';
 
 import cls from './TestQuestion.module.css';
 import TestAnswer from '../TestAnswer/TestAnswer';
@@ -25,7 +24,7 @@ const TestQuestion = ({
 
   console.log('QUESTIOn')
   // Избранный сұрақты басқаратын state
-  const [saveQuestion, setSaveQuestion] = React.useState(null);
+  
 
   // Подсказканы басқаратын state
   const [isHint, setIsHint] = React.useState(false);
@@ -38,7 +37,7 @@ const TestQuestion = ({
     if (help_text)
       document.getElementById(`hint_${id}`).innerHTML = help_text;
 
-  }, [indexOfSub])
+  }, [indexOfSub, help_text, id, question_text])
 
   // Жауаптардың үстінен басқаннан кейінгі жауаптарды map-қа және кукиға сақтау
   const onSetActiveAnswer = (answerId) => {
@@ -97,15 +96,7 @@ const TestQuestion = ({
     Cookie.set('answers', Array.from(mapWithAnswers));
   }
 
-  // Избранный сұрақтарды сақтау
-  const onSaveQuestion = (questionId) => {
-    if (saveQuestion) {
-      setSaveQuestion(null);
-    }
-    else {
-      setSaveQuestion(questionId);
-    }
-  }
+ 
 
   // Подсказканы көрстеу / көрсетпеу функциясы
   const handleIsHint = () => {
@@ -119,9 +110,6 @@ const TestQuestion = ({
 
       <div className={cls.ques__header}>
         <div className={cls.ques__title}> Вопрос #{numeration}</div>
-        {/* <div onClick={() => onSaveQuestion(id)}>
-          <TurnedInIcon className={classNames(cls.ques__save, { [cls.active]: saveQuestion !== null })} />
-        </div> */}
       </div>
 
       <div id={`question_${id}`} className={cls.ques__text}> {question_text} </div>

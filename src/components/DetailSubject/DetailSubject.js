@@ -52,9 +52,9 @@ const DetailSubject = ({ match, BASE_URL }) => {
     return () => {
       dispatch(setDetailSubject(null));
       dispatch({ type: 'POST_QUESTION_FAIL' });
-    }
+   }
 
-  }, [])
+  }, [dispatch, subjectID])
 
   // Старт басқандағы модал окно ашылуы
   const onHandleSettingsModal = (show, topicID) => {

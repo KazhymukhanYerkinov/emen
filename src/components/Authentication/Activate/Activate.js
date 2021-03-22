@@ -21,7 +21,7 @@ const Activate = ({ match }) => {
 
         dispatch(activateAccountThunk(uid, token));
 
-    }, [])
+    }, [dispatch, match.params.uid, match.params.token])
 
 
     if (isActivate) {
