@@ -15,6 +15,7 @@ const TestPause = ({
     QUESTION_SIZE,
     LEFT_TIME,
     onStopTime, 
+    clearAllData,
     finishAllTest, 
     handleFinishAllTest, 
     mapWithAnswers, 
@@ -67,7 +68,7 @@ const TestPause = ({
                 {finishAllTest ?
                 <>
                     <Link className = {cls.pause__re} to = {'/history'}> Резултат тестирование </Link>
-                    <Link className = {cls.pause__finish} to = {'/'}> Главная страница </Link>
+                    <Link className = {cls.pause__finish} to = {'/'} onClick = { clearAllData }> Главная страница </Link>
                 </>
                 :
                 <>

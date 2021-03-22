@@ -1,36 +1,39 @@
 import React from 'react';
-import * as axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, withRouter } from 'react-router-dom';
 
-import cls from './Activate.module.css';
+import { activateAccountThunk } from '../../../redux/auth-reducer';
+
+import Modal from '../../common/Modal/Modal';
+
+
 
 
 
 const Activate = ({ match }) => {
-    const [ resultActive, setResultActive ] = React.useState(true);
-    let uid = match.params.uid;
-    let token = match.params.token;
-    React.useEffect(() => {
-        
 
-        const body = JSON.stringify({ uid, token });
-        const config = {
-            headers: { 'Content-Type': 'application/json' }
-        }
-        try {
-            axios.post('https://e-men.kz/api/v1/auth/users/activation/',body, config);
-        } catch(err) {
-            setResultActive(false);
-        }
-    }, [uid, token])
-    return (
-        <div className = {cls.activate}>
-            <div className = {cls.activate__inner}>
-                <div className = {cls.activate__desc}> {resultActive ? <span> Success Success Success Success Success Success Success </span>: <span> Error Error Error </span>}  </div>
-                <button className = {cls.button}> Войти </button>
-            </div>
-        </div>
-    )
+    const dispatch = useDispatch();
+    const { isActivate, activateError } = useSelector(({ authPage }) => authPage);
+
+    React.useEffect(() => {
+        let uid = match.params.uid;
+        let token = match.params.token;
+
+        dispatch(activateAccountThunk(uid, token));
+
+    }, [])
+
+
+    if (isActivate) {
+        return <Redirect to = '/login'/>
+    }
+
+    if (activateError.showError) {
+        return <Modal duringTheTest errorsStartTests = { activateError }/>
+    }
+
+    return <div style = {{ height: '100vh' }}></div>;
+    
 }
 
 export default withRouter(Activate);

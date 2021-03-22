@@ -14,10 +14,12 @@ import SettingsModal from './SettingsModal/SettingsModal';
 import EntContent from './EntContent/EntContent';
 import DetailHistory from './DetailHistory/DetailHistory';
 import Preloader from '../common/Preloader/Preloader';
+import Modal from '../common/Modal/Modal';
 
 
 import cls from './DetailSubject.module.css';
-import ErrorModal from './ErrorModal/ErrorModal';
+
+
 
 
 
@@ -128,9 +130,9 @@ const DetailSubject = ({ match, BASE_URL }) => {
           BASE_URL={BASE_URL} />
         
         {errorsStartTests.showError &&
-          <ErrorModal
+          <Modal
             BASE_URL = { BASE_URL }
-            handleErrorModal = { handleErrorModal }
+            handleCloseModal = { handleErrorModal }
             errorsStartTests = { errorsStartTests }
           />}
         {settings.modal.show &&
@@ -152,4 +154,4 @@ const DetailSubject = ({ match, BASE_URL }) => {
   )
 }
 
-export default compose(withRouter, WithAuthRedirect)(DetailSubject);
+export default compose(withRouter, WithAuthRedirect )(DetailSubject);

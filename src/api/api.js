@@ -50,6 +50,13 @@ export const authAPI = {
         return instance.post(`api/v1/auth/users/`, body).then(response => {
             return response.data;
         })
+    },
+    activateAccount(uid, token) {
+        const body = JSON.stringify({ uid, token });
+
+        return instance.post(`api/v1/auth/users/activation/`, body).then(response => {
+            return response;
+        })
     }
     
 }
@@ -132,9 +139,8 @@ export const startTestAPI = {
             student_answers,
         });
 
-        console.log("FINISH TEST: ", body)
         return instance.post(`api/v1/examinations/${examUID}/finish/`, body).then(response => {
-            console.log(response);
+            return response;
         })
     }
 } 

@@ -14,6 +14,11 @@ const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
 const AUTHENTICATED_SUCCESS = 'AUTHENTICATED_SUCCESS';
 const AUTHENTICATED_FAIL = 'AUTHENTICATED_FAIL';
 
+const SUCCESS_ACTIVATE_ACCOUNT = 'SUCCESS_ACTIVATE_ACCOUNT';
+const FAIL_ACTIVATE_ACCOUNT = 'FAIL_ACTIVATE_ACCOUNT';
+
+
+
 
 
 
@@ -27,6 +32,13 @@ let initialState = {
     user: {},
 
     fromRegisterPage: 0,
+    isActivate: false,
+
+    activateError: {
+        showError: false,
+        errorMessage: null,
+        unfinishedExam: null,
+    },
 
 }
 
@@ -40,11 +52,6 @@ const authReducer = (state = initialState, action) => {
                 isAuth: true, 
                 access: payload.access 
             }
-        case LOAD_USER_SUCCESS:
-            return {
-                ...state,
-                user: payload,
-            }
         case SIGN_UP_SUCCESS:
            
             return {
@@ -52,6 +59,8 @@ const authReducer = (state = initialState, action) => {
                 isAuth: false,
                 fromRegisterPage: action.fromRegisterPage,
             }
+
+        // check auth state
         case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
@@ -63,11 +72,34 @@ const authReducer = (state = initialState, action) => {
                 isAuth: false
             }
         
+        // get user state
+        case LOAD_USER_SUCCESS:
+            return {
+                ...state,
+                user: payload,
+            }
         case LOAD_USER_FAIL:
             return {
                 ...state,
                 user: null
             }
+
+        // Activate state
+        case SUCCESS_ACTIVATE_ACCOUNT:
+            return {
+                ...state,
+                isActivate: true
+            }
+        case FAIL_ACTIVATE_ACCOUNT:
+            let stateCopy = {...state};
+            stateCopy.isActivate = false;
+
+            let activateError = stateCopy.activateError;
+            activateError.showError = true;
+            activateError.errorMessage = action.errorMessage;
+
+            return stateCopy
+
         case LOGOUT:
         case SIGN_UP_FAIL:
         case LOGIN_FAIL:
@@ -89,6 +121,17 @@ export const setRedirectSuccessPage = (fromRegisterPage) => {
 }
 
 
+export const activateAccountThunk = (uid, token) => async (dispatch) => {
+    try {
+        await authAPI.activateAccount(uid, token);
+        dispatch({ type: SUCCESS_ACTIVATE_ACCOUNT });
+    } catch (error) {
+        let errorMessage = 'Неверный токен или uid. Пожалуйста, зайдите в Gmail и нажмите ссылку еще раз.'  
+        dispatch({ type: FAIL_ACTIVATE_ACCOUNT, errorMessage });
+    }
+}
+
+
 export const checkAuthThunk = () => async (dispatch) => {
     if (Cookie.get('access')) {
         dispatch({ type: AUTHENTICATED_SUCCESS });
@@ -97,6 +140,7 @@ export const checkAuthThunk = () => async (dispatch) => {
         dispatch({ type: AUTHENTICATED_FAIL });
     }
 }
+
 
 export const loadUserThunk = () => async (dispatch) => {
     if (Cookie.get('access')) {
@@ -116,7 +160,7 @@ export const loadUserThunk = () => async (dispatch) => {
 export const loginThunk = (email, password, remember_me) => async (dispatch) => {
     try {
         let data = await authAPI.login(email, password);
-        let deedline = remember_me ? 7:1;
+        let deedline = 36000;
         Cookie.set('access', data.access, { expires: deedline });
         dispatch({ type: LOGIN_SUCCESS, payload: data });
         dispatch(loadUserThunk());

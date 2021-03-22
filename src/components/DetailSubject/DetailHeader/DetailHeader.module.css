@@ -1,5 +1,5 @@
 .header {
-    margin-top: 120px;
+    margin-top: 105px;
     padding: 50px 0 50px 60px;
     border-radius: 3px;
 }
@@ -10,16 +10,16 @@
 }
 .header__image {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
 }
 .header__content {
     margin-left: 35px;
 }
 .header__title {
     font-weight: 700;
-    font-size: 32px;
-    line-height: 38px;
+    font-size: 28px;
+    line-height: 31px;
     color: #FFFFFF;
 }
 .header__info {
@@ -28,8 +28,8 @@
     margin-top: 20px;
 }
 .header__start__button {
-    width: 240px;
-    height: 55px;
+    width: 200px;
+    height: 45px;
     font-weight: 600;
 
     display: flex;

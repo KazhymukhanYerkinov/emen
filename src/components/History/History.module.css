@@ -1,0 +1,11 @@
+.history {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.history__inner {
+    font-size: 21px;
+    color: black;
+}

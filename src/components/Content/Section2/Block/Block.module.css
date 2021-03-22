@@ -8,12 +8,12 @@
     margin-right: 0;
 }
 .block__inner {
-    padding: 50px 55px;
+    padding: 30px 40px;
 }
 .block__title {
     font-weight: 500;
-    font-size: 36px;
-    line-height: 42px;
+    font-size: 28px;
+    line-height: 32px;
 
     color: #222222;
 }
@@ -21,14 +21,15 @@
     padding: 20px 0;
 
     font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 16px;
+    line-height: 19px;
 
     color: #5F6368;
 }
 .image {
+    margin: 5px auto;
     display: block;
-    width: 100%;
+    width: 80%;
     height: auto;
 }
 

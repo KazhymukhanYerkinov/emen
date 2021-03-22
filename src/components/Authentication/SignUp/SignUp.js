@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-import facebook from '../../../assets/logos/facebook__btn.svg';
-import google from '../../../assets/logos/google__btn.svg';
+
 import signup from '../../../assets/images/signup.jpg';
+import loader from '../../../assets/loader/button__loader.svg';
 import { InputPassword, InputText } from '../../common/FormControl/FormControl';
 
 import cls from './SignUp.module.css';
@@ -25,7 +25,7 @@ const SignUpForm = ({ handleSubmit, showFetchButton, error }) => {
                 <Field name = { 'password1' } component = { InputPassword } label = { 'Создать пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
                 <Field name = { 'password2' } component = { InputPassword } label = { 'Повторить пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
             </div>
-            <button className = 'button submit' type = 'submit'>  {showFetchButton ? <span> .... </span>:<span>Зарегистрироваться</span>} </button>
+            <button className = {'button submit'} type = 'submit'>  {showFetchButton ? <img className = {cls.loader} src = { loader } alt = ''/>:<span>Зарегистрироваться</span>} </button>
         </form>
         </>
     )
@@ -33,7 +33,7 @@ const SignUpForm = ({ handleSubmit, showFetchButton, error }) => {
 const SignUpReduxForm = reduxForm({ form: 'signup' })(SignUpForm);
 
 const SignUp = ({ signUpThunk, fromRegisterPage }) => {
-    const [ showFetchButton, setShowFetchButton ] = React.useState(false);
+    const [ showFetchButton, setShowFetchButton ] = React.useState(true);
 
     const onSubmit = (formData) => {
         setShowFetchButton(true);
@@ -57,7 +57,7 @@ const SignUp = ({ signUpThunk, fromRegisterPage }) => {
                     <div className = {cls.signup__content}>
                         <div className = 'title'> Регистрация </div>
                         <SignUpReduxForm onSubmit = { onSubmit } showFetchButton = { showFetchButton } />
-                        <div className = 'helper__text'> Войти с помощью </div>
+                        {/* <div className = 'helper__text'> Войти с помощью </div>
 
                         <button className = 'button facebook'> 
                             <img src = { facebook } alt = ""/>
@@ -67,7 +67,7 @@ const SignUp = ({ signUpThunk, fromRegisterPage }) => {
                         <button className = 'button google'> 
                             <img src = { google } alt = ""/>
                             Войти с помощью Google  
-                        </button>
+                        </button> */}
 
                     </div>
                 </div> 

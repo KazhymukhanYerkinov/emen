@@ -8,19 +8,14 @@ import { data } from '../../../data/profile';
 import cls from './ProfileBlock.module.css';
 
 
-const ProfileBlock = ({ user, logoutThunk, onChangeProfileBlock }) => {
-
-    const onLogoutProfile = () => {
-        onChangeProfileBlock(false);
-        logoutThunk();
-    }
+const ProfileBlock = ({ user, onChangeProfileBlock, handleLogoutModal }) => {
 
     return (
         <div className={cls.profile}>
             <div className={cls.profile__inner}>
 
                 <div className={cls.profile__info}>
-                    <Avatar className={cls.avatar} src = "" style = {{ width: '65px', height: '65px' }}/>
+                    <Avatar className={cls.avatar} src = ""/>
                     <div className = {cls.info}>
                         <div className={cls.name}> { user && <span> { user.first_name } {user.last_name}</span> }</div>
                         <div className={cls.id}> { user && <span> { user.code } </span> } </div>
@@ -40,7 +35,7 @@ const ProfileBlock = ({ user, logoutThunk, onChangeProfileBlock }) => {
                             </Link>
                         )
                     })}
-                    <div className = {cls.route} onClick = { onLogoutProfile }>
+                    <div className = {cls.route} onClick = { () => handleLogoutModal(true) }>
                         <img src = { exit } alt = "" className = { cls.route__icons }/>
                         <div className = {cls.route__text}> Выйти </div>
                     </div>

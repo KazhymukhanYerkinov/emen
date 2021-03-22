@@ -2,6 +2,9 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 import forgot from '../../../assets/images/forgot.jpg';
+import loader from '../../../assets/loader/button__loader.svg';
+
+
 import { emailRequired } from '../../../validators/validator';
 import { InputText } from '../../common/FormControl/FormControl';
 
@@ -17,7 +20,7 @@ const ForgotPasswordForm = ({ handleSubmit, error, showFetchButton }) => {
                 <div className = {cls.forgot__step}> 1. Проверка почты </div>
                 <Field name = { 'email' } component = { InputText } label = { 'Email' } validate = { emailRequired } />
                 {error && <span className = {cls.error}> { error } </span>}
-                <button className = 'button submit' type = 'submit'> {showFetchButton ? <span>....</span>: <span>Далее</span>} </button>
+                <button className = 'button submit' type = 'submit'> {showFetchButton ? <img className = {cls.loader} src = { loader } alt = '' />: <span>Далее</span>} </button>
 
             </div>
         </form>
@@ -27,7 +30,7 @@ const ForgotPasswordForm = ({ handleSubmit, error, showFetchButton }) => {
 const ForgotPasswordReduxForm = reduxForm({ form: 'forgot' })(ForgotPasswordForm);
 
 const ForgotPassword = ({ emailResetConfirmThunk }) => {
-    const [ showFetchButton, setShowFetchButton ] = React.useState(false);
+    const [ showFetchButton, setShowFetchButton ] = React.useState(true);
     const onSubmit = (formData) => {
         setShowFetchButton(true);
         emailResetConfirmThunk(formData.email).finally(() => {

@@ -1,0 +1,147 @@
+.modal {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+
+    overflow: auto;
+
+    background: rgba(17, 50, 85, 0.49);
+    font-family: Raleway;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.modal__inner {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 3px;
+    margin: auto;
+    padding: 30px 15px 10px;
+    position: relative;
+
+    background-color: #fff;
+}
+
+.modal__title {
+    margin-bottom: 15px;
+    
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+}
+
+.modal__desc {
+    margin-bottom: 10px;
+    
+    text-align: center;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #222;
+}
+
+/* UNFINISHED TEST */
+.block {
+    width: 100%;
+    max-width: 150px;
+    margin: 0 auto;
+
+    padding: 15px 5px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.image {
+    width: 40px;
+    margin-bottom: 5px;
+
+    display: block;
+    margin: 0 auto;
+    
+}
+.name {
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    text-align: center;
+}
+/* //////////////// */
+
+
+/* BUTTON DESIGN */
+.continue__button, .close__button, .during__test__button {
+    width: 100%;
+    height: 35px;
+
+
+    color: #222222;
+    background-color: #F7F7F7;
+    border-radius: 4px;
+    transition: background-color .2s linear;
+}
+.during__test__button, .continue__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #F7F7F7;
+}
+
+.continue__button {
+    margin-bottom: 7px;
+
+    color: #fff;
+    background-color: #1A73E8;
+}
+
+.continue__button:hover {
+    background-color: #174EA6;
+}
+.close__button:hover, .during__test__button:hover {
+    background-color: #5F6368;
+    color: #fff;
+}
+/* ///////////////// */
+
+/* EMPTY CONTENT */
+.empty__content {
+    height: 100vh;
+}
+
+/* LOGOUT BLOCK AND BUTTONS */
+.logout__block {
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+}
+
+.logout__cancel__button, .logout__ok__button {
+    width: 80px;
+    height: 30px;
+    border-radius: 4px;
+
+    transition: background-color .2s linear;
+}
+
+.logout__ok__button {
+    margin-left: 5px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #1A73E8;
+    color: #fff;
+}
+
+.logout__cancel__button:hover {
+    background-color: #5F6368;
+    color: #fff;
+}
+.logout__ok__button:hover {
+    background-color: #174EA6;
+}
+

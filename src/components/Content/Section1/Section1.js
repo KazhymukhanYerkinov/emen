@@ -19,7 +19,7 @@ const Section1 = ({ language }) => {
                         <div className = {cls.section__title}> Онлайн платформа для подготовки к ЕНТ </div> 
                         <div className = {cls.section__text}> Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает. </div>
                         <div className = {cls.section__blocks}>
-                            <Link to = {'/'} className = {classNames('button', cls.start__button)}> Начать бесплатно </Link>
+                            <Link to = {'/subjects'} className = {classNames('button', cls.start__button)}> Начать бесплатно </Link>
                             <div className = {cls.start__video}> <img src = { start } alt = "Start video button"/>  <div className = {cls.video__text}>Посмотреть видео</div> </div>
                         </div>
                     </div>

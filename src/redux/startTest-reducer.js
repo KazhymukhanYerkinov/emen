@@ -101,6 +101,8 @@ const testReducer = (state = initialState, action) => {
 // close modal error
 export const setShowErrorAC = () => ({ type: FAIL_ERROR_START_TESTS });
 
+export const setQuestionsFailAC = () => ({ type: GET_QUESTIONS_FAIL });
+
 export const postStartTestThunk = (exam_type, subject, with_hint, difficulty, topic_id = null, profile_subject_1, profile_subject_2) => async (dispatch) => {
     try {
         const data = await startTestAPI.postStartTest(exam_type, subject, with_hint, difficulty, topic_id, profile_subject_1, profile_subject_2);
@@ -175,6 +177,8 @@ export const getQuestionThunk = (uid) => async (dispatch) => {
 
             dispatch({ type: SET_ERRORS_START_TESTS, errorMessage, unfinishedExam });
         }
+
+
         console.log(error.response.data);
     }
 }
@@ -190,7 +194,10 @@ export const saveTestQuestionThunk = (examUID, left_seconds, is_paused, student_
 
 export const finishAllTestThunk = (examUID, left_seconds, is_paused, student_answers) => async (dispatch) => {
     try {
+        await startTestAPI.saveQuestion(examUID, left_seconds, true, student_answers);
         await startTestAPI.finishQuestion(examUID, left_seconds, is_paused, student_answers);
+
+        
     } catch (e) {
         console.log(e)
     }

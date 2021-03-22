@@ -39,7 +39,7 @@
 .nav__link {
     padding-right: 30px;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 21px;
 
     color: #C2C5CA;
@@ -67,7 +67,7 @@
 .lang__link {
     cursor: pointer;
     padding-right: 5px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
 
     color: #C2C5CA;
@@ -79,10 +79,18 @@
     padding-right: 0;
 }
 /* AUTH */
+.signin {
+    padding: 10px 32px;
+
+    font-size: 13px;
+    border-radius: 3px;
+    color: #fff;
+    background-color:#1A73E8;
+}
 .signup {
     padding-right: 35px;
     text-decoration: underline;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
 
     color: #3075F3;
@@ -142,8 +150,8 @@
 .profile__name {
     margin-right: 15px;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 21px;
+    font-size: 15px;
+    line-height: 18px;
 
     color: #222222;
 }

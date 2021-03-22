@@ -17,13 +17,14 @@
     margin-right: 15%;
 }
 .image {
+    margin: 0 auto;
     display: block;
-    width: 100%;
+    width: 80%;
     height: auto;
     
 }
 .signin__content {
-    width: 30%;
+    width: 27%;
 }
 .signin__input {
     margin: 15px 0 30px;
@@ -49,8 +50,21 @@
     font-size: 12px;
     line-height: 16px;
     margin-top: 10px;
+}
+
+.signin__button {
+    padding: 12px;
+    width: 100%;
+    font-family: Raleway;
     
-    
+
+    border-radius: 3px;
+    color: #fff;
+    background-color: #1A73E8;
+    transition: background-color .2s linear;
+}
+.loader {
+    height: 19px;
 }
 @media screen and (orientation: landscape) and (max-width: 1025px) {
     .signin {

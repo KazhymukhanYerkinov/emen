@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
+import loader from '../../../assets/loader/button__loader.svg';
 import confirm from '../../../assets/images/confirm.jpg';
 import { LengthCreator, passwordRequired, textRequired } from '../../../validators/validator';
 import { InputPassword } from '../../common/FormControl/FormControl';
@@ -18,7 +19,7 @@ const ConfirmPasswordForm = ({ showFetchButton, handleSubmit }) => {
             <div className = {cls.inputs}>
                 <Field name = {'password1'} component = { InputPassword } label = {'Создать новый пароль'} validate = { [textRequired, passwordRequired, lengthvalidation] }/>
                 <Field name = {'password2'} component = { InputPassword } label = {'Повторить пароль'} validate = { [textRequired, passwordRequired, lengthvalidation] }/>
-                <button className = 'button submit' type = 'submit'> {showFetchButton ? <span>...</span>: <span>Создать</span>} </button>    
+                <button className = 'button submit' type = 'submit'> {showFetchButton ? <img className = {cls.loader} src = { loader } alt = '' />: <span>Создать</span>} </button>    
             </div>
         </form>
     )
@@ -26,7 +27,7 @@ const ConfirmPasswordForm = ({ showFetchButton, handleSubmit }) => {
 const ConfirmPasswordReduxForm = reduxForm({ form: 'confirm' })(ConfirmPasswordForm)
 
 const ConfirmPassword = ({ match, fromRegisterPage, passwordResetConfirmThunk }) => {
-    const [ showFetchButton, setShowFetchButton ] = React.useState(false);
+    const [ showFetchButton, setShowFetchButton ] = React.useState(true);
 
     
     const onSubmit = (formData) => {

@@ -1,14 +1,4 @@
 .section {
-    padding: 150px 0;
+    padding: 75px 0;
     background-color: #F8F9FA;
-}
-@media (max-width: 768px) {
-    .section {
-        padding: 100px 0;
-    }
-}
-@media (max-width: 540px) {
-    .section {
-        padding: 75px 0;
-    }
 }

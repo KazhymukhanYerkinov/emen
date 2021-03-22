@@ -54,9 +54,9 @@
     background-color: #fff;
 }
 .modal__title {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
 
     color: #222222;
 }
@@ -65,8 +65,8 @@
 }
 .modal__level__title {
     font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 14px;
+    line-height: 17px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
     padding: 15px 0 15px 20px;
@@ -82,16 +82,16 @@
 }
 .level__text {
     font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 14px;
+    line-height: 17px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
     color: #222222;
 }
 .level__help {
     font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 14px;
+    line-height: 17px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
     color: #222222;
@@ -102,8 +102,8 @@
 .modal__button {
     display: block;
     margin: 0 auto;
-    width: 75%;
-    height: 50px;
+    width: 70%;
+    height: 40px;
     background-color: #1A73E8;
     border-radius: 3px;
     color: #fff;
