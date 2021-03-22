@@ -33,7 +33,7 @@ const SignUpForm = ({ handleSubmit, showFetchButton, error }) => {
 const SignUpReduxForm = reduxForm({ form: 'signup' })(SignUpForm);
 
 const SignUp = ({ signUpThunk, fromRegisterPage }) => {
-    const [ showFetchButton, setShowFetchButton ] = React.useState(true);
+    const [ showFetchButton, setShowFetchButton ] = React.useState(false);
 
     const onSubmit = (formData) => {
         setShowFetchButton(true);
@@ -42,7 +42,7 @@ const SignUp = ({ signUpThunk, fromRegisterPage }) => {
             setShowFetchButton(false);
         })
     }
-    if (fromRegisterPage !== 0) {
+    if (fromRegisterPage !== 0 && !showFetchButton) {
         return <Redirect to = '/success' />
     }
     return (

@@ -49,9 +49,7 @@ const SignIn = ({ isAuth, loginThunk }) => {
     }
     
 
-    
-
-    if ( isAuth ) {
+    if ( isAuth && !showFetchButton) {
         return <Redirect to = '/subjects' />
     }
     

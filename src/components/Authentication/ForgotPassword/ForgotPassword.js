@@ -30,7 +30,7 @@ const ForgotPasswordForm = ({ handleSubmit, error, showFetchButton }) => {
 const ForgotPasswordReduxForm = reduxForm({ form: 'forgot' })(ForgotPasswordForm);
 
 const ForgotPassword = ({ emailResetConfirmThunk }) => {
-    const [ showFetchButton, setShowFetchButton ] = React.useState(true);
+    const [ showFetchButton, setShowFetchButton ] = React.useState(false);
     const onSubmit = (formData) => {
         setShowFetchButton(true);
         emailResetConfirmThunk(formData.email).finally(() => {
