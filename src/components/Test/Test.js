@@ -59,8 +59,7 @@ const Test = ({ match, BASE_URL }) => {
 
 
     requestEveryOneMinuteInterval = setInterval(() => {
-      let student_answers = [];
-      console.log('Here');
+      let student_answers = [];;
       if (Cookie.get("answers")) {
         const answers = JSON.parse(Cookie.get("answers"));
         for (let i = 0; i < answers.length; i++) {
@@ -216,7 +215,6 @@ const Test = ({ match, BASE_URL }) => {
     return <Preloader />
   }
 
-  console.log(data);
 
 
 
@@ -234,7 +232,6 @@ const Test = ({ match, BASE_URL }) => {
 
   // Кукидің ішінде timer бар жоқ екенін тексереміз
   if (Cookie.get('timer')) {
-    console.log(Cookie.get('timer'))
     time = Cookie.get('timer');
   }
   else {
@@ -268,7 +265,6 @@ const Test = ({ match, BASE_URL }) => {
 
   // Уақытты тоқтату және қайттан бастауды басқаратын функция
   const handleStopTimer = (isType = false) => {
-    console.log(isType);
     setStopTimer((prevIsStop) => {
       if (isType) {
         Cookie.set("stopTime", true);

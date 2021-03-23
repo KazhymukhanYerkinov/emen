@@ -28,8 +28,6 @@ const DetailSubject = ({ match, BASE_URL }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(history.location.pathname.includes('/ENT'))
-
   const { detail } = useSelector(({ subjectPage }) => subjectPage);
   const { isStart, examUID, errorsStartTests } = useSelector(({ testPage }) => testPage);
 
@@ -41,8 +39,6 @@ const DetailSubject = ({ match, BASE_URL }) => {
 
   // ENT profile сабақтарды басқаратын state
   const [profSubjects, setProfSubject] = React.useState({ subjects: [null, null] });
-
-  console.log(errorsStartTests);
   
 
   // топиктарды серверден алу

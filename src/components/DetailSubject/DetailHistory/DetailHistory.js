@@ -9,7 +9,6 @@ import cls from './DetailHistory.module.css';
 // Сабақтардың история компоненті ( сайдбар оң жақта )
 const DetailHistory = () => {
 
-    console.log('DETAIL HISTORY')
     
     return (
         <div className = {cls.history}>

@@ -37,7 +37,7 @@ const ConfirmPassword = ({ match, fromRegisterPage, passwordResetConfirmThunk })
         })
     }
 
-    if (fromRegisterPage !== 0) {
+    if (fromRegisterPage !== 0 && !showFetchButton) {
         return <Redirect to = '/success' />
     }
     return (

@@ -22,8 +22,6 @@ const TestQuestion = ({
   setMapWithAnswers }) => {
   
 
-  console.log('QUESTIOn')
-  // Избранный сұрақты басқаратын state
   
 
   // Подсказканы басқаратын state
@@ -68,7 +66,7 @@ const TestQuestion = ({
           let tempAnswers = getAnswers.filter(answerID => answerID !== answerId);
 
           if (tempAnswers.length === 0) {
-            console.log(mapWithAnswers.delete(id));
+            mapWithAnswers.delete(id);
 
             setMapWithAnswers(new Map(mapWithAnswers));
             return;

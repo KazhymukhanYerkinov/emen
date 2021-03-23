@@ -23,7 +23,6 @@ export const authAPI = {
     login(email, password) {
         const body = JSON.stringify({ email, password });
         return instance.post(`api/v1/auth/jwt/create`, body).then(response => {
-            console.log(response.data);
             return response.data;
         })
     },
@@ -105,7 +104,6 @@ export const startTestAPI = {
                 difficulty 
             });
         }
-        console.log(body)
         return instance.post(`api/v1/examinations/start/`, body).then(response => {
             
             return response.data;
@@ -125,7 +123,6 @@ export const startTestAPI = {
             student_answers,
         })
 
-        console.log(body);
 
         return instance.post(`api/v1/examinations/${examUID}/save-state/`, body).then(response => {
             console.log(response);

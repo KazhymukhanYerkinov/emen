@@ -18,7 +18,6 @@ const Subjects = ({ language, BASE_URL }) => {
     if (subjects.length <= 0) {
         return <Preloader />
     }
-    console.log(subjects)
 
     let MANDATORY_SUBJECTS = subjects._MANDATORY_SUBJECT_;
     let PROFILE_SUBJECTS = subjects._PROFILE_SUBJECT_;

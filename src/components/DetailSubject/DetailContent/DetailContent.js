@@ -7,7 +7,6 @@ import cls from './DetailContent.module.css';
 // Сабақтардың детейл бетінің негізгі контенті
 const DetailContent = ({ topics, onHandleSettingsModal }) => {
 
-    console.log("RENDER CONTENT")
 
     // Категорияларға колапс жасау 
     const [ showCategories, setShowCategories ] = React.useState(null);

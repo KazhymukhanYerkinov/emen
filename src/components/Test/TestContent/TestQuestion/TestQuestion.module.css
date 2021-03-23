@@ -32,6 +32,8 @@
 .ques__text {
     margin: 20px 0 30px;
 
+    overflow-x: auto;
+
     font-weight: 500;
     font-size: 15px;
     line-height: 21px;
