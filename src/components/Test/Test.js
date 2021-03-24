@@ -99,7 +99,7 @@ const Test = ({ match, BASE_URL }) => {
         dispatch(saveTestQuestionThunk(examUID, left_time, is_paused, student_answers));
 
       }
-    }, 10000);
+    }, 100000);
 
     return () => {
       Cookie.remove('answers');
@@ -239,29 +239,8 @@ const Test = ({ match, BASE_URL }) => {
     Cookie.set('timer', time);
   }
 
-  // Сұрақтарға ID бойынша smooth scroll жасау
-  const handleScrollQuestionById = (question_id, navigateBySubId) => {
-    if (navigateBySubId !== indexOfSub) {
-      setIndexOfSub(navigateBySubId);
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      })
-      return;
-    }
 
-    const targetElement = document.querySelector(`#scroll_${question_id}`);
-    const rectTop = targetElement.getBoundingClientRect().top;
-    const offsetTop = window.pageYOffset;
-
-    const buffer = 90;
-    const top = rectTop + offsetTop - buffer
-
-    window.scrollTo({
-      top,
-      behavior: "smooth"
-    })
-  }
+  
 
   // Уақытты тоқтату және қайттан бастауды басқаратын функция
   const handleStopTimer = (isType = false) => {
@@ -331,7 +310,6 @@ const Test = ({ match, BASE_URL }) => {
 
     Cookie.remove('answers');
     Cookie.remove('stopTime');
-    Cookie.remove('timer');
 
     dispatch(finishAllTestThunk(examUID, left_time, is_paused, student_answers));
 
@@ -379,13 +357,14 @@ const Test = ({ match, BASE_URL }) => {
               mapWithAnswers={mapWithAnswers}
               setMapWithAnswers={setMapWithAnswers} />
             <TestControl
+              indexOfSub = { indexOfSub }
+              setIndexOfSub = { setIndexOfSub }
+
               BASE_URL={BASE_URL}
               TEST_QUESTIONS={TEST_QUESTIONS}
               INDIVIDUAL_TEST={INDIVIDUAL_TEST}
               mapWithAnswers={mapWithAnswers}
               handleFinishAllTest={handleFinishAllTest}
-
-              handleScrollQuestionById={handleScrollQuestionById}
 
               time={time}
               stopTimer={stopTimer}

@@ -89,12 +89,14 @@
     background-color: #1A73E8;
 }
 @media (max-width: 1000px) {
+    .time__display {
+        padding-bottom: 10px;
+    }
     .timer__title {
         display: none;
     }
     .compas {
         display: flex;
-        
     }
     .finish__button {
         display: flex;
@@ -102,6 +104,9 @@
 }
 
 @media (max-width: 550px) {
+    .time__display {
+        padding-bottom: 0px;
+    }
     .timer {
         padding-bottom: 5px;
     }

@@ -125,7 +125,7 @@ export const startTestAPI = {
 
 
         return instance.post(`api/v1/examinations/${examUID}/save-state/`, body).then(response => {
-            console.log(response);
+            return response;
         })
     },
 

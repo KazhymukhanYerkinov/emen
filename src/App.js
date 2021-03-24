@@ -13,7 +13,7 @@ import {
   Content, Header, Footer,
   SignIn, SignUp, ForgotPassword,
   ConfirmPassword, Success, Subjects,
-  DetailSubject, Activate, History
+  DetailSubject, Activate, HistoryDetail
 } from './components';
 
 import './App.css';
@@ -79,7 +79,7 @@ const App = (props) => {
         <Route exact path='/subjects'
           render={() => <Subjects language={language} BASE_URL={BASE_URL} />} />
 
-        <Route exact path = '/history' component = { History } />
+        <Route exact path = '/history' component = { HistoryDetail } />
           
         <Footer />
       </ScrollToUp>

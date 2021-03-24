@@ -1,0 +1,25 @@
+.answer {
+    padding: 15px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+    border-bottom: 1px solid #F7F7F7;
+}
+
+.wrong__icon {
+    color: #F44336;
+}
+.answer__wrong {
+    background-color: #FCA7A4;
+}
+.answer__correct {
+    background-color: #E1F5EA;
+}
+
+.answer__text {
+    font-size: 13px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}

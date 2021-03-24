@@ -1,12 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
+
 import pause from '../../../assets/images/pause.jpg';
 import finish from '../../../assets/images/finish.jpg';
-
 import TestFinish from '../TestFinish/TestFinish';
 
 
 import cls from './TestPause.module.css';
-import { Link } from 'react-router-dom';
+
 
 
 const TestPause = ({ 
@@ -29,17 +32,14 @@ const TestPause = ({
 
     if (finishAllTest) {
         time = LEFT_TIME - time;
+        Cookies.remove('timer');
     }
     const completeQuestions = mapWithAnswers.size;
 
     let second = ('0' + Math.floor(time % 60)).slice(-2);
-    console.log(second);
-    
     let minute = ('0' + Math.floor((time % 3600) / 60 )).slice(-2);
-    console.log(minute);
-    
     let hours = ('0' + Math.floor(time / 3600)).slice(-2);
-    console.log(hours);
+
 
     return (
             <div className = {cls.pause}>

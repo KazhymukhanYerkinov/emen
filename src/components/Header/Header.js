@@ -33,6 +33,8 @@ const Header = ({ isAuth, user, logoutThunk, language, setLanguage }) => {
 
   React.useEffect(() => {
     document.body.addEventListener('click', onHandleOutsideClick);
+
+    return () => document.body.removeEventListener('click', onHandleOutsideClick);
   }, []);
 
   const onChangeFunction = (lang) => {
@@ -41,7 +43,6 @@ const Header = ({ isAuth, user, logoutThunk, language, setLanguage }) => {
   }
 
   const handleLogoutModal = (isLogout) => {
-    setShowProfileBlock(false);
     setLogout(isLogout)
   }
 
