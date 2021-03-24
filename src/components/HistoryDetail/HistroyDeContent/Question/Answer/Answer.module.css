@@ -23,3 +23,19 @@
     font-size: 13px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 }
+
+@media (max-width: 550px) {
+    .answer {
+        padding: 12px 15px;
+    }
+    .answer__text {
+        margin-right: 5px;
+        font-size: 12px;
+        line-height: 17px;
+    }
+}
+@media (max-width: 450px) {
+    .answer {
+        padding: 10px;
+    }
+}

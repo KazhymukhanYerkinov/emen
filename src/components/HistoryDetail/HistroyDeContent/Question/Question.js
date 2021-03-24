@@ -29,6 +29,7 @@ const Question = () => {
         <Answer />
         <Answer />
         <Answer correct/>
+        <Answer />
       </div>
 
       <React.Fragment>

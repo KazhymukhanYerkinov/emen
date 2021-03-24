@@ -10,6 +10,7 @@ export { default as Activate } from './Authentication/Activate/Activate';
 export { default as Subjects } from './Subjects/Subjects';
 export { default as DetailSubject } from './DetailSubject/DetailSubject';
 export { default as HistoryDetail } from './HistoryDetail/HistoryDetail';
+export { default as History } from './History/History';
 
 
 
