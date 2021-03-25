@@ -8,16 +8,44 @@ import cls from '../HistoryDetail.module.css';
 
 
 
-const HistoryDeContent = () => {
+const HistoryDeContent = (props) => {
+  React.useEffect(() => {
+
+    // Арасындағы Latex жазылғандарды Html-ге айналдырады
+    window.MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+    window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, document.querySelector('.challenge__description')]);
+    
+  }, [])
   return (
     <div className = {cls.content}>
       <div className = {cls.question__content}>
-        <Question />
-        <GroupQuestion />
+        { props.variants.map((questions, baseKey) => {
+          console.log(questions)
+          return (
+            <React.Fragment key = { baseKey }>
+                { questions.questions.map((question, index) => {
+                  if (question.is_group) {
+                    return (
+                      <GroupQuestion
+                        key = { index }
+                        group_question = { question }
+                      />
+                    )
+                  }
+                  return (
+                    <Question
+                      key = { index }
+                      question = { question } 
+                    />
+                  )
+                })}
+            </React.Fragment>
+          )
+        }) }
       </div>
       
       <div className = {cls.question__navigator}>
-        <Navigator />
+        <Navigator { ...props }/>
       </div>
     </div>
   )

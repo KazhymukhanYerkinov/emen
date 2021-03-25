@@ -14,6 +14,7 @@ import cls from './TestPause.module.css';
 
 const TestPause = ({ 
     time,
+    examUID,
     QUESTION_SIZE,
     LEFT_TIME,
     onStopTime, 
@@ -62,7 +63,7 @@ const TestPause = ({
                 </div>
                 {finishAllTest ?
                 <>
-                    <Link className = {cls.pause__re} to = {'/history'}> Резултат тестирование </Link>
+                    <Link className = {cls.pause__re} to = {`/history/${examUID}`}> Резултат тестирование </Link>
                     <Link className = {cls.pause__finish} to = {'/'} onClick = { clearAllData }> Главная страница </Link>
                 </>
                 :

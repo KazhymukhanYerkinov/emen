@@ -8,7 +8,7 @@ import classNames from 'classnames';
 
 
 
-const Navigator = () => {
+const Navigator = (props) => {
   const [ showNavigatorQuestion, setShowNavigatorQuestion ] = React.useState(0);
   const [ navigatorCompas, setNavigatorCompas ] = React.useState(false);
 
@@ -21,6 +21,30 @@ const Navigator = () => {
     })
   }
 
+  const handleSmoothScroll = (question_id) => {
+    const targetElement = document.querySelector(`#history_scroll_${question_id}`);
+    const rectTop = targetElement.getBoundingClientRect().top;
+    const offsetTop = window.pageYOffset;
+
+    let buffer = 90;
+
+    if (window.innerWidth <= 600) {
+      buffer = 350;
+    }
+    
+    const top = rectTop + offsetTop - buffer;
+
+    window.scrollTo({
+      top,
+      behavior: "smooth"
+    });
+
+    if (navigatorCompas) setNavigatorCompas(false);
+
+
+
+  }
+
   const handleNavigatorCompas = () => {
     setNavigatorCompas((prevState) => !prevState);
   }
@@ -31,37 +55,32 @@ const Navigator = () => {
 
   return (
     <div className = {cls.navigator}>
+
       <div className = {cls.navigator__header}>
         <div className = {cls.navigator__title}> Навигация </div>
         <div className = {cls.compas} onClick = { handleNavigatorCompas }>
           <img src = { compas } alt = '' />
         </div>
       </div>
+
       <div className = {classNames(cls.nav__subject, {[cls.active]: navigatorCompas})}>
-        <NavSubject
-          id = { 0 }
+        { props.variants.map(( variant, index ) => {
+          return (
+            <NavSubject
+              id = { index }
+              key = { index }
+              variant = { variant }
 
-          showNavigatorQuestion = { showNavigatorQuestion }
-          handleNavigatorQuestions = { handleNavigatorQuestions }
-        />
-        <NavSubject
-          id = { 1 }
+              handleSmoothScroll = { handleSmoothScroll }
 
-          showNavigatorQuestion = { showNavigatorQuestion }
-          handleNavigatorQuestions = { handleNavigatorQuestions }
-        />
-        <NavSubject
-          id = { 2 }
+              showNavigatorQuestion = { showNavigatorQuestion }
+              handleNavigatorQuestions = { handleNavigatorQuestions }
 
-          showNavigatorQuestion = { showNavigatorQuestion }
-          handleNavigatorQuestions = { handleNavigatorQuestions }
-        />
-        <NavSubject
-          id = { 3 }
-
-          showNavigatorQuestion = { showNavigatorQuestion }
-          handleNavigatorQuestions = { handleNavigatorQuestions }
-        />
+              BASE_URL = { props.BASE_URL }
+            />
+          )
+        }) }
+        
       </div>
 
     </div>

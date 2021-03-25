@@ -29,7 +29,7 @@ const ProfileBlock = ({ user, onChangeProfileBlock, handleLogoutModal }) => {
                 <div className = {cls.profile__route}>
                     {data.map((item, index) => {
                         return (
-                            <Link className = {cls.route} to = {`/hee`} key = { index } onClick = {() => onChangeProfileBlock(false)}>
+                            <Link className = {cls.route} to = {`/${item.url}`} key = { index } onClick = {() => onChangeProfileBlock(false)}>
                                 <div className = {cls.route__icons}> { item.img } </div>
                                 <div className = {cls.route__text}> { item.title } </div>
                             </Link>

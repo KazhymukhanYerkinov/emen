@@ -332,6 +332,7 @@ const Test = ({ match, BASE_URL }) => {
     <div className={cls.test}>
       {stopTimer ?
         <TestPause
+          examUID = { examUID }
           time={time}
           LEFT_TIME={LEFT_TIME}
           QUESTION_SIZE={QUESTION_SIZE}

@@ -10,7 +10,7 @@ export const data = [
     { img: <ProfileComponent />, title: 'Профиль', url: ''},
     { img: <FollowComponent />, title: 'Подписка', url: ''},
     { img: <SubjectComponent />, title: 'Предметы', url: ''},
-    { img: <HistoryComponent />, title: 'История', url: ''},
+    { img: <HistoryComponent />, title: 'История', url: 'history'},
     { img: <SaveComponent />, title: 'Сохраненные', url: ''},
     { img: <StatComponent />, title: 'Статистика', url: ''},
 ]

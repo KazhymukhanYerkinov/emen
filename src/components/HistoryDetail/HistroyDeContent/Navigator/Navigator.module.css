@@ -93,13 +93,17 @@
     width: 40px;
     height: 40px;
 
+    color: #5F6368;
     display: flex;
     justify-content: center;
     align-items: center;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
-    background-color: #F7F7F7;
+    background-color: #FCA7A4;
     cursor: pointer;
+}
+.block__correct {
+    background-color: #E1F5EA;
 }
 
 .nav__subject.active {

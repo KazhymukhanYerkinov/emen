@@ -43,6 +43,7 @@
     text-decoration: underline;
 }
 .hint__text {
+    display: none;
     padding: 15px;
 
     font-size: 14px;
@@ -51,6 +52,9 @@
     font-feature-settings: 'pnum' on, 'lnum' on;
 
     color: #333333;
+}
+.hint__active {
+    display: block;
 }
 
 @media (max-width: 550px) {

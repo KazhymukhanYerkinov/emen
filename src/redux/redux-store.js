@@ -6,6 +6,7 @@ import authReducer from './auth-reducer';
 import appReducer from './app-reducer';
 import subjectReducer from './subject-reducer';
 import testReducer from './startTest-reducer';
+import historyReducer from './history-reducer';
 
 
 let reducer = combineReducers({
@@ -14,6 +15,7 @@ let reducer = combineReducers({
     authPage: authReducer,
     subjectPage: subjectReducer,
     testPage: testReducer,
+    historyPage: historyReducer,
     
     
 });

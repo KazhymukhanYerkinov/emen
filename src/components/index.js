@@ -9,8 +9,8 @@ export { default as Success } from './Authentication/Success/Success';
 export { default as Activate } from './Authentication/Activate/Activate';
 export { default as Subjects } from './Subjects/Subjects';
 export { default as DetailSubject } from './DetailSubject/DetailSubject';
-export { default as HistoryDetail } from './HistoryDetail/HistoryDetail';
-export { default as History } from './History/History';
+export { default as HistoryDetailContainer } from './HistoryDetail/HistoryDetailContainer';
+export { default as HistoryContainer } from './History/HistoryContainer';
 
 
 

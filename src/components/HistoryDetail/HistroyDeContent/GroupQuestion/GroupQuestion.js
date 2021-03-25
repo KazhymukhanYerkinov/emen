@@ -3,17 +3,22 @@ import cls from '../../HistoryDetail.module.css';
 import Question from '../Question/Question';
 
 
-const GroupQuestion = () => {
+const GroupQuestion = (props) => {
+  React.useEffect(() => {
+    document.getElementById(`history_group_question_${props.group_question.id}`).innerHTML = props.group_question.group_text
+  }, [props.group_question.group_text, props.group_question.id])
   return (
     <React.Fragment>
-      <div className = {cls.group__question}>
-        Қазақстанның талантты архитекторлары мен инженерлерінің ішінде кімдерге Қызыл астананы салуда қастандық ұйымдастырды деп кінә тағылды?
-        Қазақстанның талантты архитекторлары мен инженерлерінің ішінде кімдерге Қызыл астананы салуда қастандық ұйымдастырды деп кінә тағылды?
-        Қазақстанның талантты архитекторлары мен инженерлерінің ішінде кімдерге Қызыл астананы салуда қастандық ұйымдастырды деп кінә тағылды?
-        Қазақстанның талантты архитекторлары мен инженерлерінің ішінде кімдерге Қызыл астананы салуда қастандық ұйымдастырды деп кінә тағылды?
-      </div>
-      <Question />
-      <Question />
+      <div id = {`history_group_question_${props.group_question.id}`} className = {cls.group__question}>  </div>
+      
+      { props.group_question.questions.map((question, index) => {
+        return (
+          <Question
+            key = { index } 
+            question = { question }
+          />
+        )
+      }) }
       
     </React.Fragment>
   )

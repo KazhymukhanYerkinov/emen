@@ -1,0 +1,44 @@
+.column {
+    cursor: pointer;
+    transition: background-color .2s linear;
+}
+.column:hover {
+    background-color: #F7F7F7;
+}
+
+.column td a {
+    display: block;
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #5F6368 ;
+
+    padding: 12px 0 12px 10px;
+    border-bottom: 1px solid #F7F7F7;
+}
+
+.column td:first-child {
+    font-weight: 600;
+}
+.column td:nth-child(5) {
+    color: #1A73E8;
+}
+
+.first_row {
+    display: flex;
+    align-items: center;
+
+}
+.first_row img {
+    width: 30px;
+    margin-right: 7px;
+}
+.last_row svg{
+    transform: rotate(-90deg);
+}
+.last_row path {
+    fill: #1A73E8;
+}

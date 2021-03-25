@@ -139,7 +139,19 @@ export const startTestAPI = {
         return instance.post(`api/v1/examinations/${examUID}/finish/`, body).then(response => {
             return response;
         })
-    }
+    },
 } 
+export const historyAPI = {
+    getAnalysHistory(historyUID){
+        return instance.get(`api/v1/examinations/${historyUID}/analysis/`).then(response => {
+            return response.data;
+        })
+    },
+    getHistoryList(currentPage, pageSize){
+        return instance.get(`api/v1/examinations/history/list/?page_size=${pageSize}&page=${currentPage}`).then(response => {
+            return response.data;
+        })
+    }
+}
 
 

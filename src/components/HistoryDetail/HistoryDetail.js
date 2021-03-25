@@ -7,12 +7,12 @@ import cls from './HistoryDetail.module.css';
 
 
 
-const HistoryDetail = () => {
+const HistoryDetail = (props) => {
   return (
     <div className={cls.history}>
       <div className='container'>
-        <HistoryDeHeader />
-        <HistoryDeContent />
+        <HistoryDeHeader {...props} />
+        <HistoryDeContent variants = { props.history.variants } BASE_URL = { props.BASE_URL }/>
       </div>
     </div>
   )

@@ -1,7 +1,75 @@
 .history {
-    height: 100vh;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top: 110px;
+    padding-bottom: 50px;
+
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F8F9FA;  
 }
+.title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 31px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #222222;
+}
+.description {
+    font-size: 15px;
+    line-height: 21px;
+
+    margin: 15px 0;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #5F6368;
+}
+/* CONTENT */
+.block {
+    padding-bottom: 20px;
+    background-color: #fff;
+}
+.history__content {
+    overflow-x: auto;
+    padding: 10px;
+    background-color: #fff;
+ 
+}
+
+/* TABLE */
+.table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+.thead {
+    background-color: #F7F7F7;
+}
+.thead th {
+    padding: 12px 0 12px 10px;
+    text-align: left;
+}
+
+@media (max-width: 800px) {
+    .title {
+        font-size: 26px;
+        line-height: 31px;
+    }
+    .description {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+
+@media (max-width: 500px) {
+    .history {
+        padding-top: 90px;
+    }
+    .title {
+        font-size: 21px;
+        line-height: 24px;
+    }
+    .description {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
