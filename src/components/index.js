@@ -1,4 +1,4 @@
-export { default as Header } from './Header/Header';
+export { default as HeaderContainer } from './Header/HeaderContainer';
 export { default as Content } from './Content/Content';
 export { default as Footer } from './Footer/Footer';
 export { default as SignIn } from './Authentication/SignIn/SignIn';
@@ -11,6 +11,12 @@ export { default as Subjects } from './Subjects/Subjects';
 export { default as DetailSubject } from './DetailSubject/DetailSubject';
 export { default as HistoryDetailContainer } from './HistoryDetail/HistoryDetailContainer';
 export { default as HistoryContainer } from './History/HistoryContainer';
+export { default as Test } from './Test/Test';
+export { default as Save } from './Save/Save';
+export { default as Statistics } from './Statistics/Statistics';
+export { default as Subscription } from './Subscription/Subscription';
+export { default as Profile } from './Profile/Profile';
+export { default as NotFound } from './NotFound/NotFound';
 
 
 

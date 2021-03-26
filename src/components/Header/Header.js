@@ -1,59 +1,21 @@
 import React from 'react';
-import Cookie from 'js-cookie';
-import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+
+import ProfileBlock from './ProfileBlock/ProfileBlock';
+import AuthModal from '../common/Modal/AuthModal';
 
 import emen from '../../assets/logos/emen.svg';
 
 import cls from './Header.module.css';
-import ProfileBlock from './ProfileBlock/ProfileBlock';
-import AuthModal from '../common/Modal/AuthModal';
 
 
-const Header = ({ isAuth, user, logoutThunk, language, setLanguage }) => {
 
-  let location = useLocation();
-  const profileRef = React.useRef();
-  const toggleButtonRef = React.useRef();
+const Header = (props) => {
 
-  const [showProfileBlock, setShowProfileBlock] = React.useState(false);
-  const [logout, setLogout] = React.useState(false);
-
-  const onHandleOutsideClick = (event) => {
-    const path = event.path || (event.composedPath && event.composedPath());
-    if (!path.includes(profileRef.current) && !path.includes(toggleButtonRef.current)) {
-      onChangeProfileBlock(false);
-    }
-  }
-  const onChangeProfileBlock = (item) => {
-    setShowProfileBlock(item);
-  }
-
-  React.useEffect(() => {
-    document.body.addEventListener('click', onHandleOutsideClick);
-
-    return () => document.body.removeEventListener('click', onHandleOutsideClick);
-  }, []);
-
-  const onChangeFunction = (lang) => {
-    setLanguage(lang);
-    Cookie.set('lang', lang, { expires: 30 });
-  }
-
-  const handleLogoutModal = (isLogout) => {
-    setLogout(isLogout)
-  }
-
-  const handleLogoutOK = () => {
-    
-    handleLogoutModal(false);
-    logoutThunk();
-
-  }
-
-  const isLang = language === 'kz';
+  const isLang = props.language === 'kz';
 
   return (
     <header className={cls.header}>
@@ -61,58 +23,124 @@ const Header = ({ isAuth, user, logoutThunk, language, setLanguage }) => {
         <div className={cls.header__inner}>
 
 
-          <Link to={'/'}>
+          <NavLink to={'/'}>
             <img className={cls.image} src={emen} alt="" />
-          </Link>
+          </NavLink>
 
-          <div className={classNames(cls.header__nav, { [cls.active]: showProfileBlock, [cls.full__width]: !isAuth })}>
+          <div className={classNames(cls.header__nav, { [cls.active]: props.show_profile_block, [cls.full__width]: !props.isAuth })}>
 
-            {!isAuth && <nav className={cls.nav}>
-              <Link to={'/'} className={classNames(cls.nav__link, { [cls.active]: location.pathname === '/' })} onClick={() => onChangeProfileBlock(false)}> О платформе </Link>
-              <Link to={'/subjects'} className={classNames(cls.nav__link, { [cls.active]: location.pathname.includes('/subjects') })} onClick={() => onChangeProfileBlock(false)}> Предметы </Link>
-              <Link to={'/subs'} className={classNames(cls.nav__link, { [cls.active]: location.pathname.includes('/subs') })} onClick={() => onChangeProfileBlock(false)}> Подписка </Link>
+            {!props.isAuth && 
+            <nav className={cls.nav}>
+
+              <NavLink 
+                exact to={'/'} 
+                className={ cls.nav__link } 
+                activeClassName = {cls.active } 
+                onClick={() => props.handleProfileBlock(false)}>
+                О платформе
+              </NavLink>
+              
+              <NavLink 
+                to={'/subjects'} 
+                className={cls.nav__link }
+                activeClassName = {cls.active } 
+                onClick={() => props.handleProfileBlock(false)}> 
+                Предметы 
+              </NavLink>
+
+              <NavLink 
+                to={'/subs'} 
+                className={ cls.nav__link }
+                activeClassName = {cls.active }
+                onClick={() => props.handleProfileBlock(false)}> 
+                Подписка 
+              </NavLink>
+
             </nav>}
 
             <div className={cls.last}>
 
-              <div className={classNames(cls.last__lang, { [cls.change__lang]: isAuth })}>
-                <span className={classNames(cls.lang__link, { [cls.lang_active]: isLang })} onClick={() => onChangeFunction('kz')}> Қаз </span>
-                <span className={classNames(cls.lang__link, { [cls.lang_active]: !isLang })} onClick={() => onChangeFunction('ru')}> Рус </span>
+              <div className={classNames(cls.last__lang, { [cls.change__lang]: props.isAuth })}>
+
+                <span 
+                  className={classNames(cls.lang__link, { [cls.lang_active]: isLang })} 
+                  onClick={() => props.handleLanguageChange('kz')}> 
+                  Қаз 
+                </span>
+
+                <span 
+                  className={classNames(cls.lang__link, { [cls.lang_active]: !isLang })} 
+                  onClick={() => props.handleLanguageChange('ru')}> 
+                  Рус 
+                </span>
+
               </div>
 
-              {!isAuth && <div className={cls.last__auth}>
-                <Link to={'/registration'} className={cls.signup} onClick={() => onChangeProfileBlock(false)}> Регистрация </Link>
-                <Link to={'/login'} className={ cls.signin } onClick={() => onChangeProfileBlock(false)}> Войти </Link>
+              {!props.isAuth && 
+              <div className={cls.last__auth}>
+
+                <NavLink 
+                  to={'/registration'} 
+                  className={cls.signup} 
+                  onClick={() => props.handleProfileBlock(false)}> 
+                  Регистрация 
+                </NavLink>
+
+                <NavLink 
+                  to={'/login'}
+                  className={ cls.signin } 
+                  onClick={() => props.handleProfileBlock(false)}> 
+                  Войти 
+                </NavLink>
+
               </div>}
 
-              <div ref={profileRef}>
-                {isAuth && <div className={cls.profile} onClick={() => onChangeProfileBlock(!showProfileBlock)}>
-                  <div className={cls.profile__name}> {user && <span> {user.first_name} {user.last_name[0]}. </span>} </div>
-                  <div className={cls.profile__avatar}> <Avatar alt={user && user.first_name} src="" /> </div>
-                  <ArrowDropDownIcon className={classNames(cls.profile__icons, { [cls.rotate]: showProfileBlock })} />
+              <div ref={props.profile_block_ref}>
+                {props.isAuth && 
+                <div className={cls.profile} onClick={() => props.handleProfileBlock(!props.show_profile_block)}>
+
+                  <div 
+                    className={cls.profile__name}> 
+                    {props.user && 
+                    <span> 
+                      {props.user.first_name} {props.user.last_name[0]}. 
+                    </span>} 
+                  </div>
+
+                  <div 
+                    className={cls.profile__avatar}> 
+                    <Avatar alt={props.user && props.user.first_name} src="" /> 
+                  </div>
+
+                  <ArrowDropDownIcon className={classNames(cls.profile__icons, { [cls.rotate]: props.show_profile_block })} />
                 </div>}
 
-                {isAuth && showProfileBlock && <ProfileBlock
-                  handleLogoutModal = { handleLogoutModal }
-                  user={user}
-                  logoutThunk={logoutThunk}
-                  onChangeProfileBlock={onChangeProfileBlock} />}
+                { props.isAuth && 
+                  props.show_profile_block && 
+                  <ProfileBlock
+                    user={ props.user }
+                    handleLogoutModal = { props.handleLogoutModal }
+                    handleProfileBlock = { props.handleProfileBlock }
+                  />
+                }
               </div>
 
-              {logout && 
-              <AuthModal
-                handleLogoutOK = { handleLogoutOK }
-                handleLogoutModal = { handleLogoutModal }
-              />}
+              {
+                props.logout && 
+                <AuthModal
+                  pressTheOkButton = { props.pressTheOkButton }
+                  handleLogoutModal = { props.handleLogoutModal }
+                />
+              }
 
             </div>
           </div>
 
-          <button ref={toggleButtonRef} className={classNames(cls.header__toggle, { [cls.active]: showProfileBlock })}
-            onClick={() => onChangeProfileBlock(!showProfileBlock)}>
-
+          <button 
+            ref={props.toggle_button_ref} 
+            className={classNames(cls.header__toggle, { [cls.active]: props.show_profile_block })}
+            onClick={() => props.handleProfileBlock(!props.show_profile_block)}>
             <span className={cls.toggle__item}> MENU </span>
-
           </button>
 
         </div>

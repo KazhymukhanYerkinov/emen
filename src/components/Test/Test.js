@@ -99,7 +99,7 @@ const Test = ({ match, BASE_URL }) => {
         dispatch(saveTestQuestionThunk(examUID, left_time, is_paused, student_answers));
 
       }
-    }, 100000);
+    }, 240000);
 
     return () => {
       Cookie.remove('answers');

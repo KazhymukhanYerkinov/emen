@@ -4,6 +4,7 @@ import HistoryItem from './HistoryItem/HistoryItem';
 import PaginationHistory from './PaginationHistory/PaginationHistory';
 
 const History = (props) => {
+  
   return (
     <div className={cls.history}>
       <div className='container'>
@@ -39,7 +40,6 @@ const History = (props) => {
                     />
                   )
                 }) }
-
               </tbody>
             </table>
 

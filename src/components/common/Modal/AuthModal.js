@@ -5,7 +5,7 @@ import cls from './Modal.module.css';
 
 
 
-const AuthModal = ({ handleLogoutModal, handleLogoutOK }) => {
+const AuthModal = (props) => {
     React.useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => {
@@ -19,8 +19,8 @@ const AuthModal = ({ handleLogoutModal, handleLogoutOK }) => {
                 <div className = {cls.modal__title}> Вы действительно хотите выйти? </div>
 
                 <div className = {cls.logout__block}>
-                    <button className = {cls.logout__cancel__button} onClick = {() => handleLogoutModal(false)}> Отмена </button>
-                    <Link to = '/' className = {cls.logout__ok__button} onClick = { handleLogoutOK }> OK </Link>
+                    <button className = {cls.logout__cancel__button} onClick = {() => props.handleLogoutModal(false)}> Отмена </button>
+                    <Link to = '/' className = {cls.logout__ok__button} onClick = { props.pressTheOkButton }> OK </Link>
                 </div>
             </div>
         </div>

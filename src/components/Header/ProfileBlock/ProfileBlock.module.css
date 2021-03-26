@@ -56,6 +56,12 @@
 
     transition: background-color .1s linear;
 }
+.route.active .route__icons path {
+    fill: #1A73E8;
+}
+.route.active {
+    background-color: #EBF0FC;
+}
 .route:hover {
     background-color: #EBF0FC;
 }
@@ -67,6 +73,7 @@
     
     margin-left: 15px;
 }
+
 .route:hover .route__icons path {
     fill: #1A73E8;
 }
@@ -89,7 +96,7 @@
     .profile {
         width: 100%;
         box-shadow: none; 
-        padding: 20px 50px 40px 15px;
+        padding: 20px 50px 40px 5px;
     }
     .profile__route {
         margin-top: 20px;
@@ -111,7 +118,7 @@
     }
     .route {
         
-        padding: 15px 0 15px 0;
+        padding: 15px 0 15px 10px;
     }
     .route__text {
         font-size: 21px;

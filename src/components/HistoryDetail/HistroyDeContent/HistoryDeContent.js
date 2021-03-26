@@ -20,7 +20,6 @@ const HistoryDeContent = (props) => {
     <div className = {cls.content}>
       <div className = {cls.question__content}>
         { props.variants.map((questions, baseKey) => {
-          console.log(questions)
           return (
             <React.Fragment key = { baseKey }>
                 { questions.questions.map((question, index) => {

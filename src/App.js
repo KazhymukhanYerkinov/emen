@@ -1,113 +1,245 @@
 import React from 'react';
 import Cookie from 'js-cookie';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {
-  loginThunk, signUpThunk, logoutThunk,
-  setRedirectSuccessPage, emailResetConfirmThunk,
+  loginThunk, 
+  signUpThunk, 
+  logoutThunk,
+  setRedirectSuccessPage, 
+  emailResetConfirmThunk,
   passwordResetConfirmThunk,
 } from './redux/auth-reducer';
-import { initSuccessThunk } from './redux/app-reducer';
+
+import { 
+  initSuccessThunk, 
+  setLanguage 
+} from './redux/app-reducer';
+
 import {
-  Content, Header, Footer,
-  SignIn, SignUp, ForgotPassword,
-  ConfirmPassword, Success, Subjects,
-  DetailSubject, Activate, HistoryDetailContainer,
-  HistoryContainer
+  Content, 
+  HeaderContainer, 
+  Footer,
+  SignIn, 
+  SignUp, 
+  ForgotPassword,
+  ConfirmPassword, 
+  Success, 
+  Subjects,
+  DetailSubject, 
+  Activate, 
+  Test,
+  HistoryDetailContainer,
+  HistoryContainer,
+  Save,
+  Profile,
+  Statistics,
+  Subscription,
+  NotFound,
 } from './components';
 
-import './App.css';
-import Test from './components/Test/Test';
+// helper components
 import Preloader from './components/common/Preloader/Preloader';
 import ScrollToUp from './hoc/ScrollToUp';
 
+import './App.css';
 
 
-let BASE_URL = 'https://e-men.kz';
 
-const App = (props) => {
 
-  const [language, setLanguage] = React.useState('ru');
 
-  React.useEffect(() => {
-    props.initSuccessThunk();
-  }, []);
+class App extends React.Component {
 
-  React.useEffect(() => {
+  // The first check
+  componentDidMount() {
+    this.props.initSuccessThunk();
+    
     if (Cookie.get('lang')) {
-      setLanguage(Cookie.get('lang'));
+      this.props.setLanguage(Cookie.get('lang'));
     }
-  }, [language])
-
-  const { isAuth, user, loginThunk,
-    signUpThunk, fromRegisterPage, logoutThunk,
-    initialized, setRedirectSuccessPage, emailResetConfirmThunk,
-    passwordResetConfirmThunk, } = props;
-
-  if (!initialized) {
-    return <Preloader />
   }
 
+  render() {
 
+    if (!this.props.initialized) {
+      return <Preloader />
+    }
 
+    return (
+      <div>
+        <ScrollToUp>
 
-  return (
-    <div className="App">
-      <ScrollToUp>
-        <Header isAuth={isAuth} user={user} logoutThunk={logoutThunk} language={language} setLanguage={setLanguage} />
+          <HeaderContainer
+            isAuth = { this.props.isAuth }
+            user = { this.props.user }
+            language = { this.props.language }
+            setLanguage = { this.props.setLanguage }
+            logoutThunk = { this.props.logoutThunk }
+          />
+          <Switch>
 
-        <Route exact path='/'
-          render={() => <Content isAuth={isAuth} language={language} />} />
-        <Route exact path='/login'
-          render={() => <SignIn isAuth={isAuth} loginThunk={loginThunk} />} />
-        <Route exact path='/registration'
-          render={() => <SignUp signUpThunk={signUpThunk} fromRegisterPage={fromRegisterPage} />} />
-        <Route exact path='/forgotpassword'
-          render={() => <ForgotPassword emailResetConfirmThunk={emailResetConfirmThunk} />} />
-        <Route exact path='/password/reset/confirm/:uid/:token'
-          render={() => <ConfirmPassword fromRegisterPage={fromRegisterPage} passwordResetConfirmThunk={passwordResetConfirmThunk} />} />
-        <Route path='/showTheme/:subjectID'
-          render={() => <DetailSubject BASE_URL={BASE_URL} />} />
-        {fromRegisterPage !== 0 &&
-          <Route exact path='/success'
-            render={() => <Success fromRegisterPage={fromRegisterPage} setRedirectSuccessPage={setRedirectSuccessPage} />} />}
-        <Route exact path='/activate/:uid/:token' component = { Activate }/>
+            <Route 
+              exact path = '/' 
+              render = {() => (
+                <Content
+                  isAuth = { this.props.isAuth }
+                  language = { this.props.language }
+                />
+                )} 
+            />
 
-        <Route exact path='/start_test/:examUID'
-          render={() => <Test BASE_URL={BASE_URL} />} />
+            <Route 
+              exact path = '/login'
+              render = {() => (
+                <SignIn
+                  isAuth = { this.props.isAuth } 
+                  loginThunk = { this.props.loginThunk }
+                />
+              )}
+            />
 
-        <Route exact path='/subjects'
-          render={() => <Subjects language={language} BASE_URL={BASE_URL} />} />
+            <Route
+              exact path = '/registration'
+              render = {() => (
+                <SignUp
+                  fromRegisterPage = { this.props.fromRegisterPage }
+                  signUpThunk = { this.props.signUpThunk }
+                />
+              )}
+            />
 
-        <Route exact path = '/history/:historyUID' 
-          render = {() => <HistoryDetailContainer BASE_URL = { BASE_URL }/> } />
-        <Route exact path = '/history' 
-          render = {() => <HistoryContainer BASE_URL = { BASE_URL }/>}/>
-          
-        <Footer />
-      </ScrollToUp>
-    </div>
-  );
+            <Route
+              exact path = '/forgotpassword'
+              render = {() => (
+                <ForgotPassword
+                  emailResetConfirmThunk={ this.props.emailResetConfirmThunk }
+                />
+              )}
+            />
 
+            <Route
+              exact path = '/password/reset/confirm/:uid/:token' 
+              render = {() => (
+                <ConfirmPassword 
+                  fromRegisterPage={ this.props.fromRegisterPage }
+                  passwordResetConfirmThunk={ this.props.passwordResetConfirmThunk }
+                />
+              )}
+            />
+
+            {this.props.fromRegisterPage !== 0 &&
+            <Route
+              exact path = '/success'
+              render = {() => (
+                <Success
+                  fromRegisterPage={ this.props.fromRegisterPage } 
+                  setRedirectSuccessPage={ this.props.setRedirectSuccessPage } 
+                />
+              )} 
+            />}
+
+            <Route 
+              exact path='/activate/:uid/:token' 
+              component = { Activate }
+            />
+
+            <Route 
+              path = '/showTheme/:subjectID'
+              render = {() => (
+                <DetailSubject
+                  BASE_URL = { this.props.BASE_URL }
+                />
+              )}
+            />
+
+            <Route
+              exact path = '/start_test/:examUID'
+              render = {() => (
+                <Test
+                  BASE_URL = { this.props.BASE_URL } 
+                />
+              )}
+            />
+
+            <Route
+              exact path = '/subjects'
+              render = {() => (
+                <Subjects
+                  language={ this.props.language } 
+                  BASE_URL={ this.props.BASE_URL }
+                />
+              )}
+            />
+
+            <Route
+              exact path = '/history'
+              render = {() => (
+                <HistoryContainer 
+                  BASE_URL = { this.props.BASE_URL }
+                />
+              )}
+            />
+
+            <Route 
+              exact path = '/history/:historyUID' 
+              render = {() => (
+                <HistoryDetailContainer 
+                  BASE_URL = { this.props.BASE_URL }
+                /> 
+              )} 
+            />
+
+            <Route 
+              exact path = '/save'
+              component = { Save }
+            />
+
+            <Route
+              exact path = '/profile'
+              component = { Profile }
+            />
+
+            <Route
+              exact path = '/statistics'
+              component = { Statistics }
+            />
+
+            <Route
+              exact path = '/subscription'
+              component = { Subscription } 
+            />
+
+            <Route component = { NotFound } />
+            
+          </Switch>
+
+          <Footer />
+        </ScrollToUp>
+      </div>
+    )
+  }
 }
+
 
 let mapStateToProps = (state) => ({
   isAuth: state.authPage.isAuth,
   user: state.authPage.user,
   fromRegisterPage: state.authPage.fromRegisterPage,
+
   initialized: state.appPage.initialized,
+  language: state.appPage.language,
+  BASE_URL: state.appPage.BASE_URL,
 })
 
+export default connect(mapStateToProps, {
+  loginThunk,
+  signUpThunk,
+  logoutThunk,
+  initSuccessThunk,
 
-export default connect(mapStateToProps,
-  {
-    loginThunk,
-    signUpThunk,
-    logoutThunk,
-    initSuccessThunk,
-    setRedirectSuccessPage,
-    emailResetConfirmThunk,
-    passwordResetConfirmThunk,
-
-  })(App);
+  setLanguage,
+  setRedirectSuccessPage,
+  emailResetConfirmThunk,
+  passwordResetConfirmThunk,
+})(App);
