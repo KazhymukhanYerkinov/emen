@@ -1,0 +1,44 @@
+.account__details {
+    display: block;
+}
+.sub__title {
+    margin-bottom: 12px;
+
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+}
+.form__groups {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.button {
+    margin-top: -10px;
+    margin-bottom: 10px;
+
+    display: flex;
+    justify-content: flex-end;
+}
+.submit {
+   
+
+    width: 120px;
+    height: 35px;
+
+    color: #fff;
+    border-radius: 3px;
+    background-color: #1A73E8;
+
+    transition: background-color .2s linear;
+}
+.submit:hover {
+    background-color: #174EA6;
+}
+
+@media (max-width: 800px) {
+    .sub__title {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

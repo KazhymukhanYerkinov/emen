@@ -1,0 +1,22 @@
+.title {
+    margin-bottom: 15px;
+
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+}
+.kaspi__image {
+    display: block;   
+}
+.steps {
+    margin-top: 15px;
+
+}
+.step {
+    margin-top: 10px;
+    
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5F6368;
+}

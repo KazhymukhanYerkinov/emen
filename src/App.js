@@ -33,7 +33,7 @@ import {
   HistoryDetailContainer,
   HistoryContainer,
   Save,
-  Profile,
+  ProfileContainer,
   Statistics,
   Subscription,
   NotFound,
@@ -78,7 +78,6 @@ class App extends React.Component {
             logoutThunk = { this.props.logoutThunk }
           />
           <Switch>
-
             <Route 
               exact path = '/' 
               render = {() => (
@@ -196,8 +195,8 @@ class App extends React.Component {
             />
 
             <Route
-              exact path = '/profile'
-              component = { Profile }
+              path = '/profile'
+              component = { ProfileContainer }
             />
 
             <Route
@@ -213,7 +212,6 @@ class App extends React.Component {
             <Route component = { NotFound } />
             
           </Switch>
-
           <Footer />
         </ScrollToUp>
       </div>

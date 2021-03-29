@@ -1,7 +1,15 @@
 .formInput {
+    width: 49%;
     margin-bottom: 20px;
 }
+
+.formInput label {
+    font-size: 12px;
+    line-height: 15px;
+    color: #5F6368;
+}
 .input {
+    margin-top: 3px;
     padding: 0 !important;
     height: 40px;
 }
@@ -19,3 +27,46 @@
     font-size: 20px;
     padding-left: 50px;
 }
+.profile__input {
+    width: 100%;
+    background-color: #EFF7FE;
+}
+.change__password {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+
+    font-size: 12px;
+    cursor: pointer;
+    color: #1A73E8;
+}
+.change__password:hover {
+    text-decoration: underline;
+}
+
+
+
+.fullWidth {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.fullWidth label {
+    font-size: 16px;
+    line-height: 19px;
+    color: #5F6368;
+}
+
+.mobile__input {
+    height: 50px;
+}
+
+@media (max-width: 500px) {
+    .fullWidth {
+        margin-bottom: 12px;
+    }
+    .fullWidth label {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
