@@ -7,6 +7,7 @@ import appReducer from './app-reducer';
 import subjectReducer from './subject-reducer';
 import testReducer from './startTest-reducer';
 import historyReducer from './history-reducer';
+import subsReducer from './subs-reducer';
 
 
 let reducer = combineReducers({
@@ -16,8 +17,9 @@ let reducer = combineReducers({
     subjectPage: subjectReducer,
     testPage: testReducer,
     historyPage: historyReducer,
+    subsPage: subsReducer,
     
-    
+      
 });
 
 let store = createStore(reducer, applyMiddleware(thunkMiddleware));

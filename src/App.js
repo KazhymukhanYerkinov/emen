@@ -35,7 +35,7 @@ import {
   Save,
   ProfileContainer,
   Statistics,
-  Subscription,
+  SubscriptionContainer,
   NotFound,
 } from './components';
 
@@ -206,7 +206,7 @@ class App extends React.Component {
 
             <Route
               exact path = '/subscription'
-              component = { Subscription } 
+              component = { SubscriptionContainer } 
             />
 
             <Route component = { NotFound } />

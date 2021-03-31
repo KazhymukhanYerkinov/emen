@@ -36,3 +36,9 @@
 
     color: #222222;
 }
+
+@media (max-width: 450px) {
+    .header, .header__inner {
+        height: 60px;
+    }
+}

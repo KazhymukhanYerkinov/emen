@@ -2,7 +2,7 @@
     width: 30%;
 }
 .profile__info {
-    height: 290px;
+    height: 270px;
     padding: 20px 0;
 
     display: flex;
@@ -19,8 +19,8 @@
 .avatar {
     margin: 0 auto;
     display: block;
-    width: 100px !important;
-    height: 100px !important;
+    width: 90px !important;
+    height: 90px !important;
 }
 
 
@@ -46,8 +46,8 @@
     padding-top: 10px;
     border-top: 1px solid #F7F7F7;
     font-weight: 600;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 16px;
+    line-height: 19px;
 
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #1A73E8;

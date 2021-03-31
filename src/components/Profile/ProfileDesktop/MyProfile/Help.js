@@ -9,6 +9,8 @@ const Help = () => {
                 <div className = { cls.title }> Помощь </div>
             </div>
             <hr className={cls.hr} />
+
+            <div> Көмектеседі деп ойлап қалдың ба? Уахахаха </div>
         </div>
     )
 }

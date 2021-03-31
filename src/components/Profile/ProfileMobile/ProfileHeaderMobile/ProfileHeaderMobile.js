@@ -6,15 +6,21 @@ import arrow from '../../../../assets/detail/arrow.svg'
 import cls from './ProfileHeaderMobile.module.css';
 
 
-const ProfileHeaderMobile = () => {
+const ProfileHeaderMobile = (props) => {
     return (
         <div className = {cls.header}>
             <div className = {cls.header__inner}>
                 
-                <NavLink to = '/profile' className = {cls.back}>
+                { props.isForm
+
+                ?<NavLink to = '/profile/basic_data' className = {cls.back}>
+                    <div className = {cls.name}> Отмена </div>
+                </NavLink>
+
+                :<NavLink to = '/profile' className = {cls.back}>
                     <img src = { arrow } alt = '' />
                     <div className = {cls.name}> Профиль </div>
-                </NavLink>
+                 </NavLink>}
             </div>
         </div>
     )

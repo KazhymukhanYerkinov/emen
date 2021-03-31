@@ -11,7 +11,6 @@ const HistoryItem = (props) => {
   let hours = ('0' + Math.floor(props.history.exam_duration / 3600)).slice(-2);
 
   return (
-    // 
     <tr className={cls.column}>
 
       <td className={cls.first_row}>

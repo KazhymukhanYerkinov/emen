@@ -1,0 +1,153 @@
+.block {
+    padding: 15px 20px;
+
+    width: 32%;
+    background-color: #474F60;
+    border-radius: 6px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.button {
+    margin-top: 20px;
+
+    width: 100%;
+    height: 45px;
+
+    color: #fff;
+    border-radius: 3px;
+    background-color: #1A73E8;
+}
+
+/* HEADER */
+.header {
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title {
+    margin-left: 10px;
+
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 24px;
+
+    color: #fff;
+}
+
+/* SERVICES */
+.service__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #fff;
+    text-align: center;
+}
+.circle {
+    margin: 9px auto;
+    display: block;
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50px;
+    background-color: #fff;
+}
+.service:last-child .circle {
+    display: none;
+}
+
+/* MONEY */
+.money {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fff;
+    
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    text-align: center;
+}
+
+/* PRICE */
+.price__description {
+    font-size: 13px;
+    line-height: 16px;
+
+    color: #fff;
+    text-align: center;
+}
+.price__number {
+    margin: 20px 0 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circle__block {
+    position: relative;
+    margin-left: 12px;
+
+    cursor: pointer;
+}
+.circle__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: 3px solid #fff;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #fff;
+
+
+    
+}
+.icon__block {
+    position: absolute;
+    left: -2.6px;
+    top: -2.6px;
+
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    
+
+    background-color: #fff;
+}
+.check__icon {
+    position: absolute;
+    left: -5px;
+    top: -5px;
+
+    color: #1ABF7E;
+    
+}
+
+
+@media (max-width: 850px) {
+    .block {
+        margin-top: 20px;
+        width: 49%;
+    }
+}
+
+@media (max-width: 550px) {
+    .block {
+        width: 100%;
+    }
+    .title {
+        font-size: 18px;
+        line-height: 21px;
+    }
+    .button {
+        height: 40px;
+    }
+}

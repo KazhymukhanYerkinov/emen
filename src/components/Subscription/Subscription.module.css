@@ -1,6 +1,23 @@
 .subscription {
-    height: 100vh;
+    padding-top: 105px;
+    padding-bottom: 70px;
+    min-height: 100vh;
 
     display: flex;
-    align-items: center;
 }
+
+.subs__blocks {
+    margin: 20px 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 31px;
+
+    color: #222222;
+}
+

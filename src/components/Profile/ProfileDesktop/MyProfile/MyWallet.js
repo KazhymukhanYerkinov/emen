@@ -1,5 +1,5 @@
 import React from 'react';
-import kaspi from '../../../assets/images/kaspi.jpg';
+import kaspi from '../../../../assets/images/kaspi.jpg';
 import cls from './MyProfile.module.css';
 
 const MyWallet = () => {

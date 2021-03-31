@@ -1,0 +1,56 @@
+@import 'variables';
+
+.control {
+  margin-bottom: 20px;
+
+  .input {
+    margin-top: 3px;
+    padding: 0 !important;
+    height: 40px;
+    width: 100%;
+  }
+
+  .helper_text {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+
+    font-size: 12px;
+    cursor: pointer;
+    color: $blue;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &,
+  label {
+    display: block;
+    font-size: 12px;
+    line-height: 15px;
+    color: $dark_gray;
+  }
+
+  &--half_width {
+    width: 49%;
+    
+    .input {
+      background-color: $input_background;
+      :focus {
+        background-color: $white;
+      }
+    }
+  }
+  &--full_width {
+    width: 100%;
+  }
+  
+
+
+  @media (max-width: 500px) {
+    .control {
+      margin-bottom: 12px;
+    }
+  }
+}

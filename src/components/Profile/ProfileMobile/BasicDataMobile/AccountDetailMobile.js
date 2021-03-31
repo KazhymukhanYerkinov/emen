@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import arrow from '../../../../assets/detail/arrow.svg';
 
@@ -15,22 +16,22 @@ const AccountDetailMobile = () => {
                 <div className = {cls.mobile__input}> id123456789 </div>
             </div>
 
-            <div className = {cls.group}>
+            <NavLink to = '/profile/basic_data/change_email' className = {cls.group}>
                 <small className = {cls.mobile__label}> Email </small>
                 <div className = {cls.mobile__input}> 
                     <div>dumantoktarov@gmail.com</div>
                     <img src = { arrow } alt = '' />
                 </div>
                 
-            </div>
+            </NavLink>
 
-            <div className = {cls.group}>
+            <NavLink to = '/profile/basic_data/change_password' className = {cls.group}>
                 <small className = {cls.mobile__label}> Пароль </small>
                 <div className = {cls.mobile__input}> 
                     <div>Последний изменений в 21.01.21 </div>
                     <img src = { arrow } alt = '' />
                 </div>
-            </div>
+            </NavLink>
         </div>
     )
 }

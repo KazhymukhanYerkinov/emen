@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AvatarInfo from '../../ProfileInfo/AvatarInfo';
+import AvatarInfo from '../../ProfileDesktop/ProfileInfo/AvatarInfo';
 import AccountDetailMobile from './AccountDetailMobile';
 import PersonalDataMobile from './PersonalDateMobile';
 

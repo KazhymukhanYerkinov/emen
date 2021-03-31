@@ -7,6 +7,8 @@ import store from './redux/redux-store';
 
 import App from './App';
 
+import './scss/app.scss';
+
 
 
 ReactDOM.render(

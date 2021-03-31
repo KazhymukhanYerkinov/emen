@@ -16,7 +16,7 @@ const ProfileInfo = () => {
            <AvatarInfo />
 
             <div className = { cls.profile__navigator }>
-                <NavLink className = { cls.link } exact to = '/profile/basic_data' activeClassName = {cls.active}> Мой профиль </NavLink>
+                <NavLink className = { cls.link } exact to = '/profile' activeClassName = {cls.active}> Мой профиль </NavLink>
                 <NavLink className = { cls.link } to = '/profile/wallet' activeClassName = {cls.active}> Мой кошелек </NavLink>
                 <NavLink className = { cls.link } to = '/profile/help' activeClassName = {cls.active}> Помощь </NavLink>
             </div>

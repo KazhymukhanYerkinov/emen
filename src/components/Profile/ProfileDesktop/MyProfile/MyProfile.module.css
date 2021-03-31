@@ -85,6 +85,16 @@
     color: #5F6368;
 }
 
+
+/* MyWallet */
+.sub__title {
+    margin-bottom: 10px;
+
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+}
+
 @media (max-width: 850px) {
     .my {
         width: 74%;

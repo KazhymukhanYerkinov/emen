@@ -1,0 +1,44 @@
+.content {
+    margin-top: 20px;
+    
+    overflow-x: auto;
+}
+.table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+    
+}
+.thead {
+    background-color: #F7F7F7;
+    
+}
+.thead th {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+
+    padding: 15px 0 15px;
+    color: #222222;
+    font-feature-settings: 'pnum' on, 'lnum' on; 
+}
+
+/* TBODY */
+.column td {
+    padding: 17px 15px;
+
+    font-size: 14px;
+    line-height: 17px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #222222;
+    border: 0.5px solid #F7F7F7;
+}
+.column td:first-child {
+    border-left: 0;
+}
+.column td:last-child {
+    border-right: 0;
+}
+.result {
+    text-align: center;
+}

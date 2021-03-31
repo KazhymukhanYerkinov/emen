@@ -1,9 +1,9 @@
 .account__details {
     display: block;
+    margin: 10px 0 20px;
 }
 .sub__title {
     margin-bottom: 12px;
-
     font-weight: 600;
     font-size: 18px;
     line-height: 21px;
@@ -21,8 +21,6 @@
     justify-content: flex-end;
 }
 .submit {
-   
-
     width: 120px;
     height: 35px;
 
@@ -34,6 +32,41 @@
 }
 .submit:hover {
     background-color: #174EA6;
+}
+
+
+
+.group {
+    display: block;
+    width: 49%;
+}
+.mobile__label {
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #5F6368;
+}
+
+
+/* Account Details */
+.mobile__input {
+    margin-top: 3px;
+    padding: 0 15px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #5F6368;
+    border-radius: 5px;
+    border: 0.5px solid #5F6368;
+    background-color: #EFF7FE;
 }
 
 @media (max-width: 800px) {

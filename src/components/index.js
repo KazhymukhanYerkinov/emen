@@ -14,7 +14,7 @@ export { default as HistoryContainer } from './History/HistoryContainer';
 export { default as Test } from './Test/Test';
 export { default as Save } from './Save/Save';
 export { default as Statistics } from './Statistics/Statistics';
-export { default as Subscription } from './Subscription/Subscription';
+export { default as SubscriptionContainer } from './Subscription/SubscriptionContainer';
 export { default as ProfileContainer } from './Profile/ProfileContainer';
 export { default as NotFound } from './NotFound/NotFound';
 
