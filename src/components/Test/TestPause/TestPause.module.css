@@ -36,47 +36,11 @@
 
     color: #5F6368;
 }
-.pause__re, .pause__finish {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    width: 100%;
-    height: 50px;
 
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
-
-    color: #FFFFFF;
-    background: #1A73E8;
-    border-radius: 3px;
-
-    transition: background-color .2s linear;
-}
-.pause__finish {
-    margin-top: 10px;
-    color: #222222;
-    background-color: #F7F7F7;
-}
-
-.pause__re:hover {
-    background-color: #174EA6; 
-}
-.pause__finish:hover {
-    background-color: #eceaea;
-}
 
 @media (max-width: 500px) {
     .pause {
         margin-top: 50px;
-    }
-    .pause__re, .pause__finish {
-        height: 40px;
-
-        font-size: 14px;
-        line-height: 16px;
-        font-weight: 500;
     }
     .pause__text {
         font-size: 18px;

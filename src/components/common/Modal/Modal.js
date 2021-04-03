@@ -35,7 +35,7 @@ const Modal = ({ errorsStartTests, BASE_URL, duringTheTest, handleCloseModal }) 
               </div>
               <Link
                   onClick = { handleCloseModal }
-                  className = {cls.continue__button}
+                  className = 'button button__submit'
                   to = {`/start_test/${errorsStartTests.unfinishedExam.uuid}`}> 
                 Продолжить 
               </Link>
@@ -47,8 +47,8 @@ const Modal = ({ errorsStartTests, BASE_URL, duringTheTest, handleCloseModal }) 
             </React.Fragment>}
 
             {duringTheTest
-            ?<Link onClick = { handleCloseModal } to = {`/`} className = {cls.during__test__button}> Отмена </Link>
-            :<button onClick = { handleCloseModal } className = {cls.close__button}> Отмена </button>}
+            ?<Link onClick = { handleCloseModal } to = {`/`} className = 'button button__over'> Отмена </Link>
+            :<button onClick = { handleCloseModal } className = 'button button__over mt-10'> Отмена </button>}
 
         </div>
       </div>

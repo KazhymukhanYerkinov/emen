@@ -8,7 +8,8 @@ import cls from './ProfileForms.module.css';
 
 
 
-const AccountDetailsForm = () => {
+const AccountDetailsForm = (props) => {
+  console.log('RENDER ACCOUNT')
   return (
     <form className={cls.account__details}>
       <div className={cls.sub__title}> Данные учетной записи </div>
@@ -16,7 +17,7 @@ const AccountDetailsForm = () => {
 
         <div className={cls.group}>
           <small className={cls.mobile__label}> ID пользователя </small>
-          <div className={cls.mobile__input}> id123456789 </div>
+          <div className={cls.mobile__input}> {props.user.code} </div>
         </div>
 
         <Field
@@ -34,6 +35,6 @@ const AccountDetailsForm = () => {
     </form>
   )
 }
-const AccountDetailsReduxForm = reduxForm({ form: 'account_details' })(AccountDetailsForm);
+const AccountDetailsReduxForm = reduxForm({ form: 'account_details', enableReinitialize: true })(AccountDetailsForm);
 
 export default AccountDetailsReduxForm;

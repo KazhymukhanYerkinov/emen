@@ -29,7 +29,6 @@ import {
   Subjects,
   DetailSubject, 
   Activate, 
-  Test,
   HistoryDetailContainer,
   HistoryContainer,
   Save,
@@ -37,6 +36,7 @@ import {
   Statistics,
   SubscriptionContainer,
   NotFound,
+  TestContainer,
 } from './components';
 
 // helper components
@@ -155,7 +155,7 @@ class App extends React.Component {
             <Route
               exact path = '/start_test/:examUID'
               render = {() => (
-                <Test
+                <TestContainer
                   BASE_URL = { this.props.BASE_URL } 
                 />
               )}
@@ -196,7 +196,11 @@ class App extends React.Component {
 
             <Route
               path = '/profile'
-              component = { ProfileContainer }
+              render = {() => (
+                <ProfileContainer 
+                  BASE_URL = { this.props.BASE_URL }
+                />
+              )}
             />
 
             <Route

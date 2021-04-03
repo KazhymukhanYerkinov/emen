@@ -3,15 +3,16 @@ import classNames from 'classnames';
 import cls from './TestAnswer.module.css';
 
 
-const TestAnswer = ({ mapWithAnswers, question_id, answer_text, answer_id, onSetActiveAnswer }) => {
+const TestAnswer = ({ question_id, answer_text, answer_id, onSetActiveAnswer, hasAnswer }) => {
 
     React.useEffect(() => {
         document.getElementById(`answer_${answer_id}`).innerHTML = answer_text;
     }, [answer_id, answer_text])  
 
     let isChecked = false;
-    if (mapWithAnswers.has(question_id)) {
-        isChecked = (mapWithAnswers.get(question_id).answer.includes(answer_id));
+
+    if (hasAnswer(question_id, answer_id)) {
+        isChecked = true;
     }
 
 

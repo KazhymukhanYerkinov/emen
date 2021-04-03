@@ -21,10 +21,10 @@ const HistoryItem = (props) => {
       </td>
 
 
-      <td> <NavLink to={`/history/${props.history.uuid}`}> {props.history.variant} </NavLink> </td>
+      <td> <NavLink to={`/history/${props.history.uuid}`}> 24.10.2000 </NavLink> </td>
       <td> <NavLink to={`/history/${props.history.uuid}`}>{props.history.score}/{props.history.total_score}</NavLink> </td>
       <td> <NavLink to={`/history/${props.history.uuid}`}>{hours}:{minute}:{second} </NavLink></td>
-      <td> <NavLink to={`/history/${props.history.uuid}`}>24.10.2000 </NavLink></td>
+      <td> <NavLink to={`/history/${props.history.uuid}`}> {props.history.variant} </NavLink></td>
       <td className={cls.last_row}> <NavLink to={`/history/${props.history.uuid}`}><ArrowComponent /></NavLink> </td>
 
     </tr>

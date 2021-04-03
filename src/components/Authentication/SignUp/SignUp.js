@@ -25,7 +25,7 @@ const SignUpForm = ({ handleSubmit, showFetchButton, error }) => {
                 <Field name = { 'password1' } component = { InputPassword } label = { 'Создать пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
                 <Field name = { 'password2' } component = { InputPassword } label = { 'Повторить пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
             </div>
-            <button className = {'button submit'} type = 'submit'>  {showFetchButton ? <img className = {cls.loader} src = { loader } alt = ''/>:<span>Зарегистрироваться</span>} </button>
+            <button className = 'button button__submit'  type = 'submit'>  {showFetchButton ? <img className = {cls.loader} src = { loader } alt = ''/>:<span>Зарегистрироваться</span>} </button>
         </form>
         </>
     )

@@ -1,16 +1,16 @@
 import { startTestAPI } from "../api/api";
 
-const POST_QUESTION_SUCCESS = 'POST_QUESTION_SUCCESS';
-const POST_QUESTION_FAIL = 'POST_QUESTION_FAIL';
+const POST_QUESTION_SUCCESS = 'test-reducer/POST_QUESTION_SUCCESS';
+const POST_QUESTION_FAIL = 'test-reducer/POST_QUESTION_FAIL';
 
-const GET_QUESTIONS_SUCCESS = 'GET_QUESTIONS_SUCCESS';
-const GET_QUESTIONS_FAIL = 'GET_QUESTIONS_FAIL';
+const GET_QUESTIONS_SUCCESS = 'test-reducer/GET_QUESTIONS_SUCCESS';
+const GET_QUESTIONS_FAIL = 'test-reducer/GET_QUESTIONS_FAIL';
 
-const IS_FETCHING_DATA_TRUE = 'IS_FETCHING_DATA_TRUE';
-const IS_FETCHING_DATA_FALSE = 'IS_FETCHING_DATA_FALSE';
+const IS_FETCHING_DATA_TRUE = 'test-reducer/IS_FETCHING_DATA_TRUE';
+const IS_FETCHING_DATA_FALSE = 'test-reducer/IS_FETCHING_DATA_FALSE';
 
-const SET_ERRORS_START_TESTS = 'SET_ERRORS_START_TESTS';
-const FAIL_ERROR_START_TESTS = 'FAIL_ERROR_START_TESTS';
+const SET_ERRORS_START_TESTS = 'test-reducer/SET_ERRORS_START_TESTS';
+const FAIL_ERROR_START_TESTS = 'test-reducer/FAIL_ERROR_START_TESTS';
 
 
 
@@ -80,7 +80,7 @@ const testReducer = (state = initialState, action) => {
             copyErrorStartTests.showError = true;
             copyErrorStartTests.errorMessage = action.errorMessage;
             copyErrorStartTests.unfinishedExam = action.unfinishedExam;
-
+            console.log(stateCopy);
             return stateCopy;
 
         }
@@ -158,6 +158,7 @@ export const getQuestionThunk = (uid) => async (dispatch) => {
             let unfinishedExam = null;
 
             dispatch({ type: SET_ERRORS_START_TESTS, errorMessage, unfinishedExam });
+            console.log('Here')
         }
 
         else if (error.response.data.status_code === 2) {
@@ -177,9 +178,7 @@ export const getQuestionThunk = (uid) => async (dispatch) => {
 
             dispatch({ type: SET_ERRORS_START_TESTS, errorMessage, unfinishedExam });
         }
-
-
-        console.log(error.response.data);
+        dispatch({ type: IS_FETCHING_DATA_FALSE });
     }
 }
 

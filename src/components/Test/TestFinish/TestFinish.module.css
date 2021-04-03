@@ -38,36 +38,13 @@
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #5F6368;
 }
-.yes__finish, .no__finish {
-    margin-top: 10px;
-    width: 100%;
-    height: 40px;
-    
 
-    background-color: #1A73E8;
-    border-radius: 3px;
-    color: #fff;
 
-    transition: background-color .2s linear;
-}
-.no__finish {
-    background-color: #F7F7F7;
-    color: #222222;
-}
-.yes__finish:hover {
-    background-color: #174EA6;
-}
-.no__finish:hover {
-    background-color: #eceaea;
-}
 
 
 @media (max-width: 500px) {
     .finish__title {
         font-size: 18px;
         line-height: 21px;
-    }
-    .yes__finish, .no__finish {
-        margin-top: 15px;
     }
 }

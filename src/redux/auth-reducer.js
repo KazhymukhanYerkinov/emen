@@ -2,20 +2,20 @@ import Cookie from 'js-cookie';
 import { stopSubmit, reset } from 'redux-form';
 import { authAPI } from '../api/api';
 
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-const LOGIN_FAIL = 'LOGIN_FAIL';
+const LOGIN_SUCCESS = 'auth-reducer/LOGIN_SUCCESS';
+const LOGIN_FAIL = 'auth-reducer/LOGIN_FAIL';
 
-const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
-const LOAD_USER_FAIL = 'LOAD_USER_FAIL';
+const LOAD_USER_SUCCESS = 'auth-reducer/LOAD_USER_SUCCESS';
+const LOAD_USER_FAIL = 'auth-reducer/LOAD_USER_FAIL';
 
-const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
-const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
+const SIGN_UP_SUCCESS = 'auth-reducer/SIGN_UP_SUCCESS';
+const SIGN_UP_FAIL = 'auth-reducer/SIGN_UP_FAIL';
 
-const AUTHENTICATED_SUCCESS = 'AUTHENTICATED_SUCCESS';
-const AUTHENTICATED_FAIL = 'AUTHENTICATED_FAIL';
+const AUTHENTICATED_SUCCESS = 'auth-reducer/AUTHENTICATED_SUCCESS';
+const AUTHENTICATED_FAIL = 'auth-reducer/AUTHENTICATED_FAIL';
 
-const SUCCESS_ACTIVATE_ACCOUNT = 'SUCCESS_ACTIVATE_ACCOUNT';
-const FAIL_ACTIVATE_ACCOUNT = 'FAIL_ACTIVATE_ACCOUNT';
+const SUCCESS_ACTIVATE_ACCOUNT = 'auth-reducer/SUCCESS_ACTIVATE_ACCOUNT';
+const FAIL_ACTIVATE_ACCOUNT = 'auth-reducer/FAIL_ACTIVATE_ACCOUNT';
 
 
 

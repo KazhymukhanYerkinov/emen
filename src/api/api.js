@@ -154,4 +154,12 @@ export const historyAPI = {
     }
 }
 
+export const profileAPI = {
+    getProfile(){
+        return instance.get(`api/v1/auth/profile/`).then(response => {
+            return response.data;
+        })
+    }
+}
+
 

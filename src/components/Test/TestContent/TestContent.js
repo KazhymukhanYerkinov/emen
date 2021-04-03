@@ -5,11 +5,7 @@ import cls from './TestContent.module.css';
 import TestGroup from './TestGroup/TestGroup';
 
 
-const TestContent = ({ TEST_QUESTIONS, mapWithAnswers, setMapWithAnswers, indexOfSub }) => {
-
-  
-  
-
+const TestContent = ({ TEST_QUESTIONS, setMapWithAnswers, hasAnswer }) => {
 
 
   React.useEffect(() => {
@@ -19,34 +15,41 @@ const TestContent = ({ TEST_QUESTIONS, mapWithAnswers, setMapWithAnswers, indexO
     window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, document.querySelector('.challenge__description')]);
 
 
-  }, [indexOfSub]);
+  }, []);
 
-
+  console.log(TEST_QUESTIONS)
   return (
     <div className={cls.content}>
-            {TEST_QUESTIONS[indexOfSub].questions.map((item, index) => {
-              return item.is_group ?
-              (
-                <TestGroup 
-                  key = { index }
-                  item = { item }
-                  indexOfSub = { indexOfSub }
-                  uuid = { TEST_QUESTIONS[indexOfSub].uuid }
-                  mapWithAnswers = { mapWithAnswers } 
-                  setMapWithAnswers = { setMapWithAnswers }
-                />
-              ) : (
-                <TestQuestion
-                  key = { index }
-                  {...item}
-                  indexOfSub = { indexOfSub }
-                  uuid = { TEST_QUESTIONS[indexOfSub].uuid }
-                  mapWithAnswers={mapWithAnswers}
-                  setMapWithAnswers={setMapWithAnswers}
-                />
-                  )
-            })}
+        {
+          TEST_QUESTIONS.map((variant, index) => {
+            return (
+              <React.Fragment key = { index }>
+                {variant.questions.map((item, index) => {
+                  return item.is_group ?
+                  (
+                    <TestGroup 
+                      key = { index }
+                      item = { item }
+                      uuid = { variant.uuid }
+                      hasAnswer = { hasAnswer }
+                      setMapWithAnswers = { setMapWithAnswers }
+                    />
+                  ) : (
+                    <TestQuestion
+                      key = { index }
+                      {...item}
+                      uuid = { variant.uuid }
+                      hasAnswer = { hasAnswer }
+                      setMapWithAnswers={setMapWithAnswers}
+                    />
+                      )
+                })}
+              </React.Fragment>
+            )
+          })
+        }
+          
     </div>
   )
 }
-export default TestContent;
+export default React.memo(TestContent);

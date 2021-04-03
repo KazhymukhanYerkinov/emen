@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames'
 
 import section5 from '../../../assets/images/section5.jpg';
 
@@ -21,7 +20,7 @@ const Section5 = () => {
                         <div className = {cls.section__title}> Начни прямо сейчас готовится к ЕНТ </div>
                         <div className = {cls.section__text}> Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. </div>
                         <div className = "text__center">
-                            <Link to = '/subjects' className = {classNames('button', cls.section__button)}> Начать бесплатно </Link>
+                            <Link to = '/subjects' className = 'button button__start'> Начать бесплатно </Link>
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,8 @@
 .history {
-    width: 33%;
+    width: 34%;
     height: 780px;
-    padding: 30px 30px;
-    margin-left: 2%;
+    padding: 30px 20px;
+    margin-left: 1%;
 
     background-color: #fff;
 
@@ -32,7 +32,7 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 20px 15px;
+    padding: 12px 10px;
     border-bottom: 1px solid #F7F7F7;
 
     cursor: pointer;
@@ -48,7 +48,7 @@
     margin-left: 12px;
 }
 .item__name {
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 
     font-size: 14px;
     line-height: 18px;
@@ -67,24 +67,6 @@
 }
 .item__image {
     transform: rotate(-90deg);
-}
-.button {
-    height: 50px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #F7F7F7;
-
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
-    color: #222222;
-
-    transition: background-color .2s linear;
-}
-.button:hover {
-    background-color: #ecebeb;
 }
 
 @media (max-width: 1000px) {

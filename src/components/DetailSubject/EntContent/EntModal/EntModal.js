@@ -23,7 +23,7 @@ const EntModel = ({ profile_subjects, BASE_URL, showEntModal, onChangeEntModal, 
                                 <img src = { BASE_URL + "" + item.logo } alt = ""/>
                                 <div className = {cls.subject__title}> { item.name_ru } </div>
                                 <div>
-                                <button className = {cls.subject__button}
+                                <button className = 'button button__over button__over--height30'
                                     onClick = {() => onSelectSubject(item, showEntModal.number - 1)}> Выбрать </button>
                                 </div>
                             </div>

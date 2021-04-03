@@ -7,7 +7,6 @@ import SquareBlock from './SquareBlock/SquareBlock';
 
 const ListOfSubject = ({
   BASE_URL,
-  INDIVIDUAL_TEST,
   mapWithAnswers,
   navigateBySubId, 
   questions,
@@ -17,7 +16,7 @@ const ListOfSubject = ({
   onChangeSubjectList,
   handleScrollQuestionById }) => {
 
-  const isOpen = navigateBySubId === showListOfSubject || INDIVIDUAL_TEST;
+  const isOpen = navigateBySubId === showListOfSubject;
   let size = 0;
   let squareBlocks = questions.map((item, index) => {
     
@@ -37,7 +36,6 @@ const ListOfSubject = ({
 
           return <SquareBlock
             key = { uniqueKey }
-            navigateBySubId = { navigateBySubId }
             question_id = { question.id }
             numeration = { question.numeration }
             isActive = { isActive }
@@ -48,7 +46,6 @@ const ListOfSubject = ({
 
       // Группавой еместерге арналған
       <SquareBlock
-        navigateBySubId = { navigateBySubId }
         key = { index }
         question_id = { item.id }
         numeration = { item.numeration }
@@ -71,7 +68,7 @@ const ListOfSubject = ({
           </div>
 
         </div>
-        {!INDIVIDUAL_TEST && <img className={classNames({ [cls.transformImage]: isOpen })} src={arrow} alt="" />}
+        <img className={classNames({ [cls.transformImage]: isOpen })} src={arrow} alt="" />
       </div>
 
       <div className={classNames(cls.list, { [cls.open]: isOpen })}>

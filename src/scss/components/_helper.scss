@@ -1,0 +1,52 @@
+.mt {
+    &-5 {
+        margin-top: 5px;
+    }
+    &-10 {
+        margin-top: 10px;
+    }
+    &-15 {
+        margin-top: 15px;
+    }
+    &-20 {
+        margin-top: 20px;
+    } 
+}
+
+
+.mb {
+    &-5 {
+        margin-bottom: 5px;
+    }
+    &-10 {
+        margin-bottom: 10px;
+    }
+    &-15 {
+        margin-bottom: 15px;
+    }
+    &-20 {
+        margin-bottom: 20px;
+    } 
+}
+
+.ml {
+    &-5 {
+        margin-left: 5px;
+    }
+    &-10 {
+        margin-left: 10px;
+    }
+    &-15 {
+        margin-left: 15px;
+    }
+    &-20 {
+        margin-left: 20px;
+    } 
+}
+.dn {
+    @media (max-width: 1000px) {
+        &-1000 {
+            display: none;
+        } 
+    } 
+}

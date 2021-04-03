@@ -1,5 +1,4 @@
 import React from 'react';
-import Cookie from 'js-cookie';
 import classNames from 'classnames';
 
 import cls from './TestQuestion.module.css';
@@ -8,17 +7,18 @@ import MultipleAnswer from '../MultipleAnswer/MultipleAnswer';
 
 
 
+
+
 const TestQuestion = ({
   id, 
   uuid,
-  indexOfSub,
   numeration,
   is_group, 
   is_multiple, 
   help_text, 
   answers, 
   question_text, 
-  mapWithAnswers, 
+  hasAnswer,
   setMapWithAnswers }) => {
   
 
@@ -26,6 +26,9 @@ const TestQuestion = ({
 
   // Подсказканы басқаратын state
   const [isHint, setIsHint] = React.useState(false);
+
+  const [ render, setRender ] = React.useState(false);
+  
 
   React.useEffect(() => {
     // Текст сұрақтарды html ге айналдырады
@@ -35,64 +38,7 @@ const TestQuestion = ({
     if (help_text)
       document.getElementById(`hint_${id}`).innerHTML = help_text;
 
-  }, [indexOfSub, help_text, id, question_text])
-
-  // Жауаптардың үстінен басқаннан кейінгі жауаптарды map-қа және кукиға сақтау
-  const onSetActiveAnswer = (answerId) => {
-    if (!is_multiple) {
-      let object = {
-        question: id,
-        answer: [answerId],
-        variant: uuid,
-      }
-      setMapWithAnswers(new Map(mapWithAnswers.set(id, object)));
-    }
-    else {
-      if (!mapWithAnswers.has(id)) {
-
-        let object = {
-          question: id,
-          answer: [answerId],
-          variant: uuid,
-        }
-
-        setMapWithAnswers(new Map(mapWithAnswers.set(id, object)));
-      }
-      else {
-        let getAnswers = mapWithAnswers.get(id).answer;
-
-
-        if (getAnswers.includes(answerId)) {
-          let tempAnswers = getAnswers.filter(answerID => answerID !== answerId);
-
-          if (tempAnswers.length === 0) {
-            mapWithAnswers.delete(id);
-
-            setMapWithAnswers(new Map(mapWithAnswers));
-            return;
-          }
-          
-          let object = {
-            question: id,
-            answer: tempAnswers,
-            variant: uuid
-          }
-
-          setMapWithAnswers(new Map(mapWithAnswers.set(id, object)));
-        }
-        else {
-          let object = {
-            question: id,
-            answer: [...getAnswers, answerId],
-            variant: uuid,
-          }
-
-          setMapWithAnswers(new Map(mapWithAnswers.set(id, object)));
-        }
-      }
-    }
-    Cookie.set('answers', Array.from(mapWithAnswers));
-  }
+  }, [help_text, id, question_text])
 
  
 
@@ -101,8 +47,11 @@ const TestQuestion = ({
     setIsHint((prevHint) => !prevHint);
   }
 
+  const saveQuestionWithMap = (answer_id) => {
+    setMapWithAnswers(id, answer_id, uuid, is_multiple);
+    setRender(!render)
+  }
 
-  
   return (
     <div className={classNames(cls.ques, { [cls.is_group]: is_group })} id={`scroll_${id}`}>
 
@@ -123,8 +72,8 @@ const TestQuestion = ({
               answer_text={item.answer_text}
 
               question_id={ id }
-              mapWithAnswers={mapWithAnswers}
-              onSetActiveAnswer={onSetActiveAnswer}
+              hasAnswer = { hasAnswer }
+              onSetActiveAnswer={ saveQuestionWithMap }
             />
           }) :
           answers.map((item, index) => {
@@ -135,8 +84,8 @@ const TestQuestion = ({
               answer_text={item.answer_text}
 
               question_id={id}
-              mapWithAnswers={mapWithAnswers}
-              onSetActiveAnswer={onSetActiveAnswer}
+              hasAnswer = { hasAnswer }
+              onSetActiveAnswer={ saveQuestionWithMap }
             />
           })}
 

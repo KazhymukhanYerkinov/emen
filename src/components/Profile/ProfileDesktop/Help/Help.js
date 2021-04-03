@@ -1,5 +1,5 @@
 import React from 'react';
-import cls from './MyProfile.module.css';
+import cls from '../MyProfile/MyProfile.module.css';
 
 
 const Help = () => {

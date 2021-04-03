@@ -18,8 +18,8 @@ const TestFinish = ({
                 <div className = {cls.finish__result}> Отвечено: {completeQuestions}/{QUESTION_SIZE} </div>
                 <div className = {cls.finish__time}>  Осталось времени: {hours}:{minute}:{second} </div>
 
-                <button className = {cls.yes__finish} onClick = { () => handleFinishAllTest(false) }> Да, завершить тестирование </button>
-                <button className = {cls.no__finish} onClick = { onOnlyFinish }> Отмена </button>
+                <button className = 'button button__submit mt-10' onClick = { () => handleFinishAllTest(false) }> Да, завершить тестирование </button>
+                <button className = 'button button__over mt-10' onClick = { onOnlyFinish }> Отмена </button>
             </div>
         </div>
     )

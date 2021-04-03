@@ -22,10 +22,10 @@ const History = (props) => {
               <thead className = {cls.thead}>
                 <tr>
                   <th> Тип </th>
-                  <th> Вариант </th>
+                  <th> Дата </th>
                   <th> Результат </th>
                   <th> Время </th>
-                  <th> Дата </th>
+                  <th> Вариант </th>
                   <th>  &nbsp;</th>
                 </tr>
               </thead>

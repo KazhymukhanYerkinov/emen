@@ -18,7 +18,6 @@ const TestPause = ({
     QUESTION_SIZE,
     LEFT_TIME,
     onStopTime, 
-    clearAllData,
     finishAllTest, 
     handleFinishAllTest, 
     mapWithAnswers, 
@@ -63,13 +62,13 @@ const TestPause = ({
                 </div>
                 {finishAllTest ?
                 <>
-                    <Link className = {cls.pause__re} to = {`/history/${examUID}`}> Резултат тестирование </Link>
-                    <Link className = {cls.pause__finish} to = {'/'} onClick = { clearAllData }> Главная страница </Link>
+                    <Link className = 'button button__submit' to = {`/history/${examUID}`}> Резултат тестирование </Link>
+                    <Link className = 'button button__over mt-5' to = {'/'}> Главная страница </Link>
                 </>
                 :
                 <>
-                    <button className = {cls.pause__re} onClick = { () => onStopTime(false) }> Возобновить тестирование </button>
-                    <button className = {cls.pause__finish} onClick = { onOnlyFinish }> Завершить тестирование </button>
+                    <button className = 'button button__submit' onClick = { () => onStopTime(false) }> Возобновить тестирование </button>
+                    <button className = 'button button__over mt-5' onClick = { onOnlyFinish }> Завершить тестирование </button>
                 </>
                 }
             </div>

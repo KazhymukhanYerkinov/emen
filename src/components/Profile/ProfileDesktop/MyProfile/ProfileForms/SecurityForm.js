@@ -6,7 +6,7 @@ import { InputPassword, InputText } from '../../../../common/FormControl/FormCon
 import cls from './ProfileForms.module.css';
 
 
-const SecurityForm = () => {
+const SecurityForm = (props) => {
 
   const [changePassword, setChangePassword] = React.useState(false);
 
@@ -21,7 +21,7 @@ const SecurityForm = () => {
         name='old_password'
         component={changePassword ? InputPassword:InputText }
         setChangePassword={ setChangePassword }
-        label={changePassword ? 'Старый пароль':'Пароль'}
+        label={changePassword ? 'Старый пароль':`${props.user.password_change_date}`}
       />
 
       {changePassword &&

@@ -1,7 +1,7 @@
 import { checkAuthThunk, loadUserThunk } from './auth-reducer';
 
-const INITALIZED_SUCCESS = 'INITALIZED_SUCCESS';
-const SET_LANGUAGE = 'SET_LANGUAGE';
+const INITALIZED_SUCCESS = 'app-reducer/INITALIZED_SUCCESS';
+const SET_LANGUAGE = 'app-reducer/SET_LANGUAGE';
 
 let initialState = {
     initialized: false,

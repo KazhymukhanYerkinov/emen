@@ -19,7 +19,7 @@ const ConfirmPasswordForm = ({ showFetchButton, handleSubmit }) => {
             <div className = {cls.inputs}>
                 <Field name = {'password1'} component = { InputPassword } label = {'Создать новый пароль'} validate = { [textRequired, passwordRequired, lengthvalidation] }/>
                 <Field name = {'password2'} component = { InputPassword } label = {'Повторить пароль'} validate = { [textRequired, passwordRequired, lengthvalidation] }/>
-                <button className = 'button submit' type = 'submit'> {showFetchButton ? <img className = {cls.loader} src = { loader } alt = '' />: <span>Создать</span>} </button>    
+                <button className = 'button button__submit' type = 'submit'> {showFetchButton ? <img className = {cls.loader} src = { loader } alt = '' />: <span>Создать</span>} </button>    
             </div>
         </form>
     )

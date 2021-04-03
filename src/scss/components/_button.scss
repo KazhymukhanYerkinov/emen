@@ -1,0 +1,148 @@
+@import 'variables';
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 500;
+    font-size: 14px;
+
+    
+    color: $white;
+
+    border-radius: 3px;
+    background-color: $blue;
+    transition: background-color $duration linear;
+
+    &:hover {
+        background-color: $dark_blue;
+    }
+
+    &__start {
+        padding: 15px 35px;
+
+        @media (max-width: 450px) {
+            width: 100%;
+            padding: 16px 22px;
+            margin-bottom: 20px;
+
+            text-align: center;
+        }
+    }
+
+    &__sign {
+        display: inline-block;
+        padding: 10px 30px;
+
+        &--up {
+            font-weight: 600;
+            padding-right: 30px;
+            text-decoration: underline;
+
+            color: $blue;
+            background-color: $white;
+
+            &:hover {
+                background-color: $white;
+            }
+        }  
+
+        @media (max-width: 900px) {
+            width: 80%;
+            padding: 15px 0;
+            margin: 20px auto;
+            text-align: center;
+
+            &--up {
+                margin: 0 auto;
+                text-decoration: none;
+                color: $black;
+                background-color: $button_bg;  
+
+                &:hover {
+                    background-color: $dark_gray;
+                }
+            }
+        }
+
+
+        @media (max-width: 450px) {
+            width: 100%;
+        }
+    }
+
+    &__submit {
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    &__over {
+        width: 100%;
+        height: 40px;
+
+        color: $black;
+        background-color: $button_bg;
+
+        &:hover {
+            background-color: $middle_gray;
+        }
+        &--height30 {
+            font-size: 12px;
+            height: 30px;
+        }
+
+        &--header {
+            width: 200px;
+        }
+
+        &--add {
+            margin-top: 10px;
+            height: 35px;
+        }
+
+        @media (max-width: 450px) {
+            display: none;
+
+            &--header {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+    &__modal {
+        width: 70%;
+        height: 40px;
+
+        margin: 0 auto;
+    }
+
+    &__logout {
+        width: 80px;
+        height: 30px;
+
+        &--cancel {
+            color: $black;
+            background-color: $gray;
+
+            &:hover {
+                background-color: $middle_gray;
+            }
+        }
+    }
+
+    &__finish {
+        height: 40px;
+        width: 120px;
+        display: none;
+
+        @media (max-width: 1000px) {
+            display: flex;
+        }
+
+        @media (max-width: 450px) {
+            height: 30px;
+            width: 100px;
+        }
+    }
+}

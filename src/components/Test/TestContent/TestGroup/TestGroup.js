@@ -10,7 +10,8 @@ const TestGroup = ({
   item,
   uuid, 
   mapWithAnswers, 
-  setMapWithAnswers }) => {
+  hasAnswer,
+  setMapWithAnswers, }) => {
   React.useEffect(() => {
     document.getElementById(`group_question_${item.id}`).innerHTML = item.group_text;
   }, [item.id, item.group_text])
@@ -23,6 +24,7 @@ const TestGroup = ({
           key={uniqueKey}
           uuid = { uuid }
           {...question}
+          hasAnswer = { hasAnswer }
           mapWithAnswers={mapWithAnswers}
           setMapWithAnswers={setMapWithAnswers}
         />

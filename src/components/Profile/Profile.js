@@ -5,8 +5,8 @@ import { Route } from 'react-router';
 // Profile desktop components
 import MyProfile from './ProfileDesktop/MyProfile/MyProfile';
 import ProfileInfo from './ProfileDesktop/ProfileInfo/ProfileInfo';
-import MyWallet from './ProfileDesktop/MyProfile/MyWallet';
-import Help from './ProfileDesktop/MyProfile/Help';
+import MyWallet from './ProfileDesktop/MyWallet/MyWallet';
+import Help from './ProfileDesktop/Help/Help';
 
 // Profile mobile components
 import ProfileMobile from './ProfileMobile/ProfileMobile';
@@ -19,21 +19,31 @@ import NewPassword from './ProfileMobile/ProfileMobileForms/NewPassword';
 
 
 import cls from './Profile.module.css';
+import MyProfileContainer from './ProfileDesktop/MyProfile/MyProfileContainer';
 
 
-
-
-
-
-
-const Profile = () => {
+const Profile = (props) => {
   return (
     <React.Fragment>
       <div className={cls.profile}>
         <div className='container'>
           <div className={cls.profile__inner}>
-            <ProfileInfo />
-            <Route exact path = '/profile' component = { MyProfile } />
+            <ProfileInfo 
+              user = { props.user }
+              BASE_URL = { props.BASE_URL }
+              
+            />
+
+            <Route 
+              exact path = '/profile' 
+              render = {() =>  (
+                <MyProfileContainer
+                  user = { props.user }
+                  cities = { props.cities }
+                /> 
+              )} 
+            />
+
             <Route exact path = '/profile/basic_data' component = { MyProfile } />
             <Route exact path = '/profile/wallet' component = { MyWallet } />
             <Route exact path = '/profile/help' component = { Help } />

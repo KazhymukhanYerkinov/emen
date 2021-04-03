@@ -7,7 +7,8 @@ import SecurityReduxForm from './ProfileForms/SecurityForm';
 import cls from './MyProfile.module.css';
 
 
-const MyProfile = () => {
+const MyProfile = (props) => {
+  
   return (
     <div className={cls.my}>
 
@@ -18,9 +19,17 @@ const MyProfile = () => {
       <hr className={cls.hr} />
 
       <div className={cls.content}>
-        <AccountDetailsReduxForm />
-        <PersonalDataReduxForm />
-        <SecurityReduxForm />
+        <AccountDetailsReduxForm 
+          initialValues = { props.initialValues } 
+          user = { props.user }
+        />
+        <PersonalDataReduxForm 
+          cities = { props.cities }
+          initialValues = { props.initialValues } 
+        />
+        <SecurityReduxForm 
+          user = { props.user }
+        />
       </div>
 
     </div>

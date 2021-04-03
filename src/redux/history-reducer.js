@@ -1,12 +1,12 @@
 import { historyAPI } from "../api/api";
 
-const GET_SUCCESS_HISTORY_ANALYSIS = 'GET_SUCCESS_HISTORY_ANALYSIS';
-const FAIL_HISTORY_ANALYSIS = 'FAIL_HISTORY_ANALYSIS';
+const GET_SUCCESS_HISTORY_ANALYSIS = 'history-reducer/GET_SUCCESS_HISTORY_ANALYSIS';
+const FAIL_HISTORY_ANALYSIS = 'history-reducer/FAIL_HISTORY_ANALYSIS';
 
-const GET_SUCCESS_HISTORY_LIST = 'GET_SUCCESS_HISTORY_LIST';
-const FAIL_HISTORY_LIST = 'FAIL_HISTORY_LIST';
+const GET_SUCCESS_HISTORY_LIST = 'history-reducer/GET_SUCCESS_HISTORY_LIST';
+const FAIL_HISTORY_LIST = 'history-reducer/FAIL_HISTORY_LIST';
 
-const SET_HISTORY_CURRENT_PAGE = 'SET_HISTORY_CURRENT_PAGE';
+const SET_HISTORY_CURRENT_PAGE = 'history-reducer/SET_HISTORY_CURRENT_PAGE';
 
 let initialState = {
     historyDetail: null,
@@ -14,7 +14,7 @@ let initialState = {
 
     // PAGINATION
     totalCount: null,
-    pagesCount: 3,
+    pagesCount: 10,
     currentPage: 1,
 }
 

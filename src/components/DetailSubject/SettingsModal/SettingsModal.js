@@ -57,7 +57,7 @@ const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
                     </div>
                 </div>
 
-                <button className = {cls.modal__button} onClick = { hanldeStartButton }> Начать </button>
+                <button className = 'button button__modal' onClick = { hanldeStartButton }> Начать </button>
 
             </div>
         </div>

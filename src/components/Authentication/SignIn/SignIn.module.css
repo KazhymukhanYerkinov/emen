@@ -1,4 +1,4 @@
-.signin {
+/* .signin {
     display: flex;
     align-items: center;
     
@@ -11,11 +11,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.signin__image {
+} */
+/* .signin__image {
     width: 40%;
     margin-right: 15%;
-}
+} */
 .image {
     margin: 0 auto;
     display: block;
@@ -23,49 +23,37 @@
     height: auto;
     
 }
-.signin__content {
+/* .signin__content {
     width: 27%;
 }
 .signin__input {
     margin: 15px 0 30px;
-}
-.signin__check {
+} */
+/* .signin__check {
     margin-top: 10px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.check__text {
+} */
+/* .check__text {
     font-size: 12px;
     line-height: 14px;
     font-weight: 500;
     cursor: pointer;
 
     color: #3075F3;
-}
-.error {
+} */
+/* .error {
     display: block;
     color: #FF564E;
     font-size: 12px;
     line-height: 16px;
     margin-top: 10px;
-}
-
-.signin__button {
-    padding: 12px;
-    width: 100%;
-    font-family: Raleway;
-    
-
-    border-radius: 3px;
-    color: #fff;
-    background-color: #1A73E8;
-    transition: background-color .2s linear;
-}
-.loader {
+} */
+/* .loader {
     height: 19px;
-}
+} */
 @media screen and (orientation: landscape) and (max-width: 1025px) {
     .signin {
         min-height: 1000px;

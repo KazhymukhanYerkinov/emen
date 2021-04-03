@@ -49,7 +49,6 @@ const Test = ({ match, BASE_URL }) => {
   // Серверден сұрақтарды алу
   React.useEffect(() => {
     dispatch(getQuestionThunk(examUID));
-
     if (Cookie.get('answers')) {
       setMapWithAnswers(new Map(JSON.parse(Cookie.get('answers'))));
     }
@@ -112,8 +111,8 @@ const Test = ({ match, BASE_URL }) => {
 
   }, [examUID, dispatch])
 
-
-
+  console.log(Cookie.get('answers'))
+  
   React.useEffect(() => {
     if (data) {
       let mapAnswered = new Map();

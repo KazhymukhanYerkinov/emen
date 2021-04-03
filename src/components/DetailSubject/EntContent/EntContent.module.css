@@ -44,29 +44,8 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     
 }
-.profile__button, .add__button {
-    margin-top: 10px;
-    width: 100%;
-    height: 40px;
 
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 16px;
-    text-align: center;
-    color: #222222;
 
-    border-radius: 3px;
-    background-color: #F7F7F7;
-    transition: background-color .2s linear;
-}
-
-.add__button {
-    margin-top: 25px;
-}
-
-.profile__button:hover {
-    background-color: #eceaea;
-}
 
 .noneTitle {
     color: #222;
@@ -138,10 +117,6 @@
     .subject__name {
         font-size: 14px;
         line-height: 19px;
-    }
-    .profile__button, .add__button {
-        height: 35px;
-        font-size: 12px;
     }
 }
 

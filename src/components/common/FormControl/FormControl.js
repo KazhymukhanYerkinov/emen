@@ -114,3 +114,24 @@ export const InputCheckBox = ({
     />
   )
 }
+
+
+export const InputSelect = ({ input, meta, children, half_width, full_width, label }) => {
+
+  const hasError = meta.touched && meta.error;
+
+  const control_class = classNames('control', {
+    'control--half_width': half_width,
+    'control--full_width': full_width
+  });
+
+  return (
+    <div className = {control_class}>
+      <label> {label} </label>
+      <select {...input} className = 'input input__select'>
+        { children }
+      </select>
+      { hasError && <FormHelperText style={{ color: '#FF564E', marginLeft: '5px' }}> {meta.error} </FormHelperText>}
+    </div>
+  )
+}

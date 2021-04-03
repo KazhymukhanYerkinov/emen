@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: inherit;}
   font-family: Raleway;
 }
 /* button */
-.button {
+.button1 {
   font-family: Raleway;
   font-weight: 500;
   font-size: 15px;
@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: inherit;}
   transition: background-color .2s linear;
 }
 
-.button:hover {
+.button1:hover {
   background-color: #174EA6;
 }
 /* section title and text */

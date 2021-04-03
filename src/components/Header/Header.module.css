@@ -78,23 +78,7 @@
 .lang__link:last-child {
     padding-right: 0;
 }
-/* AUTH */
-.signin {
-    padding: 10px 32px;
 
-    font-size: 13px;
-    border-radius: 3px;
-    color: #fff;
-    background-color:#1A73E8;
-}
-.signup {
-    padding-right: 35px;
-    text-decoration: underline;
-    font-size: 14px;
-    font-weight: 600;
-
-    color: #3075F3;
-}
 
 /* HEADER__TOGGLE */
 .header__toggle {
@@ -209,24 +193,7 @@
     .change__lang {
         display: none;
     }
-    .signup {
-        width: 80%;
-        padding: 15px 0;
-        margin: 0 auto;
-        
 
-        color: #222222;
-        text-decoration: none;
-        border-radius: 3px;
-        text-align: center;
-        background-color: #F7F7F7;
-    }
-    .signin {
-        width: 80%;
-        padding: 15px 0;
-        margin: 20px auto;
-        text-align: center;
-    }
 
     .header__toggle.active .toggle__item {
         background: none;
@@ -248,9 +215,6 @@
         height: 100vh;  
     }
     
-    .signup, .signin {
-        width: 100%;
-    }
     .header, .header__inner {
         height: 70px;
     }

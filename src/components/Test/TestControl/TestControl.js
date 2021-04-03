@@ -13,15 +13,13 @@ import cls from './TestControl.module.css';
 const TestControl = ({
   BASE_URL,
   TEST_QUESTIONS,
-  INDIVIDUAL_TEST,
   mapWithAnswers,
   handleFinishAllTest,
   time,
   stopTimer,
   onStopTime,
   onFinishTestButton,
-  indexOfSub,
-  setIndexOfSub
+  saveQuestion,
   }) => {
 
 
@@ -31,6 +29,7 @@ const TestControl = ({
   const handleCompassChange = () => {
     setCompass((prevCompass) => !prevCompass);
   }
+
   const onChangeSubjectList = (index) => {
     setListOfSubject((prevIndex) => {
       if (prevIndex === index) {
@@ -41,18 +40,8 @@ const TestControl = ({
   }
 
   // Сұрақтарға ID бойынша smooth scroll жасау
-  const handleScrollQuestionById = (question_id, navigateBySubId) => {
-    if (navigateBySubId !== indexOfSub) {
-      setIndexOfSub(navigateBySubId);
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      })
-
-      if (compass) setCompass(false);
-      return;
-    }
-
+  const handleScrollQuestionById = (question_id) => {
+    
     const targetElement = document.querySelector(`#scroll_${question_id}`);
     const rectTop = targetElement.getBoundingClientRect().top;
     const offsetTop = window.pageYOffset;
@@ -61,8 +50,7 @@ const TestControl = ({
 
     if (window.innerWidth <= 600) {
       buffer = 640;
-    }
-    
+    } 
     const top = rectTop + offsetTop - buffer;
 
     window.scrollTo({
@@ -72,6 +60,8 @@ const TestControl = ({
     if (compass) setCompass(false);
   }
 
+
+
     return (
       <div className={cls.control}>
         <TimerTest
@@ -80,13 +70,15 @@ const TestControl = ({
           handleFinishAllTest={handleFinishAllTest}
           onStopTime={onStopTime}
           onFinishTestButton={onFinishTestButton}
-          handleCompassChange={handleCompassChange} />
+          handleCompassChange={handleCompassChange}
+
+          saveQuestion = { saveQuestion }  
+        />
 
         <div className={classNames(cls.listOfSubject, { [cls.active]: compass })} >
           {TEST_QUESTIONS.map((item, index) => {
             return <ListOfSubject
               BASE_URL={BASE_URL}
-              INDIVIDUAL_TEST={INDIVIDUAL_TEST}
               mapWithAnswers={mapWithAnswers}
 
               handleScrollQuestionById={handleScrollQuestionById}
@@ -101,7 +93,7 @@ const TestControl = ({
           })}
         </div>
 
-        <button className={cls.finish__button} onClick={onFinishTestButton}> Завершить тестирование </button>
+        <button className='button button__over dn-1000' onClick={onFinishTestButton}> Завершить тестирование </button>
       </div>
     )
   }

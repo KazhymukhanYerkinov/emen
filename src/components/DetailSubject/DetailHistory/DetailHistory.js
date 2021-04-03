@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import arrow from '../../../assets/detail/arrow.svg';
-import { data } from '../../../data/history.js';
 import cls from './DetailHistory.module.css';
 
 
 // Сабақтардың история компоненті ( сайдбар оң жақта )
-const DetailHistory = () => {
+const DetailHistory = (props) => {
 
     
     return (
@@ -16,25 +15,25 @@ const DetailHistory = () => {
             <div className = {cls.history__desc}> В истории сохраняется ваши результаты тестирования </div>
 
             <div className = {cls.history__content}>
-                { data.map((item, index) => {
+                { props.history.map((item, index) => {
                     return (
-                        <div className = {cls.item} key = { index }>
+                        <NavLink to = {`/history/${item.uuid}`} className = {cls.item} key = { index }>
                             
                             <div className = {cls.item__content}>
-                                <div className = {cls.item__id}> {item.id}. </div>
-                                <img src = { item.image } alt = "" />
+                                <div className = {cls.item__id}>  </div>
+                                <img src = { props.BASE_URL + '' + item.subject.logo } alt = "" />
                                 <div className = {cls.item__info}>
-                                    <div className = {cls.item__name}> {item.title} </div>
-                                    <div className = {cls.item__result}> {item.results} </div>
+                                    <div className = {cls.item__name}> {item.subject.name_ru} </div>
+                                    <div className = {cls.item__result}> Результат: {item.score}/{item.total_score} </div>
                                 </div>
                             </div>
                             <img className = {cls.item__image} src = { arrow } alt = ""/>
-                        </div>
+                        </NavLink>
                     )
                 })}
             </div>
 
-            <Link to = '/hostory' className = {cls.button}>
+            <Link to = '/history' className = 'button button__over'>
                 Показать еще
             </Link>
 

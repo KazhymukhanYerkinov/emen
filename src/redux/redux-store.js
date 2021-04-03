@@ -8,6 +8,7 @@ import subjectReducer from './subject-reducer';
 import testReducer from './startTest-reducer';
 import historyReducer from './history-reducer';
 import subsReducer from './subs-reducer';
+import proflieReducer from './profile-reducer';
 
 
 let reducer = combineReducers({
@@ -18,6 +19,7 @@ let reducer = combineReducers({
     testPage: testReducer,
     historyPage: historyReducer,
     subsPage: subsReducer,
+    profilePage: proflieReducer,
     
       
 });

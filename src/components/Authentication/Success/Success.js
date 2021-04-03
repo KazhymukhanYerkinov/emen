@@ -23,11 +23,11 @@ const Success = ({ fromRegisterPage, setRedirectSuccessPage }) => {
                     <div className = {cls.success__content}>
                         <img className = {cls.image} src = { check } alt = ""/>
                         <div className = {cls.success__title}>
-                             {fromRegisterPage >= 1 ? <span> Мы отправили ссылку на Gmail для активации этой учетной записи. Войдите в систему по этой ссылке. </span>:
-                                <span> Поздравляем, Ваш пароль был успешно изменен! </span>}
+                            {fromRegisterPage === 1 && <span> Мы отправили ссылку на Gmail для активации этой учетной записи. Войдите в систему по этой ссылке. </span>}
+                            {fromRegisterPage === -1 && <span> Поздравляем, Ваш пароль был успешно изменен! </span> }
                         </div>
                         <Link to = '/login'>
-                            <button className = 'button submit' onClick = {() => setRedirectSuccessPage(0)}> Войти </button>
+                            <button className = 'button button__submit' onClick = {() => setRedirectSuccessPage(0)}> Войти </button>
                         </Link>
                     </div>
                 </div>

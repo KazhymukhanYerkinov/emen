@@ -81,14 +81,14 @@ const Header = (props) => {
 
                 <NavLink 
                   to={'/registration'} 
-                  className={cls.signup} 
+                  className='button button__sign button__sign--up' 
                   onClick={() => props.handleProfileBlock(false)}> 
                   Регистрация 
                 </NavLink>
 
                 <NavLink 
                   to={'/login'}
-                  className={ cls.signin } 
+                  className = 'button button__sign'
                   onClick={() => props.handleProfileBlock(false)}> 
                   Войти 
                 </NavLink>

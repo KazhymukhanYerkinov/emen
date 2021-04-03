@@ -99,20 +99,7 @@
 .switch {
     margin-right: -10px;
 }
-.modal__button {
-    display: block;
-    margin: 0 auto;
-    width: 70%;
-    height: 40px;
-    background-color: #1A73E8;
-    border-radius: 3px;
-    color: #fff;
 
-    transition: background-color .2s linear;
-}
-.modal__button:hover {
-    background-color: #174EA6;;
-}
 
 
 .showError {

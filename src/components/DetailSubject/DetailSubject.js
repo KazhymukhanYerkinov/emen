@@ -71,7 +71,7 @@ const DetailSubject = ({ match, BASE_URL }) => {
   }
 
 
-
+  console.log(detail);
   // Тестты бастаудағы стандарт параметрлер
   const SUBJECT_ID = detail.banner_subject.id;
   const ENT_FULL_EXAMINATION = detail.banner_subject.examination_type;
@@ -84,7 +84,6 @@ const DetailSubject = ({ match, BASE_URL }) => {
   // Тестті бастау
   const handleStartTest = (withHint, levelTest) => {
     Cookie.remove("answers");
-    Cookie.remove("stopTime");
     Cookie.remove("timer");
 
     // ЕНТ бетінде тұрғанын анықтау
@@ -143,7 +142,7 @@ const DetailSubject = ({ match, BASE_URL }) => {
           <Route exact path={`/showTheme/${subjectID}/ENT`}
             render={() => <EntContent detail={detail} BASE_URL={BASE_URL} profSubjects={profSubjects} setProfSubject={setProfSubject} />} />
 
-          <DetailHistory />
+          <DetailHistory BASE_URL={BASE_URL} history = { detail.history }/>
         </div>
       </div>
     </div>

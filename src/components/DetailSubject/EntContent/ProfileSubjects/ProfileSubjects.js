@@ -22,7 +22,7 @@ const ProfileSubject = ({ BASE_URL, profSubjects, onChangeEntModal, onRemoveProf
                                 </div>
                             </div>
 
-                            {item ? <button className = {cls.profile__button} onClick = {() => onRemoveProfSubject(index)}> Удалить </button> : <button className = {cls.add__button} onClick = {() => onChangeEntModal(true, index + 1)}> Добавить </button>}
+                            {item ? <button className = 'button button__over button__over--add' onClick = {() => onRemoveProfSubject(index)}> Удалить </button> : <button className = 'button button__over button__over--add' onClick = {() => onChangeEntModal(true, index + 1)}> Добавить </button>}
                         </div>
                     )
                 })}

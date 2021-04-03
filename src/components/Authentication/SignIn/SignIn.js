@@ -18,16 +18,17 @@ const lengthValidation = LengthCreator(8, 100);
 const SignInForm = ({ handleSubmit, error, showFetchButton }) => {
     return ( 
         <> 
-        { error && <span className = {cls.error}> { error } </span> }
-        <form className = {cls.signin__form} onSubmit = { handleSubmit }>
-            <div className = {cls.signin__input}>
+        { error && <span className = 'error'> { error } </span> }
+        <form onSubmit = { handleSubmit }>
+            <div className = 'auth__input'>
                 <Field name = { 'email' } component = { InputText } label = { 'E-mail' } validate = { [emailRequired] }/>   
                 <Field name = { 'password' } component = { InputPassword } label = { 'Пароль' }  validate = { [textRequired,passwordRequired, lengthValidation] }/>
             </div>
-            <button className = {'button submit'} type = 'submit'> {showFetchButton ? <img className = {cls.loader} src = { loader } alt = '' />:<span>Войти</span>} </button>  
-            <div className = {cls.signin__check}>
+            <button className = 'button button__submit' type = 'submit'> {showFetchButton ? <img className = 'auth__loader' src = { loader } alt = '' />:<span>Войти</span>} </button> 
+             
+            <div className = 'auth__checkbox'>
                 <Field name = { 'ckeckbox' } component = { InputCheckBox } label = { 'Запомнить меня' } />
-                <Link className = { cls.check__text } to = {'/forgotpassword'}> Забыли пароль? </Link>
+                <Link className = 'auth__checkbox-text' to = {'/forgotpassword'}> Забыли пароль? </Link>
             </div>  
         </form>
         </>
@@ -54,26 +55,17 @@ const SignIn = ({ isAuth, loginThunk }) => {
     }
     
     return (
-        <div className = {cls.signin}>
+        <div className = 'auth'>
             <div className = 'container'>
-                <div className = {cls.signin__inner}>
+                <div className = 'auth__inner'>
 
-                    <div className = {cls.signin__image}>
+                    <div className = 'auth__image'>
                         <img className = {cls.image} src = { signin } alt = ""/>
                     </div>
 
-                    <div className = {cls.signin__content}>
+                    <div className = 'auth__content'>
                         <div className = 'title'> Вход </div>
                         <SignInReduxForm onSubmit = { onSubmit } showFetchButton = { showFetchButton }/>
-                        {/* <div className = 'helper__text'> Войти с помощью </div>
-                        <button className = 'button facebook'> 
-                            <img src = { facebook } alt = ""/>
-                            Войти с помощью Facebook 
-                        </button>
-                        <button className = 'button google'>
-                            <img src = { google } alt = "" /> 
-                            Войти с помощью Google 
-                        </button> */}
                     </div>
 
                 </div>

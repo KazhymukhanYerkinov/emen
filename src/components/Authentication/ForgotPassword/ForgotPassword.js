@@ -20,7 +20,7 @@ const ForgotPasswordForm = ({ handleSubmit, error, showFetchButton }) => {
                 <div className = {cls.forgot__step}> 1. Проверка почты </div>
                 <Field name = { 'email' } component = { InputText } label = { 'Email' } validate = { emailRequired } />
                 {error && <span className = {cls.error}> { error } </span>}
-                <button className = 'button submit' type = 'submit'> {showFetchButton ? <img className = {cls.loader} src = { loader } alt = '' />: <span>Далее</span>} </button>
+                <button className = 'button button__submit' type = 'submit'> {showFetchButton ? <img className = {cls.loader} src = { loader } alt = '' />: <span>Далее</span>} </button>
 
             </div>
         </form>

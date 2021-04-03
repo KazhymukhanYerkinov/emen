@@ -11,7 +11,7 @@ export { default as Subjects } from './Subjects/Subjects';
 export { default as DetailSubject } from './DetailSubject/DetailSubject';
 export { default as HistoryDetailContainer } from './HistoryDetail/HistoryDetailContainer';
 export { default as HistoryContainer } from './History/HistoryContainer';
-export { default as Test } from './Test/Test';
+export { default as TestContainer } from './Test/TestContainer';
 export { default as Save } from './Save/Save';
 export { default as Statistics } from './Statistics/Statistics';
 export { default as SubscriptionContainer } from './Subscription/SubscriptionContainer';

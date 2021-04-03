@@ -70,43 +70,6 @@
     color: #fff;
     text-align: center;
 }
-/* //////////////// */
-
-
-/* BUTTON DESIGN */
-.continue__button, .close__button, .during__test__button {
-    width: 100%;
-    height: 35px;
-
-
-    color: #222222;
-    background-color: #F7F7F7;
-    border-radius: 4px;
-    transition: background-color .2s linear;
-}
-.during__test__button, .continue__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: #F7F7F7;
-}
-
-.continue__button {
-    margin-bottom: 7px;
-
-    color: #fff;
-    background-color: #1A73E8;
-}
-
-.continue__button:hover {
-    background-color: #174EA6;
-}
-.close__button:hover, .during__test__button:hover {
-    background-color: #5F6368;
-    color: #fff;
-}
-/* ///////////////// */
 
 /* EMPTY CONTENT */
 .empty__content {
@@ -120,30 +83,9 @@
     align-items: center;
 }
 
-.logout__cancel__button, .logout__ok__button {
-    width: 80px;
-    height: 30px;
-    border-radius: 4px;
 
-    transition: background-color .2s linear;
-}
 
-.logout__ok__button {
-    margin-left: 5px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    background-color: #1A73E8;
-    color: #fff;
-}
 
-.logout__cancel__button:hover {
-    background-color: #5F6368;
-    color: #fff;
-}
-.logout__ok__button:hover {
-    background-color: #174EA6;
-}
+
 

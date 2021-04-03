@@ -3,14 +3,13 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { normalizePhone } from '../../../../../validators/normalize';
 import { textRequired } from '../../../../../validators/validator';
-import { InputText } from '../../../../common/FormControl/FormControl';
+import { InputSelect, InputText } from '../../../../common/FormControl/FormControl';
 
 import cls from './ProfileForms.module.css';
 
 
-const PersonalDataForm = () => {
-
-  
+const PersonalDataForm = (props) => {
+  console.log('RENDER PERSONAL')
   return (
     <form>
       <div className={cls.sub__title}> Личные данные </div>
@@ -43,9 +42,12 @@ const PersonalDataForm = () => {
         <Field 
           half_width 
           name='city' 
-          component={InputText} 
+          component={InputSelect} 
           label='Город' 
-        />
+        >
+          <option defaultValue = { props.initialValues.city.id }> { props.initialValues.city.name } </option>
+          { props.cities.map((item, index) => <option key = { index } value = {item.id}> { item.name } </option>) }
+        </Field>
 
       </div>
       <div className={cls.button}>
@@ -54,7 +56,7 @@ const PersonalDataForm = () => {
     </form>
   )
 }
-const PersonalDataReduxForm = reduxForm({ form: 'personal_data' })(PersonalDataForm);
+const PersonalDataReduxForm = reduxForm({ form: 'personal_data', enableReinitialize: true })(PersonalDataForm);
 
 export default PersonalDataReduxForm;
 
