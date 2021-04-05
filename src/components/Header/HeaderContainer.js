@@ -74,6 +74,7 @@ class HeaderContainer extends React.Component {
   }
 
   render() {
+    console.log('Header container')
     return <Header
           toggle_button_ref = { this.toggle_button_ref }
           profile_block_ref = { this.profile_block_ref }
@@ -84,6 +85,7 @@ class HeaderContainer extends React.Component {
           isAuth = { this.props.isAuth }
           user = { this.props.user }
           language = { this.props.language }
+          BASE_URL = { this.props.BASE_URL }
 
           pressTheOkButton = { this.pressTheOkButton }
           handleLogoutModal = { this.handleLogoutModal }

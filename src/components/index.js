@@ -1,12 +1,14 @@
 export { default as HeaderContainer } from './Header/HeaderContainer';
 export { default as Content } from './Content/Content';
 export { default as Footer } from './Footer/Footer';
-export { default as SignIn } from './Authentication/SignIn/SignIn';
-export { default as SignUp } from './Authentication/SignUp/SignUp';
-export { default as ForgotPassword } from './Authentication/ForgotPassword/ForgotPassword';
-export { default as ConfirmPassword } from './Authentication/ConfirmPassword/ConfirmPassword';
-export { default as Success } from './Authentication/Success/Success';
-export { default as Activate } from './Authentication/Activate/Activate';
+
+export { default as SignIn } from './Authentication/SignIn';
+export { default as SignUp } from './Authentication/SignUp';
+export { default as ForgotPassword } from './Authentication/ForgotPassword';
+export { default as ConfirmPassword } from './Authentication/ConfirmPassword';
+export { default as Success } from './Authentication/Success';
+export { default as Activate } from './Authentication/Activate';
+
 export { default as Subjects } from './Subjects/Subjects';
 export { default as DetailSubject } from './DetailSubject/DetailSubject';
 export { default as HistoryDetailContainer } from './HistoryDetail/HistoryDetailContainer';

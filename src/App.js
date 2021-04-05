@@ -76,6 +76,7 @@ class App extends React.Component {
             language = { this.props.language }
             setLanguage = { this.props.setLanguage }
             logoutThunk = { this.props.logoutThunk }
+            BASE_URL = { this.props.BASE_URL }
           />
           <Switch>
             <Route 

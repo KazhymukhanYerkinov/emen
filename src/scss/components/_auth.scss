@@ -10,7 +10,7 @@
     &__inner {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center;  
     }
     &__image {
         width: 40%;
@@ -44,11 +44,75 @@
     }
 
 
-    .error {
+    &__error {
         display: block;
         color: $error_color;
         font-size: 12px;
         line-height: 16px;
         margin-top: 10px;
     }
+    &__step {
+        margin: 20px 0;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 19px;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+
+        color: #8D8D8D;
+    }
+    &__description {
+        margin: 15px 0 30px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 21px;
+        text-align: center;
+
+        color: #222222;
+    }
+
 }
+
+// Orientation landscape
+@media screen and (orientation: landscape) and (max-width: 1025px) {
+    .auth {
+        min-height: 1000px;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-width: 800px) {
+    .auth {
+        min-height: 800px;
+    }
+}
+
+// Media query
+@media (max-width: 1000px) {
+    .auth {
+        &__image {
+            display: none;
+        }
+        &__content {
+            width: 50%;
+        }
+    }
+}
+@media (max-width: 700px) {
+    .auth {
+        &__content {
+            width: 65%;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .auth {
+        &__step {
+            margin: 20px 0 15px;
+        }
+        &__content {
+            width: 100%;
+        }
+    }
+}
+
+

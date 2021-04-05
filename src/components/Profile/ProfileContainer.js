@@ -26,7 +26,7 @@ class ProfileContainer extends React.Component {
 
 
 let mapStateToProps = (state) => ({
-  user: state.profilePage.user,
+  user: state.profilePage.profile_full_data,
   cities: state.profilePage.cities,
 })
 export default connect(mapStateToProps, {

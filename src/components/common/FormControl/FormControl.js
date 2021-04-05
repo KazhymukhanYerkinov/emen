@@ -70,7 +70,9 @@ export const InputText = ({
   setChangePassword, 
   isButton, 
   input, 
-  label, 
+  label,
+  readOnly,
+  placeholder,
   meta: { touched, error, invalid } }) => {
 
   const control_class = classNames('control', {
@@ -82,8 +84,9 @@ export const InputText = ({
     <div className={control_class}>
       {!not_label && <label> {label} </label>}
       <OutlinedInput
+        readOnly = { readOnly }
         error={touched && invalid}
-        placeholder={label}
+        placeholder={ placeholder }
         className='input'
         type='text'
         {...input}

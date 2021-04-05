@@ -2,13 +2,12 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 
-import signup from '../../../assets/images/signup.jpg';
-import loader from '../../../assets/loader/button__loader.svg';
-import { InputPassword, InputText } from '../../common/FormControl/FormControl';
+import signup from '../../assets/images/signup.jpg';
+import loader from '../../assets/loader/button__loader.svg';
+import { InputPassword, InputText } from '../common/FormControl/FormControl';
 
-import cls from './SignUp.module.css';
 import { Redirect } from 'react-router-dom';
-import { emailRequired, LengthCreator, passwordRequired, textRequired } from '../../../validators/validator';
+import { emailRequired, LengthCreator, passwordRequired, textRequired } from '../../validators/validator';
 
 
 const lengthValidation = LengthCreator(8, 100);
@@ -16,16 +15,16 @@ const lengthValidation = LengthCreator(8, 100);
 const SignUpForm = ({ handleSubmit, showFetchButton, error }) => {
     return (
         <>
-        { error && <span className = {cls.error}> { error } </span> }
+        { error && <span className = 'auth__error'> { error } </span> }
         <form onSubmit = { handleSubmit }>
-            <div className = {cls.signup__input}>
+            <div className = 'auth__input'>
                 <Field name = { 'name' } component = { InputText } label = { 'Имя' } validate = { textRequired }/>
                 <Field name = { 'surname' } component = { InputText } label = { 'Фамилия' } validate = { textRequired }/>
                 <Field name = { 'email' } component = { InputText } label = { 'Email' } validate = { emailRequired }/>
                 <Field name = { 'password1' } component = { InputPassword } label = { 'Создать пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
                 <Field name = { 'password2' } component = { InputPassword } label = { 'Повторить пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
             </div>
-            <button className = 'button button__submit'  type = 'submit'>  {showFetchButton ? <img className = {cls.loader} src = { loader } alt = ''/>:<span>Зарегистрироваться</span>} </button>
+            <button className = 'button button__submit'  type = 'submit'>  {showFetchButton ? <img className = 'auth__loader' src = { loader } alt = ''/>:<span>Зарегистрироваться</span>} </button>
         </form>
         </>
     )
@@ -46,29 +45,17 @@ const SignUp = ({ signUpThunk, fromRegisterPage }) => {
         return <Redirect to = '/success' />
     }
     return (
-        <div className = {cls.signup}>
+        <div className = 'auth'>
             <div className = 'container'>
-                <div className = {cls.signup__inner}>
+                <div className = 'auth__inner'>
 
-                    <div className = {cls.signup__image}>
-                        <img className = {cls.image} src = { signup } alt = " "/>
+                    <div className = 'auth__image'>
+                        <img className = 'image image__80' src = { signup } alt = " "/>
                     </div>
 
-                    <div className = {cls.signup__content}>
+                    <div className = 'auth__content'>
                         <div className = 'title'> Регистрация </div>
                         <SignUpReduxForm onSubmit = { onSubmit } showFetchButton = { showFetchButton } />
-                        {/* <div className = 'helper__text'> Войти с помощью </div>
-
-                        <button className = 'button facebook'> 
-                            <img src = { facebook } alt = ""/>
-                            Войти с помощью Facebook 
-                        </button>
-
-                        <button className = 'button google'> 
-                            <img src = { google } alt = ""/>
-                            Войти с помощью Google  
-                        </button> */}
-
                     </div>
                 </div> 
             </div>

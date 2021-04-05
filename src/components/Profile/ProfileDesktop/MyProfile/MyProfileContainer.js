@@ -4,6 +4,16 @@ import MyProfile from './MyProfile';
 
 class MyProfileContainer extends React.Component {
   render() {
+    
+    const convertDate = inputFormat => {
+      const pad = s => {
+        return s < 10 ? '0' + s: s;
+      }
+      var date = new Date(inputFormat);
+      return [pad(date.getDate()), pad(date.getMonth() + 1),date.getFullYear()].join('-');
+    }
+
+    let convert_date = convertDate(this.props.user.password_change_date);
 
     let initialValues = {
       email: this.props.user.email,
@@ -18,6 +28,7 @@ class MyProfileContainer extends React.Component {
         initialValues = { initialValues }
         user = { this.props.user }
         cities = { this.props.cities }
+        convert_date = { convert_date }
         
       />
     )

@@ -1,4 +1,4 @@
-.section__inner {
+/* .section__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -6,15 +6,15 @@
     position: relative;
 
     height: 100vh;
-}
-.section__content{
+} */
+/* .section__content{
     width: 40%;
 }
 .section__image {
     width: 50%;
-}
+} */
 
-.section__title {
+/* .section__title {
     font-weight: 600;
     font-size: 36px;
     line-height: 42px;
@@ -27,43 +27,33 @@
     line-height: 26px;
 
     color: #5F6368;
-}
-.section__blocks {
+} */
+/* .section__blocks {
     display: flex;
     align-items: center;
-}
-.start__video {
-    display: flex;
-    align-items: center;
-}
-.video__text {
-    margin-left: 10px;
-    font-size: 18px;
-    font-weight: 500;
+} */
 
-
-    color: #5F6368;
-}
-
-.image {
+/* .image {
     margin: 0 auto;
     display: block;
     width: 80%;
     height: auto;
-}
+} */
 
-.scroll {
+/* .scroll {
     position: absolute;
     bottom: 10px;
     left: 50%; 
-}
-@media screen and (orientation: landscape) and (max-width: 1025px) {
+} */
+
+
+/* @media screen and (orientation: landscape) and (max-width: 1025px) {
     .section__inner {
         min-height: 1500px;
     }
-}
+} */
 
-@media(max-width: 1025px) {
+/* @media(max-width: 1025px) {
     
     .section__inner {
         flex-wrap: wrap;
@@ -86,14 +76,15 @@
         font-size: 32px;
         line-height: 36px;
     }
-}
-@media screen and (orientation: landscape) and (max-width: 800px) {
+} */
+
+/* @media screen and (orientation: landscape) and (max-width: 800px) {
     .section__inner {
         min-height: 1200px;
     }
-}
+} */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     
     .section__title {
         font-size: 52px;
@@ -106,9 +97,9 @@
     .scroll {
         display: none;
     }
-}
+} */
 
-@media (max-width: 540px) {
+/* @media (max-width: 540px) {
     .section {
         margin-top: 15px;
     }
@@ -124,12 +115,9 @@
         font-size: 18px;
         line-height: 24px;
     }
-    .video__text {
-        font-size: 16px;
-    }
     
-}
-@media (max-width: 450px) {
+} */
+/* @media (max-width: 450px) {
     .section__image {
         width: 100%;
     }
@@ -144,7 +132,7 @@
     .section__blocks {
         flex-wrap: wrap;
     }
-    .start__button {
+    .start__button {    
         width: 100%;
         padding: 20px 22px;
 
@@ -153,11 +141,4 @@
 
         text-align: center;  
     }
-    .start__video {
-        margin: 0 auto;
-    }
-    .video__text {
-        font-size: 14px;
-
-    }
-}
+} */

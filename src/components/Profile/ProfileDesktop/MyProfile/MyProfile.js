@@ -8,7 +8,18 @@ import cls from './MyProfile.module.css';
 
 
 const MyProfile = (props) => {
-  
+  const onSubmitAccount = (formData) => {
+    console.log(formData.email);
+  }
+
+  const onSubmitPersonal = (formData) => {
+    console.log(formData.name, formData.surname, formData.telephone, formData.city);
+  }
+
+  const onSubmitSecurity = (formData) => {
+    console.log(formData.new_password, formData.confirm_password);
+  }
+
   return (
     <div className={cls.my}>
 
@@ -20,15 +31,21 @@ const MyProfile = (props) => {
 
       <div className={cls.content}>
         <AccountDetailsReduxForm 
-          initialValues = { props.initialValues } 
           user = { props.user }
+          initialValues = { props.initialValues } 
+
+          onSubmit = { onSubmitAccount }
         />
         <PersonalDataReduxForm 
           cities = { props.cities }
           initialValues = { props.initialValues } 
+
+          onSubmit = { onSubmitPersonal }
         />
         <SecurityReduxForm 
-          user = { props.user }
+          initialValues = { props.initialValues }
+          convert_date = { props.convert_date }
+          onSubmit = { onSubmitSecurity }
         />
       </div>
 

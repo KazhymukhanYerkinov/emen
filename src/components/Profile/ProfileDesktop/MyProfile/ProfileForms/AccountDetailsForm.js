@@ -11,7 +11,7 @@ import cls from './ProfileForms.module.css';
 const AccountDetailsForm = (props) => {
   console.log('RENDER ACCOUNT')
   return (
-    <form className={cls.account__details}>
+    <form className={cls.account__details} onSubmit = { props.handleSubmit }>
       <div className={cls.sub__title}> Данные учетной записи </div>
       <div className={cls.form__groups}>
 

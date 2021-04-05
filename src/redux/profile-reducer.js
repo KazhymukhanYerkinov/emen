@@ -5,7 +5,7 @@ const GET_ALL_CITIES = 'profile-reducer/GET_ALL_CITIES';
 
 
 let initialState = {
-  user: null,
+  profile_full_data: null, 
   cities: [],
 }
 
@@ -15,7 +15,7 @@ const proflieReducer = (state = initialState, action) => {
     case GET_PROFILE_DATA:
       return {
         ...state,
-        user: action.user
+        profile_full_data: action.user
       }
 
     case GET_ALL_CITIES:

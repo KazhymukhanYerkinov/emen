@@ -10,8 +10,9 @@ const SecurityForm = (props) => {
 
   const [changePassword, setChangePassword] = React.useState(false);
 
+  
   return (
-    <form>
+    <form onSubmit = { props.handleSubmit }>
       <div className={cls.sub__title}> Безопасность </div>
 
       <Field
@@ -21,7 +22,8 @@ const SecurityForm = (props) => {
         name='old_password'
         component={changePassword ? InputPassword:InputText }
         setChangePassword={ setChangePassword }
-        label={changePassword ? 'Старый пароль':`${props.user.password_change_date}`}
+        label={'Старый пароль'}
+        placeholder = {'Пароль изменен ' + props.convert_date}
       />
 
       {changePassword &&
@@ -31,7 +33,7 @@ const SecurityForm = (props) => {
             <Field half_width name='confirm_password' component={InputPassword} label='Повторить новый пароль' />
           </div>
           <div className = {cls.button}>
-            <button className={cls.submit} type={'submit'}> Подтвердить  </button>
+            <button className={cls.submit} type='submit'> Подтвердить  </button>
           </div>
         </React.Fragment>}
 

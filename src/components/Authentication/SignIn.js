@@ -4,13 +4,10 @@ import { Link, Redirect } from 'react-router-dom';
 
 
 
-import signin from '../../../assets/images/signin.jpg'
-import loader from '../../../assets/loader/button__loader.svg';
-import { InputCheckBox, InputPassword, InputText } from '../../common/FormControl/FormControl';
-import { textRequired, LengthCreator, emailRequired, passwordRequired } from '../../../validators/validator';
-
-
-import cls from './SignIn.module.css';
+import signin from '../../assets/images/signin.jpg'
+import loader from '../../assets/loader/button__loader.svg';
+import { InputCheckBox, InputPassword, InputText } from '../common/FormControl/FormControl';
+import { textRequired, LengthCreator, emailRequired, passwordRequired } from '../../validators/validator';
 
 
 const lengthValidation = LengthCreator(8, 100);
@@ -18,7 +15,7 @@ const lengthValidation = LengthCreator(8, 100);
 const SignInForm = ({ handleSubmit, error, showFetchButton }) => {
     return ( 
         <> 
-        { error && <span className = 'error'> { error } </span> }
+        { error && <span className = 'auth__error'> { error } </span> }
         <form onSubmit = { handleSubmit }>
             <div className = 'auth__input'>
                 <Field name = { 'email' } component = { InputText } label = { 'E-mail' } validate = { [emailRequired] }/>   
@@ -60,7 +57,7 @@ const SignIn = ({ isAuth, loginThunk }) => {
                 <div className = 'auth__inner'>
 
                     <div className = 'auth__image'>
-                        <img className = {cls.image} src = { signin } alt = ""/>
+                        <img className = 'image image__80' src = { signin } alt = ""/>
                     </div>
 
                     <div className = 'auth__content'>

@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 
-import { activateAccountThunk } from '../../../redux/auth-reducer';
+import { activateAccountThunk } from '../../redux/auth-reducer';
 
-import Modal from '../../common/Modal/Modal';
+import Modal from '../common/Modal/Modal';
 
 
 

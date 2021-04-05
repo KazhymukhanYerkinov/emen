@@ -5,29 +5,26 @@ import intro from '../../../assets/images/intro.jpg';
 // import start from '../../../assets/logos/start.svg';
 import scroll from '../../../assets/logos/scroll.svg';
 
-import cls from './Section1.module.css';
-
-const Section1 = ({ language }) => {
+const Section1 = () => {
 
     return (
-        <div className = {cls.section}>
+        <div className = 'content'>
             <div className = "container">
-                <div className = {cls.section__inner}>
+                <div className = 'content__inner'>
 
-                    <div className = {cls.section__content}>
-                        <div className = {cls.section__title}> Онлайн платформа для подготовки к ЕНТ </div> 
-                        <div className = {cls.section__text}> Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает. </div>
-                        <div className = {cls.section__blocks}>
+                    <div className = 'content__section1-content'>
+                        <div className = 'content__title'> Онлайн платформа для подготовки к ЕНТ </div> 
+                        <div className = 'content__description'> Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает. </div>
+                        <div className = 'content__section1-flex'>
                             <Link to = {'/subjects'} className = 'button button__start'> Начать бесплатно </Link>
-                            {/* <div className = {cls.start__video}> <img src = { start } alt = "Start video button"/>  <div className = {cls.video__text}>Посмотреть видео</div> </div> */}
                         </div>
                     </div>
 
-                    <div className = {cls.section__image}>
-                        <img className = {cls.image} src = { intro } alt = ""/>
+                    <div className = 'content__section1-image'>
+                        <img className = 'image image__80' src = { intro } alt = ""/>
                     </div>
                     
-                    <div className = {cls.scroll}>
+                    <div className = 'content__section1-scroll'>
                         <img src = { scroll } alt = ""/>
                     </div>
 

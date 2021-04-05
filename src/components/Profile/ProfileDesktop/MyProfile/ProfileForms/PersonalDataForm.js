@@ -11,7 +11,7 @@ import cls from './ProfileForms.module.css';
 const PersonalDataForm = (props) => {
   console.log('RENDER PERSONAL')
   return (
-    <form>
+    <form onSubmit = { props.handleSubmit }>
       <div className={cls.sub__title}> Личные данные </div>
       <div className={cls.form__groups}>
         
@@ -51,7 +51,7 @@ const PersonalDataForm = (props) => {
 
       </div>
       <div className={cls.button}>
-        <button className={cls.submit} type={'submit'}> Сохранить  </button>
+        <button className={cls.submit} type='submit'> Сохранить  </button>
       </div>
     </form>
   )
