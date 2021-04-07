@@ -9,7 +9,6 @@ import cls from './ProfileForms.module.css';
 
 
 const PersonalDataForm = (props) => {
-  console.log('RENDER PERSONAL')
   return (
     <form onSubmit = { props.handleSubmit }>
       <div className={cls.sub__title}> Личные данные </div>
@@ -56,7 +55,7 @@ const PersonalDataForm = (props) => {
     </form>
   )
 }
-const PersonalDataReduxForm = reduxForm({ form: 'personal_data', enableReinitialize: true })(PersonalDataForm);
+const PersonalDataReduxForm = reduxForm({ form: 'personal_data' })(PersonalDataForm);
 
 export default PersonalDataReduxForm;
 

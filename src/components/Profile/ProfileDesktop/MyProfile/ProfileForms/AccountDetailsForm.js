@@ -9,7 +9,8 @@ import cls from './ProfileForms.module.css';
 
 
 const AccountDetailsForm = (props) => {
-  console.log('RENDER ACCOUNT')
+
+
   return (
     <form className={cls.account__details} onSubmit = { props.handleSubmit }>
       <div className={cls.sub__title}> Данные учетной записи </div>
@@ -20,21 +21,52 @@ const AccountDetailsForm = (props) => {
           <div className={cls.mobile__input}> {props.user.code} </div>
         </div>
 
-        <Field
-          half_width
-          name='email'
-          component={InputText}
-          label='Email'
-          validate={emailRequired}
-        />
+        {!props.editMode
+        ? <div className={cls.group}>
+            <small className={cls.mobile__label}> Email </small>
+            <div className={cls.mobile__input}> {props.user.email} </div>
+            <div className = {cls.change__text} onClick = {() => props.setEditMode(true)}> Изменить email </div>
+          </div>
+
+        : <Field
+            half_width
+            name='email'
+            component={InputText}
+            label='Email'
+            validate={emailRequired}
+          />
+        }
 
       </div>
+      {props.editMode && 
       <div className={cls.button}>
         <button className={cls.submit} type={'submit'}> Продолжить  </button>
-      </div>
+      </div>}
     </form>
   )
 }
-const AccountDetailsReduxForm = reduxForm({ form: 'account_details', enableReinitialize: true })(AccountDetailsForm);
+const AccountDetailsReduxForm = reduxForm({ form: 'account_details' })(AccountDetailsForm);
 
-export default AccountDetailsReduxForm;
+const AccountDetails = (props) => {
+
+  const [editMode, setEditMode] = React.useState(false);
+
+
+  const onSubmit = (formData) => {
+    console.log(formData);
+    setEditMode(false);
+  }
+
+  return (
+    <AccountDetailsReduxForm
+      user = { props.user } 
+      initialValues = { props.initialValues }
+      onSubmit = { onSubmit }
+
+      editMode = { editMode }
+      setEditMode = { setEditMode }
+    />
+  )
+}
+
+export default AccountDetails;

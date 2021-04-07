@@ -16,7 +16,7 @@ import Test2 from './Test2';
 import Preloader from '../common/Preloader/Preloader';
 import Cookies from 'js-cookie';
 import Modal from '../common/Modal/Modal';
-import { getAnswersWithData } from '../../utils/helper';
+import { getAnswersWithData } from '../../utils/getAnswersWithData';
 
 
 

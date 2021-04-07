@@ -35,8 +35,15 @@ export const getProfile = () => async (dispatch) => {
     dispatch({ type: GET_PROFILE_DATA, user });
     dispatch({ type: GET_ALL_CITIES, cities });
 
-    console.log(user);
+  } catch (error) {
 
+  }
+}
+
+export const updatePersonalProfile = (first_name, last_name, phone, city, image) => async (dispatch) => {
+  try {
+    let data = await profileAPI.updatePersonProfile(first_name, last_name, phone, city, image);
+    console.log(data);
   } catch (error) {
 
   }

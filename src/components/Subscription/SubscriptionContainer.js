@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getSubsThunk } from '../../redux/subs-reducer';
 import Subscription from './Subscription';
 
 
 
 class SubscriptionContainer extends React.Component {
+  componentDidMount() {
+    this.props.getSubsThunk();
+  }
   render() {
     return (
       <Subscription
@@ -21,4 +25,5 @@ let mapStateToProps = (state) => ({
   type_list: state.subsPage.type_list,
 })
 
-export default connect(mapStateToProps, {})(SubscriptionContainer)
+
+export default connect(mapStateToProps, { getSubsThunk })(SubscriptionContainer)

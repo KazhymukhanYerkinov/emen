@@ -18,7 +18,7 @@ const SignInForm = ({ handleSubmit, error, showFetchButton }) => {
         { error && <span className = 'auth__error'> { error } </span> }
         <form onSubmit = { handleSubmit }>
             <div className = 'auth__input'>
-                <Field name = { 'email' } component = { InputText } label = { 'E-mail' } validate = { [emailRequired] }/>   
+                <Field name = { 'email' } component = { InputText } label = { 'E-mail' } placeholder = 'E-mail' validate = { [emailRequired] }/>   
                 <Field name = { 'password' } component = { InputPassword } label = { 'Пароль' }  validate = { [textRequired,passwordRequired, lengthValidation] }/>
             </div>
             <button className = 'button button__submit' type = 'submit'> {showFetchButton ? <img className = 'auth__loader' src = { loader } alt = '' />:<span>Войти</span>} </button> 

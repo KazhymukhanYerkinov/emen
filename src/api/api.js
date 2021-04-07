@@ -159,6 +159,30 @@ export const profileAPI = {
         return instance.get(`api/v1/auth/profile/`).then(response => {
             return response.data;
         })
+    },
+    updatePersonProfile(first_name, last_name, phone, city) {
+
+        const body = JSON.stringify({ 
+            first_name, 
+            last_name,
+            phone, 
+            city,
+        });
+
+        
+        return instance.post(`api/v1/profile/update`, body).then(response => {
+            return response;
+        })
+    }
+}
+
+
+export const subsAPI = {
+    getSubs(){
+        return instance.get(`api/v1/services/subscriptions/tariffs/`).then(response => {
+            console.log(response);
+            return response;
+        })
     }
 }
 

@@ -17,7 +17,6 @@ const Header = (props) => {
 
   const isLang = props.language === 'kz';
   
-  console.log('HEADER RENDER')
 
   return (
     <header className={cls.header}>

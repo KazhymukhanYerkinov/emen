@@ -8,17 +8,29 @@ import cls from './MyProfile.module.css';
 
 
 const MyProfile = (props) => {
-  const onSubmitAccount = (formData) => {
-    console.log(formData.email);
-  }
-
+  
   const onSubmitPersonal = (formData) => {
-    console.log(formData.name, formData.surname, formData.telephone, formData.city);
+    props.updatePersonalProfile(formData.name, formData.surname, formData.telephone, formData.city, null)
+    console.log(formData.name, formData.surname, formData.telephone, formData.city.id);
   }
 
   const onSubmitSecurity = (formData) => {
     console.log(formData.new_password, formData.confirm_password);
   }
+
+  let initialValuesAccount = {
+    email: props.user.email,
+  }
+
+  let initialValuesPersonal = {
+    name: props.user.first_name,
+    surname: props.user.last_name,
+    telephone: props.user.phone,
+    city: props.user.city,
+  }
+
+  console.log(initialValuesAccount);
+  console.log(initialValuesPersonal);
 
   return (
     <div className={cls.my}>
@@ -32,19 +44,17 @@ const MyProfile = (props) => {
       <div className={cls.content}>
         <AccountDetailsReduxForm 
           user = { props.user }
-          initialValues = { props.initialValues } 
-
-          onSubmit = { onSubmitAccount }
+          initialValues = { initialValuesAccount } 
         />
         <PersonalDataReduxForm 
           cities = { props.cities }
-          initialValues = { props.initialValues } 
+          initialValues = { initialValuesPersonal } 
 
           onSubmit = { onSubmitPersonal }
         />
         <SecurityReduxForm 
-          initialValues = { props.initialValues }
           convert_date = { props.convert_date }
+          
           onSubmit = { onSubmitSecurity }
         />
       </div>

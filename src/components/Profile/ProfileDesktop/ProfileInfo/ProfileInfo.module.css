@@ -135,8 +135,8 @@
 
 @media (max-width: 500px) {
     .avatar {
-        width: 80px !important;
-        height: 80px !important;
+        width: 100px !important;
+        height: 100px !important;
         margin-bottom: 15px;
     }
     .fullname {

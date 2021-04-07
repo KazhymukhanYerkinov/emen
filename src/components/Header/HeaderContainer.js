@@ -41,9 +41,12 @@ class HeaderContainer extends React.Component {
     const path = event.path || (event.composedPath && event.composedPath());
 
     if (!path.includes(this.profile_block_ref.current) && !path.includes(this.toggle_button_ref.current)) {
-      this.setState({
-        show_profile_block: false
-      })
+      if (this.state.show_profile_block) {
+        this.setState({
+          show_profile_block: false
+        })
+      }
+      
     }
   }
 
@@ -74,7 +77,6 @@ class HeaderContainer extends React.Component {
   }
 
   render() {
-    console.log('Header container')
     return <Header
           toggle_button_ref = { this.toggle_button_ref }
           profile_block_ref = { this.profile_block_ref }

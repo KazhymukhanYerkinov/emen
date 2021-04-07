@@ -18,9 +18,9 @@ const SignUpForm = ({ handleSubmit, showFetchButton, error }) => {
         { error && <span className = 'auth__error'> { error } </span> }
         <form onSubmit = { handleSubmit }>
             <div className = 'auth__input'>
-                <Field name = { 'name' } component = { InputText } label = { 'Имя' } validate = { textRequired }/>
-                <Field name = { 'surname' } component = { InputText } label = { 'Фамилия' } validate = { textRequired }/>
-                <Field name = { 'email' } component = { InputText } label = { 'Email' } validate = { emailRequired }/>
+                <Field name = { 'name' } component = { InputText } placeholder = 'Имя' label = { 'Имя' } validate = { textRequired }/>
+                <Field name = { 'surname' } component = { InputText } placeholder = 'Фамилия' label = { 'Фамилия' } validate = { textRequired }/>
+                <Field name = { 'email' } component = { InputText } placeholder = 'Email' label = { 'Email' } validate = { emailRequired }/>
                 <Field name = { 'password1' } component = { InputPassword } label = { 'Создать пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
                 <Field name = { 'password2' } component = { InputPassword } label = { 'Повторить пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
             </div>

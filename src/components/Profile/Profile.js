@@ -3,7 +3,7 @@ import { Route } from 'react-router';
 
 
 // Profile desktop components
-import MyProfile from './ProfileDesktop/MyProfile/MyProfile';
+import MyProfileContainer from './ProfileDesktop/MyProfile/MyProfileContainer';
 import ProfileInfo from './ProfileDesktop/ProfileInfo/ProfileInfo';
 import MyWallet from './ProfileDesktop/MyWallet/MyWallet';
 import Help from './ProfileDesktop/Help/Help';
@@ -19,19 +19,20 @@ import NewPassword from './ProfileMobile/ProfileMobileForms/NewPassword';
 
 
 import cls from './Profile.module.css';
-import MyProfileContainer from './ProfileDesktop/MyProfile/MyProfileContainer';
 
 
 const Profile = (props) => {
+  
   return (
     <React.Fragment>
+
+      { props.screen_orientation ?
       <div className={cls.profile}>
         <div className='container'>
           <div className={cls.profile__inner}>
             <ProfileInfo 
               user = { props.user }
               BASE_URL = { props.BASE_URL }
-              
             />
 
             <Route 
@@ -40,23 +41,40 @@ const Profile = (props) => {
                 <MyProfileContainer
                   user = { props.user }
                   cities = { props.cities }
+
+                  updatePersonalProfile = { props.updatePersonalProfile }
                 /> 
               )} 
             />
 
-            <Route exact path = '/profile/basic_data' component = { MyProfile } />
+            <Route 
+              exact path = '/profile/basic_data' 
+              render = { () => (
+                <MyProfileContainer
+                  user = { props.user }
+                  cities = { props.cities }
+                />
+              )} />
             <Route exact path = '/profile/wallet' component = { MyWallet } />
             <Route exact path = '/profile/help' component = { Help } />
           </div>
         </div>
       </div>
 
-      <div className = {cls.mobile}>
+      :<div className = {cls.mobile}>
         <div className = 'container'>
           <div className = {cls.mobile__inner}>
             <Route exact path = '/profile' component = { ProfileMobile } />
           </div>
-          <Route exact path = '/profile/basic_data' component = { BasicDataMobile } />
+          <Route 
+            exact path = '/profile/basic_data' 
+            render = {() => (
+              <BasicDataMobile
+                user = { props.user }
+                cities = { props.cities }
+                BASE_URL = { props.BASE_URL }
+              /> 
+            )} />
           <Route exact path = '/profile/wallet' component = { WalletMobile } />
           <Route exact path = '/profile/sub' component = { SubMobile } />
           <Route exact path = '/profile/basic_data/change_password' component = { ChangePassword } />
@@ -64,7 +82,7 @@ const Profile = (props) => {
           <Route exact path = '/profile/basic_data/change_email' component = { ChangeEmail } />
 
         </div>
-      </div>
+      </div>}
 
     </React.Fragment>
 

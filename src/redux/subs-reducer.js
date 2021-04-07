@@ -1,6 +1,7 @@
 import standart from '../assets/subs/standart.svg';
 import premium from '../assets/subs/premium.svg';
 import gold from '../assets/subs/gold.svg';
+import { subsAPI } from '../api/api';
 
 let initialState = {
   subs: [
@@ -71,6 +72,15 @@ const subsReducer = (state = initialState, action) => {
   switch (action.type) {
     default:
       return state;
+  }
+}
+
+export const getSubsThunk = () => async (dispatch) => {
+  try {
+    const data = await subsAPI.getSubs();
+    console.log(data);
+  } catch (error) {
+    console.log(error)
   }
 }
 
