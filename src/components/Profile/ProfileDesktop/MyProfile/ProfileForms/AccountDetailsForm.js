@@ -30,6 +30,7 @@ const AccountDetailsForm = (props) => {
 
         : <Field
             half_width
+            not_label
             name='email'
             component={InputText}
             label='Email'

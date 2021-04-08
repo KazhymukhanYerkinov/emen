@@ -14,7 +14,6 @@ import {
 
 import Test2 from './Test2';
 import Preloader from '../common/Preloader/Preloader';
-import Cookies from 'js-cookie';
 import Modal from '../common/Modal/Modal';
 import { getAnswersWithData } from '../../utils/getAnswersWithData';
 
@@ -58,7 +57,6 @@ class TestContainer extends React.Component {
 
   questionWithAnswers = () => {
     let student_answers = [];
-    let left_time = 14400;
 
     for (let item of this.state.map_with_answers.entries()) {
       let answer;
@@ -78,12 +76,8 @@ class TestContainer extends React.Component {
       student_answers.push(body);
     }
 
-    if (Cookies.get('timer')) {
-      left_time = Cookies.get('timer');
-    }
     let object = {
       student_answers,
-      left_time,
       examUID: this.props.match.params.examUID,
     }
 
@@ -92,8 +86,8 @@ class TestContainer extends React.Component {
   }
 
   // Тессті толық бітіру
-  finishTest = (is_type) => {
-    let { student_answers, left_time, examUID } = this.questionWithAnswers();
+  finishTest = (is_type, left_time) => {
+    let { student_answers, examUID } = this.questionWithAnswers();
 
     if (!is_type) {
       this.handleShowCloseModal();
@@ -101,14 +95,15 @@ class TestContainer extends React.Component {
 
     this.props.finishAllTestThunk(examUID, left_time, this.state.stop_timer, student_answers);
 
+    
     this.handleStopTimer(true);
     this.setState({ finish_all_test: true });
   }
 
   // Сұрақтарды серверге жіберіп сақтау
-  saveQuestion = () => {
-    let { student_answers, left_time, examUID } = this.questionWithAnswers();
-    console.log(student_answers);
+  saveQuestion = (left_time) => {
+    let { student_answers, examUID } = this.questionWithAnswers();
+    console.log(left_time);
     this.props.saveTestQuestionThunk(examUID, left_time, this.state.stop_timer, student_answers);
   }
 
@@ -195,6 +190,11 @@ class TestContainer extends React.Component {
     })
   }
 
+  // Барлық данныйларды тазалау
+  handleClearAllData = () => {
+    this.props.setQuestionsFailAC();
+  }
+
 
   render() {
 
@@ -215,11 +215,10 @@ class TestContainer extends React.Component {
     }
 
     // Константаларды алып алу
-    const LEFT_TIME = this.props.data.left_seconds;
+    const LEFT_TIME = this.props.data.left_seconds - 1;
     const TEST_BANNER = this.props.data.banner;
     const TEST_QUESTIONS = this.props.data.variants;
     let QUESTION_SIZE = 140;
-
 
     return (
       <Test2
@@ -247,6 +246,8 @@ class TestContainer extends React.Component {
         finish_all_test = { this.state.finish_all_test }
         saveQuestion = { this.saveQuestion }
         finishTest = { this.finishTest }
+
+        handleClearAllData = { this.handleClearAllData }
       />
     )
   }

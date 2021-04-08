@@ -1,0 +1,36 @@
+.section5 {
+    padding: 50px 0;
+    background-color:  #1A73E8;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        padding: 50px 90px;
+        background-color: white;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    &__image {
+        width: 35%;
+    }
+    &__content {
+        margin-left: 30px;
+        width: 65%;
+    }
+
+    @media (max-width: 700px) {
+        &__inner {
+            padding: 40px 40px;
+            flex-wrap: wrap;
+        }
+        &__image {
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+        &__content {
+            margin-left: 0px;
+            width: 100%;
+        }
+    }
+}

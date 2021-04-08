@@ -43,7 +43,8 @@ const Test = ({ data, errorsStartTests, examUID, BASE_URL, ...props }) => {
           handleFinishAllTest = { props.finishTest }
           onStopTime={ props.handleStopTimer }
           onOnlyFinish={ props.handleShowCloseModal }
-          onFinishTestButton={ props.handleShowModal } /> :
+          onFinishTestButton={ props.handleShowModal }
+          handleClearAllData = { props.handleClearAllData } /> :
 
         <div className='container'>
           <TestHeader

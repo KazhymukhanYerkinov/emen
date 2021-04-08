@@ -61,6 +61,7 @@ const testReducer = (state = initialState, action) => {
             return {
                 ...state,
                 data: null,
+                isStart: false
             }
         // Тест бетіне барғандағы загрузка сақтау
         case IS_FETCHING_DATA_TRUE:

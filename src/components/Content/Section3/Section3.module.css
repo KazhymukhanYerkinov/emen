@@ -1,8 +1,0 @@
-.section {
-    background-color: white;
-    padding: 75px 0;
-}
-.section__content {
-    display: flex;
-    flex-wrap: wrap;
-}

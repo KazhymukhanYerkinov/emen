@@ -85,5 +85,9 @@
     .info__title {
         font-size: 21px;
     }
+    .content__flex {
+        font-size: 11px;
+        line-height: 16px;
+    }
 
 }

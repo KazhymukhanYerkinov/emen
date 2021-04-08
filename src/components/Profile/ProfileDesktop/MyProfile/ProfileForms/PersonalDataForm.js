@@ -16,6 +16,7 @@ const PersonalDataForm = (props) => {
         
         <Field 
           half_width 
+          not_label
           name='name' 
           component={InputText} 
           label='Имя' 
@@ -24,6 +25,7 @@ const PersonalDataForm = (props) => {
 
         <Field 
           half_width 
+          not_label
           name='surname' 
           component={InputText} 
           label='Фамилия' 
@@ -32,6 +34,7 @@ const PersonalDataForm = (props) => {
 
         <Field 
           half_width 
+          not_label
           name='telephone' 
           component={InputText} 
           label='Телефон' 

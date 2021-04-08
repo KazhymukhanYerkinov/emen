@@ -82,7 +82,7 @@ export const InputText = ({
 
   return (
     <div className={control_class}>
-      {!not_label && <label> {label} </label>}
+      {not_label && <label> {label} </label>}
       <OutlinedInput
         readOnly = { readOnly }
         error={touched && invalid}

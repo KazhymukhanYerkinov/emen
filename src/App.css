@@ -22,58 +22,10 @@ h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: inherit;}
   font-family: Raleway;
 }
 
-/* section title and text */
-.section__title {
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 41px;
 
-  color: #222222;
-}
-.section__text {
-  font-weight: 500;
-  font-size: 21px;
-  line-height: 25px;
 
-  margin: 30px 0 50px 0;
 
-  color: #5F6368;
-}
-.text__center {
-  text-align: center;
-}
 
-/* title__auth */
-.title {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 27px;
-
-  color: #222222;
-}
-/* submit__button */
-.submit {
-  width: 100%;
-}
-.facebook {
-  width: 100%;
-  background-color: #4267B2;
-  margin-bottom: 10px;
-}
-.google {
-  width: 100%;
-  color: #222222;
-  background-color: #F7F7F7;
-}
-.google img, .facebook img {
-  margin-right: 10px;
-}
-.facebook:hover {
-  background-color: #4267B2;
-}
-.google:hover {
-  background-color:  #F7F7F7;
-}
 /* helper__text */
 .helper__text {
   margin: 17px 0;
@@ -109,17 +61,5 @@ h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: inherit;}
   }
 }
 
-@media (max-width: 540px) {
-  .section__title {
-    font-size: 34px;
-    line-height: 40px;
-  }
-  .section__text {
-    font-size: 20px;
-  }
-  .facebook, .google {
-    font-size: 12px;
-  }
-  
-}
+
 

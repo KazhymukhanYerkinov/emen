@@ -50,6 +50,13 @@
         font-size: 12px;
         line-height: 16px;
         margin-top: 10px;
+
+        &-blue {
+            display: block;
+
+            margin-bottom: 10px;
+            color: $blue;
+        }
     }
     &__step {
         margin: 20px 0;

@@ -1,0 +1,122 @@
+@import 'variables';
+
+@mixin text($text_size, $line_height, $font_wieght, $color) {
+    font-weight: $font_wieght;
+    font-size: $text_size;
+    line-height: $line_height;
+
+    color: $color;
+}
+
+.content {
+
+    &__title {
+        @include text(32px, 41px, 600, $black);
+        text-align: center;
+    }
+    &__description {
+        margin: 30px 0 50px 0;
+        text-align: center;
+        @include text(21px, 25px, 500, $dark_gray);
+    }
+
+    &__block {
+        &-title {
+            @include text(28px, 32px, 500, $black);
+        }
+        &-description {
+            padding: 20px 0;
+            @include text(18px, 19px, 500, $dark_gray);
+        }
+        &-count {
+            font-feature-settings: 'pnum' on, 'lnum' on;
+            @include text(38px, 41px, 600, $blue);
+        }
+        &-text {
+            margin: 14px 0;
+            @include text(21px, 24px, 500, $dark_gray);
+        }
+        &-subtext {
+            @include text(21px, 24px, 500, $pre_middle_gray);
+        }
+        &-question {
+            font-feature-settings: 'pnum' on, 'lnum' on;
+            @include text(19px, 23px, 500, $black);
+        }
+        &-answer {
+            display: none;
+            padding-top: 20px;
+            @include text(18px, 21px, 500, $dark_gray);
+
+            &.active {
+                display: block;
+            }
+        }
+        &-insta {
+            padding: 20px 0;
+
+            text-align: center;
+            @include text(21px, 24px, 700, $white);
+        }
+
+        &-main {
+            text-align: center;
+            @include text(14px, 17px, 600, $white);
+        }
+    }
+
+    @media (max-width: 600px) {
+        &__title {
+            @include text(24px, 28px, 600, $black);
+        }
+        &__description {
+            margin: 20px 0 25px 0;
+            @include text(17px, 19px, 500, $dark_gray);
+        }
+
+        &__block {
+            &-title {
+                @include text(24px, 28px, 500, $black);
+            }
+            &-description {
+                @include text(16px, 19px, 500, $dark_gray);
+            }
+
+            &-count {
+                font-feature-settings: 'pnum' on, 'lnum' on;
+                @include text(24px, 28px, 600, $blue);
+            }
+            &-text {
+                margin: 7px 0;
+                @include text(18px, 21px, 500, $dark_gray);
+            }
+            &-subtext {
+                @include text(18px, 21px, 500, $pre_middle_gray);
+            }
+            &-question {
+                @include text(16px, 23px, 500, $black);
+            }
+            &-answer {
+                @include text(16px, 23px, 500, $dark_gray);
+            }
+            &-insta {
+                @include text(21px, 24px, 700, $white);
+            }
+
+            &-main {
+                @include text(14px, 17px, 600, $white);
+            }
+        }
+    }
+
+    @media (max-width: 450px) {
+        &__block {
+            &-question {
+                @include text(14px, 17px, 500, $black);
+            }
+            &-answer {
+                @include text(14px, 17px, 500, $dark_gray);
+            }
+        }
+    }
+}

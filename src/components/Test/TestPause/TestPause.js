@@ -23,12 +23,17 @@ const TestPause = ({
     mapWithAnswers, 
     openFinishModal, 
     onOnlyFinish, 
-    onFinishTestButton }) => {
+    onFinishTestButton,
+    handleClearAllData}) => {
     
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
-    }, [])
+        return () => {
+            handleClearAllData()
+        }
+
+    }, [handleClearAllData])
 
     if (finishAllTest) {
         time = LEFT_TIME - time;
@@ -49,10 +54,12 @@ const TestPause = ({
                         second = { second }
                         minute = { minute }
                         hours = { hours }
+
                         onFinishTestButton = { onFinishTestButton } 
                         QUESTION_SIZE = { QUESTION_SIZE }
                         onOnlyFinish = { onOnlyFinish } 
-                        handleFinishAllTest = { handleFinishAllTest }/> }
+                        handleFinishAllTest = { handleFinishAllTest }
+                        /> }
                 <img className = {cls.pause__iamge} src = {finishAllTest ? finish: pause } alt = "" />
 
                 <div className = {cls.pause__info}>
@@ -62,8 +69,8 @@ const TestPause = ({
                 </div>
                 {finishAllTest ?
                 <>
-                    <Link className = 'button button__submit' to = {`/history/${examUID}`}> Резултат тестирование </Link>
-                    <Link className = 'button button__over mt-5' to = {'/'}> Главная страница </Link>
+                    <Link className = 'button button__submit' to = {`/history/${examUID}`} onClick = { handleClearAllData }> Резултат тестирование </Link>
+                    <Link className = 'button button__over mt-5' to = {'/'} onClick = { handleClearAllData }> Главная страница </Link>
                 </>
                 :
                 <>

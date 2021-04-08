@@ -49,7 +49,7 @@ const TestControl = ({
     let buffer = 90;
 
     if (window.innerWidth <= 600) {
-      buffer = 640;
+      buffer = 350;
     } 
     const top = rectTop + offsetTop - buffer;
 

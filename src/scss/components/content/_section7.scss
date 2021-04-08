@@ -1,0 +1,49 @@
+.section7 {
+    padding: 75px 0;
+
+    &__instagram {
+        display: block;
+        font-weight: 600;
+        color: #1A73E8;
+    }
+
+    &__content {
+        display: flex;
+    }
+
+    &__block {
+        width: 30%;
+        margin-right: 5%;
+
+        display: flex;
+        flex-direction: column;
+    
+        background-color: #6537ED;
+
+        &:last-child {
+            margin-right: 0;
+        }
+        &:nth-child(2n - 1) {
+            background-color: #202226;
+        }
+
+        &-inner {
+            padding: 40px 50px 25px 50px;
+        }
+        &-content {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 800px) {
+        &__content {
+            width: 100%;
+            max-width: 750px;
+            overflow-x: scroll;
+        }
+        &__block {
+            width: 80%;
+        }
+    }
+}

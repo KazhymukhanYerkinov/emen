@@ -9,7 +9,7 @@ let interval;
 
 const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinishTestButton, handleFinishAllTest, saveQuestion }) => {
     const [ time, setTime ] = React.useState(timer);
-    
+
     if (stopTimer) {
         clearInterval(interval)
     }
@@ -17,14 +17,13 @@ const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinish
     React.useEffect(() => {
         if (time <= 0) {
             clearInterval(interval); 
-            handleFinishAllTest(true);
+            handleFinishAllTest(true, time);
         }
         else if (time % 5 === 0) {
-            saveQuestion();
+            saveQuestion(time);
         }
+    }, [time, handleFinishAllTest, saveQuestion]);
 
-        
-    })
     React.useEffect(() => {
         if (!stopTimer) {
             interval = setInterval(() => {

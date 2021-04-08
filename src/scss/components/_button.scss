@@ -102,11 +102,12 @@
         }
 
         @media (max-width: 450px) {
-            display: none;
-
             &--header {
                 display: block;
                 width: 100%;
+            }
+            &--none {
+                display: none;
             }
         }
     }

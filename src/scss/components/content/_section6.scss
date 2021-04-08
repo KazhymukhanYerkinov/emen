@@ -1,0 +1,56 @@
+.section6 {
+    padding: 75px 0;
+    background-color: #F8F9FA;
+
+    &__block {
+        margin-bottom: 30px;
+        padding: 27px 30px 27px 60px;
+        border-radius: 3px;
+
+        background-color: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+
+        &-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &-collapse {
+            display: block;
+            width: 25px;
+            height: 3px;
+
+            background-color: #1A73E8;
+            position: relative;
+            cursor: pointer;
+
+            transition: transform .1s linear;
+
+            &::after {
+                content: "";
+                width: 100%;
+                height: 3px;
+
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                transform: rotate(-90deg);
+
+                background-color: #1A73E8;
+            }
+
+            &.active {
+                transform: rotate(45deg);
+            }
+            
+        }
+
+        @media (max-width: 550px) {
+            padding: 15px 13px;
+            margin-bottom: 15px;
+        }
+    }
+}

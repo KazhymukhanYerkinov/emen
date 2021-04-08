@@ -24,7 +24,7 @@ const Subject = ({ BASE_URL, language, item}) => {
 
                     </div>
 
-                    <div className = 'button button__over'> Перейти </div>
+                    <div className = 'button button__over button__over--none'> Перейти </div>
                 </div>
             </Link>
     )
