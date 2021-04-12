@@ -2,8 +2,6 @@ import classNames from 'classnames';
 import React from 'react';
 import Answer from './Answer/Answer';
 
-import cls from './Question.module.css';
-
 
 
 const Question = (props) => {
@@ -35,14 +33,14 @@ const Question = (props) => {
   }
 
   return (
-    <div className={cls.question} id = {`history_scroll_${props.question.id}`}>
-      <div className={cls.question__header}>
-        <div className={cls.question__number}> Вопрос #{props.question.numeration} </div>
+    <div className = 'question' id = {`history_scroll_${props.question.id}`}>
+      <div>
+        <div className='question__number'> Вопрос #{props.question.numeration} </div>
       </div>
 
-      <div id = { `question_${props.question.id}` } className={cls.question__text}></div>
+      <div id = { `question_${props.question.id}` } className='question__text'></div>
 
-      <div className = {cls.answers}>
+      <div>
         { props.question.answers.map((answer, index) => {
           return (
             <Answer
@@ -54,8 +52,8 @@ const Question = (props) => {
       </div>
 
       <React.Fragment>
-        <div className = {cls.question__hint} onClick = { handleShowParse }> {showParse ? <span> Cкрыть разбор </span>:<span> Показать разбор</span>} </div>
-        <div id = {`solution_${props.question.id}`} className = {classNames(cls.hint__text, {[cls.hint__active]: showParse})} > </div>
+        <div className = 'question__hint' onClick = { handleShowParse }> {showParse ? <span> Cкрыть разбор </span>:<span> Показать разбор</span>} </div>
+        <div id = {`solution_${props.question.id}`} className = {classNames('question__hint-text', {'active': showParse})} > </div>
       </React.Fragment>
     </div>
   )

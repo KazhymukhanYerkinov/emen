@@ -17,7 +17,7 @@ const Section6 = () => {
                     <div>
                         { data.map((item, index) => {
                             return (
-                                <Block {...item} key = { index }/>
+                                <Block {...item} index = { index } key = { index }/>
                             )
                         }) }
                     </div>

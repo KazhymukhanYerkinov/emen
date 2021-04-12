@@ -1,13 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import cls from '../ListOfSubject.module.css';
 
 
 
 const SquareBlock = ({ handleScrollQuestionById, isActive, question_id, numeration }) => {
 
-    let squareClass = classNames(cls.block, {[cls.active]: isActive});
+    let squareClass = classNames('navigator__block', {'navigator__block-correct': isActive});
 
 
     return (

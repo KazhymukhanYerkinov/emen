@@ -1,21 +1,20 @@
 import React from 'react';
-import classNames from 'classnames';
-
-import cls from './SubCategories.module.css';
 
 
 
-const SubCategories = ({ topicID, items, onHandleSettingsModal }) => {
+const SubCategories = ({ topicID, items, onHandleSettingsModal, index }) => {
+
+
     return (
-        <div className = {cls.base}>
+        <div className = 'subcat' id = {`subcategories_smooth_${index}`}>
 
-            <button className = {cls.start} onClick = {() => onHandleSettingsModal(true, topicID)}> Начать </button>
+            <button className = 'button button__detail' onClick = {() => onHandleSettingsModal(true, topicID)}> Начать </button>
             {items.map((item, index) => {
                 return (
-                    <div className = {classNames(cls.backcolor)}  key = { index }>
-                        <div className = {cls.subcategories}>
-                            <div className = { cls.sub__title }> { item.name_ru } </div>
-                            <div className = { cls.sub__count }> <span className = {cls.result}> Решено: </span>{ item.solved_question_count } / { item.all_question_count } </div>
+                    <div className = 'subcat__color'  key = { index }>
+                        <div className = 'subcat__inner'>
+                            <div className = 'subcat__title'> { item.name_ru } </div>
+                            <div className = 'subcat__count'> <span className = 'subcat__result'> Решено: </span>{ item.solved_question_count } / { item.all_question_count } </div>
                         </div>
                     </div>
                 )

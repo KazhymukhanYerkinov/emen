@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import arrow from '../../../../assets/detail/arrow.svg';
-import cls from './ListOfSubject.module.css';
 import SquareBlock from './SquareBlock/SquareBlock';
 
 
@@ -55,23 +54,25 @@ const ListOfSubject = ({
     })
 
 
-
+    let clx = classNames('navigator__subject-arrow', {'active': isOpen});
+    
   return (
-    <div className={cls.listOf}>
-      <div className={cls.listOf__header} onClick={() => onChangeSubjectList(navigateBySubId)}>
-        <div className={cls.listOf__info}>
+    <div>
+      <div className = 'navigator__subject-header' onClick={() => onChangeSubjectList(navigateBySubId)}>
+        <div className='navigator__subject-content'>
 
-          <img src={BASE_URL + '' + subject.logo} alt="" />
-          <div className={cls.listOf__block}>
-            <div className={cls.name}> {subject.name_ru} </div>
-            <div className={cls.result}> Отвечено: { size } / { questions_count } </div>
+          <img className = 'navigator__subject-image' src={BASE_URL + '' + subject.logo} alt="" />
+
+          <div className='navigator__subject-info'>
+            <div className='navigator__subject-name'> {subject.name_ru} </div>
+            <div className='navigator__subject-result'> Отвечено: { size } / { questions_count } </div>
           </div>
 
         </div>
-        <img className={classNames({ [cls.transformImage]: isOpen })} src={arrow} alt="" />
+        <img className={ clx } src={arrow} alt="" />
       </div>
 
-      <div className={classNames(cls.list, { [cls.open]: isOpen })}>
+      <div className={classNames('navigator__blocks', {'open': isOpen})}>
         { squareBlocks }
       </div>
 

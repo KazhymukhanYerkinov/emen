@@ -1,0 +1,71 @@
+@import 'variables';
+
+.subcat {
+    padding: 3px 0;
+
+    height: 0;
+    overflow: hidden;
+
+    transition: height .2s ease-out;
+
+    &__inner {
+        padding: 15px 10px;
+        width: 75%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+
+        cursor: pointer;
+
+        color: $black;
+    }
+    &__color {
+        transition: background-color .3s linear;
+        &:hover {
+            background-color: #F7F7F7;
+        }
+    }
+    &__title {
+        padding-left: 15px;
+        color: #1A73E8;
+    }
+    &__count {
+        white-space: nowrap;
+    }
+    &__result {
+        display: none;
+    }
+
+    &.open {
+        height: auto;
+    }
+
+
+    @media (max-width: 550px) {
+        padding: 0;
+
+        &__inner {
+            padding: 15px 0;
+            display: block;
+        }
+
+        &__title {
+            padding-left: 0;
+        }
+        &__count {
+            color: #5F6368;
+        }
+        &__result {
+            margin-top: 5px;
+            margin-right: 5px;
+            display: inline-block;
+        }
+    }
+
+
+}

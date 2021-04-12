@@ -53,6 +53,9 @@
 .noneDesc {
     color: #5F6368;
 }
+.error {
+    color: red;
+}
 
 /* MANDATORY SUBJECT */
 .mandatory__content {

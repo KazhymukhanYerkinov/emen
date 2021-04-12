@@ -39,6 +39,9 @@ const DetailSubject = ({ match, BASE_URL }) => {
 
   // ENT profile сабақтарды басқаратын state
   const [profSubjects, setProfSubject] = React.useState({ subjects: [null, null] });
+
+  // Error => do not select proffesional subject 
+  const [error, setError] = React.useState(false);
   
 
   // топиктарды серверден алу
@@ -95,7 +98,27 @@ const DetailSubject = ({ match, BASE_URL }) => {
           let PSubjectID_2 = profSubjects.subjects[1].id;
           dispatch(postStartTestThunk(ENT_FULL_EXAMINATION, null, withHint, levelTest, null, PSubjectID_1, PSubjectID_2));
       } else {
-        
+        setError(true);
+
+        const targetElement = document.querySelector(`#profile_subject_id`);
+        const rectTop = targetElement.getBoundingClientRect().top;
+        const offsetTop = window.pageYOffset;
+
+        let buffer = 90;
+
+        if (window.innerWidth <= 600) {
+          buffer = 350;
+        } 
+        const top = rectTop + offsetTop - buffer;
+
+        window.scrollTo({
+          top,
+          behavior: "smooth"
+        })
+
+        setTimeout(() => {
+          setError(false);
+        }, 3000)
       }
     }
     else {
@@ -137,10 +160,24 @@ const DetailSubject = ({ match, BASE_URL }) => {
 
         <div className={cls.detail__content}>
           <Route exact path={`/showTheme/${subjectID}/SUBJECT`}
-            render={() => <DetailContent topics={detail.topics} onHandleSettingsModal={onHandleSettingsModal} />} />
+            render={() => (
+              <DetailContent 
+                topics={detail.topics} 
+                onHandleSettingsModal={onHandleSettingsModal} 
+              />)} 
+          />
 
           <Route exact path={`/showTheme/${subjectID}/ENT`}
-            render={() => <EntContent detail={detail} BASE_URL={BASE_URL} profSubjects={profSubjects} setProfSubject={setProfSubject} />} />
+            render={() => (
+              <EntContent 
+                detail={detail} 
+                BASE_URL={BASE_URL} 
+                profSubjects={profSubjects} 
+                setProfSubject={setProfSubject}
+                
+                error = { error }
+              />)} 
+          />
 
           <DetailHistory BASE_URL={BASE_URL} history = { detail.history }/>
         </div>

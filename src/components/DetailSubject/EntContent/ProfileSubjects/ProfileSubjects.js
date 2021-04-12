@@ -1,14 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import cls from '../EntContent.module.css';
 
 
 
-const ProfileSubject = ({ BASE_URL, profSubjects, onChangeEntModal, onRemoveProfSubject }) => {
+const ProfileSubject = ({ BASE_URL, profSubjects, onChangeEntModal, onRemoveProfSubject, error }) => {
     return (
-        <div className = {cls.profile}>
+        <div className = {cls.profile} id = 'profile_subject_id'>
             <div className = {cls.ent__title}> Профильные предметы </div>
-            <div className = {cls.ent__desc}> Нажмите добавить и выберите из списка нужный вам предмет </div>
+            <div className = {classNames(cls.ent__desc, {[cls.error]: error})}> Нажмите добавить и выберите из списка нужный вам предмет </div>
 
             <div className = {cls.profile__content}>
                 {profSubjects.subjects.map((item, index) => {

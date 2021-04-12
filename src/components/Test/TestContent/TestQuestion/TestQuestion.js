@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import cls from './TestQuestion.module.css';
 import TestAnswer from '../TestAnswer/TestAnswer';
 import MultipleAnswer from '../MultipleAnswer/MultipleAnswer';
 
@@ -53,16 +52,16 @@ const TestQuestion = ({
   }
 
   return (
-    <div className={classNames(cls.ques, { [cls.is_group]: is_group })} id={`scroll_${id}`}>
+    <div className={classNames('question', { 'is-group': is_group })} id={`scroll_${id}`}>
 
-      <div className={cls.ques__header}>
-        <div className={cls.ques__title}> Вопрос #{numeration}</div>
+      <div>
+        <div className = 'question__number'> Вопрос #{numeration}</div>
       </div>
 
-      <div id={`question_${id}`} className={cls.ques__text}> {question_text} </div>
+      <div id={`question_${id}`} className='question__text'> {question_text} </div>
 
 
-      <fieldset className={cls.answers}>
+      <fieldset>
         {!is_multiple ?
           answers.map((item, index) => {
             return <TestAnswer
@@ -94,8 +93,8 @@ const TestQuestion = ({
 
       {help_text &&
         <>
-          <div className={cls.ques__hint} onClick={handleIsHint}> {isHint ? <span> Cкрыть подсказку </span> : <span>Показать подсказку</span>} </div>
-          <div className={classNames(cls.hint_text, { [cls.hintActive]: isHint })} id={`hint_${id}`}>  </div>
+          <div className = 'question__hint' onClick={handleIsHint}> {isHint ? <span> Cкрыть подсказку </span> : <span>Показать подсказку</span>} </div>
+          <div className={classNames('question__hint-text', {'active': isHint})} id={`hint_${id}`}>  </div>
         </>
       }
 

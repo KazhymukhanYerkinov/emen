@@ -1,0 +1,74 @@
+.sphere {
+    margin-top: 100vh;
+    perspective-origin: 50% 50%;
+    position: absolute;
+
+    &__svg {
+        position: absolute;
+        bottom: -70vh;
+        left: -1000px;
+        transform-style: preserve-3d;
+        
+
+        &:nth-child(1) {
+            left: -100px;
+            -webkit-animation: raise1 16s linear infinite;
+            animation: raise1 16s linear infinite;
+
+            -webkit-animation-delay: -4s;
+            animation-delay: -4s;
+
+            transform: scale(-1) rotate(297deg);
+            z-index: 10;
+            filter: blur(-5px);
+        }
+
+        @-webkit-keyframes raise1 {
+            to {
+                bottom: 100vh;
+                transform: scale(-1) rotate(148deg);
+            }
+        }
+
+        @keyframes raise1 {
+            to {
+                bottom: 100vh;
+                transform: scale(-1) rotate(148deg);
+            }
+        }
+
+
+
+
+        &:nth-child(2) {
+            left: 1000px;
+            
+            -webkit-animation: raise2 10s linear infinite;
+            animation: raise2 10s linear infinite;
+
+            -webkit-animation-delay: -4s;
+            animation-delay: -4s;
+
+            transform: scale(-2) rotate(297deg);
+            z-index: 10;
+            filter: blur(-5px);
+
+        }
+
+        @-webkit-keyframes raise2 {
+            to {
+                bottom: 100vh;
+                transform: scale(-2) rotate(148deg);
+            }
+        }
+
+        @keyframes raise2 {
+            to {
+                bottom: 100vh;
+                transform: scale(-2) rotate(148deg);
+            }
+        }
+    }
+
+
+}

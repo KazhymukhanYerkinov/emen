@@ -2,8 +2,9 @@ import React from 'react';
 
 import compas from '../../../../assets/logos/compas.svg';
 import NavSubject from './NavSubject/NavSubject';
+import { closeSmoothCollapse, smoothCollapse } from '../../../../utils/smoothCollapse';
 
-import cls from './Navigator.module.css';
+
 import classNames from 'classnames';
 
 
@@ -13,6 +14,12 @@ const Navigator = (props) => {
   const [ navigatorCompas, setNavigatorCompas ] = React.useState(false);
 
   const handleNavigatorQuestions = (navigator_id) => {
+
+    if (showNavigatorQuestion !== null && navigator_id !== showNavigatorQuestion) {
+      closeSmoothCollapse(`history_navigator_${showNavigatorQuestion}`);
+    }
+    smoothCollapse(`history_navigator_${navigator_id}`);
+
     setShowNavigatorQuestion((prevState) => {
       if (navigator_id === prevState) {
         return null;
@@ -54,16 +61,16 @@ const Navigator = (props) => {
   
 
   return (
-    <div className = {cls.navigator}>
+    <div className = 'navigator'>
 
-      <div className = {cls.navigator__header}>
-        <div className = {cls.navigator__title}> Навигация </div>
-        <div className = {cls.compas} onClick = { handleNavigatorCompas }>
+      <div className = 'navigator__header'>
+        <div className = 'navigator__title'> Навигация </div>
+        <div className = 'navigator__compas' onClick = { handleNavigatorCompas }>
           <img src = { compas } alt = '' />
         </div>
       </div>
 
-      <div className = {classNames(cls.nav__subject, {[cls.active]: navigatorCompas})}>
+      <div className = {classNames('navigator__subject', {'active': navigatorCompas})}>
         { props.variants.map(( variant, index ) => {
           return (
             <NavSubject

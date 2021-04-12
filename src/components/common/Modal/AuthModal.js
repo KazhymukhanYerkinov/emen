@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import cls from './Modal.module.css';
-
 
 
 const AuthModal = (props) => {
@@ -14,11 +12,14 @@ const AuthModal = (props) => {
       }, [])
 
     return (
-        <div className = {cls.modal}>
-            <div className = {cls.modal__inner}>
-                <div className = {cls.modal__title}> Вы действительно хотите выйти? </div>
+        <div className = 'modal'>
+            <div className = 'modal__inner'>
+                <div className = 'modal__header'>
+                    <div className = 'modal__title'> Вы действительно хотите выйти? </div>
+                </div>
+                
 
-                <div className = {cls.logout__block}>
+                <div className = 'modal__footer'>
                     <button className = 'button button__logout button__logout--cancel' onClick = {() => props.handleLogoutModal(false)}> Отмена </button>
                     <Link to = '/' className = 'button button__logout ml-5' onClick = { props.pressTheOkButton }> OK </Link>
                 </div>

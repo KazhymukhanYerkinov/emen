@@ -24,7 +24,9 @@
 .categories__counts {
     white-space: nowrap;
 }
-
+.categories__image {
+    transition: transform .2s linear;
+}
 .categories__image.active {
     transform: rotate(180deg);
 }

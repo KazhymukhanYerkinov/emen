@@ -5,7 +5,7 @@ import ManSubjects from './MandatorySubjects/ManSubjects';
 import ProfileSubject from './ProfileSubjects/ProfileSubjects';
 
 
-const EntContent = ({ detail, BASE_URL, profSubjects, setProfSubject }) => {
+const EntContent = ({ detail, BASE_URL, profSubjects, setProfSubject, error }) => {
 
 
     const [ showEntModal, setShowEntModal ] = React.useState({ isValid: false, number: null });
@@ -39,6 +39,7 @@ const EntContent = ({ detail, BASE_URL, profSubjects, setProfSubject }) => {
                 mandatory_subjects = { detail.mandatory_subjects }
             />
             <ProfileSubject
+                error = { error }
                 BASE_URL = { BASE_URL }
                 profSubjects = { profSubjects } 
                 onChangeEntModal = { onChangeEntModal }

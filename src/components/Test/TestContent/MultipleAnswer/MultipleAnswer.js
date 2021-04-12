@@ -12,6 +12,10 @@ const MultipleAnswer = ({ question_id, answer_text, answer_id,  onSetActiveAnswe
     }, [answer_id, answer_text])
 
     let isChecked = false;
+
+    if (hasAnswer(question_id, answer_id)) {
+        isChecked = true;
+    }
     
 
     return (

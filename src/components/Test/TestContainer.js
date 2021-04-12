@@ -12,7 +12,7 @@ import {
 } from '../../redux/startTest-reducer';
 
 
-import Test2 from './Test2';
+import Test from './Test';
 import Preloader from '../common/Preloader/Preloader';
 import Modal from '../common/Modal/Modal';
 import { getAnswersWithData } from '../../utils/getAnswersWithData';
@@ -221,7 +221,7 @@ class TestContainer extends React.Component {
     let QUESTION_SIZE = 140;
 
     return (
-      <Test2
+      <Test
         data = { this.props.data }
         examUID = { this.props.match.params.examUID }
         errorsStartTests = { this.props.errorsStartTests }

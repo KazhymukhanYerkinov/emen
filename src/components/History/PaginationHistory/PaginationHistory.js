@@ -7,6 +7,8 @@ const PaginationHistory = (props) => {
   let page_size = Math.ceil( props.total_count / props.pages_count );
 
   const handlePageChange = (count) => {
+    window.scrollTo(0, 0);
+    
     let temp = props.current_page + count;
     if (temp >= 1 && page_size >= temp) {
       props.setCurrentPage(temp);

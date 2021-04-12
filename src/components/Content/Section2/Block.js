@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Block = ({ title, text, image }) => {
     return (
         <div className = 'section2__block'>

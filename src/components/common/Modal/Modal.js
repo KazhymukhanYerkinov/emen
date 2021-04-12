@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import cls from './Modal.module.css';
 
 
 
@@ -18,42 +17,61 @@ const Modal = ({ errorsStartTests, BASE_URL, duringTheTest, handleCloseModal }) 
 
   return (
     <React.Fragment>
-      <div className={cls.modal}>
-        <div className={cls.modal__inner}>
+      <div className = 'modal'>
+        <div className= 'modal__inner' >
           { isUnfinished ?
             <React.Fragment>
-              <div className = {cls.modal__title}> Продолжить тестирования </div>
-              <div className = {cls.modal__desc}> {errorsStartTests.errorMessage} </div>
-
-              <div className = {cls.block} style = {{ backgroundColor:  errorsStartTests.unfinishedExam.color}}>
-                <img 
-                  className = {cls.image}
-                  src = {BASE_URL + ''  + errorsStartTests.unfinishedExam.logo} 
-                  alt = ''
-                />
-                <div className = {cls.name}> {errorsStartTests.unfinishedExam.name_ru} </div>
+              <div className = 'modal__header'>
+                <div className = 'modal__title'> Продолжить тестирования </div>
               </div>
-              <Link
-                  onClick = { handleCloseModal }
-                  className = 'button button__submit'
-                  to = {`/start_test/${errorsStartTests.unfinishedExam.uuid}`}> 
-                Продолжить 
-              </Link>
+
+              <div className = 'modal__content'>
+                <div className = 'modal__description'> {errorsStartTests.errorMessage} </div>
+
+                <div className = 'modal__block' style = {{ backgroundColor:  errorsStartTests.unfinishedExam.color}}>
+                  <img 
+                    className = 'modal__block-image'
+                    src = {BASE_URL + ''  + errorsStartTests.unfinishedExam.logo} 
+                    alt = ''
+                  />
+                  <div className = 'modal__block-name'> {errorsStartTests.unfinishedExam.name_ru} </div>
+                </div>
+              </div>
+
+              <div className = 'modal__footer'>
+
+                <button onClick = { handleCloseModal } className = 'button button__over'> Отмена </button>
+                <Link
+                    onClick = { handleCloseModal }
+                    className = 'button button__continue'
+                    to = {`/start_test/${errorsStartTests.unfinishedExam.uuid}`}> 
+                  Продолжить 
+                </Link>
+
+              </div>
             </React.Fragment>
             
             :<React.Fragment>
-              <div className = {cls.modal__title}> Пожалуйста, обратите внимание. </div>
-              <div className = {cls.modal__desc}> { errorsStartTests.errorMessage } </div>
+              <div className = 'modal__header'>
+                <div className = 'modal__title'> Пожалуйста, обратите внимание. </div>
+              </div>
+
+              <div className = 'modal__content'>
+                <div className = 'modal__description'> { errorsStartTests.errorMessage } </div>
+              </div>
+              
+              
             </React.Fragment>}
 
-            {duringTheTest
-            ?<Link onClick = { handleCloseModal } to = {`/`} className = 'button button__over'> Отмена </Link>
-            :<button onClick = { handleCloseModal } className = 'button button__over mt-10'> Отмена </button>}
-
+            {duringTheTest &&
+            <div className = 'modal__footer'> 
+              <Link onClick = { handleCloseModal } to = {`/`} className = 'button button__over'> Отмена </Link>
+            </div>}
+        
         </div>
       </div>
 
-      { duringTheTest && <div className = {cls.empty__content}></div> }
+      { duringTheTest && <div className = 'modal__empty'></div> }
     </React.Fragment>
     
   )

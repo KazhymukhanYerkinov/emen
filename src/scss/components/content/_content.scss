@@ -40,16 +40,20 @@
             @include text(21px, 24px, 500, $pre_middle_gray);
         }
         &-question {
+            padding-bottom: 20px;
             font-feature-settings: 'pnum' on, 'lnum' on;
             @include text(19px, 23px, 500, $black);
         }
         &-answer {
-            display: none;
-            padding-top: 20px;
+            height: 0;
+            overflow: hidden;
+            
+            transition: height 0.3s ease-out;
+
             @include text(18px, 21px, 500, $dark_gray);
 
-            &.active {
-                display: block;
+            &.open {
+                height: auto;
             }
         }
         &-insta {
