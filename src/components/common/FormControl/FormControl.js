@@ -16,6 +16,7 @@ import classNames from 'classnames';
 
 
 
+
 export const InputPassword = ({ 
   full_width,
   half_width,
@@ -30,6 +31,7 @@ export const InputPassword = ({
   const onSetValue = () => {
     setValue(!value);
   }
+
 
   const control_class = classNames('control',{
     'control--half_width': half_width,
@@ -58,7 +60,7 @@ export const InputPassword = ({
         }
       />
       { touched && error && <FormHelperText style={{ color: '#FF564E', marginLeft: '5px' }}> {error} </FormHelperText>}
-      { isButton && <div className='helper_text' onClick={() => setChangePassword((prevState) => !prevState)}> Отменить </div>}
+      { isButton && <div className='helper_text' onClick={ setChangePassword }> Отменить </div>}
     </div>
   )
 }

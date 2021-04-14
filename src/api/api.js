@@ -160,6 +160,7 @@ export const profileAPI = {
             return response.data;
         })
     },
+
     updatePersonProfile(first_name, last_name, phone, city) {
 
         const body = JSON.stringify({ 
@@ -169,11 +170,31 @@ export const profileAPI = {
             city,
         });
 
+        console.log(body);
+
         
-        return instance.post(`api/v1/profile/update`, body).then(response => {
+        return instance.put(`api/v1/auth/profile/update/`, body).then(response => {
             return response;
         })
+    },
+
+    changePassword(old_password, new_password, re_new_password) {
+
+        const body = JSON.stringify({
+            old_password,
+            new_password,
+            re_new_password
+        })
+
+        console.log(body);
+
+        return instance.post(`api/v1/auth/profile/update/password-using-old-password/`, body).then(response => {
+            console.log(response)
+            return response.data
+        })
     }
+
+
 }
 
 

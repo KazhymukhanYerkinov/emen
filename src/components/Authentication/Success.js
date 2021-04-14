@@ -7,7 +7,9 @@ import check from '../../assets/logos/success.svg';
 
 const Success = ({ fromRegisterPage, setRedirectSuccessPage }) => {
 
-    
+    React.useEffect(() => {
+        setRedirectSuccessPage(0);
+    }, [setRedirectSuccessPage])
 
     return (
         <div className = 'auth'>
@@ -25,7 +27,7 @@ const Success = ({ fromRegisterPage, setRedirectSuccessPage }) => {
                             {fromRegisterPage === -1 && <span> Поздравляем, Ваш пароль был успешно изменен! </span> }
                         </div>
                         <Link to = '/login'>
-                            <button className = 'button button__submit' onClick = {() => setRedirectSuccessPage(0)}> Войти </button>
+                            <button className = 'button button__submit'> Войти </button>
                         </Link>
                     </div>
                 </div>

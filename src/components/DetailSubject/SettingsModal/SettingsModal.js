@@ -25,8 +25,9 @@ const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
         <div className = { cls.modal }>
             <div className = { cls.modal__inner }>
 
-
-                <span className = {cls.modal__close} onClick = {() => onHandleSettingsModal(false)}></span>
+                <div onClick = {() => onHandleSettingsModal(false)}>
+                    <span className = {cls.modal__close}></span>
+                </div>
 
 
                 <div className = { cls.modal__title }> Настройки тестирования </div>

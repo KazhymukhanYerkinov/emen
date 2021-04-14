@@ -6,6 +6,8 @@ import PersonalDataMobile from './PersonalDateMobile';
 
 import cls from './BasicDataMobile.module.css';
 import ProfileHeaderMobile from '../ProfileHeaderMobile/ProfileHeaderMobile';
+import { connect } from 'react-redux';
+import { handleIsRedirectPassword, updatePersonalProfile } from '../../../../redux/profile-reducer';
 
 
 const BasicDataMobile = (props) => {
@@ -14,7 +16,9 @@ const BasicDataMobile = (props) => {
     name: props.user.first_name,
     surname: props.user.last_name,
     telephone: props.user.phone,
-    city: props.user.city.name,
+    city: props.user.city.id,
+
+    city_name: props.user.city.name
   }
   
 
@@ -28,13 +32,24 @@ const BasicDataMobile = (props) => {
       />
       <AccountDetailMobile 
         user = { props.user }
+        handleIsRedirectPassword = { props.handleIsRedirectPassword }
       />
       <PersonalDataMobile
         initialValues = { initialValues }
         cities = { props.cities }
+
+        updatePersonalProfile = { props.updatePersonalProfile }
       />
     </div>
   )
 }
 
-export default BasicDataMobile;
+let mapStateTopProps = (state) => ({
+  
+})
+
+export default connect(mapStateTopProps, {
+  updatePersonalProfile,
+  handleIsRedirectPassword,
+})(BasicDataMobile);
+

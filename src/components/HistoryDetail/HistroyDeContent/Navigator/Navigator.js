@@ -36,7 +36,7 @@ const Navigator = (props) => {
     let buffer = 90;
 
     if (window.innerWidth <= 600) {
-      buffer = 350;
+      buffer = 500;
     }
     
     const top = rectTop + offsetTop - buffer;

@@ -14,7 +14,7 @@ const ProfileBlock = ({ user, handleProfileBlock, handleLogoutModal }) => {
       <div className={cls.profile__inner}>
 
         <div className={cls.profile__info}>
-          <Avatar className={cls.avatar} src={''} />
+          <Avatar className={cls.avatar} src={ user.image } />
           <div className={cls.info}>
             <div className={cls.name}> {user && <span> {user.first_name} {user.last_name}</span>}</div>
             <div className={cls.id}> {user && <span> {user.code} </span>} </div>
@@ -23,7 +23,7 @@ const ProfileBlock = ({ user, handleProfileBlock, handleLogoutModal }) => {
 
         <div className={cls.menu}>
           Меню
-                </div>
+        </div>
 
         <div className={cls.profile__route}>
           {data.map((item, index) => {

@@ -17,6 +17,7 @@ const Header = (props) => {
 
   const isLang = props.language === 'kz';
   
+  console.log(props.user);
 
   return (
     <header className={cls.header}>
@@ -110,7 +111,7 @@ const Header = (props) => {
 
                   <div 
                     className={cls.profile__avatar}> 
-                    <Avatar alt={props.user && props.user.first_name} src={''} /> 
+                    <Avatar alt={props.user && props.user.first_name} src={props.user.image} /> 
                   </div>
 
                   <ArrowDropDownIcon className={classNames(cls.profile__icons, { [cls.rotate]: props.show_profile_block })} />

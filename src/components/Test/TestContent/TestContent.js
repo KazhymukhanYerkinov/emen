@@ -17,6 +17,8 @@ const TestContent = ({ TEST_QUESTIONS, setMapWithAnswers, hasAnswer }) => {
 
   }, []);
 
+
+
   return (
     <div className={cls.content}>
         {

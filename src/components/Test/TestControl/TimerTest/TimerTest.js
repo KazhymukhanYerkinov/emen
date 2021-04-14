@@ -19,7 +19,7 @@ const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinish
             clearInterval(interval); 
             handleFinishAllTest(true, time);
         }
-        else if (time % 5 === 0) {
+        else if (time % 240 === 0) {
             saveQuestion(time);
         }
     }, [time, handleFinishAllTest, saveQuestion]);

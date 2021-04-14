@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getProfile, updatePersonalProfile } from '../../redux/profile-reducer';
+import { getProfile } from '../../redux/profile-reducer';
 import Preloader from '../common/Preloader/Preloader';
 import Profile from './Profile';
 
@@ -50,7 +50,6 @@ class ProfileContainer extends React.Component {
         BASE_URL = { this.props.BASE_URL }
 
         screen_orientation = { this.state.screen_orientation }
-        updatePersonalProfile = { this.props.updatePersonalProfile }
       />
     )
   }
@@ -63,5 +62,4 @@ let mapStateToProps = (state) => ({
 })
 export default connect(mapStateToProps, {
   getProfile,
-  updatePersonalProfile
 })(ProfileContainer);

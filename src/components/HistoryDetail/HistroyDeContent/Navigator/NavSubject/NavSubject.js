@@ -27,15 +27,15 @@ const NavSubject = (props) => {
       </div>
 
       <div className = {classNames('navigator__blocks', {'open': is_open})} id = {`history_navigator_${props.id}`}>
-        { props.variant.questions.map((question, index) => {
+        { props.variant.questions.map((question) => {
           if (question.is_group) {
             return (
-              <React.Fragment key = { index }>
-                { question.questions.map((question, index) => {
+              <React.Fragment key = { question.id }>
+                { question.questions.map((question) => {
                   return (
-                    <div key = { index }
+                    <div key = { question.id }
                         onClick = {() => props.handleSmoothScroll(question.id)}
-                        className = { classNames('navigator__block', {'navigator__block-correct': question.is_correct}) }>
+                        className = { classNames('navigator__block', {'navigator__block-correct': question.is_correct, 'navigator__block-error': !question.is_correct}) }>
                         
                         { question.numeration }
                     </div>
@@ -45,7 +45,7 @@ const NavSubject = (props) => {
             )
           }
           return (
-            <div key = { index } 
+            <div key = { question.id } 
               onClick = { () => props.handleSmoothScroll(question.id) }
               className = { classNames('navigator__block', {'navigator__block-correct': question.is_correct, 'navigator__block-error': !question.is_correct}) }>
 

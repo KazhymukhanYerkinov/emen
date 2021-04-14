@@ -9,6 +9,7 @@ import cls from './ProfileForms.module.css';
 
 
 const PersonalDataForm = (props) => {
+
   return (
     <form onSubmit = { props.handleSubmit }>
       <div className={cls.sub__title}> Личные данные </div>
@@ -47,7 +48,7 @@ const PersonalDataForm = (props) => {
           component={InputSelect} 
           label='Город' 
         >
-          <option defaultValue = { props.initialValues.city.id }> { props.initialValues.city.name } </option>
+          <option value = { props.initialValues.city }> { props.initialValues.city_name } </option>
           { props.cities.map((item, index) => <option key = { index } value = {item.id}> { item.name } </option>) }
         </Field>
 

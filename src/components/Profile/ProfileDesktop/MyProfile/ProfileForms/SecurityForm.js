@@ -1,36 +1,48 @@
 import React from 'react';
 
 import { Field, reduxForm } from 'redux-form';
+import { LengthCreator, passwordRequired, textRequired } from '../../../../../validators/validator';
 import { InputPassword, InputText } from '../../../../common/FormControl/FormControl';
 
 import cls from './ProfileForms.module.css';
 
+const lengthValidation = LengthCreator(8, 100);
 
 const SecurityForm = (props) => {
 
-  const [changePassword, setChangePassword] = React.useState(false);
+  
 
   
   return (
     <form onSubmit = { props.handleSubmit }>
       <div className={cls.sub__title}> Безопасность </div>
 
+      { !props.change_password ? 
       <Field
-        readOnly = {!changePassword}
+        readOnly
         isButton
         half_width
-        name='old_password'
-        component={changePassword ? InputPassword:InputText }
-        setChangePassword={ setChangePassword }
+        name='old_password_1'
+        component={ InputText }
+        setChangePassword={ props.changePasswordAC }
         label={'Старый пароль'}
         placeholder = {'Пароль изменен ' + props.convert_date}
       />
 
-      {changePassword &&
-        <React.Fragment>
+      :<React.Fragment>
+          <Field
+            isButton
+            half_width
+            name='old_password'
+            component={ InputPassword }
+            setChangePassword={ props.changePasswordAC }
+            label={'Старый пароль'}
+            placeholder = {'Пароль изменен ' + props.convert_date}
+            validate = {[ textRequired ]}
+          />
           <div className={cls.form__groups}>
-            <Field half_width name='new_password' component={InputPassword} label='Новый пароль' />
-            <Field half_width name='confirm_password' component={InputPassword} label='Повторить новый пароль' />
+            <Field half_width name='new_password' component={InputPassword} label='Новый пароль' validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
+            <Field half_width name='confirm_password' component={InputPassword} label='Повторить новый пароль' validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
           </div>
           <div className = {cls.button}>
             <button className={cls.submit} type='submit'> Подтвердить  </button>
@@ -42,5 +54,6 @@ const SecurityForm = (props) => {
 }
 
 const SecurityReduxForm = reduxForm({ form: 'security' })(SecurityForm);
+
 
 export default SecurityReduxForm;

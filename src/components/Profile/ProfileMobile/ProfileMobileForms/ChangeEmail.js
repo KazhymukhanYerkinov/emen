@@ -9,17 +9,17 @@ import cls from './ProfileMobileForms.module.css';
 
 const ChangeEmailForm = () => {
   return (
-    <form className = {cls.form}>
+    <form className={cls.form}>
       <Field
         full_width
         not_label
-        name = 'email' 
-        component = { InputText }
-        label = 'Новый email'
-        validate = { textRequired }
+        name='email'
+        component={InputText}
+        label='Новый email'
+        validate={textRequired}
       />
 
-      <button type = 'submit' className = {cls.submit}> Продолжить </button>
+      <button type='submit' className={cls.submit}> Продолжить </button>
     </form>
   )
 }
@@ -27,16 +27,16 @@ const ChangeEmailForm = () => {
 const ChangeEmailReduxForm = reduxForm({ form: 'mobile_change_email' })(ChangeEmailForm)
 
 const ChangeEmail = () => {
-    return (
-      <React.Fragment>
-        <ProfileHeaderMobile isForm />
-        <div className = {cls.content}>
-          <div className = {cls.title}> Введите новый email </div>
-          <div className = {cls.description}> Ваш текущий email:  dum...@gmail.com </div>
-          <ChangeEmailReduxForm />
-        </div>
-      </React.Fragment>
-    )
+  return (
+    <React.Fragment>
+      <ProfileHeaderMobile isForm />
+      <div className={cls.content}>
+        <div className={cls.title}> Введите новый email </div>
+        <div className={cls.description}> Ваш текущий email:  dum...@gmail.com </div>
+        <ChangeEmailReduxForm />
+      </div>
+    </React.Fragment>
+  )
 }
 
 export default ChangeEmail;

@@ -9,7 +9,7 @@ import cls from './BasicDataMobile.module.css';
 
 const PersonalDataMobileForm = (props) => {
   return (
-    <form>
+    <form onSubmit = { props.handleSubmit }>
       <Field
         full_width 
         name='name' 
@@ -40,7 +40,7 @@ const PersonalDataMobileForm = (props) => {
         component={InputSelect} 
         label='Город' 
       > 
-        <option defaultValue = { props.initialValues.city.id }> { props.initialValues.city } </option>
+        <option defaultValue = { props.initialValues.city }> { props.initialValues.city_name } </option>
         { props.cities.map((item, index) => <option key = { index } value = {item.id}> { item.name } </option>) }
       </Field>
       
@@ -53,15 +53,22 @@ const PersonalDataMobileReduxForm = reduxForm({ form: 'personal_data_mobile'})(P
 
 const PersonalDataMobile = (props) => {
 
+  const onSubmit = (formData) => {
+    props.updatePersonalProfile(formData.name, formData.surname, formData.telephone, formData.city);
+  }
+
   return (
     <div className={cls.personal__mobile}>
       <div className={cls.personal__title}> Личные данные </div>
       <PersonalDataMobileReduxForm
         initialValues = { props.initialValues }
         cities = { props.cities }
+
+        onSubmit = { onSubmit }
       />
     </div>
   )
 }
+
 
 export default PersonalDataMobile;

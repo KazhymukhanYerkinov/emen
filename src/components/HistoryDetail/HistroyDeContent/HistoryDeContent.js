@@ -16,12 +16,23 @@ const HistoryDeContent = (props) => {
     window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, document.querySelector('.challenge__description')]);
     
   }, [])
+
+  let isENT = false;
+  if (props.variants.length === 5) {
+    isENT = true;
+  }
+
   return (
     <div className = {cls.content}>
       <div className = {cls.question__content}>
         { props.variants.map((questions, baseKey) => {
+
+          
           return (
             <React.Fragment key = { baseKey }>
+
+                { isENT && <div className = {cls.banner} style = {{ backgroundColor: questions.subject.color }}> { questions.subject.name_ru } </div> }
+
                 { questions.questions.map((question, index) => {
                   if (question.is_group) {
                     return (

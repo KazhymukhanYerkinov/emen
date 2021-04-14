@@ -29,7 +29,7 @@ const AccountDetailMobile = (props) => {
                 
             </NavLink>
 
-            <NavLink to = '/profile/basic_data/change_password' className = {cls.group}>
+            <NavLink to = '/profile/basic_data/change_password' className = {cls.group} onClick = {() => props.handleIsRedirectPassword(true)}>
                 <small className = {cls.mobile__label}> Пароль </small>
                 <div className = {cls.mobile__input}> 
                     <div>Последний изменений в {convert_date} </div>
