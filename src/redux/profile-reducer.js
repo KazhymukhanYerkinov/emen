@@ -7,12 +7,16 @@ const GET_ALL_CITIES = 'profile-reducer/GET_ALL_CITIES';
 const CHANGE_PASSWORD = 'profile-reducer/CHANGE_PASSWORD'
 const IS_REDIRECT_PASSWORD = 'profile-reducer/IS_REDIRECT_PASSWORD'
 
+const CHANGE_EMAIL = 'profile-reducer/CHANGE_EMAIL';
+
 
 let initialState = {
   profile_full_data: null, 
   cities: [],
 
   change_password: false,
+  change_email: false,
+
   isRedirectPassword: false,
 }
 
@@ -41,6 +45,12 @@ const proflieReducer = (state = initialState, action) => {
         isRedirectPassword: action.isRedirectPassword
       }
     
+    case CHANGE_EMAIL:
+      return {
+        ...state,
+        change_email: !state.change_email
+      }
+    
     default:
       return state
   }
@@ -48,6 +58,8 @@ const proflieReducer = (state = initialState, action) => {
 
 export const handleIsRedirectPassword = (isRedirectPassword) => ({ type: IS_REDIRECT_PASSWORD, isRedirectPassword })
 export const changePasswordAC = () => ({ type: CHANGE_PASSWORD });
+
+export const changeEmailAc = () => ({ type: CHANGE_EMAIL });
 
 export const getProfile = () => async (dispatch) => {
   try {
@@ -82,6 +94,19 @@ export const changePasswordProfile = (old_password, new_password, confirm_passwo
     }
   } else {
     dispatch(stopSubmit('security', {'confirm_password': 'Пароли не совпадают'}))
+  }
+}
+export const changeEmailProfile = (new_email, current_password) => async (dispatch) => {
+  try {
+    await profileAPI.changeEmail(new_email, current_password);
+    dispatch(changeEmailAc());
+    dispatch(reset('account_details'));
+    dispatch(stopSubmit('account_details', {_error: 'На вашу новый электронную почту отправлено ссылка. Вы можете изменить свой электронную почту, войдя в систему по этой ссылке.'}));
+  } catch (error) {
+    if (error.response.status === 400) {
+      dispatch(stopSubmit('account_details', {'current_password': 'Введен неправильный пароль'}));
+    }
+
   }
 }
 

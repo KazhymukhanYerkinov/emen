@@ -44,7 +44,7 @@ const PersonalDataMobileForm = (props) => {
         { props.cities.map((item, index) => <option key = { index } value = {item.id}> { item.name } </option>) }
       </Field>
       
-      <button className={cls.submit} type='submit'> Сохранить </button>
+      <button className={cls.submit} type='submit'> {props.showFetchButton ? 'Загрузка...': 'Сохранить'} </button>
     </form>
   )
   
@@ -53,8 +53,23 @@ const PersonalDataMobileReduxForm = reduxForm({ form: 'personal_data_mobile'})(P
 
 const PersonalDataMobile = (props) => {
 
+  const [ showFetchButton, setShowFetchButton ] = React.useState(false);
+
   const onSubmit = (formData) => {
-    props.updatePersonalProfile(formData.name, formData.surname, formData.telephone, formData.city);
+    console.log(formData)
+    if (formData.name === props.initialValues.name 
+      && formData.surname === props.initialValues.surname
+      && formData.telephone === props.initialValues.telephone
+      && formData.city === props.initialValues.city) {
+
+    }
+    else {
+      setShowFetchButton(true);
+      props.updatePersonalProfile(formData.name, formData.surname, formData.telephone, formData.city)
+      .finally(() => {
+        setShowFetchButton(false);
+      });
+    }
   }
 
   return (
@@ -63,6 +78,7 @@ const PersonalDataMobile = (props) => {
       <PersonalDataMobileReduxForm
         initialValues = { props.initialValues }
         cities = { props.cities }
+        showFetchButton = { showFetchButton }
 
         onSubmit = { onSubmit }
       />

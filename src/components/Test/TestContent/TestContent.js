@@ -17,14 +17,23 @@ const TestContent = ({ TEST_QUESTIONS, setMapWithAnswers, hasAnswer }) => {
 
   }, []);
 
+  let isENT = false;
+  if (TEST_QUESTIONS.length === 5) {
+    isENT = true;
+  }
+
 
 
   return (
     <div className={cls.content}>
         {
           TEST_QUESTIONS.map((variant, index) => {
+            console.log(variant);
             return (
               <React.Fragment key = { index }>
+
+                { isENT && <div className = {cls.banner} style = {{ backgroundColor: variant.subject.color }}> { variant.subject.name_ru } </div> }
+
                 {variant.questions.map((item, index) => {
                   return item.is_group ?
                   (

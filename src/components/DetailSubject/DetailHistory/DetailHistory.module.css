@@ -44,6 +44,9 @@
     display: flex;
     align-items: center;
 }
+.item__content img {
+    width: 50px;
+}
 .item__info {
     margin-left: 12px;
 }

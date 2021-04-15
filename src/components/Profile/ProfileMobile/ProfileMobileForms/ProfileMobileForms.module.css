@@ -34,3 +34,12 @@
     color: #fff;
     background-color: #1A73E8;
 }
+.info {
+    margin-bottom: 15px;
+    
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 10px;
+
+    color: #1A73E8;
+}

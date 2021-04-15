@@ -16,8 +16,6 @@ import cls from './Header.module.css';
 const Header = (props) => {
 
   const isLang = props.language === 'kz';
-  
-  console.log(props.user);
 
   return (
     <header className={cls.header}>

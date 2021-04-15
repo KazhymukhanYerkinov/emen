@@ -24,6 +24,7 @@ export const InputPassword = ({
   setChangePassword, 
   input, 
   label, 
+  not_label,
   meta: { touched, error, invalid } }) => {
 
   const [value, setValue] = React.useState(false);
@@ -40,6 +41,7 @@ export const InputPassword = ({
 
   return (
     <div className = {control_class}>
+      {not_label && <label> {label} </label>}
       <OutlinedInput
         placeholder={label}
         error={touched && invalid}
@@ -95,7 +97,7 @@ export const InputText = ({
       />
 
       { touched && error && <FormHelperText style={{ color: '#FF564E', marginLeft: '5px' }}> {error} </FormHelperText>}
-      { isButton && <div className={'helper_text'} onClick={() => setChangePassword((prevState) => !prevState)}> Изменить пароль </div>}
+      { isButton && <div className={'helper_text'} onClick={ setChangePassword }> Изменить пароль </div>}
     </div>
   )
 }

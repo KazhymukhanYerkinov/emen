@@ -8,11 +8,17 @@ import cls from './DetailHistory.module.css';
 // Сабақтардың история компоненті ( сайдбар оң жақта )
 const DetailHistory = (props) => {
 
+    let hasHistory = true;
+
+    if (props.history.length === 0) {
+        hasHistory = false;
+    }
     
     return (
         <div className = {cls.history}>
             <div className = {cls.history__title}> История </div>
             <div className = {cls.history__desc}> В истории сохраняется ваши результаты тестирования </div>
+            {!hasHistory && <div className = {cls.history__desc}> У Вас пока нет истории тестирования </div>}
 
             <div className = {cls.history__content}>
                 { props.history.map((item, index) => {
@@ -33,9 +39,9 @@ const DetailHistory = (props) => {
                 })}
             </div>
 
-            <Link to = '/history' className = 'button button__over'>
+            {hasHistory && <Link to = '/history' className = 'button button__over'>
                 Показать еще
-            </Link>
+            </Link>}
 
         </div>
     )

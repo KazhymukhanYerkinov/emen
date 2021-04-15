@@ -26,6 +26,7 @@ const Test = ({ data, errorsStartTests, examUID, BASE_URL, ...props }) => {
     time = props.LEFT_TIME;
     Cookie.set('timer', time);
   }
+
   
   return (
     <div className={cls.test}>

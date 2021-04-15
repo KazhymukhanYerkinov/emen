@@ -18,10 +18,6 @@ const MyProfile = (props) => {
     props.changePasswordProfile(formData.old_password, formData.new_password, formData.confirm_password);
   }
 
-  let initialValuesAccount = {
-    email: props.user.email,
-  }
-
   let initialValuesPersonal = {
     name: props.user.first_name,
     surname: props.user.last_name,
@@ -43,7 +39,10 @@ const MyProfile = (props) => {
       <div className={cls.content}>
         <AccountDetailsReduxForm 
           user = { props.user }
-          initialValues = { initialValuesAccount } 
+          changeEmailProfile = { props.changeEmailProfile }
+
+          change_email = { props.change_email }
+          changeEmailAc = { props.changeEmailAc }
         />
         <PersonalDataReduxForm 
           cities = { props.cities }

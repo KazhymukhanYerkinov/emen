@@ -170,8 +170,6 @@ export const profileAPI = {
             city,
         });
 
-        console.log(body);
-
         
         return instance.put(`api/v1/auth/profile/update/`, body).then(response => {
             return response;
@@ -186,12 +184,21 @@ export const profileAPI = {
             re_new_password
         })
 
-        console.log(body);
-
         return instance.post(`api/v1/auth/profile/update/password-using-old-password/`, body).then(response => {
-            console.log(response)
             return response.data
         })
+    },
+
+    changeEmail(new_email, current_password) {
+
+        const body = JSON.stringify({
+            new_email,
+            current_password
+        })
+
+        return instance.post(`api/v1/auth/profile/update/email-using-current-password/`, body).then(response => {
+            return response.data;
+        });
     }
 
 
@@ -201,7 +208,6 @@ export const profileAPI = {
 export const subsAPI = {
     getSubs(){
         return instance.get(`api/v1/services/subscriptions/tariffs/`).then(response => {
-            console.log(response);
             return response;
         })
     }

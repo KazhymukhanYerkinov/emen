@@ -28,9 +28,35 @@
     
 }
 
+/* BREAK BANNER */
+.banner {
+    display: flex;
+    align-items: center;
+
+    padding-left: 10px;
+    margin-top: 15px;
+    margin-bottom: -15px;
+
+    height: 50px;
+
+    font-size: 16px;
+    line-height: 19px;
+    
+
+    color: #fff;
+    border-radius: 5px;
+
+}
+
 @media (max-width: 1000px) {
     .content {
         order: 2;
         width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .banner {
+        margin-bottom: -5px;
     }
 }
