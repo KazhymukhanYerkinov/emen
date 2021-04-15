@@ -1,0 +1,147 @@
+.avatar {
+    width: 30%;
+
+    &__navigator {
+        margin-top: 10px;
+        padding: 15px 0;
+
+        background-color: #fff;
+        border-radius: 3px;
+
+        &-link {
+            display: block;
+            padding: 15px 0 15px 35px;
+
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 17px;
+            color: #222222;
+
+            border-bottom: 1px solid #F7F7F7;
+
+            &.active {
+                color: #5F6368;
+            }
+        }
+    }
+
+    &__block {
+        height: 270px;
+        padding: 20px 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        text-align: center;
+        border-radius: 3px;
+        background-color: #fff;
+    }
+
+    &__image {
+        margin: 0 auto;
+        display: block;
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    &__fullname {
+        margin-bottom: 10px;
+
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+
+        color: #222222;
+    }
+
+    &__id {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+
+        font-feature-settings: 'pnum' on, 'lnum' on;
+        color: #5F6368;
+    }
+
+    &__money {
+        padding-top: 10px;
+        border-top: 1px solid #F7F7F7;
+        font-size: 16px;
+        line-height: 19px;
+
+        font-feature-settings: 'pnum' on, 'lnum' on;
+        color: #1A73E8;
+    }
+
+    @media (max-width: 850px) {
+        width: 25%;
+
+        &__block {
+            height: 230px;
+        }
+        &__image {
+            width: 70px !important;
+            height: 70px !important;
+        }
+        &__fullname {
+            font-size: 14px;
+            line-height: 18px;
+        }
+        &__id {
+            font-size: 12px;
+            line-height: 15px;
+        }
+        &__money {
+            font-size: 14px;
+            line-height: 18px;
+        }
+        &__navigator {
+            &-link {
+                font-size: 13px;
+                line-height: 17px;
+            }
+        }
+    }
+
+    @media (max-width: 700px) {
+        
+        &__block {
+            height: auto;
+        }
+        &__image {
+            margin-bottom: 20px;
+
+            width: 150px !important;
+            height: 150px !important;
+        }
+        &__fullname {
+            font-size: 24px;
+            line-height: 27px;
+        }
+        &__id {
+            font-size: 21px;
+            line-height: 25px;
+        }
+        &__money {
+            display: none;
+        }
+    }
+
+    @media (max-width: 500px) {
+        &__image {
+            margin-bottom: 15px;
+
+            width: 100px !important;
+            height: 100px !important;
+        }
+        &__fullname {
+            font-size: 18px;
+            line-height: 21px;
+        }
+        &__id {
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+}

@@ -4,7 +4,7 @@ import { Route } from 'react-router';
 
 // Profile desktop components
 import MyProfileContainer from './ProfileDesktop/MyProfile/MyProfileContainer';
-import ProfileInfo from './ProfileDesktop/ProfileInfo/ProfileInfo';
+import ProfileInfo from './ProfileDesktop/ProfileInfo';
 import MyWallet from './ProfileDesktop/MyWallet/MyWallet';
 import Help from './ProfileDesktop/Help/Help';
 

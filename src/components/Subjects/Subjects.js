@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Preloader from '../common/Preloader/Preloader';
 import { getSubjectsThunk } from '../../redux/subject-reducer';
-import Subject from './Subject/Subject';
+import Subject from './Subject';
 
 import cls from './Subjects.module.css'
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AvatarInfo from '../../ProfileDesktop/ProfileInfo/AvatarInfo';
+
 import AccountDetailMobile from './AccountDetailMobile';
 import PersonalDataMobile from './PersonalDateMobile';
 
@@ -8,6 +8,9 @@ import cls from './BasicDataMobile.module.css';
 import ProfileHeaderMobile from '../ProfileHeaderMobile/ProfileHeaderMobile';
 import { connect } from 'react-redux';
 import { handleIsRedirectPassword, updatePersonalProfile } from '../../../../redux/profile-reducer';
+import Avatar from '../../../common/Avatar';
+
+
 
 
 const BasicDataMobile = (props) => {
@@ -26,7 +29,7 @@ const BasicDataMobile = (props) => {
     <div className={cls.basic}>
       <ProfileHeaderMobile />
 
-      <AvatarInfo
+      <Avatar
         user = { props.user }
         BASE_URL = { props.BASE_URL }
       />

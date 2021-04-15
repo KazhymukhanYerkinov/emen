@@ -20,18 +20,37 @@
         margin: auto;
         position: relative;
         background-color: $white;
+
+        &-setting {
+            padding: 0px 20px 30px;
+            max-width: 380px;
+        }
+        &-ent {
+            padding: 0 15px;
+            max-width: 740px;
+            border-radius: 2px;
+        }
     }
 
     // HEADER
     &__header {
+
         padding: 20px;
         border-bottom: 2px solid $middle_gray;
+        
+        &-setting {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 20px 0 0 0;
+        }
     }
 
     &__title {
         font-weight: 600;
-        font-size: 21px;
-        line-height: 24px;
+        font-size: 18px;
+        line-height: 21px;
 
         color: $black;
     }
@@ -40,6 +59,10 @@
     &__content {
         padding: 20px;
         border-bottom: 2px solid $middle_gray;
+
+        &-setting {
+            margin: 24px 0;
+        }
     }
 
     &__description {
@@ -95,6 +118,48 @@
     // EMPTY
     &__empty {
         height: 100vh;
+    }
+
+    // CLOSE BUTTON
+    &__close {
+        cursor: pointer;
+    }
+
+    // setting
+    &__subjects {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__level {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        cursor: pointer;
+        border-bottom: 1px solid #F7F7F7;
+
+        &-pd {
+            padding: 15px;
+        }
+
+        &-title {
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 17px;
+            font-feature-settings: 'pnum' on, 'lnum' on;
+
+            padding-left: 10px;
+        }
+
+        &-text {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+            font-feature-settings: 'pnum' on, 'lnum' on;
+
+            color: #222222;
+        }
     }
 
 
