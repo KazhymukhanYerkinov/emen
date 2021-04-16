@@ -199,7 +199,16 @@ export const profileAPI = {
         return instance.post(`api/v1/auth/profile/update/email-using-current-password/`, body).then(response => {
             return response.data;
         });
-    }
+    },
+
+    activateNewEmail(uid, token) {
+        const body = JSON.stringify({ uid, token });
+
+        console.log(body);
+        return instance.post(`api/v1/auth/profile/activate/new-email/`, body).then(response => {
+            return response.data;
+        });
+    },
 
 
 }
@@ -208,7 +217,7 @@ export const profileAPI = {
 export const subsAPI = {
     getSubs(){
         return instance.get(`api/v1/services/subscriptions/tariffs/`).then(response => {
-            return response;
+            return response.data;
         })
     }
 }

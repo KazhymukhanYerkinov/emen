@@ -4,17 +4,11 @@ import AccountDetailsReduxForm from './ProfileForms/AccountDetailsForm';
 import PersonalDataReduxForm from './ProfileForms/PersonalDataForm';
 import SecurityReduxForm from './ProfileForms/SecurityForm';
 
-import cls from './MyProfile.module.css';
-
 
 const MyProfile = (props) => {
   
-  const onSubmitPersonal = (formData) => {
-    props.updatePersonalProfile(formData.name, formData.surname, formData.telephone, formData.city)
-  }
 
   const onSubmitSecurity = (formData) => {
-    console.log(formData.old_password, formData.new_password, formData.confirm_password);
     props.changePasswordProfile(formData.old_password, formData.new_password, formData.confirm_password);
   }
 
@@ -28,15 +22,15 @@ const MyProfile = (props) => {
   }
 
   return (
-    <div className={cls.my}>
+    <div className='my-profile'>
 
-      <div className={cls.header}>
-        <div className={cls.title}> Мой профиль </div>
+      <div className='my-profile__header'>
+        <div className='my-profile__title'> Мой профиль </div>
       </div>
 
-      <hr className={cls.hr} />
+      <hr className='my-profile__hr' />
 
-      <div className={cls.content}>
+      <div className='my-profile__content'>
         <AccountDetailsReduxForm 
           user = { props.user }
           changeEmailProfile = { props.changeEmailProfile }
@@ -47,7 +41,8 @@ const MyProfile = (props) => {
         <PersonalDataReduxForm 
           cities = { props.cities }
           initialValues = { initialValuesPersonal } 
-          onSubmit = { onSubmitPersonal }
+
+          updatePersonalProfile = { props.updatePersonalProfile }
         />
         <SecurityReduxForm 
           change_password = { props.change_password }

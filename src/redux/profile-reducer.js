@@ -1,5 +1,6 @@
 import { reset, stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
+import { failActivateAccount, logoutThunk, setRedirectSuccessPage } from "./auth-reducer";
 
 const GET_PROFILE_DATA = 'profile-reducer/GET_PROFILE_DATA';
 const GET_ALL_CITIES = 'profile-reducer/GET_ALL_CITIES';
@@ -8,6 +9,8 @@ const CHANGE_PASSWORD = 'profile-reducer/CHANGE_PASSWORD'
 const IS_REDIRECT_PASSWORD = 'profile-reducer/IS_REDIRECT_PASSWORD'
 
 const CHANGE_EMAIL = 'profile-reducer/CHANGE_EMAIL';
+
+
 
 
 let initialState = {
@@ -109,5 +112,18 @@ export const changeEmailProfile = (new_email, current_password) => async (dispat
 
   }
 }
+
+
+export const emailActivate = (uid, token) => async (dispatch) => {
+  try {
+    await profileAPI.activateNewEmail(uid, token);
+    dispatch(setRedirectSuccessPage(2));
+    dispatch(logoutThunk());
+  } catch (error) {
+    let errorMessage = 'Неверный токен или uid. Пожалуйста, зайдите в Gmail и нажмите ссылку еще раз.'  
+    dispatch(failActivateAccount(errorMessage));
+  }
+}
+
 
 export default proflieReducer;

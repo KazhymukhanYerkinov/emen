@@ -41,13 +41,12 @@
 
   &--half_width {
     width: 49%;
-    
+
     .input {
-      background-color: $input_background;
-      :focus {
-        background-color: $white;
-      }
+      font-size: 13px;
     }
+    
+    
   }
   &--full_width {
     width: 100%;

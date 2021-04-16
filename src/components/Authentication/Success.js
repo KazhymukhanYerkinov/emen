@@ -8,8 +8,9 @@ import check from '../../assets/logos/success.svg';
 const Success = ({ fromRegisterPage, setRedirectSuccessPage }) => {
 
     React.useEffect(() => {
-        setRedirectSuccessPage(0);
-    }, [setRedirectSuccessPage])
+        return () => setRedirectSuccessPage(0);
+    }, [setRedirectSuccessPage]);
+
 
     return (
         <div className = 'auth'>
@@ -25,6 +26,7 @@ const Success = ({ fromRegisterPage, setRedirectSuccessPage }) => {
                         <div className = 'auth__description'>
                             {fromRegisterPage === 1 && <span> Мы отправили ссылку на Gmail для активации этой учетной записи. Войдите в систему по этой ссылке. </span>}
                             {fromRegisterPage === -1 && <span> Поздравляем, Ваш пароль был успешно изменен! </span> }
+                            {fromRegisterPage === 2 && <span> Поздравляем, Ваш email был успешно изменен! </span>}
                         </div>
                         <Link to = '/login'>
                             <button className = 'button button__submit'> Войти </button>

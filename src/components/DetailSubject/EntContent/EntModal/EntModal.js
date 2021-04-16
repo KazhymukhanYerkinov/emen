@@ -33,7 +33,7 @@ const EntModel = ({ profile_subjects, BASE_URL, showEntModal, onChangeEntModal, 
                     { profile_subjects.map((item, index) => {
                         return (
                             <div className = 'subject subject__ent' key = { index } style = {{ backgroundColor: item.color }}>
-                                <img className = 'image image__40' src = { BASE_URL + "" + item.logo } alt = ""/>
+                                <img className = 'image image__40px' src = { BASE_URL + "" + item.logo } alt = ""/>
                                 <div className = 'subject__ent-title'> { item.name_ru } </div>
                                 <div>
                                 <button className = 'button button__over button__over--height30'

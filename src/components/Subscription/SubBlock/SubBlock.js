@@ -5,45 +5,53 @@ import cls from './SubBlock.module.css';
 
 
 const SubBlock = (props) => {
-  const [chooseMonth, setChooseMonth] = React.useState(0);
+  const [chooseMonth, setChooseMonth] = React.useState(props.sub.per_month_price);
 
   const handleChooseMonth = (month) => {
-    setChooseMonth((prevMonth) => month);
+    setChooseMonth(month);
   }
-
+  
   return (
     <div className={cls.block}>
       <div className={cls.header}>
-        <img src={props.sub.image} alt='' />
-        <div className={cls.title}> {props.sub.subs_name} </div>
+        <img src={props.BASE_URL + '' + props.sub.logo} alt='' />
+        <div className={cls.title}> {props.sub.name} </div>
       </div>
 
       <div className={cls.services__block}>
-        {props.sub.services.map((service, index) => (
-          <Service
-            key = { index }
-            service={service} 
-          />
-        ))}
+          <Service name = { props.sub.mini_description_1 } />
+          <Service name = { props.sub.mini_description_2 } />
+          <Service name = { props.sub.mini_description_3 } />
+          <Service name = { props.sub.mini_description_4 } />
       </div>
         
-      <div className = {cls.money}> {props.sub.moneys[chooseMonth].money} тг/месяц </div>
+      <div className = {cls.money}> { chooseMonth } тг/месяц </div>
 
       <div className={cls.price__number}>
-        {props.sub.countMoney.map((number, index) => (
           <PriceCircle
-            key = { index }
-            index = { index }
-            number = { number }
-
+            number = { 1 }
+            per_months_price = { props.sub.per_month_price }
             chooseMonth = { chooseMonth }
             handleChooseMonth = { handleChooseMonth }
           />
-        ))}
+
+          <PriceCircle
+            number = { 2 }
+            per_months_price = { props.sub.per_3_months_price }
+            chooseMonth = { chooseMonth }
+            handleChooseMonth = { handleChooseMonth }
+          />
+
+          <PriceCircle
+            number = { 3 }
+            per_months_price = { props.sub.per_9_months_price }
+            chooseMonth = { chooseMonth }
+            handleChooseMonth = { handleChooseMonth }
+          />
       </div>
       <div className = {cls.price__description}> Выберите количество месяцев </div>
 
-      <button className={cls.button}>
+      <button className = 'button button__submit mt-10'>
         Выбрать
       </button>
 

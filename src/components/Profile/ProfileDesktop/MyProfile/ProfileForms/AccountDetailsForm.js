@@ -17,12 +17,12 @@ const AccountDetailsForm = (props) => {
       {props.error && <div className = {cls.info_text}> { props.error } </div>}
       <div className={cls.form__groups}>
 
-        <div className={cls.group}>
-          <small className={cls.mobile__label}> ID пользователя </small>
-          <div className={cls.mobile__input}> {props.user.code} </div>
-        </div>
+          <div className={cls.group}>
+            <small className={cls.mobile__label}> ID пользователя </small>
+            <div className={cls.mobile__input}> {props.user.code} </div>
+          </div>
 
-         <div className={cls.group}>
+          <div className={cls.group}>
             <small className={cls.mobile__label}> Email </small>
             <div className={cls.mobile__input}> {props.user.email} </div>
             <div className = {cls.change__text} onClick = { props.changeEmailAc }> {props.change_email ? 'Отменить':'Изменить email'} </div>
@@ -67,7 +67,6 @@ const AccountDetailsReduxForm = reduxForm({ form: 'account_details' })(AccountDe
 const AccountDetails = (props) => {
 
   const onSubmit = (formData) => {
-    console.log(formData);
     props.changeEmailProfile(formData.email, formData.current_password);
   }
 

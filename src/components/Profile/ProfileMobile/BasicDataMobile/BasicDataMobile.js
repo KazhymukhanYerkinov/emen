@@ -47,11 +47,9 @@ const BasicDataMobile = (props) => {
   )
 }
 
-let mapStateTopProps = (state) => ({
-  
-})
 
-export default connect(mapStateTopProps, {
+
+export default connect(null, {
   updatePersonalProfile,
   handleIsRedirectPassword,
 })(BasicDataMobile);

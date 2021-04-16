@@ -120,14 +120,22 @@ export const setRedirectSuccessPage = (fromRegisterPage) => {
     return { type: SIGN_UP_SUCCESS, fromRegisterPage }
 }
 
+export const failActivateAccount = (errorMessage) => {
+    return { type: FAIL_ACTIVATE_ACCOUNT, errorMessage }
+}
+
+export const successActivateAccount = () => {
+    return { type: SUCCESS_ACTIVATE_ACCOUNT }
+}
+
 
 export const activateAccountThunk = (uid, token) => async (dispatch) => {
     try {
         await authAPI.activateAccount(uid, token);
-        dispatch({ type: SUCCESS_ACTIVATE_ACCOUNT });
+        dispatch(successActivateAccount());
     } catch (error) {
         let errorMessage = 'Неверный токен или uid. Пожалуйста, зайдите в Gmail и нажмите ссылку еще раз.'  
-        dispatch({ type: FAIL_ACTIVATE_ACCOUNT, errorMessage });
+        dispatch(failActivateAccount(errorMessage));
     }
 }
 

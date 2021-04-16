@@ -5,7 +5,7 @@ import cls from './SubBlock.module.css'
 const Service = (props) => {
     return (
         <div className = {cls.service}>
-            <div className = {cls.service__text}> { props.service.service_name } </div>
+            <div className = {cls.service__text}> { props.name } </div>
             <span className = {cls.circle}></span>
         </div>
     )

@@ -56,12 +56,10 @@ const PersonalDataMobile = (props) => {
   const [ showFetchButton, setShowFetchButton ] = React.useState(false);
 
   const onSubmit = (formData) => {
-    console.log(formData)
     if (formData.name === props.initialValues.name 
       && formData.surname === props.initialValues.surname
       && formData.telephone === props.initialValues.telephone
       && formData.city === props.initialValues.city) {
-
     }
     else {
       setShowFetchButton(true);

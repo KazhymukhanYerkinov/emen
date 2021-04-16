@@ -18,20 +18,10 @@ const SubTable = (props) => {
         </thead>
 
         <tbody>
-          {props.text_list.map((item, index) => (
-            <SubColumn
-              is_text
-              key = { index }
-              item = { item } 
-            />
-          ))}
+            <SubColumn />
 
-          {props.type_list.map((item, index) => (
-            <SubColumn
-              key = { index }
-              item = { item }
-            />
-          ))}
+         
+            
         </tbody>
       </table>
     </div>

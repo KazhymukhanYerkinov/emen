@@ -5,8 +5,8 @@ import { Route } from 'react-router';
 // Profile desktop components
 import MyProfileContainer from './ProfileDesktop/MyProfile/MyProfileContainer';
 import ProfileInfo from './ProfileDesktop/ProfileInfo';
-import MyWallet from './ProfileDesktop/MyWallet/MyWallet';
-import Help from './ProfileDesktop/Help/Help';
+import MyWallet from './ProfileDesktop/MyWallet';
+import Help from './ProfileDesktop/Help';
 
 // Profile mobile components
 import ProfileMobile from './ProfileMobile/ProfileMobile';
@@ -18,6 +18,7 @@ import ChangeEmail from './ProfileMobile/ProfileMobileForms/ChangeEmail';
 
 
 import cls from './Profile.module.css';
+import ProfileActivate from './ProfileActivate';
 
 
 const Profile = (props) => {
@@ -56,6 +57,8 @@ const Profile = (props) => {
             
             <Route exact path = '/profile/wallet' component = { MyWallet } />
             <Route exact path = '/profile/help' component = { Help } />
+
+            <Route exact path = '/profile/email/activate/:uid/:token' component = { ProfileActivate } />
           </div>
         </div>
       </div>
@@ -78,6 +81,7 @@ const Profile = (props) => {
           <Route exact path = '/profile/sub' component = { SubMobile } />
           <Route exact path = '/profile/basic_data/change_password' component = { ChangePassword } />
           <Route exact path = '/profile/basic_data/change_email' component = { ChangeEmail } />
+
 
         </div>
       </div>}

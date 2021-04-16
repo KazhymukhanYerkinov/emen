@@ -5,6 +5,9 @@ import cls from './Subscription.module.css';
 import SubTable from './SubTable/SubTable';
 
 const Subscription = (props) => {
+
+  console.log(props.subs);
+
   return (
     <div className={cls.subscription}>
       <div className='container'>
@@ -13,10 +16,12 @@ const Subscription = (props) => {
           <div className = {cls.title}> Тарифы </div>
 
           <div className = {cls.subs__blocks}>
-            {props.subs.map((sub, index) => {
+            {props.subs.tariffs.map((sub, index) => {
               return (
                 <SubBlock
                   key = { index }
+
+                  BASE_URL = { props.BASE_URL }
                   sub = { sub } 
                 />
               )
@@ -25,8 +30,7 @@ const Subscription = (props) => {
 
           <div className = {cls.title}> Cравнение тарифов </div>
           <SubTable
-            type_list = { props.type_list }
-            text_list = { props.text_list }
+            tariffs = { props.subs.tariffs_comparison }
           />
           
         </div>

@@ -15,7 +15,7 @@ const SubColumn = (props) => {
                 <td className = {cls.result}> {props.item.gold} </td>
             </tr>
             : <tr className={cls.column}>
-                <td> {props.item.first} </td>
+                <td> {props.text} </td>
                 <td className = {cls.result}> {props.item.standart ? <CheckCircleIcon style = {{ color: '#1ABF7E' }}/>:<CancelIcon style = {{ color: '#D92A45' }}/>} </td> 
                 <td className = {cls.result}> {props.item.premium ? <CheckCircleIcon style = {{ color: '#1ABF7E' }}/>:<CancelIcon style = {{ color: '#D92A45' }}/>} </td> 
                 <td className = {cls.result}> {props.item.gold ? <CheckCircleIcon style = {{ color: '#1ABF7E' }}/>:<CancelIcon style = {{ color: '#D92A45' }}/>} </td> 
