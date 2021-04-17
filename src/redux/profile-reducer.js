@@ -67,7 +67,6 @@ export const changeEmailAc = () => ({ type: CHANGE_EMAIL });
 export const getProfile = () => async (dispatch) => {
   try {
     let { user,  cities} = await profileAPI.getProfile();
-    console.log(user);
     dispatch({ type: GET_PROFILE_DATA, user });
     dispatch({ type: GET_ALL_CITIES, cities });
 

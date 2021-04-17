@@ -16,6 +16,7 @@ import Test from './Test';
 import Preloader from '../common/Preloader/Preloader';
 import Modal from '../common/Modal/Modal';
 import { getAnswersWithData } from '../../utils/getAnswersWithData';
+import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
 
 
 
@@ -268,5 +269,7 @@ connect(mapStateToProps, {
   saveTestQuestionThunk,
   finishAllTestThunk,
   setShowErrorAC,
-  setQuestionsFailAC,
-}), withRouter )(TestContainer);
+  setQuestionsFailAC}),
+  withRouter,
+  WithAuthRedirect,
+)(TestContainer);

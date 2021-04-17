@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
 import { getProfile } from '../../redux/profile-reducer';
 import Preloader from '../common/Preloader/Preloader';
 import Profile from './Profile';
@@ -60,6 +62,11 @@ let mapStateToProps = (state) => ({
   user: state.profilePage.profile_full_data,
   cities: state.profilePage.cities,
 })
-export default connect(mapStateToProps, {
-  getProfile,
-})(ProfileContainer);
+
+
+
+export default compose(
+  connect(mapStateToProps, {getProfile,}),
+  WithAuthRedirect,
+)(ProfileContainer);
+

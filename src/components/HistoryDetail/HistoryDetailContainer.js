@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { compose } from 'redux';
 
-import { getHistoryAnalysThunk, failHistoryAnalys } from '../../redux/history-reducer';
-import Preloader from '../common/Preloader/Preloader';
 
 import HistoryDetail from './HistoryDetail';
+import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
+import Preloader from '../common/Preloader/Preloader';
+import { getHistoryAnalysThunk, failHistoryAnalys } from '../../redux/history-reducer';
+
+
+
 
 
 
@@ -36,5 +41,10 @@ let mapStateToProps = (state) => ({
 })
 
 
-let withUrlDataHistoryDetail = withRouter(HistoryDetailContainer)
-export default connect(mapStateToProps, { getHistoryAnalysThunk, failHistoryAnalys })(withUrlDataHistoryDetail);
+
+export default compose( 
+    connect(mapStateToProps, { getHistoryAnalysThunk, failHistoryAnalys }),
+    withRouter,
+    WithAuthRedirect,
+)(HistoryDetailContainer);
+

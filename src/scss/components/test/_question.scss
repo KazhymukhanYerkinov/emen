@@ -9,6 +9,7 @@
         margin-bottom: -15px;
     }
 
+
     &__number {
         font-weight: 700;
         font-size: 21px;
@@ -28,6 +29,16 @@
         font-feature-settings: 'pnum' on, 'lnum' on;
 
         color: #222222;
+        
+        table {
+            margin-top: 5px;
+        }
+
+        table, th, td {
+            border-collapse: collapse;
+            padding: 5px;
+            border: 1px solid black;
+        }
     }
     &__hint {
         margin-top: 25px;

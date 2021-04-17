@@ -74,7 +74,6 @@ const DetailSubject = ({ match, BASE_URL }) => {
   }
 
 
-  console.log(detail);
   // Тестты бастаудағы стандарт параметрлер
   const SUBJECT_ID = detail.banner_subject.id;
   const ENT_FULL_EXAMINATION = detail.banner_subject.examination_type;

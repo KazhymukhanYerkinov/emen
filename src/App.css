@@ -26,38 +26,13 @@ h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: inherit;}
 
 
 
-/* helper__text */
-.helper__text {
-  margin: 17px 0;
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 400;
-  font-feature-settings: 'pnum' on, 'lnum' on;
-  text-align: center;
 
-  color: #5F6368;
-
-}
 
 
 
 @media (max-width: 900px) {
-  .section__title, .section__text {
-    text-align: center;
-  }
   br {
     display: none;
-  }
-}
-@media (max-width: 700px) {
-  .facebook, .google {
-    font-size: 14px;
-  }
-  .title {
-    font-size: 24px;
-  }
-  .helper__text {
-    margin: 13px 0;
   }
 }
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
 
 import { getHistoryListThunk, setHistoryCurrentPage } from '../../redux/history-reducer';
 import Preloader from '../common/Preloader/Preloader';
@@ -38,4 +40,8 @@ let mapStateToProps = (state) => ({
   currentPage: state.historyPage.currentPage,
 })
 
-export default connect(mapStateToProps, { getHistoryListThunk, setHistoryCurrentPage })(HistoryContainer);
+
+export default compose(
+  connect(mapStateToProps, { getHistoryListThunk, setHistoryCurrentPage }),
+  WithAuthRedirect,
+)(HistoryContainer);

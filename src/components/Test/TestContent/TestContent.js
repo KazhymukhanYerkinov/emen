@@ -28,7 +28,6 @@ const TestContent = ({ TEST_QUESTIONS, setMapWithAnswers, hasAnswer }) => {
     <div className={cls.content}>
         {
           TEST_QUESTIONS.map((variant, index) => {
-            console.log(variant);
             return (
               <React.Fragment key = { index }>
 

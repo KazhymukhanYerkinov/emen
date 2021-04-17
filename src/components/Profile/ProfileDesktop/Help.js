@@ -9,7 +9,7 @@ const Help = () => {
             </div>
             <hr className= 'my-profile__hr' />
 
-            <div> Көмектеседі деп ойлап қалдың ба? Уахахаха </div>
+            <div> Көмек жоқ </div>
         </div>
     )
 }

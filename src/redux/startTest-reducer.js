@@ -159,7 +159,6 @@ export const getQuestionThunk = (uid) => async (dispatch) => {
             let unfinishedExam = null;
 
             dispatch({ type: SET_ERRORS_START_TESTS, errorMessage, unfinishedExam });
-            console.log('Here')
         }
 
         else if (error.response.data.status_code === 2) {
@@ -188,7 +187,7 @@ export const saveTestQuestionThunk = (examUID, left_seconds, is_paused, student_
         await startTestAPI.saveQuestion(examUID, left_seconds, is_paused, student_answers);
 
     } catch (e) {
-        console.log(e);
+        
     } 
 }
 
@@ -199,7 +198,7 @@ export const finishAllTestThunk = (examUID, left_seconds, is_paused, student_ans
 
         
     } catch (e) {
-        console.log(e)
+        
     }
 }
 
