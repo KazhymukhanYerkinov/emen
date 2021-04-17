@@ -5,7 +5,6 @@ import cls from '../EntContent.module.css';
 
 
 const ManSubjects = ({ mandatory_subjects, BASE_URL }) => {
-  
   return (
     <React.Fragment>
       <div className={cls.ent__title}> Обязательные предметы </div>
@@ -19,7 +18,7 @@ const ManSubjects = ({ mandatory_subjects, BASE_URL }) => {
 
               <div className={cls.subject__info}>
                 <div className={cls.subject__name}> {item.name_ru} </div>
-                <div className={cls.subject__variant}> 200 вариантов <br /> 5987 задач </div>
+                <div className={cls.subject__variant}> {item.variant_number} вариантов <br /> {item.question_number} задач </div>
               </div>
             </div>
           )
