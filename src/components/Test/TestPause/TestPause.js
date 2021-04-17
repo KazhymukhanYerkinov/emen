@@ -16,7 +16,7 @@ const TestPause = ({
     time,
     examUID,
     QUESTION_SIZE,
-    LEFT_TIME,
+    FULL_EXAM_TIME,
     onStopTime, 
     finishAllTest, 
     handleFinishAllTest, 
@@ -30,13 +30,14 @@ const TestPause = ({
         window.scrollTo(0, 0);
 
         return () => {
-            handleClearAllData()
+            if (finishAllTest) {
+                handleClearAllData();
+            }
         }
-
-    }, [handleClearAllData])
+    }, [handleClearAllData, finishAllTest])
 
     if (finishAllTest) {
-        time = LEFT_TIME - time;
+        time = FULL_EXAM_TIME - time;
         Cookies.remove('timer');
     }
     const completeQuestions = mapWithAnswers.size;

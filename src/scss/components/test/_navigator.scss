@@ -123,14 +123,14 @@
         background-color: #F7F7F7;
         cursor: pointer;
         
-        
-
         &-correct {
             background-color: #E1F5EA;
         }
-        
         &-error {
             background-color: #FCA7A4;
+        }
+        &-half {
+            background-color: #f7d571;
         }
     }
     

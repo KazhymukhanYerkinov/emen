@@ -18,7 +18,6 @@ class SubscriptionContainer extends React.Component {
       return <Preloader />
     }
 
-    console.log(this.props.subs)
     return (
       <Subscription
         BASE_URL = { this.props.BASE_URL }

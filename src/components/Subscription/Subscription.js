@@ -6,7 +6,6 @@ import SubTable from './SubTable/SubTable';
 
 const Subscription = (props) => {
 
-  console.log(props.subs);
 
   return (
     <div className={cls.subscription}>

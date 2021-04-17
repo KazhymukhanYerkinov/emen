@@ -5,23 +5,38 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import cls from './SubTable.module.css';
 
 const SubColumn = (props) => {
-    return (
-        <React.Fragment>
-        {props.is_text 
-            ? <tr className={cls.column}>
-                <td> {props.item.first} </td>
-                <td className = {cls.result}> {props.item.standart} </td>
-                <td className = {cls.result}> {props.item.premium} </td>
-                <td className = {cls.result}> {props.item.gold} </td>
-            </tr>
-            : <tr className={cls.column}>
-                <td> {props.text} </td>
-                <td className = {cls.result}> {props.item.standart ? <CheckCircleIcon style = {{ color: '#1ABF7E' }}/>:<CancelIcon style = {{ color: '#D92A45' }}/>} </td> 
-                <td className = {cls.result}> {props.item.premium ? <CheckCircleIcon style = {{ color: '#1ABF7E' }}/>:<CancelIcon style = {{ color: '#D92A45' }}/>} </td> 
-                <td className = {cls.result}> {props.item.gold ? <CheckCircleIcon style = {{ color: '#1ABF7E' }}/>:<CancelIcon style = {{ color: '#D92A45' }}/>} </td> 
-            </tr>}
-        </React.Fragment>
-    )
+  return (
+    <React.Fragment>
+      {props.tariff.is_text 
+      ? <tr className={cls.column}>
+          <td> {props.tariff.name_ru} </td>
+          <td> {props.tariff._BASE_SUBSCRIPTION_TYPE_ru} </td>
+          <td> {props.tariff._STANDART_SUBSCRIPTION_TYPE_ru} </td>
+          <td> {props.tariff._PREMIUM_SUBSCRIPTION_TYPE_ru} </td>
+        </tr>
+      : <tr className={cls.column}>
+          <td> {props.tariff.name_ru} </td>
+          <td className={cls.result}> 
+            {props.tariff._BASE_SUBSCRIPTION_TYPE_ 
+            ? <CheckCircleIcon style={{ color: '#1ABF7E' }} /> 
+            : <CancelIcon style={{ color: '#D92A45' }} />} 
+          </td>
+
+          <td className={cls.result}> 
+            {props.tariff._STANDART_SUBSCRIPTION_TYPE_ 
+            ? <CheckCircleIcon style={{ color: '#1ABF7E' }} /> 
+            : <CancelIcon style={{ color: '#D92A45' }} />} 
+          </td>
+
+          <td className={cls.result}> 
+            {props.tariff._PREMIUM_SUBSCRIPTION_TYPE_ 
+            ? <CheckCircleIcon style={{ color: '#1ABF7E' }} /> 
+            : <CancelIcon style={{ color: '#D92A45' }} />} 
+          </td>
+        </tr>}
+      
+    </React.Fragment>
+  )
 }
 
 export default SubColumn;

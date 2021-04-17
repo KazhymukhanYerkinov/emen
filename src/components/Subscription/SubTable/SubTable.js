@@ -18,10 +18,14 @@ const SubTable = (props) => {
         </thead>
 
         <tbody>
-            <SubColumn />
-
-         
-            
+           { props.tariffs.map((tariff, index) => {
+             return (
+              <SubColumn 
+                key = { index }
+                tariff = { tariff }
+              />
+             )
+           }) }    
         </tbody>
       </table>
     </div>

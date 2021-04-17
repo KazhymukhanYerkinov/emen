@@ -35,7 +35,12 @@ const NavSubject = (props) => {
                   return (
                     <div key = { question.id }
                         onClick = {() => props.handleSmoothScroll(question.id)}
-                        className = { classNames('navigator__block', {'navigator__block-correct': question.is_correct, 'navigator__block-error': !question.is_correct}) }>
+                        className = { classNames('navigator__block', 
+                          {
+                            'navigator__block-correct': question.score === 'score', 
+                            'navigator__block-error': question.score === 'zero',
+                            'navigator__block-half': question.score === 'half',
+                          }) }>
                         
                         { question.numeration }
                     </div>
@@ -47,7 +52,11 @@ const NavSubject = (props) => {
           return (
             <div key = { question.id } 
               onClick = { () => props.handleSmoothScroll(question.id) }
-              className = { classNames('navigator__block', {'navigator__block-correct': question.is_correct, 'navigator__block-error': !question.is_correct}) }>
+              className = { classNames('navigator__block', {
+                'navigator__block-correct': question.score === 'score', 
+                'navigator__block-error': question.score === 'zero',
+                'navigator__block-half': question.score === 'half',
+              }) }>
 
               { question.numeration }
 

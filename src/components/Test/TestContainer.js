@@ -104,7 +104,6 @@ class TestContainer extends React.Component {
   // Сұрақтарды серверге жіберіп сақтау
   saveQuestion = (left_time) => {
     let { student_answers, examUID } = this.questionWithAnswers();
-    console.log(left_time);
     this.props.saveTestQuestionThunk(examUID, left_time, this.state.stop_timer, student_answers);
   }
 
@@ -216,6 +215,7 @@ class TestContainer extends React.Component {
     }
 
     // Константаларды алып алу
+    const FULL_EXAM_TIME = this.props.data.full_examination_time;
     const LEFT_TIME = this.props.data.left_seconds - 1;
     const TEST_BANNER = this.props.data.banner;
     const TEST_QUESTIONS = this.props.data.variants;
@@ -228,6 +228,7 @@ class TestContainer extends React.Component {
         errorsStartTests = { this.props.errorsStartTests }
         BASE_URL = { this.props.BASE_URL }
 
+        FULL_EXAM_TIME = { FULL_EXAM_TIME }
         LEFT_TIME = { LEFT_TIME }
         TEST_BANNER = { TEST_BANNER }
         TEST_QUESTIONS = { TEST_QUESTIONS }

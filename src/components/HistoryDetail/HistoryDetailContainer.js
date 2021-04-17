@@ -28,7 +28,7 @@ class HistoryDetailContainer extends React.Component {
     render(){
         if (!this.props.historyDetail)
             return <Preloader />
-        
+            
         return <HistoryDetail 
             history = { this.props.historyDetail } 
             BASE_URL = { this.props.BASE_URL }

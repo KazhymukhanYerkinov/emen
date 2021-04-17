@@ -33,7 +33,7 @@ const Test = ({ data, errorsStartTests, examUID, BASE_URL, ...props }) => {
       {props.stop_timer ?
         <TestPause
           examUID = { examUID }
-          LEFT_TIME={ props.LEFT_TIME }
+          FULL_EXAM_TIME = { props.FULL_EXAM_TIME }
           QUESTION_SIZE={ props.QUESTION_SIZE }
 
           time={ time }
