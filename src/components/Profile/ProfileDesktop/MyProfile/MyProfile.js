@@ -16,9 +16,9 @@ const MyProfile = (props) => {
     name: props.user.first_name,
     surname: props.user.last_name,
     telephone: props.user.phone,
-    city: props.user.city.id,
+    city: props.user.city ? props.user.city.id: '',
 
-    city_name: props.user.city.name
+    city_name: props.user.city ? props.user.city.name: ''
   }
 
   return (
