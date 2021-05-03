@@ -33,11 +33,16 @@ const TestQuestion = ({
     // Текст сұрақтарды html ге айналдырады
     document.getElementById(`question_${id}`).innerHTML = question_text;
 
+    // Answer text convert to html
+    for (let answer of answers) {
+      document.getElementById(`answer_${answer.id}`).innerHTML = answer.answer_text;
+    }
+
     // Текст подсказкаларды html ге айналдыру
     if (help_text)
       document.getElementById(`hint_${id}`).innerHTML = help_text;
 
-  }, [help_text, id, question_text])
+  }, [help_text, id, question_text, answers])
 
  
 

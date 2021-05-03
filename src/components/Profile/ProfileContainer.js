@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
-import { getProfile } from '../../redux/profile-reducer';
+import { getProfile, upBalance } from '../../redux/profile-reducer';
 import Preloader from '../common/Preloader/Preloader';
 import Profile from './Profile';
 
@@ -51,6 +51,9 @@ class ProfileContainer extends React.Component {
         cities = { this.props.cities }
         BASE_URL = { this.props.BASE_URL }
 
+        amount_data = { this.props.amount_data }
+        upBalance = { this.props.upBalance }
+        
         screen_orientation = { this.state.screen_orientation }
       />
     )
@@ -61,12 +64,13 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
   user: state.profilePage.profile_full_data,
   cities: state.profilePage.cities,
+  amount_data: state.profilePage.amount_data
 })
 
 
 
 export default compose(
-  connect(mapStateToProps, {getProfile,}),
+  connect(mapStateToProps, {getProfile, upBalance}),
   WithAuthRedirect,
 )(ProfileContainer);
 

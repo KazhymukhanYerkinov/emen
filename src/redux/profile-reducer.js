@@ -10,6 +10,9 @@ const IS_REDIRECT_PASSWORD = 'profile-reducer/IS_REDIRECT_PASSWORD'
 
 const CHANGE_EMAIL = 'profile-reducer/CHANGE_EMAIL';
 
+const SET_AMOUNT_MODAL = 'profile-reducer/SET_AMOUNT_MODAL';
+const SET_AMOUNT_DATA = 'profile-reducer/SET_AMOUNT_DATA';
+
 
 
 
@@ -21,6 +24,8 @@ let initialState = {
   change_email: false,
 
   isRedirectPassword: false,
+  amount_modal: false,
+  amount_data: null
 }
 
 const proflieReducer = (state = initialState, action) => {
@@ -54,12 +59,26 @@ const proflieReducer = (state = initialState, action) => {
         change_email: !state.change_email
       }
     
+    case SET_AMOUNT_MODAL:
+      return {
+        ...state,
+        amount_modal: action.amount_modal
+      }
+    case SET_AMOUNT_DATA:
+      return {
+        ...state,
+        amount_data: action.amount_data
+      }
     default:
       return state
   }
 }
 
 export const handleIsRedirectPassword = (isRedirectPassword) => ({ type: IS_REDIRECT_PASSWORD, isRedirectPassword })
+
+export const handleAmountModal = (amount_modal) => ({ type: SET_AMOUNT_MODAL, amount_modal });
+export const handleAmountData = (amount_data) => ({ type: SET_AMOUNT_DATA, amount_data });
+
 export const changePasswordAC = () => ({ type: CHANGE_PASSWORD });
 
 export const changeEmailAc = () => ({ type: CHANGE_EMAIL });
@@ -121,6 +140,16 @@ export const emailActivate = (uid, token) => async (dispatch) => {
   } catch (error) {
     let errorMessage = 'Неверный токен или uid. Пожалуйста, зайдите в Gmail и нажмите ссылку еще раз.'  
     dispatch(failActivateAccount(errorMessage));
+  }
+}
+
+export const upBalance = (amount) => async (dispatch) => {
+  try {
+    const data = await profileAPI.upBalance(amount);
+    console.log(data);
+    dispatch(handleAmountData(data));
+  } catch (error) {
+
   }
 }
 

@@ -55,7 +55,12 @@ const Profile = (props) => {
               )} />
 
             
-            <Route exact path = '/profile/wallet' component = { MyWallet } />
+            <Route exact path = '/profile/wallet' render = {() =>  (
+              <MyWallet
+                amount_data = { props.amount_data }
+                upBalance = { props.upBalance } 
+              />
+            ) } />
             <Route exact path = '/profile/help' component = { Help } />
 
             <Route exact path = '/profile/email/activate/:uid/:token' component = { ProfileActivate } />

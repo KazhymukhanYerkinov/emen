@@ -7,10 +7,6 @@ import cls from './MultipleAnswer.module.css';
 
 const MultipleAnswer = ({ question_id, answer_text, answer_id,  onSetActiveAnswer, hasAnswer }) => {
 
-    React.useEffect(() => {
-        document.getElementById(`answer_${answer_id}`).innerHTML = answer_text;
-    }, [answer_id, answer_text])
-
     let isChecked = false;
 
     if (hasAnswer(question_id, answer_id)) {

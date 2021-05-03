@@ -50,7 +50,7 @@ const Header = (props) => {
               </NavLink>
 
               <NavLink 
-                to={'/subs'} 
+                to={'/subscription'} 
                 className={ cls.nav__link }
                 activeClassName = {cls.active }
                 onClick={() => props.handleProfileBlock(false)}> 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
 import { getSubsThunk } from '../../redux/subs-reducer';
 import Preloader from '../common/Preloader/Preloader';
 import Subscription from './Subscription';
@@ -40,5 +39,4 @@ let mapStateToProps = (state) => ({
 
 export default compose(
   connect(mapStateToProps, { getSubsThunk }),
-  WithAuthRedirect,
   )(SubscriptionContainer)

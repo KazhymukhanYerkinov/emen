@@ -1,7 +1,40 @@
 import React from 'react';
-import kaspi from '../../../assets/images/kaspi.jpg';
+import { Field, reduxForm } from 'redux-form';
+import { onlyNumber, textRequired } from '../../../validators/validator';
+import { InputText } from '../../common/FormControl/FormControl';
+import AmountModal from '../../common/Modal/AmountModal';
 
-const MyWallet = () => {
+
+
+const MyWalletForm = ({ handleSubmit }) => {
+  return (
+    <React.Fragment>
+      <form onSubmit = { handleSubmit }>
+        <Field
+          name = 'amount'
+          component = { InputText } 
+          label = 'Enter a price' 
+          placeholder = 'Enter a price'
+          validate = { [ textRequired, onlyNumber ] }
+        />
+
+        <button type = 'submit' className = 'button button__submit'>
+          Пополнить баланс
+        </button>
+      </form>
+    </React.Fragment>
+  )
+}
+
+const MyWalletReduxForm = reduxForm({ form: 'my-wallet-form' })(MyWalletForm)
+
+const MyWallet = (props) => {
+
+  const onSubmit = (formData) => {
+    console.log(formData)
+    props.upBalance(formData.amount)
+  }
+
   return (
     <div className = 'my-profile'>
 
@@ -12,21 +45,18 @@ const MyWallet = () => {
       <hr className = 'my-profile__hr'/>
 
       <div className = 'my-profile__content'>
-        <div className = 'my-profile__subtitle'> Инструкция пополнение баланса </div>
-
-        <div className = 'my-profile__block'>
-          <img className = 'image image__40' src = { kaspi } alt = '' />
-          <div>
-            <div className = 'my-profile__step'> 1. Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.  </div>
-            <div className = 'my-profile__step'> 2. Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.  </div>
-            <div className = 'my-profile__step'> 3. Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.  </div>
-          </div>
-        </div>
-
+        <MyWalletReduxForm
+          
+          onSubmit = { onSubmit }
+        />
       </div>
+      
+
+      { props.amount_data && <AmountModal amount_data = { props.amount_data }/> }
 
     </div>
   )
 }
+
 
 export default MyWallet;

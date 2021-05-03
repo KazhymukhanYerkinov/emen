@@ -204,11 +204,19 @@ export const profileAPI = {
     activateNewEmail(uid, token) {
         const body = JSON.stringify({ uid, token });
 
-        console.log(body);
         return instance.post(`api/v1/auth/profile/activate/new-email/`, body).then(response => {
             return response.data;
         });
     },
+
+    upBalance(amount) {
+        const body = JSON.stringify({ amount: Number(amount) });
+
+        
+        return instance.post(`api/v1/payments/balance/top-up/`, body).then(response => {
+            return response.data;
+        });
+    }
 
 
 }
