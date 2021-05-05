@@ -1,6 +1,5 @@
 export const smoothCollapse = id => {
     let element = document.querySelector(`#${id}`)
-    console.log(element);
     element.style.height = element.scrollHeight + 'px';
 
     element.classList.toggle('open');

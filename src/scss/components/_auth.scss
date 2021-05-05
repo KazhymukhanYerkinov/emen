@@ -77,6 +77,19 @@
         color: #222222;
     }
 
+    &__helper {
+        text-align: right;
+
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: 500;
+        cursor: pointer;
+
+        a {
+            color: #3075F3;
+        }
+    }
+
 }
 
 // Orientation landscape

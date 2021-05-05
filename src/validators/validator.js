@@ -14,6 +14,9 @@ export const onlyNumber = value => {
     if (!/^\d+$/.test(value)) {
         return 'only numbers'
     }
+    else if (Number(value) < 100) {
+        return 'More than 100'
+    }
     return undefined
 }
 

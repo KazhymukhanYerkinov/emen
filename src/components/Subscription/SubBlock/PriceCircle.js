@@ -6,8 +6,8 @@ import cls from './SubBlock.module.css';
 
 const PriceCircle = (props) => {
     return (
-        <div className = {cls.circle__block} onClick = {() => props.handleChooseMonth(props.per_months_price)}>
-            {props.chooseMonth === props.per_months_price &&
+        <div className = {cls.circle__block} onClick = {() => props.handleChooseMonth(props.number)}>
+            {props.chooseMonth === props.number &&
             <React.Fragment>
                 <div className = {cls.icon__block}></div>
                 <CheckCircleIcon className = {cls.check__icon}/>

@@ -13,8 +13,8 @@ const MyWalletForm = ({ handleSubmit }) => {
         <Field
           name = 'amount'
           component = { InputText } 
-          label = 'Enter a price' 
-          placeholder = 'Enter a price'
+          label = 'Введите свои деньги' 
+          placeholder = 'Введите свои деньги'
           validate = { [ textRequired, onlyNumber ] }
         />
 
@@ -31,7 +31,6 @@ const MyWalletReduxForm = reduxForm({ form: 'my-wallet-form' })(MyWalletForm)
 const MyWallet = (props) => {
 
   const onSubmit = (formData) => {
-    console.log(formData)
     props.upBalance(formData.amount)
   }
 

@@ -102,6 +102,18 @@ export const InputText = ({
   )
 }
 
+export const TextArea = ({ input, placeholder, meta: { touched, error, invalid } }) => {
+
+  
+  return (
+    <div className = 'control'>
+      <textarea  className = {classNames('textarea', {'error': touched && error})} {...input} placeholder = { placeholder }>  </textarea>
+      { touched && error && <FormHelperText style={{ color: '#FF564E', marginLeft: '5px' }}> {error} </FormHelperText>}
+    </div>
+
+  )
+}
+
 export const InputCheckBox = ({ 
   input, 
   label }) => {
@@ -142,3 +154,5 @@ export const InputSelect = ({ input, meta, children, half_width, full_width, lab
     </div>
   )
 }
+
+

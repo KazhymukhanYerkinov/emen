@@ -31,9 +31,7 @@ import {
   Activate, 
   HistoryDetailContainer,
   HistoryContainer,
-  Save,
   ProfileContainer,
-  Statistics,
   SubscriptionContainer,
   NotFound,
   TestContainer,
@@ -190,11 +188,6 @@ class App extends React.Component {
               )} 
             />
 
-            <Route 
-              exact path = '/save'
-              component = { Save }
-            />
-
             <Route
               path = '/profile'
               render = {() => (
@@ -202,11 +195,6 @@ class App extends React.Component {
                   BASE_URL = { this.props.BASE_URL }
                 />
               )}
-            />
-
-            <Route
-              exact path = '/statistics'
-              component = { Statistics }
             />
 
             <Route

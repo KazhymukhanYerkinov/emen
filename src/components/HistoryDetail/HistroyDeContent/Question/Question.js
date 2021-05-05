@@ -1,6 +1,11 @@
-import classNames from 'classnames';
+
 import React from 'react';
+import classNames from 'classnames';
+import WarningIcon from '@material-ui/icons/Warning';
+
 import Answer from './Answer/Answer';
+import { Tooltip } from '@material-ui/core';
+import ReportAnErrorModal from '../../../common/Modal/ReportAnErrorModal';
 
 
 
@@ -8,6 +13,7 @@ const Question = (props) => {
 
   // Показать разбор state
   const [ showParse, setShowParse ] = React.useState(false);
+  const [ reportError, setReportError ] = React.useState(false);
 
   // TEXTтарды HTML ге айналдыру
   React.useEffect(() => {
@@ -32,11 +38,25 @@ const Question = (props) => {
     setShowParse((prevState) => !prevState);
   }
 
+  const activateReportError = () => {
+    setReportError(true)
+  }
+  const deactivateReportError = () => {
+    setReportError(false)
+  }
+
   return (
     <div className = 'question' id = {`history_scroll_${props.question.id}`}>
-      <div>
+      <div className = 'question__header'>
         <div className='question__number'> Вопрос #{props.question.numeration} </div>
+        <div onClick = { activateReportError }>
+          <Tooltip arrow title='Сообщить о ошибке' placement='top'>
+            <WarningIcon className = 'question__warning'/>
+          </Tooltip>
+        </div>
       </div>
+
+      { reportError && <ReportAnErrorModal deactivateReportError = { deactivateReportError }/> }
 
       <div id = { `question_${props.question.id}` } className='question__text'></div>
 

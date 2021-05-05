@@ -7,9 +7,9 @@ import {
   getQuestionThunk, 
   saveTestQuestionThunk, 
   finishAllTestThunk, 
-  setShowErrorAC, 
   setQuestionsFailAC 
 } from '../../redux/startTest-reducer';
+import { failError } from '../../redux/error-reducer';
 
 
 import Test from './Test';
@@ -17,6 +17,7 @@ import Preloader from '../common/Preloader/Preloader';
 import Modal from '../common/Modal/Modal';
 import { getAnswersWithData } from '../../utils/getAnswersWithData';
 import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
+
 
 
 
@@ -199,12 +200,13 @@ class TestContainer extends React.Component {
   render() {
 
     // Егер тест басталарда қандай да бір қате шықса
-    if (this.props.errorsStartTests.showError) {
+    if (this.props.error_code !== 0) {
       return (
         <Modal 
           duringTheTest
-          errorsStartTests={this.props.errorsStartTests}
-          handleCloseModal = { this.props.setShowErrorAC }
+          error_code={ this.props.error_code }
+          error_data = { this.props.error_data }
+          handleCloseModal = { this.props.failError }
         />
       )
     }
@@ -219,7 +221,7 @@ class TestContainer extends React.Component {
     const LEFT_TIME = this.props.data.left_seconds - 1;
     const TEST_BANNER = this.props.data.banner;
     const TEST_QUESTIONS = this.props.data.variants;
-    let QUESTION_SIZE = 140;
+    let QUESTION_SIZE = this.props.data.full_questions_count;
 
     return (
       <Test
@@ -261,7 +263,8 @@ class TestContainer extends React.Component {
 let mapStateToProps = (state) => ({
   data: state.testPage.data,
   isFetching: state.testPage.isFetching,
-  errorsStartTests: state.testPage.errorsStartTests
+  error_code: state.errorPage.error_code,
+  error_data: state.errorPage.error_data,
 })
 
 export default compose(
@@ -269,7 +272,7 @@ connect(mapStateToProps, {
   getQuestionThunk,
   saveTestQuestionThunk,
   finishAllTestThunk,
-  setShowErrorAC,
+  failError,
   setQuestionsFailAC}),
   withRouter,
   WithAuthRedirect,

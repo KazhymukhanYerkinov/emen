@@ -9,6 +9,7 @@ import testReducer from './startTest-reducer';
 import historyReducer from './history-reducer';
 import subsReducer from './subs-reducer';
 import proflieReducer from './profile-reducer';
+import errorReducer from './error-reducer';
 
 
 let reducer = combineReducers({
@@ -20,6 +21,7 @@ let reducer = combineReducers({
     historyPage: historyReducer,
     subsPage: subsReducer,
     profilePage: proflieReducer,
+    errorPage: errorReducer,
     
       
 });

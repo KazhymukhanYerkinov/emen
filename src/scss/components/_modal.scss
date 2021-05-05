@@ -74,6 +74,10 @@
 
         color: $black;
     }
+    &__link {
+        text-decoration: underline;
+        color: $blue;
+    }
 
     &__block {
         display: flex;

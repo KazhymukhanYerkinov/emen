@@ -6,7 +6,10 @@ import { Redirect, Route, withRouter, useHistory } from 'react-router-dom';
 
 import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
 import { getDetailSubjectThunk, setDetailSubject } from '../../redux/subject-reducer';
-import { postStartTestThunk, setShowErrorAC } from '../../redux/startTest-reducer';
+import { postStartTestThunk } from '../../redux/startTest-reducer';
+import { failError } from '../../redux/error-reducer';
+
+
 
 import DetailContent from './DetailContent/DetailContent';
 import DetailHeader from './DetailHeader/DetailHeader';
@@ -23,13 +26,16 @@ import cls from './DetailSubject.module.css';
 
 
 
+
 const DetailSubject = ({ match, BASE_URL }) => {
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const { detail } = useSelector(({ subjectPage }) => subjectPage);
-  const { isStart, examUID, errorsStartTests } = useSelector(({ testPage }) => testPage);
+  const { isStart, examUID } = useSelector(({ testPage }) => testPage);
+
+  const { error_code, error_data } = useSelector(({ errorPage }) => errorPage);
 
   // Сабақтың жеке ID
   const subjectID = match.params.subjectID;
@@ -133,7 +139,7 @@ const DetailSubject = ({ match, BASE_URL }) => {
 
 
   const handleErrorModal = () => {
-    dispatch(setShowErrorAC());
+    dispatch(failError());
   }
 
 
@@ -146,12 +152,13 @@ const DetailSubject = ({ match, BASE_URL }) => {
           banner={detail.banner_subject}
           BASE_URL={BASE_URL} />
         
-        {errorsStartTests.showError &&
+        {error_code !== 0 &&
           <Modal
-            BASE_URL = { BASE_URL }
             handleCloseModal = { handleErrorModal }
-            errorsStartTests = { errorsStartTests }
+            error_code = { error_code }
+            error_data = { error_data }
           />}
+        
         {settings.modal.show &&
           <SettingsModal
             onHandleSettingsModal={onHandleSettingsModal}

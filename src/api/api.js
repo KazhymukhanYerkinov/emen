@@ -216,7 +216,7 @@ export const profileAPI = {
         return instance.post(`api/v1/payments/balance/top-up/`, body).then(response => {
             return response.data;
         });
-    }
+    },
 
 
 }
@@ -226,6 +226,13 @@ export const subsAPI = {
     getSubs(){
         return instance.get(`api/v1/services/subscriptions/tariffs/`).then(response => {
             return response.data;
+        })
+    },
+    postSubs(uid, not_care, subscription_time) {
+        const body = JSON.stringify({ not_care, subscription_time });
+        
+        return instance.post(`https://e-men.kz/api/v1/services/subscriptions/tariffs/${uid}/subscribe/`, body).then(response => {
+            return response.data
         })
     }
 }

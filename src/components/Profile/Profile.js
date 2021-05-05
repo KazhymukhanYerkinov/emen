@@ -6,7 +6,6 @@ import { Route } from 'react-router';
 import MyProfileContainer from './ProfileDesktop/MyProfile/MyProfileContainer';
 import ProfileInfo from './ProfileDesktop/ProfileInfo';
 import MyWallet from './ProfileDesktop/MyWallet';
-import Help from './ProfileDesktop/Help';
 
 // Profile mobile components
 import ProfileMobile from './ProfileMobile/ProfileMobile';
@@ -19,7 +18,7 @@ import ChangeEmail from './ProfileMobile/ProfileMobileForms/ChangeEmail';
 
 import cls from './Profile.module.css';
 import ProfileActivate from './ProfileActivate';
-
+import MySubs from './ProfileDesktop/MySubs';
 
 const Profile = (props) => {
   
@@ -60,8 +59,13 @@ const Profile = (props) => {
                 amount_data = { props.amount_data }
                 upBalance = { props.upBalance } 
               />
-            ) } />
-            <Route exact path = '/profile/help' component = { Help } />
+            )} />
+
+            <Route exact path = '/profile/subscription' render = {() => (
+              <MySubs />
+            )} />
+
+
 
             <Route exact path = '/profile/email/activate/:uid/:token' component = { ProfileActivate } />
           </div>
@@ -82,8 +86,14 @@ const Profile = (props) => {
                 BASE_URL = { props.BASE_URL }
               /> 
             )} />
-          <Route exact path = '/profile/wallet' component = { WalletMobile } />
-          <Route exact path = '/profile/sub' component = { SubMobile } />
+          <Route exact path = '/profile/wallet' render = {() => (
+            <WalletMobile
+              amount_data = { props.amount_data }
+              upBalance = { props.upBalance }
+            /> 
+          )} />
+          
+          <Route exact path = '/profile/subscription' component = { SubMobile } />
           <Route exact path = '/profile/basic_data/change_password' component = { ChangePassword } />
           <Route exact path = '/profile/basic_data/change_email' component = { ChangeEmail } />
 

@@ -22,11 +22,14 @@ const SignInForm = ({ handleSubmit, error, showFetchButton }) => {
                 <Field name = { 'password' } component = { InputPassword } label = { 'Пароль' }  validate = { [textRequired,passwordRequired, lengthValidation] }/>
             </div>
             <button className = 'button button__submit' type = 'submit'> {showFetchButton ? <img className = 'auth__loader' src = { loader } alt = '' />:<span>Войти</span>} </button> 
-             
+            
+
             <div className = 'auth__checkbox'>
                 <Field name = { 'ckeckbox' } component = { InputCheckBox } label = { 'Запомнить меня' } />
                 <Link className = 'auth__checkbox-text' to = {'/forgotpassword'}> Забыли пароль? </Link>
             </div>  
+
+           
         </form>
         </>
     )
@@ -63,6 +66,10 @@ const SignIn = ({ isAuth, loginThunk }) => {
                     <div className = 'auth__content'>
                         <div className = 'title'> Вход </div>
                         <SignInReduxForm onSubmit = { onSubmit } showFetchButton = { showFetchButton }/>
+
+                        <div className = 'auth__helper'>
+                            <Link to = '/registration'> Нет аккаунт? </Link>
+                        </div>
                     </div>
 
                 </div>

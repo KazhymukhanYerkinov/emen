@@ -9,6 +9,8 @@
     line-height: 21px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 
+    overflow: auto;
+
     background-color: #fff;
     color: #222222;
     border-radius: 4px;

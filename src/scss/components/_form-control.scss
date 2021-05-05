@@ -17,6 +17,17 @@
     }
   }
 
+  .textarea {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #222;
+
+    &.error {
+      border: 1px solid #F62A2A
+    }
+  }
+
   .helper_text {
     display: flex;
     justify-content: flex-end;

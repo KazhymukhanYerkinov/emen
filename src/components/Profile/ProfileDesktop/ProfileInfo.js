@@ -20,7 +20,7 @@ const ProfileInfo = (props) => {
       <div className = 'avatar__navigator'>
         <NavLink className = 'avatar__navigator-link' exact to='/profile' activeClassName='active'> Мой профиль </NavLink>
         <NavLink className = 'avatar__navigator-link' to='/profile/wallet' activeClassName='active'> Мой кошелек </NavLink>
-        <NavLink className = 'avatar__navigator-link' to='/profile/help' activeClassName='active'> Помощь </NavLink>
+        <NavLink className = 'avatar__navigator-link' to='/profile/subscription' activeClassName='active'> Подписка </NavLink>
       </div>
 
     </div>

@@ -43,6 +43,7 @@
 
     color: #fff;
     text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
 }
 .circle {
     margin: 9px auto;

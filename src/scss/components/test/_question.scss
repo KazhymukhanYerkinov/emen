@@ -9,7 +9,20 @@
         margin-bottom: -15px;
     }
 
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__warning {
+        color: #999999;
+        cursor: pointer;
+        transition: color .3s linear;
 
+        &:hover {
+            color: #F62A2A;
+        }
+    }
     &__number {
         font-weight: 700;
         font-size: 21px;

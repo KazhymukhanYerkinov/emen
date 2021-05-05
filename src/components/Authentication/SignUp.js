@@ -6,7 +6,7 @@ import signup from '../../assets/images/signup.jpg';
 import loader from '../../assets/loader/button__loader.svg';
 import { InputPassword, InputText } from '../common/FormControl/FormControl';
 
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { emailRequired, LengthCreator, passwordRequired, textRequired } from '../../validators/validator';
 
 
@@ -56,6 +56,10 @@ const SignUp = ({ signUpThunk, fromRegisterPage }) => {
                     <div className = 'auth__content'>
                         <div className = 'title'> Регистрация </div>
                         <SignUpReduxForm onSubmit = { onSubmit } showFetchButton = { showFetchButton } />
+
+                        <div className = 'auth__helper mt-10'>
+                            <Link to = '/login'> Есть аккаунт? </Link>
+                        </div>
                     </div>
                 </div> 
             </div>
