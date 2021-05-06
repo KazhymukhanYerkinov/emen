@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { historyAPI } from "../api/api";
 
 const GET_SUCCESS_HISTORY_ANALYSIS = 'history-reducer/GET_SUCCESS_HISTORY_ANALYSIS';
@@ -76,6 +77,15 @@ export const getHistoryListThunk = (currentPage, pageSize) => async (dispatch) =
         dispatch({ type: GET_SUCCESS_HISTORY_LIST, data, count });
     } catch (error) {
         dispatch({ type: FAIL_HISTORY_LIST });
+    }
+}
+
+export const reportErrorThunk = (question_id, text, is_group) => async (dispatch) => {
+    try {
+        await historyAPI.reportError(question_id, text, is_group);
+        dispatch(stopSubmit('report-error', { _error: 'Success' }))
+    } catch (error) {
+
     }
 }
 

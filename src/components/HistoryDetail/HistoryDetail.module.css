@@ -31,6 +31,14 @@
     right: 0;
 }
 /* GROUP QUESTION */
+.group {
+    margin: 20px 0 -20px;
+    background-color: #fff;
+}
+.group__warning {
+    margin-top: 10px;
+    margin-right: 10px;
+}
 .group__question {
     margin: 20px 0 -20px;
     padding: 20px 30px;

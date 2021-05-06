@@ -32,6 +32,7 @@ class HistoryDetailContainer extends React.Component {
         return <HistoryDetail 
             history = { this.props.historyDetail } 
             BASE_URL = { this.props.BASE_URL }
+
         />
     }
 }

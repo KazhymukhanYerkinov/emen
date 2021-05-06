@@ -62,7 +62,10 @@ const Profile = (props) => {
             )} />
 
             <Route exact path = '/profile/subscription' render = {() => (
-              <MySubs />
+              <MySubs 
+                auth_data = { props.auth_data }
+                BASE_URL = { props.BASE_URL }
+              />
             )} />
 
 
@@ -93,7 +96,12 @@ const Profile = (props) => {
             /> 
           )} />
           
-          <Route exact path = '/profile/subscription' component = { SubMobile } />
+          <Route exact path = '/profile/subscription' render = {() => (
+            <SubMobile
+              auth_data = { props.auth_data }
+              BASE_URL = { props.BASE_URL } 
+            />
+          ) } />
           <Route exact path = '/profile/basic_data/change_password' component = { ChangePassword } />
           <Route exact path = '/profile/basic_data/change_email' component = { ChangeEmail } />
 

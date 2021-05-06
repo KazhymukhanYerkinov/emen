@@ -3,13 +3,16 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Field, reduxForm } from 'redux-form';
 import { TextArea } from '../FormControl/FormControl';
 import { textRequired } from '../../../validators/validator';
+import { useDispatch } from 'react-redux';
+import { reportErrorThunk } from '../../../redux/history-reducer';
 
 
 
-const ReportErrorForm = ({ handleSubmit }) => {
+const ReportErrorForm = ({ handleSubmit, error }) => {
   return (
     <form onSubmit = { handleSubmit }>
-      <Field name = 'text' placeholder = 'write error' component = { TextArea } validate = { textRequired } />
+      { error && <div className = 'modal__success'> { error } </div> }
+      <Field name = 'text' placeholder = 'Введите ошибку' component = { TextArea } validate = { textRequired } />
       <button className = 'button button__submit' type = 'submit'> Отправить </button>
     </form>
   )
@@ -17,9 +20,13 @@ const ReportErrorForm = ({ handleSubmit }) => {
 
 const ReportErrorReduxForm = reduxForm({ form: 'report-error' })(ReportErrorForm);
 
-const ReportAnErrorModal = ({ deactivateReportError }) => {
-  const onSubmit = () => {
+const ReportAnErrorModal = ({ question_id, deactivateReportError, is_group }) => {
 
+  const dispatch = useDispatch();
+
+  const onSubmit = (formData) => {
+    dispatch(reportErrorThunk(question_id, formData.text, is_group))
+    
   }
 
   

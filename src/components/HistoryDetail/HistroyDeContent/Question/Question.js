@@ -56,7 +56,10 @@ const Question = (props) => {
         </div>
       </div>
 
-      { reportError && <ReportAnErrorModal deactivateReportError = { deactivateReportError }/> }
+      { reportError && <ReportAnErrorModal 
+        is_group = { false }
+        question_id = { props.question.id }
+        deactivateReportError = { deactivateReportError }  /> }
 
       <div id = { `question_${props.question.id}` } className='question__text'></div>
 

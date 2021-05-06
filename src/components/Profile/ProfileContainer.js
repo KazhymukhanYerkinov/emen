@@ -48,6 +48,7 @@ class ProfileContainer extends React.Component {
     return (
       <Profile
         user={ this.props.user }
+        auth_data = { this.props.auth_data }
         cities = { this.props.cities }
         BASE_URL = { this.props.BASE_URL }
 
@@ -64,7 +65,9 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
   user: state.profilePage.profile_full_data,
   cities: state.profilePage.cities,
-  amount_data: state.profilePage.amount_data
+  amount_data: state.profilePage.amount_data,
+
+  auth_data: state.authPage.user,
 })
 
 

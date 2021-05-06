@@ -12,7 +12,10 @@ const HistoryDetail = (props) => {
     <div className={cls.history}>
       <div className='container'>
         <HistoryDeHeader {...props} />
-        <HistoryDeContent variants = { props.history.variants } BASE_URL = { props.BASE_URL }/>
+        <HistoryDeContent 
+          variants = { props.history.variants } 
+          BASE_URL = { props.BASE_URL }
+        />
       </div>
     </div>
   )

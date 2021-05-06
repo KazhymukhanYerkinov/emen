@@ -151,6 +151,19 @@ export const historyAPI = {
         return instance.get(`api/v1/examinations/history/list/?page_size=${pageSize}&page=${currentPage}`).then(response => {
             return response.data;
         })
+    },
+    reportError(question, text, is_group) {
+
+        let body = JSON.stringify({ question, text });
+
+        if (is_group) {
+            body = JSON.stringify({ question_group: question, text: text });
+        }
+       
+
+        return instance.post(`api/v1/subjects/questions/bug-report/`, body).then(response => {
+            return response.data;
+        })
     }
 }
 
