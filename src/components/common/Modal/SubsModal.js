@@ -11,7 +11,7 @@ const SubsModal = (props) => {
         </div>
 
         <div className = 'modal__content'>
-          <div className = 'modal__description'> Вы выбрали тариф: <b>{ props.openModal.name }</b> </div>
+          <div className = 'modal__description'> Сіз <b>{ props.openModal.name }  </b> тарифын таңдаңыз.</div>
         </div>
 
         <div className = 'modal__footer'>

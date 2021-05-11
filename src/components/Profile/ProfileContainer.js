@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { WithAuthRedirect } from '../../hoc/WithAuthRedirect';
 import { getProfile, upBalance } from '../../redux/profile-reducer';
+import { loadUserThunk } from '../../redux/auth-reducer';
 import Preloader from '../common/Preloader/Preloader';
 import Profile from './Profile';
 
@@ -26,6 +27,7 @@ class ProfileContainer extends React.Component {
 
   componentDidMount() {
     this.props.getProfile();
+    this.props.loadUserThunk();
     
     if (window.innerWidth >= 700) {
       this.setState({ screen_orientation: true });
@@ -73,7 +75,7 @@ let mapStateToProps = (state) => ({
 
 
 export default compose(
-  connect(mapStateToProps, {getProfile, upBalance}),
+  connect(mapStateToProps, {getProfile, upBalance, loadUserThunk}),
   WithAuthRedirect,
 )(ProfileContainer);
 

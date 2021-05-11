@@ -1,6 +1,5 @@
 import React from 'react';
 import { compose } from 'redux';
-import Cookie from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, withRouter, useHistory } from 'react-router-dom';
 
@@ -48,6 +47,7 @@ const DetailSubject = ({ match, BASE_URL }) => {
 
   // Error => do not select proffesional subject 
   const [error, setError] = React.useState(false);
+
   
 
   // топиктарды серверден алу
@@ -60,6 +60,8 @@ const DetailSubject = ({ match, BASE_URL }) => {
    }
 
   }, [dispatch, subjectID])
+
+  
 
   // Старт басқандағы модал окно ашылуы
   const onHandleSettingsModal = (show, topicID) => {
@@ -79,6 +81,8 @@ const DetailSubject = ({ match, BASE_URL }) => {
     return <Preloader />
   }
 
+  console.log(detail)
+
 
   // Тестты бастаудағы стандарт параметрлер
   const SUBJECT_ID = detail.banner_subject.id;
@@ -91,8 +95,6 @@ const DetailSubject = ({ match, BASE_URL }) => {
 
   // Тестті бастау
   const handleStartTest = (withHint, levelTest) => {
-    Cookie.remove("answers");
-    Cookie.remove("timer");
 
     // ЕНТ бетінде тұрғанын анықтау
     if (history.location.pathname.includes('/ENT')) {
@@ -180,7 +182,7 @@ const DetailSubject = ({ match, BASE_URL }) => {
                 BASE_URL={BASE_URL} 
                 profSubjects={profSubjects} 
                 setProfSubject={setProfSubject}
-                
+
                 error = { error }
               />)} 
           />
