@@ -16,8 +16,8 @@ const DetailHistory = (props) => {
     
     return (
         <div className = {cls.history}>
-            <div className = {cls.history__title}> История </div>
-            <div className = {cls.history__desc}> В истории сохраняется ваши результаты тестирования </div>
+            <div className = {cls.history__title}> Тестілеу тарихы </div>
+            <div className = {cls.history__desc}> Тестілеу тарихында сіздің нәтижелеріңіз сақталады.</div>
             {!hasHistory && <div className = {cls.history__desc}> У Вас пока нет истории тестирования </div>}
 
             <div className = {cls.history__content}>
@@ -30,7 +30,7 @@ const DetailHistory = (props) => {
                                 <img src = { props.BASE_URL + '' + item.subject.logo } alt = "" />
                                 <div className = {cls.item__info}>
                                     <div className = {cls.item__name}> {item.subject.name_ru} </div>
-                                    <div className = {cls.item__result}> Результат: {item.score}/{item.total_score} </div>
+                                    <div className = {cls.item__result}> Нәтиже: {item.score}/{item.total_score} </div>
                                 </div>
                             </div>
                             <img className = {cls.item__image} src = { arrow } alt = ""/>
@@ -40,7 +40,7 @@ const DetailHistory = (props) => {
             </div>
 
             {hasHistory && <Link to = '/history' className = 'button button__over'>
-                Показать еще
+                Толық көрсету
             </Link>}
 
         </div>

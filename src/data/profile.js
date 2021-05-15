@@ -7,13 +7,13 @@ import { ReactComponent as History } from '../assets/profile__logo/history.svg';
 import { ReactComponent as Logout } from '../assets/profile__logo/logout.svg'
 
 export const data = [
-    { img: <User />, title: 'Профиль', url: 'profile'},
+    { img: <User />, title: 'Жеке бет', url: 'profile'},
     { img: <Subscribe />, title: 'Подписка', url: 'subscription'},
-    { img: <Test />, title: 'Тестирование', url: 'subjects'},
-    { img: <History />, title: 'История', url: 'history'},
+    { img: <Test />, title: 'Тестілеу', url: 'subjects'},
+    { img: <History />, title: 'Емтихан тарихы', url: 'history'},
     
     
 ]
-export const exit = { img: <Logout />, title: 'Выйти'}
+export const exit = { img: <Logout />, title: 'Шығу'}
 
 

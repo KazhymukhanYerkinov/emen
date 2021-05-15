@@ -11,8 +11,8 @@ const Section6 = () => {
             <div className = 'container'>
                 <div>
                     <div>
-                        <div className = "content__title"> Часто задаваемые вопросы </div>
-                        <div className = "content__description"> Давно выяснено, что при оценке дизайна и композиции <br/> читаемый текст мешает сосредоточиться. </div>
+                        <div className = "content__title"> Жиі қойылатын сұрақтар </div>
+                        <div className = "content__description"> Бізге жиі қойылатын сұрақтардың кейбіріне тоқтала кетсек. </div>
                     </div>
                     <div>
                         { data.map((item, index) => {

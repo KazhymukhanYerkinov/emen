@@ -12,8 +12,8 @@ const Section4 = () => {
                 <div>
 
                     <div>
-                        <div className = "content__title"> Как это работает?  </div>
-                        <div className = "content__description"> Давно выяснено, что при оценке дизайна и композиции <br /> читаемый текст мешает сосредоточиться. </div>
+                        <div className = "content__title"> Платформа қалай жұмыс жасайды ?  </div>
+                        <div className = "content__description"> Астынды көрсетілген қадамдар бойынша платформаның толық  <br /> қалай жұмыс жасайтынымен таныса аласыздар  </div>
                     </div>
 
                     <div className = 'section4__content'>

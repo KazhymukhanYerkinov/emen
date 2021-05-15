@@ -24,14 +24,14 @@ const DetailContent = ({ topics, onHandleSettingsModal }) => {
 
     return (
         <div className = {cls.content}>
-            <div className = { cls.content__title }> Каталог заданий по темам </div>
-            <div className = { cls.content__desc }> Выберите нужную тему для выполнения заданий определенной тематики. Это позволит вам подготовиться к определенной теме. </div>
+            <div className = { cls.content__title }> Тақырыптар бойынша тізім </div>
+            <div className = { cls.content__desc }>  Белгілі бір тақырып бойынша тестілеуден өту үшін тақырыпты таңдауыз.</div>
             
             <div className = {cls.table}>
                 <div className = {cls.table__header}>
                     <div className = {cls.table__flex}>
-                        <div className = {cls.table__theme}> Тема </div>
-                        <div className = { cls.table__counts }> Решено </div>
+                        <div className = {cls.table__theme}> Тақырып </div>
+                        <div className = { cls.table__counts }> Орындалғандар </div>
                     </div>
                     <div className = { cls.arrow }>  </div>
                 </div>

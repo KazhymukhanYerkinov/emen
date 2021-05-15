@@ -11,7 +11,7 @@ const DetailHeader = ({ banner, BASE_URL, onHandleSettingsModal }) => {
                 <div className = {cls.header__content}>
                     <div className = {cls.header__title}> {banner.name_ru} </div>
                     <div className = {cls.header__info}>
-                        <button className = 'button button__over button__over--header' onClick = {() => onHandleSettingsModal(true) }> Начать новый тест </button>
+                        <button className = 'button button__over button__over--header' onClick = {() => onHandleSettingsModal(true) }> Жаңа тест бастау </button>
                     </div> 
                 </div>
                 

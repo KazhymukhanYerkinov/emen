@@ -13,8 +13,8 @@ const Section7 = () => {
                 <div>
 
                     <div>
-                        <div className = "content__title"> Полезный контент <br /> в нашем инстаграме</div>
-                        <div className = "content__description"> Давно выяснено, что при оценке дизайна и композиции <br/> читаемый текст мешает сосредоточиться. <Link to = {'/instagram'} className = 'section7__instagram'> @emenkz </Link> </div>
+                        <div className = "content__title"> Біздің интаграмдағы пайдалы <br /> контенттер</div>
+                        <div className = "content__description"> Біздің инстаграмға кіріп біздің соңғы жағалықтармен және <br/> пайдалы кеңестерден хабардар бол. <Link to = {'/instagram'} className = 'section7__instagram'> @emenkz </Link> </div>
                     </div>
 
                     <div className = 'section7__content'>

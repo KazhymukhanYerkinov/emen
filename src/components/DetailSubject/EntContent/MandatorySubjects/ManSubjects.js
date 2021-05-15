@@ -7,8 +7,8 @@ import cls from '../EntContent.module.css';
 const ManSubjects = ({ mandatory_subjects, BASE_URL }) => {
   return (
     <React.Fragment>
-      <div className={cls.ent__title}> Обязательные предметы </div>
-      <div className={cls.ent__desc}> Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться.  </div>
+      <div className={cls.ent__title}> Міндетті пәндер </div>
+      <div className={cls.ent__desc}> ҰБТ келетін негізгі міндетті пәндер  </div>
 
       <div className={cls.mandatory__content}>
         {mandatory_subjects.map((item, index) => {
@@ -18,7 +18,7 @@ const ManSubjects = ({ mandatory_subjects, BASE_URL }) => {
 
               <div className={cls.subject__info}>
                 <div className={cls.subject__name}> {item.name_ru} </div>
-                <div className={cls.subject__variant}> {item.variant_number} вариантов <br /> {item.question_number} задач </div>
+                <div className={cls.subject__variant}> {item.variant_number} нұсқа <br /> {item.question_number} тапсырма </div>
               </div>
             </div>
           )

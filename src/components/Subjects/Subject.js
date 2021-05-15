@@ -14,14 +14,14 @@ const Subject = ({ BASE_URL, language, item }) => {
           <div className='subject__large-title'> {item[`name_${language}`]} </div>
           {item[`description_${language}`] ? <div className='subject__large-variant'> {item[`description_${language}`]} </div> :
             <>
-              <div className = 'subject__large-variant'> {item.variant_count} вариантов </div>
-              <div className = 'subject__large-variant'> {item.question_count} задач </div>
+              <div className = 'subject__large-variant'> {item.variant_count} нұсқа </div>
+              <div className = 'subject__large-variant'> {item.question_count} тапсырма </div>
             </>
           }
         </div>
       </div>
 
-      <div className='button button__over button__over--none'> Перейти </div>
+      <div className='button button__over button__over--none'> Қарап көру </div>
 
     </Link>
   )

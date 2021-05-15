@@ -12,10 +12,10 @@ const Section1 = () => {
                 <div className = 'section1__inner'>
 
                     <div className = 'section1__content'>
-                        <div className = 'section1__title'> Онлайн платформа для подготовки к ЕНТ </div> 
-                        <div className = 'section1__description'> Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает. </div>
+                        <div className = 'section1__title'> ҰБТ-ға дайындалуға арналған платформа </div> 
+                        <div className = 'section1__description'> Біздің онлайн платформада тест тапсыр және жоғары оқу орнына грант ұтып ал. </div>
                         <div className = 'section1__flex'>
-                            <Link to = {'/subjects'} className = 'button button__start'> Начать бесплатно </Link>
+                            <Link to = {'/subjects'} className = 'button button__start'> Бастау </Link>
                         </div>
                     </div>
 

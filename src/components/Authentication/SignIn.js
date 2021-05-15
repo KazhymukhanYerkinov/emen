@@ -21,12 +21,12 @@ const SignInForm = ({ handleSubmit, error, showFetchButton }) => {
                 <Field name = { 'email' } component = { InputText } label = { 'E-mail' } placeholder = 'E-mail' validate = { [emailRequired] }/>   
                 <Field name = { 'password' } component = { InputPassword } label = { 'Пароль' }  validate = { [textRequired,passwordRequired, lengthValidation] }/>
             </div>
-            <button className = 'button button__submit' type = 'submit'> {showFetchButton ? <img className = 'auth__loader' src = { loader } alt = '' />:<span>Войти</span>} </button> 
+            <button className = 'button button__submit' type = 'submit'> {showFetchButton ? <img className = 'auth__loader' src = { loader } alt = '' />:<span>Кіру</span>} </button> 
             
 
             <div className = 'auth__checkbox'>
-                <Field name = { 'ckeckbox' } component = { InputCheckBox } label = { 'Запомнить меня' } />
-                <Link className = 'auth__checkbox-text' to = {'/forgotpassword'}> Забыли пароль? </Link>
+                <Field name = { 'ckeckbox' } component = { InputCheckBox } label = { 'Мені есте сақтау' } />
+                <Link className = 'auth__checkbox-text' to = {'/forgotpassword'}> Пароль ұмыттыңыз ба? </Link>
             </div>  
 
            
@@ -64,11 +64,11 @@ const SignIn = ({ isAuth, loginThunk }) => {
                     </div>
 
                     <div className = 'auth__content'>
-                        <div className = 'title'> Вход </div>
+                        <div className = 'title'> Кіру </div>
                         <SignInReduxForm onSubmit = { onSubmit } showFetchButton = { showFetchButton }/>
 
                         <div className = 'auth__helper'>
-                            <Link to = '/registration'> Нет аккаунт? </Link>
+                            <Link to = '/registration'> Аккаунтыңыз жоқпа? </Link>
                         </div>
                     </div>
 

@@ -18,13 +18,13 @@ const SignUpForm = ({ handleSubmit, showFetchButton, error }) => {
         { error && <span className = 'auth__error'> { error } </span> }
         <form onSubmit = { handleSubmit }>
             <div className = 'auth__input'>
-                <Field name = { 'name' } component = { InputText } placeholder = 'Имя' label = { 'Имя' } validate = { textRequired }/>
-                <Field name = { 'surname' } component = { InputText } placeholder = 'Фамилия' label = { 'Фамилия' } validate = { textRequired }/>
+                <Field name = { 'name' } component = { InputText } placeholder = 'Имя' label = { 'Аты' } validate = { textRequired }/>
+                <Field name = { 'surname' } component = { InputText } placeholder = 'Фамилия' label = { 'Жөні' } validate = { textRequired }/>
                 <Field name = { 'email' } component = { InputText } placeholder = 'Email' label = { 'Email' } validate = { emailRequired }/>
-                <Field name = { 'password1' } component = { InputPassword } label = { 'Создать пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
-                <Field name = { 'password2' } component = { InputPassword } label = { 'Повторить пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
+                <Field name = { 'password1' } component = { InputPassword } label = { 'Пароль' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
+                <Field name = { 'password2' } component = { InputPassword } label = { 'Парольды қайталау' } validate = {[ textRequired, passwordRequired, lengthValidation ]}/>
             </div>
-            <button className = 'button button__submit'  type = 'submit'>  {showFetchButton ? <img className = 'auth__loader' src = { loader } alt = ''/>:<span>Зарегистрироваться</span>} </button>
+            <button className = 'button button__submit'  type = 'submit'>  {showFetchButton ? <img className = 'auth__loader' src = { loader } alt = ''/>:<span> Тіркелу </span>} </button>
         </form>
         </>
     )
@@ -54,11 +54,11 @@ const SignUp = ({ signUpThunk, fromRegisterPage }) => {
                     </div>
 
                     <div className = 'auth__content'>
-                        <div className = 'title'> Регистрация </div>
+                        <div className = 'title'> Тіркелу </div>
                         <SignUpReduxForm onSubmit = { onSubmit } showFetchButton = { showFetchButton } />
 
                         <div className = 'auth__helper mt-10'>
-                            <Link to = '/login'> Есть аккаунт? </Link>
+                            <Link to = '/login'> Аккаунт барма? </Link>
                         </div>
                     </div>
                 </div> 

@@ -12,8 +12,8 @@ const Section2 = () => {
             <div className = 'container'>
                 <div>
                     <div>
-                        <div className = "content__title"> Наша платформа </div>
-                        <div className = "content__description"> Давно выяснено, что при оценке дизайна и композиции <br/> читаемый текст мешает сосредоточиться. </div>
+                        <div className = "content__title"> Біздің платформа </div>
+                        <div className = "content__description"> Платформа арқылы қол жеткізе алатын мүмкіндіктер </div>
                     </div>
 
                     <div className = 'section2__content'>

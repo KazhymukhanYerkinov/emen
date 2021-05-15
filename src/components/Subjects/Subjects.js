@@ -28,8 +28,8 @@ const Subjects = ({ language, BASE_URL }) => {
             <div className = "container">
 
                 <div className = {cls.subjects__header}>
-                    <div className = {cls.title}> Тестирование </div>
-                    <div className = {cls.description}> Вы можете выбрать один предмет чтобы пройти тестирование. А также <br className = {cls.br}/> можете пройти полноценное тестирование из 5 предметов как в ЕНТ. </div>
+                    <div className = {cls.title}> Тестілеу </div>
+                    <div className = {cls.description}> Сіз тестілеуді тақырып бойынша, жеке пән <br className = {cls.br}/> бойыша және  толық ҰБТ бойынша өте аласыз. </div>
                 </div>
 
                 <div className = {cls.subjects__content}>

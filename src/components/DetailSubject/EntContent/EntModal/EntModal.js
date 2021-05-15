@@ -21,7 +21,7 @@ const EntModel = ({ profile_subjects, BASE_URL, showEntModal, onChangeEntModal, 
             <div className = 'modal__inner modal__inner-ent'>
 
                 <div className = 'modal__header-setting mb-10'>
-                    <div className = 'modal__title'> Выбор профильного предмета #{showEntModal && showEntModal.number} </div>
+                    <div className = 'modal__title'>  #{showEntModal && showEntModal.number}-ші таңдау пәнін таңдаңыз. </div>
                     <div onClick = {() => onChangeEntModal(false, null)}>
                         <CloseIcon className = 'modal__close' />
                     </div> 
@@ -37,7 +37,7 @@ const EntModel = ({ profile_subjects, BASE_URL, showEntModal, onChangeEntModal, 
                                 <div className = 'subject__ent-title'> { item.name_ru } </div>
                                 <div>
                                 <button className = 'button button__over button__over--height30'
-                                    onClick = {() => onSelectSubject(item, showEntModal.number - 1)}> Выбрать </button>
+                                    onClick = {() => onSelectSubject(item, showEntModal.number - 1)}> Таңдау </button>
                                 </div>
                             </div>
                         )

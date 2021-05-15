@@ -16,11 +16,11 @@ const Section5 = () => {
                     </div>
 
                     <div className = 'section5__content'>
-                        <div className = 'content__title'> Начни прямо сейчас готовится к ЕНТ </div>
-                        <div className = 'content__description'> Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. </div>
+                        <div className = 'content__title'> ҰБТ-ға дайындықты дәл қазірден бастаңыз </div>
+                        <div className = 'content__description'> ҰБТ-ға дайындықты дәл қазірден бастап, өзің қалаған кез-келген оқу орныңа түс. </div>
                         
                         <div>
-                            <Link to = '/subjects' className = 'button button__start'> Начать бесплатно </Link>
+                            <Link to = '/subjects' className = 'button button__start'> Бастау </Link>
                         </div>
                     </div>
                 </div>

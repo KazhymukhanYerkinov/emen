@@ -15,7 +15,7 @@ import cls from './Header.module.css';
 
 const Header = (props) => {
 
-  const isLang = props.language === 'kz';
+  // const isLang = props.language === 'kz';
 
 
   return (
@@ -38,7 +38,7 @@ const Header = (props) => {
                 className={ cls.nav__link } 
                 activeClassName = {cls.active } 
                 onClick={() => props.handleProfileBlock(false)}>
-                О платформе
+                Платформа туралы
               </NavLink>
               
               <NavLink 
@@ -46,7 +46,7 @@ const Header = (props) => {
                 className={cls.nav__link }
                 activeClassName = {cls.active } 
                 onClick={() => props.handleProfileBlock(false)}> 
-                Предметы 
+                Пәндер 
               </NavLink>
 
               <NavLink 
@@ -61,7 +61,7 @@ const Header = (props) => {
 
             <div className={cls.last}>
 
-              <div className={classNames(cls.last__lang, { [cls.change__lang]: props.isAuth })}>
+              {/* <div className={classNames(cls.last__lang, { [cls.change__lang]: props.isAuth })}>
 
                 <span 
                   className={classNames(cls.lang__link, { [cls.lang_active]: isLang })} 
@@ -75,7 +75,7 @@ const Header = (props) => {
                   Рус 
                 </span>
 
-              </div>
+              </div> */}
 
               {!props.isAuth && 
               <div className={cls.last__auth}>
@@ -84,14 +84,14 @@ const Header = (props) => {
                   to={'/registration'} 
                   className='button button__sign button__sign--up' 
                   onClick={() => props.handleProfileBlock(false)}> 
-                  Регистрация 
+                  Тіркелу 
                 </NavLink>
 
                 <NavLink 
                   to={'/login'}
                   className = 'button button__sign'
                   onClick={() => props.handleProfileBlock(false)}> 
-                  Войти 
+                  Кіру 
                 </NavLink>
 
               </div>}

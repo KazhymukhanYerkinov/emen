@@ -16,7 +16,7 @@ const Footer = () => {
 
                     <div className = {cls.footer__social}>
                         <div className = {cls.social}>
-                            <div className = {cls.social__text}> Мы в соцсетях </div>
+                            <div className = {cls.social__text}> Біз әлеуметтік желілерде </div>
                             <div className = {cls.social__logo}>
                                 <Link to = {'/instagram'}><img src = { insta } alt = ""/></Link>
                                 <Link to = {'/facebook'}><img src = { face } alt = "" /></Link>
@@ -28,26 +28,25 @@ const Footer = () => {
 
                     <div className = {cls.footer__links}>
                         <div className = {cls.row}>
-                            <div className = {cls.row__title}> О платформе </div>
-                            <Link to = "/dsad" className = {cls.row__link}> О проекте </Link>
-                            <Link to = "/dsad" className = {cls.row__link}> Помощь </Link>
-                            <Link to = "/dsad" className = {cls.row__link}> Отзывы </Link>
-                            <Link to = "/dsad" className = {cls.row__link}> Вакансии </Link>
+                            <div className = {cls.row__title}> Платформа туралы </div>
+                            <Link to = "/" className = {cls.row__link}> Проект туралы </Link>
+                            <Link to = "/" className = {cls.row__link}> Көмек </Link>
+                            <Link to = "/" className = {cls.row__link}> Пікірлер </Link>
+                            <Link to = "/" className = {cls.row__link}> Вакансиялар </Link>
                         </div>
 
                         <div className = {cls.row}>
                             <div className = {cls.row__title}> Платформа </div>
-                            <Link to = "/dsad" className = {cls.row__link}> Предметы </Link>
-                            <Link to = "/dsad" className = {cls.row__link}> Подписка </Link>
-                            <Link to = "/dsad" className = {cls.row__link}> Лицензия </Link>
-                            <Link to = "/dsad" className = {cls.row__link}> Блог </Link>
-                            <Link to = "/dsad" className = {cls.row__link}> Контакты </Link>
+                            <Link to = "/" className = {cls.row__link}> Пәндер </Link>
+                            <Link to = "/" className = {cls.row__link}> Подписка </Link>
+                            <Link to = "/" className = {cls.row__link}> Лицензия </Link>
+                            <Link to = "/" className = {cls.row__link}> Блог </Link>
+                            <Link to = "/" className = {cls.row__link}> Байланыстар </Link>
                         </div>
 
                         <div className = {cls.row}>
-                            <div className = {cls.row__title}> Поддержка </div>
-                            <Link to = "/dsad" className = {cls.row__link}> Пользовательское соглашение </Link>
-                            <Link to = "/dsad" className = {cls.row__link}> Политика конфиденциальности </Link>
+                            <div className = {cls.row__title}> Қолдау </div>
+                            <Link to = "/" className = {cls.row__link}> Қолдану ережелері </Link>
                         </div>
                     </div>
                      
