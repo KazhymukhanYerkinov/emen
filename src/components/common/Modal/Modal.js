@@ -44,19 +44,19 @@ const Modal = ({
           
           { error_code === 6 && 
             <SimpleModal
-              error_message = 'Извините, такого теста нет'
+              error_message = 'Кешіріңіз, бұндай тест жоқ.'
               handleCloseModal = { handleCloseModal } 
             /> }
           
           { error_code === 2 && 
             <SimpleModal 
-              error_message = 'У вас нет доступа к этому тесту'
+              error_message = 'Кешіріңіз, сізде бұл тестілеуге рұқсат жоқ.'
               handleCloseModal = { handleCloseModal }
             />}
           
           { error_code === 4 &&
             <SimpleModal
-              error_message = 'Этот тест завершен.'
+              error_message = ' Кешіріңіз, бұл тестілеу аяқталып қойған.'
               handleCloseModal = { handleCloseModal }
             />}
           
@@ -80,23 +80,23 @@ const UnfinishedExamModal = ({ error_data, handleCloseModal }) => {
   return (
     <React.Fragment>
       <div className='modal__header'>
-        <div className='modal__title'> Продолжить тестирования </div>
+        <div className='modal__title'> Тестілеуді жалғастыру </div>
       </div>
 
       <div className = 'modal__content'>
         <div className = 'modal__description'> 
-          У вас незавершенный тест по <b>{error_data.name_ru}</b>. 
-          Вы не можете начать новый тест, не завершив его. 
+          Сізде <b>{error_data.name_ru}</b> аяқталмаған тест бар.   
+          Сіз оны аяқтамай жаңа тест бастай алмайсыз.
         </div>
       </div>
 
       <div className='modal__footer'>
-        <button onClick={handleCloseModal} className='button button__over'> Отмена </button>
+        <button onClick={handleCloseModal} className='button button__over'> Жабу </button>
         <Link
           onClick={handleCloseModal}
           className='button button__continue'
           to={`/start_test/${error_data.uuid}`}>
-          Продолжить
+          Жалғастыру
         </Link>
       </div>
 
@@ -110,28 +110,28 @@ const NoMoneyModal = ({ handleCloseModal }) => {
   return (
     <React.Fragment>
       <div className='modal__header'>
-        <div className='modal__title'> У Вас недостаточно средств на балансе для покупки </div>
+        <div className='modal__title'> Сіздің балансыңызда сатып алуға қаражат жеткіліксіз </div>
       </div>
 
       <div className = 'modal__content'>
         <div className = 'modal__description'> 
-          Пожалуйста оформите подписку или купите один тест чтобы начать тестирование 
-          чтобы купит тест Вам нужно <Link 
+        Тестілеуді бастау үшін подписка немесе бір тест сатып алыңыз
+        тест сатып алу үшін баланысты толтыру қажет <Link 
             to = '/profile/wallet' 
             className = 'modal__link'
             onClick={handleCloseModal}> 
-            пополнить баланс
+            баланысты толтыру
           </Link>
         </div>
       </div>
 
       <div className='modal__footer'>
-        <button onClick={handleCloseModal} className='button button__over'> Отмена </button>
+        <button onClick={handleCloseModal} className='button button__over'> Жабу </button>
         <Link
           onClick={handleCloseModal}
           className='button button__continue'
           to={`/subscription`}>
-          Оформите подписку
+          Подпискаға жазылу
         </Link>
       </div>
 
@@ -145,17 +145,17 @@ const NoQuestionModal = ({ handleCloseModal }) => {
   return (
     <React.Fragment>
       <div className='modal__header'>
-        <div className='modal__title'> Пожалуйста, обратите внимание. </div>
+        <div className='modal__title'> Назар аударыңыз ! </div>
       </div>
 
       <div className = 'modal__content'>
         <div className = 'modal__description'>
-          Извините, варианты закончились. В ближайшее время мы добавим в базу новые вопросы. Подождите пожалуйста :)
+          Кешіріңіз, бізде нұсқалар таусылды. Жақын уақытта біз жаңа нұсқаларды қосамыз.
         </div>
       </div>
 
       <div className='modal__footer'>
-        <button onClick={handleCloseModal} className='button button__over'> Отмена </button>
+        <button onClick={handleCloseModal} className='button button__over'> Жабу </button>
       </div>
 
     </React.Fragment>
@@ -168,7 +168,7 @@ const SimpleModal = ({ handleCloseModal, error_message }) => {
   return (
     <React.Fragment>
       <div className='modal__header'>
-        <div className='modal__title'> Пожалуйста, обратите внимание. </div>
+        <div className='modal__title'> Назар аударыңыз ! </div>
       </div>
 
       <div className = 'modal__content'>
@@ -178,7 +178,7 @@ const SimpleModal = ({ handleCloseModal, error_message }) => {
       </div>
 
       <div className='modal__footer'>
-        <button onClick={handleCloseModal} className='button button__over'> Отмена </button>
+        <button onClick={handleCloseModal} className='button button__over'> Жабу </button>
       </div>
 
     </React.Fragment>
@@ -189,7 +189,7 @@ const UnfinishedSubsModal = ({ handleCloseModal, handleNewSubs }) => {
   return (
     <React.Fragment>
       <div className='modal__header'>
-        <div className='modal__title'> Пожалуйста, обратите внимание. </div>
+        <div className='modal__title'> Назар аударыңыз ! </div>
       </div>
 
       <div className = 'modal__content'>
@@ -199,8 +199,8 @@ const UnfinishedSubsModal = ({ handleCloseModal, handleNewSubs }) => {
       </div>
 
       <div className='modal__footer'>
-        <button onClick={handleCloseModal} className='button button__over'> Отмена </button>
-        <button type='submit' value='SUBMIT' className='button button__continue' onClick = { handleNewSubs }> Да </button>
+        <button onClick={handleCloseModal} className='button button__over'> Жабу </button>
+        <button type='submit' value='SUBMIT' className='button button__continue' onClick = { handleNewSubs }> Йа </button>
       </div>
 
     </React.Fragment>

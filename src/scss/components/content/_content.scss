@@ -11,13 +11,13 @@
 .content {
 
     &__title {
-        @include text(32px, 41px, 600, $black);
+        @include text(28px, 31px, 600, $black);
         text-align: center;
     }
     &__description {
-        margin: 30px 0 50px 0;
+        margin: 20px 0 30px 0;
         text-align: center;
-        @include text(21px, 25px, 500, $dark_gray);
+        @include text(18px, 21px, 500, $dark_gray);
     }
 
     &__block {
@@ -30,19 +30,19 @@
         }
         &-count {
             font-feature-settings: 'pnum' on, 'lnum' on;
-            @include text(38px, 41px, 600, $blue);
+            @include text(31px, 36px, 600, $blue);
         }
         &-text {
             margin: 14px 0;
-            @include text(21px, 24px, 500, $dark_gray);
+            @include text(19px, 24px, 500, $dark_gray);
         }
         &-subtext {
             @include text(21px, 24px, 500, $pre_middle_gray);
         }
         &-question {
-            padding-bottom: 20px;
+            padding-bottom: 10px;
             font-feature-settings: 'pnum' on, 'lnum' on;
-            @include text(19px, 23px, 500, $black);
+            @include text(16px, 23px, 500, $black);
         }
         &-answer {
             height: 0;
@@ -50,7 +50,7 @@
             
             transition: height 0.3s ease-out;
 
-            @include text(18px, 21px, 500, $dark_gray);
+            @include text(16px, 21px, 500, $dark_gray);
 
             &.open {
                 height: auto;

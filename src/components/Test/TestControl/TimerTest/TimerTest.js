@@ -41,7 +41,7 @@ const TimerTest = ({ timer, stopTimer, onStopTime, handleCompassChange, onFinish
 
     return (
         <div className = {cls.timer }>
-            <div className = {cls.timer__title}> Контроль </div>
+            <div className = {cls.timer__title}>  Бақылау </div>
 
             <div className = {cls.time__display}>
                 <div className = {cls.time__text}>

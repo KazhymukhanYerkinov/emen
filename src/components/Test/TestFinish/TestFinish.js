@@ -23,12 +23,12 @@ const TestFinish = ({
     return (
         <div className = {cls.finish}>
             <div className = {cls.finish__inner}>
-                <div className = {cls.finish__title}> Вы уверены, что хотите завершить тестирование ? </div>
-                <div className = {cls.finish__result}> Отвечено: {completeQuestions}/{QUESTION_SIZE} </div>
-                <div className = {cls.finish__time}>  Осталось времени: {hours}:{minute}:{second} </div>
+                <div className = {cls.finish__title}> Сіз тестілеуді аяқтауға келісесіз ба? </div>
+                <div className = {cls.finish__result}> Жауап берді: {completeQuestions}/{QUESTION_SIZE} </div>
+                <div className = {cls.finish__time}>  Қалған уақыт: {hours}:{minute}:{second} </div>
 
-                <button className = 'button button__submit mt-10' onClick = { () => handleFinishAllTest(false, time) }> Да, завершить тестирование </button>
-                <button className = 'button button__over mt-10' onClick = { onOnlyFinish }> Отмена </button>
+                <button className = 'button button__submit mt-10' onClick = { () => handleFinishAllTest(false, time) }> Ия, тестілеуді аяқтау </button>
+                <button className = 'button button__over mt-10' onClick = { onOnlyFinish }> Жоқ </button>
             </div>
         </div>
     )

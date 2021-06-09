@@ -15,13 +15,13 @@ const AuthModal = (props) => {
         <div className = 'modal'>
             <div className = 'modal__inner'>
                 <div className = 'modal__header'>
-                    <div className = 'modal__title'> Вы действительно хотите выйти? </div>
+                    <div className = 'modal__title'> Сіз шынымен шыққыңыз келе ме? </div>
                 </div>
                 
 
                 <div className = 'modal__footer'>
-                    <button className = 'button button__logout button__logout--cancel' onClick = {() => props.handleLogoutModal(false)}> Отмена </button>
-                    <Link to = '/' className = 'button button__logout ml-5' onClick = { props.pressTheOkButton }> OK </Link>
+                    <button className = 'button button__logout button__logout--cancel' onClick = {() => props.handleLogoutModal(false)}> Жоқ </button>
+                    <Link to = '/' className = 'button button__logout ml-5' onClick = { props.pressTheOkButton }> Йа </Link>
                 </div>
             </div>
         </div>

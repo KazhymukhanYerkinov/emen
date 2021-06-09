@@ -6,7 +6,7 @@ const SET_LANGUAGE = 'app-reducer/SET_LANGUAGE';
 let initialState = {
     initialized: false,
     language: 'ru',
-    BASE_URL: 'https://e-men.kz',
+    BASE_URL: 'http://127.0.0.1:8000',
 }
 
 

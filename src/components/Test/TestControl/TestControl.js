@@ -93,7 +93,7 @@ const TestControl = ({
           })}
         </div>
 
-        <button className='button button__over dn-1000' onClick={onFinishTestButton}> Завершить тестирование </button>
+        <button className='button button__over dn-1000' onClick={onFinishTestButton}> Тестілеуді аяқтау </button>
       </div>
     )
   }

@@ -7,7 +7,7 @@ const SubsModal = (props) => {
       <div className = 'modal__inner'>
 
         <div className = 'modal__header'>
-          <div className = 'modal__title'> Пожалуйста подтвердите оформление тарифа </div>
+          <div className = 'modal__title'> Тарифты растауыз  </div>
         </div>
 
         <div className = 'modal__content'>
@@ -15,13 +15,13 @@ const SubsModal = (props) => {
         </div>
 
         <div className = 'modal__footer'>
-            <button className = 'button button__over' onClick = {() => props.handleOpenModal(null)}> Отмена </button>
+            <button className = 'button button__over' onClick = {() => props.handleOpenModal(null)}> Жоқ </button>
             <button 
               type = 'submit' 
               value = 'SUBMIT' 
               className = 'button button__continue' 
               onClick = {() => props.handlePostSubs(props.openModal.uuid, false)}> 
-              Да, подтверждаю 
+              Йа, растаймын 
             </button>
         </div>
 

@@ -10,8 +10,8 @@ const History = (props) => {
       <div className='container'>
 
         <div className={cls.history__header}>
-          <div className = {cls.title}> История </div>
-          <div className = {cls.description}> Давно выяснено, что при оценке дизайна и композиции <br className = {cls.br}/>  читаемый текст мешает сосредоточиться. </div>
+          <div className = {cls.title}> Емтихан тарихы </div>
+          <div className = {cls.description}> Сіз емтихан тарихынан өзіңіз тапсырған <br className = {cls.br}/> барлық тестілеудің нәтижесін көре аласыз.  </div>
         </div>
 
         <div className = {cls.block}>
@@ -21,11 +21,11 @@ const History = (props) => {
 
               <thead className = {cls.thead}>
                 <tr>
-                  <th> Тип </th>
-                  <th> Дата </th>
-                  <th> Результат </th>
-                  <th> Время </th>
-                  <th> Вариант </th>
+                  <th> Пән </th>
+                  <th> Тестілеу өткен күн </th>
+                  <th> Нәтиже </th>
+                  <th> Уақыт </th>
+                  <th> Нұсқа </th>
                   <th>  &nbsp;</th>
                 </tr>
               </thead>

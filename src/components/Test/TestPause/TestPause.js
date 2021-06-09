@@ -64,19 +64,19 @@ const TestPause = ({
                 <img className = {cls.pause__iamge} src = {finishAllTest ? finish: pause } alt = "" />
 
                 <div className = {cls.pause__info}>
-                    <div className = {cls.pause__text}>{finishAllTest ? <span> Тест завершен </span>:<span>Тест приостановлен</span>} </div>
-                    <div className = {cls.pause__result}> Отвечено: { completeQuestions }/{QUESTION_SIZE} </div>
-                    <div className = {cls.pause__timer}> {finishAllTest ? <span> Потраченное время: </span>:<span>Осталось времени:</span>} {hours}:{minute}:{second} </div>
+                    <div className = {cls.pause__text}>{finishAllTest ? <span> Тестілеу аяқталды </span>:<span>Тестілеу тоқтатылды</span>} </div>
+                    <div className = {cls.pause__result}> Жауап берді: { completeQuestions }/{QUESTION_SIZE} </div>
+                    <div className = {cls.pause__timer}> {finishAllTest ? <span> Өткізілген уақыт: </span>:<span>Қалған уақыт:</span>} {hours}:{minute}:{second} </div>
                 </div>
                 {finishAllTest ?
                 <>
-                    <Link className = 'button button__submit' to = {`/history/${examUID}`} onClick = { handleClearAllData }> Резултат тестирование </Link>
-                    <Link className = 'button button__over mt-5' to = {'/'} onClick = { handleClearAllData }> Главная страница </Link>
+                    <Link className = 'button button__submit' to = {`/history/${examUID}`} onClick = { handleClearAllData }> Тестілеу нәтижесі </Link>
+                    <Link className = 'button button__over mt-5' to = {'/'} onClick = { handleClearAllData }> Басты бет </Link>
                 </>
                 :
                 <>
-                    <button className = 'button button__submit' onClick = { () => onStopTime(false) }> Возобновить тестирование </button>
-                    <button className = 'button button__over mt-5' onClick = { onOnlyFinish }> Завершить тестирование </button>
+                    <button className = 'button button__submit' onClick = { () => onStopTime(false) }> Тестілеуді жалғастыру </button>
+                    <button className = 'button button__over mt-5' onClick = { onOnlyFinish }> Тестілеуді аяқтау </button>
                 </>
                 }
             </div>

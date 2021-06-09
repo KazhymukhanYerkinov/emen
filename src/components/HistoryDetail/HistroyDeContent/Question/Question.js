@@ -48,9 +48,9 @@ const Question = (props) => {
   return (
     <div className = 'question' id = {`history_scroll_${props.question.id}`}>
       <div className = 'question__header'>
-        <div className='question__number'> Вопрос #{props.question.numeration} </div>
+        <div className='question__number'> Сұрақ #{props.question.numeration} </div>
         <div onClick = { activateReportError }>
-          <Tooltip arrow title='Сообщить о ошибке' placement='top'>
+          <Tooltip arrow title='Қате туралы хабарлау' placement='top'>
             <WarningIcon className = 'question__warning'/>
           </Tooltip>
         </div>
@@ -75,7 +75,7 @@ const Question = (props) => {
       </div>
 
       <React.Fragment>
-        <div className = 'question__hint' onClick = { handleShowParse }> {showParse ? <span> Cкрыть разбор </span>:<span> Показать разбор</span>} </div>
+        <div className = 'question__hint' onClick = { handleShowParse }> {showParse ? <span> Талдауды жасыру </span>:<span> Талдауды көрсету</span>} </div>
         <div id = {`solution_${props.question.id}`} className = {classNames('question__hint-text', {'active': showParse})} > </div>
       </React.Fragment>
     </div>

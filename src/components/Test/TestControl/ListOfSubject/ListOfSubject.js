@@ -65,7 +65,7 @@ const ListOfSubject = ({
 
           <div className='navigator__subject-info'>
             <div className='navigator__subject-name'> {subject.name_ru} </div>
-            <div className='navigator__subject-result'> Отвечено: { size } / { questions_count } </div>
+            <div className='navigator__subject-result'> Жауап берді: { size } / { questions_count } </div>
           </div>
 
         </div>

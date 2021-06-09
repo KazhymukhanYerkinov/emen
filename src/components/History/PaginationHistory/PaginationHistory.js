@@ -21,14 +21,14 @@ const PaginationHistory = (props) => {
       <button
         className = {classNames(cls.previous__button, {[cls.disabled]: props.current_page === 1})} 
         onClick = {() => handlePageChange(-1)}> 
-        Предыдущая страница 
+        Алдыңғы бет
       </button>
 
       <button
         disabled = {props.current_page === page_size}
         className = {classNames(cls.next__button, {[cls.disabled]: props.current_page === page_size})} 
         onClick = {() => handlePageChange(1)}> 
-        Следующая страница 
+        Келесі бет
       </button>
     </div>
   )

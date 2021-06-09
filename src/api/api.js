@@ -2,7 +2,7 @@ import * as axios from 'axios';
 import Cookie from 'js-cookie';
 
 const instance = axios.create({
-    baseURL: 'https://e-men.kz/',
+    baseURL: 'http://127.0.0.1:8000/',
 });
 
 instance.interceptors.request.use(req => {
@@ -244,7 +244,7 @@ export const subsAPI = {
     postSubs(uid, not_care, subscription_time) {
         const body = JSON.stringify({ not_care, subscription_time });
         
-        return instance.post(`https://e-men.kz/api/v1/services/subscriptions/tariffs/${uid}/subscribe/`, body).then(response => {
+        return instance.post(`http://127.0.0.1:8000/api/v1/services/subscriptions/tariffs/${uid}/subscribe/`, body).then(response => {
             return response.data
         })
     }

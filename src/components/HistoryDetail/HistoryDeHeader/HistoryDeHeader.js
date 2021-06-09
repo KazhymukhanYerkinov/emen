@@ -17,15 +17,15 @@ const HistoryDeHeader = (props) => {
       <div className = {cls.header__inner}>
         <img className = {cls.header__logo} src = { props.BASE_URL +''+ props.history.subject.logo } alt = '' />
         <div className = {cls.header__info}>
-          <div className = {cls.info__title}> Результат тестирования </div>
+          <div className = {cls.info__title}> Тестілеу нәтижесі </div>
 
           <div className = {cls.info__content}>
             <div className = {cls.content__name}> { props.history.subject.name_ru } </div>
 
             <div className = {cls.content__flex}>
-              <div> Вариант №: { props.history.subject.code } </div>
-              <div> Результат: {props.history.score}/{props.history.total_score} </div>
-              <div> Время: {hours}:{minute}:{second} </div>
+              <div> Нұсқа №: { props.history.subject.code } </div>
+              <div> Нәтиже: {props.history.score}/{props.history.total_score} </div>
+              <div> Уақыт: {hours}:{minute}:{second} </div>
             </div>
             
           </div>

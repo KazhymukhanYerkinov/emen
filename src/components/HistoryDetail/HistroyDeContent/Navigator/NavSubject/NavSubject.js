@@ -19,7 +19,7 @@ const NavSubject = (props) => {
 
           <div className = 'navigator__subject-info'>
             <div className = 'navigator__subject-name'> { props.variant.subject.name_ru } </div>
-            <div className = 'navigator__subject-result'> Результат: {props.variant.score}/{ props.variant.questions_count } </div>
+            <div className = 'navigator__subject-result'> Нәтиже: {props.variant.score}/{ props.variant.questions_count } </div>
           </div>
 
         </div>

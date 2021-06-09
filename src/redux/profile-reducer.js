@@ -79,6 +79,7 @@ export const handleIsRedirectPassword = (isRedirectPassword) => ({ type: IS_REDI
 export const handleAmountModal = (amount_modal) => ({ type: SET_AMOUNT_MODAL, amount_modal });
 export const handleAmountData = (amount_data) => ({ type: SET_AMOUNT_DATA, amount_data });
 
+
 export const changePasswordAC = () => ({ type: CHANGE_PASSWORD });
 
 export const changeEmailAc = () => ({ type: CHANGE_EMAIL });
@@ -146,7 +147,6 @@ export const emailActivate = (uid, token) => async (dispatch) => {
 export const upBalance = (amount) => async (dispatch) => {
   try {
     const data = await profileAPI.upBalance(amount);
-    console.log(data);
     dispatch(handleAmountData(data));
   } catch (error) {
 

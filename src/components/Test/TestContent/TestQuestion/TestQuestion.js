@@ -60,7 +60,7 @@ const TestQuestion = ({
     <div className={classNames('question', { 'is-group': is_group })} id={`scroll_${id}`}>
 
       <div>
-        <div className = 'question__number'> Вопрос #{numeration}</div>
+        <div className = 'question__number'> Сұрақ #{numeration}</div>
       </div>
 
       <div id={`question_${id}`} className='question__text'> {question_text} </div>
@@ -98,7 +98,7 @@ const TestQuestion = ({
 
       {help_text &&
         <>
-          <div className = 'question__hint' onClick={handleIsHint}> {isHint ? <span> Cкрыть подсказку </span> : <span>Показать подсказку</span>} </div>
+          <div className = 'question__hint' onClick={handleIsHint}> {isHint ? <span> Нұсқау жасыру </span> : <span>Нұсқау көрсету</span>} </div>
           <div className={classNames('question__hint-text', {'active': isHint})} id={`hint_${id}`}>  </div>
         </>
       }

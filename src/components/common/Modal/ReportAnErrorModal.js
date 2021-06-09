@@ -12,8 +12,8 @@ const ReportErrorForm = ({ handleSubmit, error }) => {
   return (
     <form onSubmit = { handleSubmit }>
       { error && <div className = 'modal__success'> { error } </div> }
-      <Field name = 'text' placeholder = 'Введите ошибку' component = { TextArea } validate = { textRequired } />
-      <button className = 'button button__submit' type = 'submit'> Отправить </button>
+      <Field name = 'text' placeholder = 'Қатені жазыңыз' component = { TextArea } validate = { textRequired } />
+      <button className = 'button button__submit' type = 'submit'> Жіберу </button>
     </form>
   )
 }
@@ -35,7 +35,7 @@ const ReportAnErrorModal = ({ question_id, deactivateReportError, is_group }) =>
       <div className='modal__inner modal__inner-setting'>
 
         <div className='modal__header-setting'>
-          <div className='modal__title'> Сообщить о ошибке </div>
+          <div className='modal__title'> Қате туралы хабарлау </div>
 
           <div onClick={ deactivateReportError }>
             <CloseIcon className='modal__close' />

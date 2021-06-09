@@ -1,7 +1,6 @@
 import React from 'react';
 import SubsModal from '../../common/Modal/SubsModal';
 import PriceCircle from './PriceCircle';
-import Service from './Service';
 import cls from './SubBlock.module.css';
 
 
@@ -33,12 +32,12 @@ const SubBlock = (props) => {
         <div className={cls.title}> {props.sub.name} </div>
       </div>
 
-      <div className={cls.services__block}>
+      {/* <div className={cls.services__block}>
         <Service name={props.sub.mini_description_1} />
         <Service name={props.sub.mini_description_2} />
         <Service name={props.sub.mini_description_3} />
-        <Service name={props.sub.mini_description_4} />
-      </div>
+        <Service name={props.sub.mini_description_4} /> 
+      </div> */}
 
       <div className={cls.money}>
         {chooseMonth === 1

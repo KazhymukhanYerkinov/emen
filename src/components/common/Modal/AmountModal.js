@@ -14,7 +14,7 @@ const AmountModal = (props) => {
       <div className = 'modal__inner'>
 
         <div className = 'modal__header'>
-          <div className = 'modal__title'> Продолжить тестирования </div>
+          <div className = 'modal__title'> Баланысты толтыруды растаңыз </div>
         </div>
         <form name = {`${form_name}`} method = 'post' action = {`${logon_link}`}>
           
@@ -27,8 +27,8 @@ const AmountModal = (props) => {
           </div>
 
           <div className = 'modal__footer'>
-            <button className = 'button button__over'> Отмена </button>
-            <button type = 'submit' value = 'SUBMIT' className = 'button button__continue'> Да </button>
+            <button className = 'button button__over' type='button'> Жоқ </button>
+            <button type = 'submit' value = 'SUBMIT' className = 'button button__continue'> Йа, растаймын </button>
           </div>
         </form>
 

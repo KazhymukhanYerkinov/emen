@@ -2,7 +2,7 @@ import React from 'react';
 import Switch from '@material-ui/core/Switch';
 import CloseIcon from '@material-ui/icons/Close';
 
-const levels = ['Легкий', 'Средний', 'Сложный'];
+const levels = ['Оңай', 'Орташа', 'Күрделі'];
 
 const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
     const [ chooseLevel, setChooseLevel ] = React.useState(0);
@@ -33,7 +33,7 @@ const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
             <div className = 'modal__inner modal__inner-setting'>
 
                 <div className = 'modal__header-setting'> 
-                    <div className = 'modal__title'>Настройки тестирования</div> 
+                    <div className = 'modal__title'>Тестілеу параметрлері</div> 
                     
                     <div onClick = {() => onHandleSettingsModal(false)}>
                         <CloseIcon className = 'modal__close' />
@@ -41,7 +41,7 @@ const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
                 </div>
                 
                 <div className = 'modal__content-setting'>
-                    <div className = 'modal__level-title mb-10'> Уровень сложности: </div>
+                    <div className = 'modal__level-title mb-10'> Күрделілік деңгейі: </div>
 
                     {levels.map((item, index) => {
                          return (
@@ -53,7 +53,7 @@ const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
                     })}
 
                     <div className = 'modal__level' onClick = { onChangeShowHint }>
-                        <div className = 'modal__level-title'> Включить подказку </div>
+                        <div className = 'modal__level-title'> Көмекшіні қосу </div>
                         <Switch
                             checked={ showHint }
                             onChange = { onChangeShowHint }
@@ -65,7 +65,7 @@ const SettingsModal = ({ onHandleSettingsModal, handleStartTest }) => {
                     </div>
                 </div>
 
-                <button className = 'button button__modal' onClick = { hanldeStartButton }> Начать </button>
+                <button className = 'button button__modal' onClick = { hanldeStartButton }> Бастау </button>
 
             </div>
         </div>
