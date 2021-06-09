@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/emen/static/css/main.9513c731.chunk.css",
-    "main.js": "/emen/static/js/main.1136cea7.chunk.js",
+    "main.css": "/emen/static/css/main.b3c25002.chunk.css",
+    "main.js": "/emen/static/js/main.a5bf67fd.chunk.js",
     "runtime-main.js": "/emen/static/js/runtime-main.55299400.js",
-    "static/js/2.178fa0ec.chunk.js": "/emen/static/js/2.178fa0ec.chunk.js",
+    "static/js/2.1abe2dc1.chunk.js": "/emen/static/js/2.1abe2dc1.chunk.js",
     "index.html": "/emen/index.html",
-    "static/js/2.178fa0ec.chunk.js.LICENSE.txt": "/emen/static/js/2.178fa0ec.chunk.js.LICENSE.txt",
+    "static/js/2.1abe2dc1.chunk.js.LICENSE.txt": "/emen/static/js/2.1abe2dc1.chunk.js.LICENSE.txt",
     "static/media/arrow.e490dbd5.svg": "/emen/static/media/arrow.e490dbd5.svg",
     "static/media/basic_data.ba7ef9d5.svg": "/emen/static/media/basic_data.ba7ef9d5.svg",
     "static/media/button__loader.b0e3e8b5.svg": "/emen/static/media/button__loader.b0e3e8b5.svg",
@@ -42,8 +42,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.55299400.js",
-    "static/js/2.178fa0ec.chunk.js",
-    "static/css/main.9513c731.chunk.css",
-    "static/js/main.1136cea7.chunk.js"
+    "static/js/2.1abe2dc1.chunk.js",
+    "static/css/main.b3c25002.chunk.css",
+    "static/js/main.a5bf67fd.chunk.js"
   ]
 }
